@@ -86,7 +86,7 @@
     <div class="slider-wrapper swiper-wrapper">
       <div class="slider-item swiper-slide">
         <div class="slide-content">
-          <h3 class="slide-subtitle">01</h3>
+          <!-- <h3 class="slide-subtitle">01</h3> -->
           <h2 class="slide-title">Fliesenarbeiten</h2>
           <p class="slide-description">Präzise verlegte Wand- und Bodenfliesen für stilvolle und langlebige Räume.</p>
           <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
@@ -94,7 +94,7 @@
       </div>
       <div class="slider-item swiper-slide">
         <div class="slide-content">
-          <h3 class="slide-subtitle">02</h3>
+          <!-- <h3 class="slide-subtitle">02</h3> -->
           <h2 class="slide-title">Malerarbeiten</h2>
           <p class="slide-description">Saubere Anstriche und kreative Farbkonzepte – individuell auf Ihre Räume abgestimmt.</p>
           <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
@@ -102,7 +102,7 @@
       </div>
       <div class="slider-item swiper-slide">
         <div class="slide-content">
-          <h3 class="slide-subtitle">03</h3>
+          <!-- <h3 class="slide-subtitle">03</h3> -->
           <h2 class="slide-title">Bodenarbeiten</h2>
           <p class="slide-description">Hochwertige Bodenverlegung von Vinyl, Laminat, Parkett und Estrich – fachgerecht & robust.</p>
           <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
@@ -110,7 +110,7 @@
       </div>
       <div class="slider-item swiper-slide">
         <div class="slide-content">
-          <h3 class="slide-subtitle">04</h3>
+          <!-- <h3 class="slide-subtitle">04</h3> -->
           <h2 class="slide-title">Verputzarbeiten</h2>
           <p class="slide-description">Glatte oder strukturierte Wände von Q1 bis Q4 – wir setzen Ihre Vorstellungen um.</p>
           <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
@@ -118,7 +118,7 @@
       </div>
       <div class="slider-item swiper-slide">
         <div class="slide-content">
-          <h3 class="slide-subtitle">05</h3>
+          <!-- <h3 class="slide-subtitle">05</h3> -->
           <h2 class="slide-title">Ganze Wohnungen sanieren</h2>
           <p class="slide-description">Von A bis Z – Komplettsanierungen aus einer Hand. Koordiniert & verlässlich.</p>
           <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
@@ -356,8 +356,22 @@
           <div class="prozess-text">
             <h5>Termin vereinbaren</h5>
             <p>Vor Ort besprechen wir Ihre Wünsche & besichtigen das Objekt.</p>
+            <button class="btn btn-sm btn-outline-warning mt-2" onclick="zeigeTerminFormular()">🗓️ Jetzt Wunschtermin vorschlagen</button>
           </div>
         </div>
+        <div id="terminFormular" class="mt-3" style="display: none;">
+          <label for="wunschtermin">📅 Wunschtermin wählen:</label>
+          <input type="datetime-local" id="wunschtermin" class="form-control mb-2" required>
+        
+          <label for="kalendername">👤 Ihr Name (optional):</label>
+          <input type="text" id="kalendername" class="form-control mb-2">
+        
+          <label for="telefon">📞 Ihre Telefonnummer (optional):</label>
+          <input type="tel" id="telefon" class="form-control mb-3">
+        
+          <button class="btn btn-warning" onclick="terminErstellen()">📅 .ics-Datei herunterladen</button>
+        </div>
+        
         <div class="prozess-pfeil">↓</div>
 
         <div class="prozess-schritt">

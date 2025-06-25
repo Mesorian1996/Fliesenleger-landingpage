@@ -278,3 +278,59 @@ document.getElementById('kontaktformular').addEventListener('submit', async func
     console.error(err);
   }
 });
+
+function zeigeTerminFormular() {
+  const feld = document.getElementById('terminFormular');
+  feld.style.display = feld.style.display === 'none' ? 'block' : 'none';
+}
+
+async function terminErstellen() {
+  const start = document.getElementById('wunschtermin').value;
+  const name = document.getElementById('kalendername').value;
+  const phone = document.getElementById('telefon').value;
+
+  if (!start) {
+    alert('❗Bitte wählen Sie einen Wunschtermin');
+    return;
+  }
+
+  try {
+    const response = await fetch('https://fliesenleger-backend.onrender.com/generate-ics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        start,
+        title: `Beratung mit ${name || 'Ihnen'}`,
+        description: 'Unverbindliches Erstgespräch zur Fliesensanierung',
+        name,
+        phone
+      })
+    });
+
+    if (!response.ok) {
+      alert('❌ Fehler beim Erstellen des Termins');
+      return;
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'limani-termin.ics';
+    a.click();
+    window.URL.revokeObjectURL(url);
+
+    // ✅ Anzeige der Bestätigung
+    const formular = document.getElementById('terminFormular');
+    formular.innerHTML = `
+      <div class="alert alert-success text-center mt-3">
+        ✅ Vielen Dank! Ihr Terminwunsch wurde übermittelt.
+      </div>
+    `;
+  } catch (err) {
+    alert('🚨 Es gab ein Problem beim Versenden');
+    console.error(err);
+  }
+}
+
+}
