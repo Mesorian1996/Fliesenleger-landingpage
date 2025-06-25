@@ -367,10 +367,24 @@
         
           <label for="telefon">📞 Ihre Telefonnummer (optional):</label>
           <input type="tel" id="telefon" class="form-control mb-3">
-        
+
+          <label for="terminEmail">📧 Ihre E-Mail-Adresse (optional):</label>
+          <input type="email" id="terminEmail" class="form-control mb-2">
+
+          <label for="terminEmail">📧 Ihre E-Mail-Adresse (optional):</label>
+          <input type="email" id="terminEmail" class="form-control mb-2">
+
+          <small class="form-text text-muted ms-1">
+            Geben Sie gerne eine E-Mail an, damit wir den Termin bestätigen können.
+          </small>
+                  
           <button class="btn btn-warning" onclick="terminErstellen()">📅 .ics-Datei herunterladen</button>
         </div>
-        
+        <!-- ✅ Hinweistext nach erfolgreicher Erstellung -->
+        <p id="terminHinweis" class="text-success d-none mt-3 text-center">
+          ✅ Vielen Dank! Wir melden uns zur Bestätigung bei Ihnen.
+        </p>
+                
         <div class="prozess-pfeil">↓</div>
 
         <div class="prozess-schritt">

@@ -288,6 +288,7 @@ async function terminErstellen() {
   const start = document.getElementById('wunschtermin').value;
   const name = document.getElementById('kalendername').value;
   const phone = document.getElementById('telefon').value;
+  //const email = document.getElementById('terminEmail')?.value;
 
   if (!start) {
     alert('❗Bitte wählen Sie einen Wunschtermin');
@@ -300,7 +301,7 @@ async function terminErstellen() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         start,
-        title: `Beratung mit ${name || 'Ihnen'}`,
+        title: `${name || 'Sie'} – Beratung mit Limani Fliesenleger`,
         description: 'Unverbindliches Erstgespräch zur Fliesensanierung',
         name,
         phone
@@ -320,16 +321,15 @@ async function terminErstellen() {
     a.click();
     window.URL.revokeObjectURL(url);
 
-    // ✅ Anzeige der Bestätigung
-    const formular = document.getElementById('terminFormular');
-    formular.innerHTML = `
-      <div class="alert alert-success text-center mt-3">
-        ✅ Vielen Dank! Ihr Terminwunsch wurde übermittelt.
-      </div>
-    `;
+    // ✅ Hinweis einblenden
+    const hinweis = document.getElementById('terminHinweis');
+    hinweis.classList.remove('d-none');
+
+    setTimeout(() => {
+      hinweis.classList.add('d-none');
+    }, 5000);
   } catch (err) {
     alert('🚨 Es gab ein Problem beim Versenden');
     console.error(err);
   }
 }
-
