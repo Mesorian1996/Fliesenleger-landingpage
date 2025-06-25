@@ -259,7 +259,11 @@
   width: 1.5rem;
 }
 
-
+@media (max-width: 767px) {
+  .kontakt-zeile {
+    justify-content: center;
+  }
+}
 
 
 /* Swiper Container  
