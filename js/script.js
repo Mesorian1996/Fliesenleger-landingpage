@@ -252,3 +252,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const jahr = new Date().getFullYear();
   document.getElementById("jahr").textContent = jahr;
 });
+
+document.getElementById('kontaktformular').addEventListener('submit', async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const formData = {
+    anfrageart: form.anfrageart.value,
+    anrede: form.anrede.value,
+    vorname: form.vorname.value,
+    nachname: form.nachname.value,
+    email: form.email.value,
+    telefon: form.phone.value,
+    adresse: form.adresse.value,
+    nachricht: form.beschreibung.value
+  };
+
+  try {
+    const res = await fetch('http://localhost:3000/anfrage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      document.getElementById('successMessage').classList.remove('d-none');
+      form.reset();
+    } else {
+      alert('❌ Es gab ein Problem: ' + result.error);
+    }
+  } catch (err) {
+    alert('🚨 Anfrage konnte nicht gesendet werden.');
+    console.error(err);
+  }
+});

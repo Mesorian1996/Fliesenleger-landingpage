@@ -1,0 +1,17 @@
+{
+    "name": "kontakt-backend",
+    "version": "1.0.0",
+    "description": "E-Mail-Versand für Fliesenleger-Website",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "dotenv": "^16.3.1",
+      "express": "^4.18.2",
+      "nodemailer": "^6.9.8"
+    }
+  }
+  
