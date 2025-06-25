@@ -3,35 +3,28 @@ import nodemailer from 'nodemailer';
 import cors from 'cors';
 import multer from 'multer';
 import dotenv from 'dotenv';
+import { createEvent } from 'ics';
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Datei-Upload (max. 5 MB)
-const upload = multer({ limits: { fileSize: 5 * 1024 * 1024 } });
-
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// POST-Route fürs Kontaktformular
+// Datei-Upload (max. 5 MB)
+const upload = multer({ limits: { fileSize: 5 * 1024 * 1024 } });
+
+// 📩 Route 1: Anfrageformular
 app.post('/anfrage', upload.single('datei'), async (req, res) => {
   const {
-    anrede,
-    vorname,
-    nachname,
-    email,
-    phone,
-    adresse,
-    anfrageart,
-    projektart,
-    qm,
-    beschreibung
+    anrede, vorname, nachname, email, phone,
+    adresse, anfrageart, projektart, qm, beschreibung
   } = req.body;
 
   try {
-    // E-Mail-Versand vorbereiten (Gmail)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -42,8 +35,8 @@ app.post('/anfrage', upload.single('datei'), async (req, res) => {
 
     const mailOptions = {
       from: `"Fliesenleger Limani" <kontakt@limani-fliesenleger.de>`,
-      to: process.env.MAIL_USER, // Du bekommst die Mail selbst
-      replyTo: email, // ← vom Formular kommt
+      to: process.env.MAIL_USER,
+      replyTo: email,
       subject: `Neue Anfrage von ${vorname} ${nachname}`,
       html: `
         <h3>Neue Anfrage von der Website</h3>
@@ -58,12 +51,7 @@ app.post('/anfrage', upload.single('datei'), async (req, res) => {
         <p><strong>Beschreibung:</strong><br>${beschreibung}</p>
       `,
       attachments: req.file
-        ? [
-            {
-              filename: req.file.originalname,
-              content: req.file.buffer
-            }
-          ]
+        ? [{ filename: req.file.originalname, content: req.file.buffer }]
         : []
     };
 
@@ -75,26 +63,9 @@ app.post('/anfrage', upload.single('datei'), async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Server läuft auf Port ${port}`);
-});
-
-import express from 'express';
-import nodemailer from 'nodemailer';
-import cors from 'cors';
-import multer from 'multer';
-import dotenv from 'dotenv';
-import { createEvent } from 'ics';
-
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Route zum ICS-Erstellen + E-Mail senden
+// 📅 Route 2: ICS-Datei generieren + E-Mail senden
 app.post('/generate-ics', (req, res) => {
   const { title, description, start, name, phone } = req.body;
-
   const startDate = new Date(start);
 
   const event = {
@@ -118,7 +89,6 @@ app.post('/generate-ics', (req, res) => {
       return res.status(500).send('Fehler beim Generieren');
     }
 
-    // Mail senden
     try {
       const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -147,16 +117,15 @@ ${description || 'Keine weiteren Angaben'}
       await transporter.sendMail(mailOptions);
     } catch (mailError) {
       console.error('❌ Fehler beim E-Mail-Versand:', mailError);
-      // Aber trotzdem Datei ausliefern
     }
 
-    // Datei zurückgeben
     res.setHeader('Content-Disposition', 'attachment; filename=limani-termin.ics');
     res.setHeader('Content-Type', 'text/calendar');
     res.send(value);
   });
 });
 
+// ✅ Server starten
 app.listen(port, () => {
   console.log(`🚀 Server läuft auf Port ${port}`);
 });
