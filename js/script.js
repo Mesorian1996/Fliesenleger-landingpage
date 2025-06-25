@@ -257,23 +257,12 @@ document.getElementById('kontaktformular').addEventListener('submit', async func
   e.preventDefault();
 
   const form = e.target;
-
-  const formData = {
-    anfrageart: form.anfrageart.value,
-    anrede: form.anrede.value,
-    vorname: form.vorname.value,
-    nachname: form.nachname.value,
-    email: form.email.value,
-    telefon: form.phone.value,
-    adresse: form.adresse.value,
-    nachricht: form.beschreibung.value
-  };
+  const formData = new FormData(form); // ← Das nimmt auch Datei mit
 
   try {
-    const res = await fetch('http://localhost:3000/anfrage', {
+    const res = await fetch('https://fliesenleger-backend.onrender.com/anfrage', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: formData
     });
 
     const result = await res.json();
@@ -282,7 +271,7 @@ document.getElementById('kontaktformular').addEventListener('submit', async func
       document.getElementById('successMessage').classList.remove('d-none');
       form.reset();
     } else {
-      alert('❌ Es gab ein Problem: ' + result.error);
+      alert('❌ Es gab ein Problem: ' + result.message || result.error);
     }
   } catch (err) {
     alert('🚨 Anfrage konnte nicht gesendet werden.');
