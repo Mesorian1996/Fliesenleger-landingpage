@@ -1,0 +1,126 @@
+/* === Grundlayout === */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2 {
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  border-bottom: 3px solid #f39c12;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* === Navbar === */
+header.sticky-top {
+  z-index: 1020;
+}
+
+/* === Footer === */
+footer {
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #666;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+/* === Header Logo === */
+header img {
+  margin-top: 10px;
+  margin-bottom: 0;
+  max-height: 60px;
+}
+
+/* === Vorteilskarten === */
+.list-group-item {
+  font-size: 1.05rem;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+/* Container-Padding */
+.container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.row.g-4 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-md-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.text-orange {
+  color: #f39c12;
+}
+
+.iti {
+  width: 100%;
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+  color: #d9534f; /* leichtes Rot */
+}
+
+.list-unstyled i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.text-box {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+  background-color: #fef3e0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  color: #f39c12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.karte-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+#vorteile .row {
+  margin-bottom: 4rem; /* statt mb-5, fÃƒÂ¼r feinere Kontrolle */
+}
+
+
+
+
+.nav-link.active {
+  border-bottom: 3px solid #f39c12;
+  font-weight: 600;
+  color: #f39c12 !important;
+}
+
