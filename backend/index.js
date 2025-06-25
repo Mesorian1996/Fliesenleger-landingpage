@@ -64,27 +64,45 @@ app.post('/anfrage', upload.single('datei'), async (req, res) => {
 });
 
 // 📅 Route 2: ICS-Datei generieren + E-Mail senden
-createEvent(event, async (error, value) => {
-    if (error) {
-      console.error(error);
-      return res.status(500).send('Fehler beim Generieren');
-    }
+app.post('/generate-ics', (req, res) => {
+    const { title, description, start, name, phone } = req.body;
+    const startDate = new Date(start);
   
-    try {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.MAIL_USER,
-          pass: process.env.MAIL_PASS
-        }
-      });
+    const event = {
+      start: [
+        startDate.getFullYear(),
+        startDate.getMonth() + 1,
+        startDate.getDate(),
+        startDate.getHours(),
+        startDate.getMinutes()
+      ],
+      duration: { hours: 1 },
+      title: title || 'Beratungstermin',
+      description: description || 'Unverbindliche Beratung mit Limani Fliesenleger',
+      location: 'Vor Ort / Telefonisch',
+      status: 'CONFIRMED'
+    };
   
-      // Mail 1: Info über den neuen Termin
-      const mailOptions = {
-        from: `"Limani Website" <kontakt@limani-fliesenleger.de>`,
-        to: process.env.MAIL_USER,
-        subject: `📅 Neuer Terminvorschlag von ${name || 'Unbekannt'}`,
-        text: `
+    createEvent(event, async (error, value) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).send('Fehler beim Generieren');
+      }
+  
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+          }
+        });
+  
+        const mailOptions = {
+          from: `"Limani Website" <kontakt@limani-fliesenleger.de>`,
+          to: process.env.MAIL_USER,
+          subject: `📅 Neuer Terminvorschlag von ${name || 'Unbekannt'}`,
+          text: `
   Neuer Terminvorschlag über die Website:
   
   👤 Name: ${name || 'nicht angegeben'}
@@ -93,32 +111,27 @@ createEvent(event, async (error, value) => {
   
   Beschreibung:
   ${description || 'Keine weiteren Angaben'}
-        `
-      };
+          `,
+          attachments: [
+            {
+              filename: 'limani-termin.ics',
+              content: value
+            }
+          ]
+        };
   
-      await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
+      } catch (mailError) {
+        console.error('❌ Fehler beim E-Mail-Versand:', mailError);
+        // Fehler, aber ICS wird trotzdem gesendet
+      }
   
-      // Mail 2: Die ICS-Datei als Anhang (an dich selbst)
-      await transporter.sendMail({
-        from: `"Limani Website" <kontakt@limani-fliesenleger.de>`,
-        to: process.env.MAIL_USER,
-        subject: `🗓️ ICS-Datei – Terminvorschlag von ${name || 'Unbekannt'}`,
-        text: `Im Anhang findest du die generierte .ics-Datei für deinen Kalender.`,
-        attachments: [{
-          filename: 'limani-termin.ics',
-          content: value
-        }]
-      });
-  
-    } catch (mailError) {
-      console.error('❌ Fehler beim E-Mail-Versand:', mailError);
-    }
-  
-    // ICS-Datei im Frontend zum Download anbieten
-    res.setHeader('Content-Disposition', 'attachment; filename=limani-termin.ics');
-    res.setHeader('Content-Type', 'text/calendar');
-    res.send(value);
+      res.setHeader('Content-Disposition', 'attachment; filename=limani-termin.ics');
+      res.setHeader('Content-Type', 'text/calendar');
+      res.send(value);
+    });
   });
+  
   
 // ✅ Server starten
 app.listen(port, () => {
