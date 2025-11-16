@@ -458,26 +458,18 @@
         </ul>
       </div>
 
-    <!-- Rechte Spalte: Formular -->
-    <div class="col-md-7 col-lg-8 pe-md-0 formular-abstand">
-      <form class="needs-validation" 
-      id="kontaktformular" 
-      novalidate 
-      action="https://fliesenleger-backend.onrender.com/anfrage" 
-      method="POST" 
-      enctype="multipart/form-data">
-
+   <!-- Rechte Spalte: Formular -->
+<div class="col-md-7 col-lg-8 pe-md-0 formular-abstand">
+  <form class="needs-validation" id="kontaktformular" novalidate>
     <!-- Art der Anfrage -->
     <div class="mb-3">
       <label for="anfrageart" class="form-label">Art der Anfrage *</label>
-      <select class="form-select" id="anfrageart" required onchange="toggleKonkreteAngaben(this.value)" name="anfrageart">
+      <select class="form-select" id="anfrageart" name="anfrageart" required>
         <option value="">Bitte wählen</option>
         <option value="offen">Offene Anfrage</option>
         <option value="konkret">Konkrete Anfrage</option>
       </select>
-      <div class="invalid-feedback">
-        Bitte wählen Sie eine Anfragenart aus.
-      </div>
+      <div class="invalid-feedback">Bitte wählen Sie eine Anfragenart aus.</div>
     </div>
 
     <!-- Anrede -->
@@ -503,19 +495,13 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="vorname" class="form-label">Vorname *</label>
-        <input type="text" class="form-control" id="vorname" name="vorname"
-        pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
-        <div class="invalid-feedback">
-          Bitte geben Sie einen gültigen Vornamen ein.
-        </div>
+        <input type="text" class="form-control" id="vorname" name="vorname" pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
+        <div class="invalid-feedback">Bitte geben Sie einen gültigen Vornamen ein.</div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="nachname" class="form-label">Nachname *</label>
-        <input type="text" class="form-control" id="nachname" name="nachname"
-        pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
-        <div class="invalid-feedback">
-          Bitte geben Sie einen gültigen Nachnamen ein.
-        </div>
+        <input type="text" class="form-control" id="nachname" name="nachname" pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
+        <div class="invalid-feedback">Bitte geben Sie einen gültigen Nachnamen ein.</div>
       </div>
     </div>
 
@@ -524,85 +510,67 @@
       <div class="col-md-6 mb-3">
         <label for="email" class="form-label">E-Mail *</label>
         <input type="email" class="form-control" name="email" id="email" required>
-        <div class="invalid-feedback">
-          Bitte geben Sie eine gültige E-Mail ein.
-        </div>
+        <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="phone" class="form-label">Telefonnummer*</label>
+        <label for="phone" class="form-label">Telefonnummer *</label>
         <input type="tel" id="phone" name="phone" class="form-control" required>
-        <input type="hidden" name="telefon_voll" id="telefon_voll">
-        <div class="invalid-feedback">
-          Bitte geben Sie eine gültige Telefonnummer ein.
-        </div>
+        <!-- Hidden: hier schreibt dein JS die internationale Nummer rein -->
+        <input type="hidden" name="tel" id="telefon_voll">
+        <div class="invalid-feedback">Bitte geben Sie eine gültige Telefonnummer ein.</div>
       </div>
     </div>
 
-        <!-- Adresse optional -->
-        <div class="mb-3">
-          <label for="adresse" class="form-label">Projektadresse (optional)</label>
-          <input type="text" class="form-control" id="adresse" name="adresse">
-        </div>
+    <!-- Adresse optional -->
+    <div class="mb-3">
+      <label for="adresse" class="form-label">Projektadresse (optional)</label>
+      <input type="text" class="form-control" id="adresse" name="adresse">
+    </div>
 
-        <!-- Konkrete Angaben -->
-        <div id="konkreteAngaben" style="display:none;">
-          <div class="mb-3">
-            <label for="projektart" class="form-label">Projektart</label>
-            <select class="form-select" id="projektart" name="projektart">
-              <option value="">Bitte wählen</option>
-              <option value="Badezimmer">Badezimmer</option>
-              <option value="Küche">Küche</option>
-              <option value="Wohnungssanierung">Wohnungssanierung</option>
-              <option value="Sonstiges">Sonstiges</option>
-            </select>
-          </div>
+    <!-- Konkrete Angaben -->
+    <div id="konkreteAngaben" style="display:none;">
+      <div class="mb-3">
+        <label for="projektart" class="form-label">Projektart</label>
+        <select class="form-select" id="projektart" name="projektart">
+          <option value="">Bitte wählen</option>
+          <option value="Badezimmer">Badezimmer</option>
+          <option value="Küche">Küche</option>
+          <option value="Wohnungssanierung">Wohnungssanierung</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </div>
 
-            <div class="mb-3">
-              <label for="qm" class="form-label">Quadratmeter (optional)</label>
-              <input type="number" class="form-control" id="qm" name="qm" min="0" placeholder="z.B. 25">
-            </div>
-          </div>
-
-          <!-- Beschreibung -->
-          <div class="mb-3">
-            <label for="beschreibung" class="form-label" name="beschreibung">Weitere Beschreibung (optional)</label>
-            <textarea class="form-control" maxlength="500" name="beschreibung" id="beschreibung" rows="3" placeholder="Was soll gemacht werden?"></textarea>
-          </div>
-
-          <!-- Dateiupload -->
-          <div class="mb-3 custom-file-upload">
-            <label for="datei" class="form-label d-block">Bild/Datei hochladen (optional)</label>
-          
-            <label for="datei" class="upload-label">
-              📎 Datei auswählen
-              <span class="file-name">Keine Datei ausgewählt</span>
-            </label>
-          
-            <input type="file" id="datei" name="datei" accept="image/*" hidden>
-          
-            <small class="text-muted d-block mt-1">Maximale Dateigröße: 5 MB</small>
-            <div id="dateiFehler" class="invalid-feedback d-none">
-              Die Datei darf maximal 5 MB groß sein.
-            </div>
-          </div>
-    
-
-          <!-- Datenschutz -->
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="datenschutz" name="datenschutz" required>
-            <label class="form-check-label" for="datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere sie.</label>
-          </div>
-
-          <!-- Submit -->
-          <div class="text-center">
-            <button type="submit" class="btn btn-warning">Anfrage senden</button>
-          </div>
-          <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
-            ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
-          </div>
-        </form>
+      <div class="mb-3">
+        <label for="qm" class="form-label">Quadratmeter (optional)</label>
+        <input type="number" class="form-control" id="qm" name="qm" min="0" placeholder="z.B. 25">
       </div>
     </div>
+
+    <!-- Beschreibung -->
+    <div class="mb-3">
+      <label for="beschreibung" class="form-label">Weitere Beschreibung (optional)</label>
+      <textarea class="form-control" maxlength="500" name="beschreibung" id="beschreibung" rows="3" placeholder="Was soll gemacht werden?"></textarea>
+    </div>
+
+    <!-- Datenschutz -->
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="datenschutz" name="datenschutz" required>
+      <label class="form-check-label" for="datenschutz">
+        Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere sie.
+      </label>
+    </div>
+
+    <!-- Submit -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-warning">Anfrage senden</button>
+    </div>
+
+    <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
+      ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
+    </div>
+  </form>
+</div>
+
   </div>
 </section>
 
@@ -671,6 +639,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
 <!-- Linking Swiper Script -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Drittanbieter (Bootstrap, AOS, Swiper, intl-tel-input etc.) wie bisher -->
+
 <script src="js/script.js" defer></script>
+<script src="js/contact.js" defer></script>
+
 </body>
 </html>
