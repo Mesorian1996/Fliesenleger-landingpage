@@ -342,11 +342,11 @@
   .slider-pagination .slider-indicator {
     width: 85%;
   }
-  .slider-wrapper .slider-item {
+  .slider-wrapper {
     height: 85vh;
   }
 
-  .slider-item {
+  .slide-content{
     margin-top: 25px;
 
   }
