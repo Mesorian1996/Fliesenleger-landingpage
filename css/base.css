@@ -190,5 +190,10 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+.hero-main-heading .hero-subline {
+  font-size: 0.6em;
+  opacity: 0.6;
+}
 }
 
