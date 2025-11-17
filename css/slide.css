@@ -1,6 +1,10 @@
 /* Importing Google Fonts - Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
+:root {
+  --limani-orange: #f39c12; /* dein Orange hier eintragen */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +22,7 @@
 .slider-wrapper .slider-item {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 94vh;
   display: flex;
   align-items: center;
 }
@@ -91,6 +95,76 @@
   opacity: 0;
   transform: translateY(60%);
 }
+
+
+.hero-main-heading-wrapper {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+  z-index: 30;
+  pointer-events: none;
+  backdrop-filter: blur(4px);        /* moderner Glass-Effekt */
+
+  /* Fades beim Laden */
+  opacity: 0;
+  animation: fadeInHero 1.2s ease-out forwards;
+}
+
+/* FADE-IN Animation */
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  100% { opacity: 1; transform: translate(-50%, 0px); }
+}
+
+.hero-main-heading {
+  display: inline-block;
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.97);
+  padding: 18px 30px;
+  position: relative;
+  line-height: 1.2;
+}
+
+/* Zweite Zeile kleiner */
+.hero-main-heading .hero-subline {
+  font-size: 0.70em;   /* kleiner, aber harmonisch */
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Winkel oben links */
+.hero-main-heading::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 28px;
+  height: 28px;
+  border-top: 4px solid var(--limani-orange);
+  border-left: 4px solid var(--limani-orange);
+  border-radius: 3px;
+}
+
+/* Winkel unten rechts */
+.hero-main-heading::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 28px;
+  height: 28px;
+  border-bottom: 4px solid var(--limani-orange);
+  border-right: 4px solid var(--limani-orange);
+  border-radius: 3px;
+}
+
+
+
 
 .slider-item .slide-content .slide-title {
   font-size: 1.5rem;

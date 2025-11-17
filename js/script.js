@@ -201,3 +201,19 @@ if (goTopBtn) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
+
+document.addEventListener("scroll", () => {
+  const hero = document.querySelector(".hero-main-heading-wrapper");
+  const scrollY = window.scrollY;
+
+  // Nach 0–180px Scroll fade-out
+  const fadePoint = 180;
+
+  if (scrollY < fadePoint) {
+    const opacity = 1 - scrollY / fadePoint;
+    hero.style.opacity = opacity;
+    hero.style.transform = `translate(-50%, ${scrollY * 0.1}px)`; // leicht nach oben weg
+  } else {
+    hero.style.opacity = 0;
+  }
+});
