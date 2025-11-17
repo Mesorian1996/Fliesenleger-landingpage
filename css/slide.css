@@ -343,11 +343,11 @@
     width: 85%;
   }
   .slider-wrapper .slider-item {
-    height: 80vh;
+    height: 85vh;
   }
 
   .slider-item {
-    margin-top: 15px;
+    margin-top: 25px;
 
   }
 }

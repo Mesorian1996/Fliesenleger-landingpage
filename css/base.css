@@ -131,7 +131,7 @@ header img {
 
   /* Basis-Schrift etwas kleiner */
   body {
-    font-size: 0.9rem; /* ~10–15 % kleiner, kannst du auf 0.85rem runterdrehen */
+    font-size: 0.85rem; /* ~10–15 % kleiner, kannst du auf 0.85rem runterdrehen */
   }
 
   /* Hero-H1 auf Mobile verkleinern */
