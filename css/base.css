@@ -134,32 +134,61 @@ header img {
     font-size: 0.85rem; /* ~10–15 % kleiner, kannst du auf 0.85rem runterdrehen */
   }
 
-  /* Hero-H1 auf Mobile verkleinern */
-  .hero-main-heading-wrapper {
-    top: 90px; /* etwas höher, damit mehr Platz nach unten bleibt */
-  }
+/* Hero-Heading Wrapper – etwas höher platzieren */
+.hero-main-heading-wrapper {
+  top: 60px; 
+  width: 92%;
+}
 
-  .hero-main-heading {
-    font-size: clamp(20px, 6vw, 30px); /* kleinerer Rahmen als Desktop */
-    padding: 10px 18px;
-  }
+/* Haupttitel */
+.hero-main-heading {
+  font-size: clamp(18px, 5.8vw, 28px);  /* kleiner, harmonisch */
+  padding: 8px 14px;                   /* kompakter */
+  line-height: 1.25;
+}
 
-  .hero-main-heading .hero-subline {
-    font-size: 0.75em; /* zweite Zeile nochmal etwas kleiner */
-  }
+/* Subline (zweite Zeile) */
+.hero-main-heading .hero-subline {
+  font-size: 0.75em;  
+  opacity: 0.9;
+}
 
-  /* Slider-Titel & Text etwas kompakter */
-  .slide-title {
-    font-size: 1.3rem;
-  }
+/* Winkel verkleinern für Mobile */
+.hero-main-heading::before,
+.hero-main-heading::after {
+  width: 18px;
+  height: 18px;
+  border-width: 3px;
+}
 
-  .slide-description {
-    font-size: 0.95rem;
-  }
+/* Abstand vom Hero zum Slider */
+.slider-show .slide-content {
+  margin-top: 75px; /* Perfekte Distanz */
+}
 
-  /* Überschriften der Sektionen etwas bändigen */
-  .section-title {
-    font-size: 1.35rem;
-  }
+/* Slider-Title, etwas kompakter */
+.slide-title {
+  font-size: 1.25rem;
+}
+
+/* Slider-Description kompakter */
+.slide-description {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  margin-top: 6px;
+}
+
+/* Button kleiner */
+.slide-button {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+/* Extra Sicherheit – kein horizontales Scrollen */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 }
 
