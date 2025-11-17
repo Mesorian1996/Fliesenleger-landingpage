@@ -346,4 +346,8 @@
     height: 85vh;
   }
 
+  .slider-show .slide-content {
+    margin-top: 40px;  /* Abstand erhöhen */
+  }
+
 }
