@@ -30,8 +30,12 @@ h1, h2 {
 
 /* === Navbar === */
 header.sticky-top {
-  z-index: 1020;
+  z-index:1020;
 }
+.navbar {
+  position: fixed; top:0; left:0; right:0; z-index:1020;
+}
+
 
 /* === Footer === */
 footer {
