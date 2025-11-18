@@ -240,10 +240,6 @@
     padding: 1.5rem 0;
   }
 
-  .card-image {
-    height: auto;
-  }
-
   .modern-card {
     margin-bottom: 1rem;
   }
@@ -256,32 +252,29 @@
   .card-body {
     max-height: 70%; /* oder 60%, je nach Bedarf */
     overflow-y: auto; /* Scrollbar falls nÃ¶tig */
-  }
-}
-
-@media (max-width: 768px) {
-  .modern-card {
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-  }
-
-  .card-image {
-    max-height: 200px;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  .card-body {
-    padding: 1rem 0.5rem;
-  }
+        padding: 1rem 0.5rem;
+  }  
 
   .card-body .hover-description {
     display: block;
     margin-top: 1rem;
-    font-size: 0.95rem;
   }
+  #kontaktbereich .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  #kontaktbereich .form-col {
+    flex: 1;
+  }
+
+  .card-image {
+  object-fit: contain;
+  background: #f8f8f8; /* damit kein leerer weißer Raum entsteht */
 }
+
+}
+
 
 
 @media (max-width: 576px) {
@@ -310,13 +303,4 @@
   }
 }
 
-@media (min-width: 768px) {
-  #kontaktbereich .form-row {
-    display: flex;
-    gap: 1rem;
-  }
 
-  #kontaktbereich .form-col {
-    flex: 1;
-  }
-}
