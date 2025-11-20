@@ -130,25 +130,25 @@
   }
 
 
-  /* Hero-Heading Wrapper – etwas höher platzieren */
-  .hero-main-heading-wrapper {
-    top: 60px;
-    width: 92%;
-  }
+/* Hero-Heading Wrapper – Position */
+.hero-main-heading-wrapper {
+  top: 40px;       /* vorher 60px */
+  width: 90%;
+}
 
-  /* Haupttitel */
-  .hero-main-heading {
-    font-size: clamp(18px, 5.8vw, 28px);
-    padding: 8px 14px;
-    line-height: 1.25;
-  }
+/* Haupttitel */
+.hero-main-heading {
+  font-size: clamp(16px, 4.8vw, 22px); /* kleiner als vorher */
+  padding: 6px 10px;
+  line-height: 1.25;
+}
 
-  /* Subline (zweite Zeile) – auf Mobile ausblenden */
-  .hero-main-heading .hero-subline {
-    font-size: 0.75em;
-    opacity: 0.9;
-    display: none;
-  }
+/* Subline – kannst du auf Mobile ruhig zeigen, nur kleiner */
+.hero-main-heading .hero-subline {
+  font-size: 0.7em;
+  opacity: 0.9;
+  display: block;     /* wenn du sie sehen willst, sonst wieder none */
+}
 
   /* Winkel verkleinern für Mobile */
   .hero-main-heading::before,
@@ -158,33 +158,33 @@
     border-width: 3px;
   }
 
+
+  .slider-show {
+    padding-top: 200px;  /* Abstand zwischen Heading und Slider */
+  }
+
+
   .slider-item .slide-title {
-    font-size: 1.2rem; /* vorher größer */
+    font-size: 1.1rem;
   }
 
   .slider-item .slide-description {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.35;
-    margin-top: 0.3rem;
+    margin-top: 0.25rem;
   }
 
   .slider-item .slide-button {
-    font-size: 0.9rem;
-    padding: 8px 18px;
-    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    padding: 7px 16px;
+    margin-top: 0.6rem;
   }
 
   .slide-content {
-    padding-top: 1rem; /* leicht mehr Abstand intern */
+    padding-top: 0.5rem;
   }
 
-  .slider-show .slide-content {
-  margin-top: calc(var(--hero-heading-height, 120px) + 20px);
-}
 
-.hero-main-heading-wrapper {
-  --hero-heading-height: 150px; /* je nach Heading-Größe */
-}
 
   /* Kein horizontales Scrollen */
   html,

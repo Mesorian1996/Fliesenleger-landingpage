@@ -102,14 +102,10 @@
   top: 120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;              /* nimmt volle Breite */
   text-align: center;
   z-index: 30;
   pointer-events: none;
-  backdrop-filter: blur(4px);        /* moderner Glass-Effekt */
-
-  /* Fades beim Laden */
   opacity: 0;
   animation: fadeInHero 1.2s ease-out forwards;
 }
@@ -121,23 +117,27 @@
 }
 
 .hero-main-heading {
-  display: inline-block;
+  display: inline-block;                    /* Box schrumpft auf Inhalt */
+  position: relative;
   font-size: clamp(26px, 3.2vw, 46px);
   font-weight: 700;
   color: rgba(255, 255, 255, 0.97);
   padding: 18px 30px;
-  position: relative;
   line-height: 1.2;
+
+  /* Glass-Effekt jetzt HIER */
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
 }
 
-/* Zweite Zeile kleiner */
+/* Subline bleibt wie gehabt */
 .hero-main-heading .hero-subline {
-  font-size: 0.70em;   /* kleiner, aber harmonisch */
+  font-size: 0.70em;
   font-weight: 500;
   opacity: 0.9;
 }
 
-/* Winkel oben links */
+/* Winkel oben links – direkt am Rand der Blur-Box */
 .hero-main-heading::before {
   content: "";
   position: absolute;
@@ -150,7 +150,7 @@
   border-radius: 3px;
 }
 
-/* Winkel unten rechts */
+/* Winkel unten rechts – ebenfalls am Rand */
 .hero-main-heading::after {
   content: "";
   position: absolute;
@@ -162,6 +162,7 @@
   border-right: 4px solid var(--limani-orange);
   border-radius: 3px;
 }
+
 
 
 
