@@ -144,29 +144,7 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-.hero-section {
-  position: relative;
-  height: 70vh;
-  background: url("../assets/images/Wohnung-sanieren-2.jpg") center center / cover no-repeat ;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-}
 
-.hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  z-index: 1;
-}
-
-.hero-section .container {
-  position: relative;
-  z-index: 2;
-}
 
 .go-top-btn {
   position: fixed;
@@ -244,7 +222,7 @@
 /* --- Subpage Hero (Basis) --- */
 .subpage-hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 100vh;
   padding: 7rem 0 5rem;
   display: flex;
   justify-content: center;
@@ -319,3 +297,56 @@
     padding: 6rem 0 3.5rem;
   }
 }
+
+
+.final-cta-soft {
+  background: #eef2f7; /* sanftes Grau-Blau */
+  color: #333;
+}
+
+.final-cta-soft-panel {
+  border-radius: 22px;
+  padding: 2.2rem 2rem;
+  background: #ffffff;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.final-cta-soft-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.final-cta-soft-subline {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.final-cta-soft-note {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.final-cta-soft-contact a {
+  color: #333;
+  text-decoration: underline;
+  text-decoration-color: #c0c7d3;
+  text-underline-offset: 3px;
+}
+
+.final-cta-soft-actions .btn {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .final-cta-soft-panel {
+    grid-template-columns: 1fr;
+    padding: 1.8rem 1.4rem;
+  }
+}
+

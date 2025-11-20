@@ -21,12 +21,14 @@ h1, h2 {
   font-size: 2rem;
   font-weight: 700;
   color: #333;
-  border-bottom: 3px solid #f39c12;
-  position: relative;
   display: inline-block; /* wichtig! Damit der Strich so breit ist wie der Text */
   padding-bottom: 0.3rem;
   margin-bottom: 2rem;
-  text-align: center;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #f39c12;
+  text-decoration-thickness: 3px; /* optional: Stärke */
+  text-underline-offset: 6px;     /* Abstand nach unten */
 }
 
 
@@ -134,72 +136,5 @@ header img {
   color: #f39c12 !important;
 }
 
-@media (max-width: 767.98px) {
 
-  /* Basis-Schrift etwas kleiner */
-  body {
-    font-size: 0.85rem; /* ~10–15 % kleiner, kannst du auf 0.85rem runterdrehen */
-  }
-
-/* Hero-Heading Wrapper – etwas höher platzieren */
-.hero-main-heading-wrapper {
-  top: 60px; 
-  width: 92%;
-}
-
-/* Haupttitel */
-.hero-main-heading {
-  font-size: clamp(18px, 5.8vw, 28px);  /* kleiner, harmonisch */
-  padding: 8px 14px;                   /* kompakter */
-  line-height: 1.25;
-}
-
-/* Subline (zweite Zeile) */
-.hero-main-heading .hero-subline {
-  font-size: 0.75em;  
-  opacity: 0.9;
-}
-
-/* Winkel verkleinern für Mobile */
-.hero-main-heading::before,
-.hero-main-heading::after {
-  width: 18px;
-  height: 18px;
-  border-width: 3px;
-}
-
-/* Abstand vom Hero zum Slider */
-.slider-show .slide-content {
-  margin-top: 75px; /* Perfekte Distanz */
-}
-
-/* Slider-Title, etwas kompakter */
-.slide-title {
-  font-size: 1.25rem;
-}
-
-/* Slider-Description kompakter */
-.slide-description {
-  font-size: 0.95rem;
-  line-height: 1.35;
-  margin-top: 6px;
-}
-
-/* Button kleiner */
-.slide-button {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  margin-top: 12px;
-}
-
-/* Extra Sicherheit – kein horizontales Scrollen */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.hero-main-heading .hero-subline {
-  display: none;
-}
-}
 

@@ -217,3 +217,66 @@ document.addEventListener("scroll", () => {
     hero.style.opacity = 0;
   }
 });
+
+
+// Galerie-Slider "Beispiele für Fliesenarbeiten"
+(function () {
+  const gallery = document.querySelector(".fliesen-gallery");
+  if (!gallery) return;
+
+  const track = gallery.querySelector(".gallery-track");
+  const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
+  const prevBtn = gallery.querySelector(".gallery-arrow-prev");
+  const nextBtn = gallery.querySelector(".gallery-arrow-next");
+
+  let currentIndex = 0;
+  const maxIndex = slides.length - 1;
+
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  function goNext() {
+    currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+    updateSlider();
+  }
+
+  function goPrev() {
+    currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
+    updateSlider();
+  }
+
+  prevBtn.addEventListener("click", goPrev);
+  nextBtn.addEventListener("click", goNext);
+
+  // Swipe-Unterstützung für Mobile
+  let startX = 0;
+  let isDragging = false;
+
+  track.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  track.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const diff = e.touches[0].clientX - startX;
+    // optional: leichtes „Mitziehen“ könntest du später ergänzen
+  });
+
+  track.addEventListener("touchend", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startX;
+
+    if (Math.abs(deltaX) > 50) {
+      if (deltaX < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
+    }
+  });
+})();

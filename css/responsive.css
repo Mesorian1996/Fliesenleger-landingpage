@@ -1,10 +1,6 @@
-@media (min-width: 768px) {
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
+/* =========================================
+   DESKTOP (>= 1200px)
+   ========================================= */
 @media (min-width: 1200px) {
   .container {
     padding-left: 4rem;
@@ -12,7 +8,46 @@
   }
 }
 
+
+/* =========================================
+   TABLET (>= 768px)
+   ========================================= */
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .formular-abstand {
+    padding-left: 2rem;
+  }
+}
+
+
+/* =========================================
+   MOBILE (<= 576px)
+   ========================================= */
 @media (max-width: 576px) {
+
+.slider-show {
+  min-height: 100vh;   /* mindestens Viewport-Höhe */
+  display: flex;
+  align-items: center;
+}
+
+.subpage-hero {
+  /* Desktop/Allgemein */
+  min-height: clamp(70vh, 600px, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+      min-height: 100dvh;  /* iOS Safari korrekt */
+    min-height: 100vh;   /* Fallback */
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+  /* --- Forms & Buttons --- */
   .form-label {
     font-size: 0.9rem;
     margin-bottom: 0.2rem;
@@ -43,35 +78,128 @@
     margin-bottom: 0.75rem !important;
   }
 
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-}
-
-@media (min-width: 768px) {
-  .formular-abstand {
-    padding-left: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    height: auto;
-    padding: 4rem 2rem;
+  /* Kontaktbereich Layout */
+  #kontaktbereich .row {
+    flex-direction: column !important;
   }
 
-  .hero-section h1 {
-    font-size: 2rem;
+  #kontaktbereich .col-md-6 {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 0 0 100%;
   }
 
-  .hero-section p {
+  #kontaktbereich .form-control,
+  #kontaktbereich .form-select {
     font-size: 1rem;
   }
 
+  #kontaktbereich .form-label {
+    font-size: 0.95rem;
+  }
+
+  #kontaktbereich .upload-label {
+    width: 100%;
+    text-align: center;
+  }
+
+  #kontaktbereich .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  #kontaktbereich .form-col {
+    flex: 1;
+  }
+
+
+  /* --- Container / Layout --- */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  .kachel-text,
+  .kachel-bild-wrapper,
+  .prozess-container,
+  .projekt-stapel-wrapper {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* Hero-Heading Wrapper – etwas höher platzieren */
+  .hero-main-heading-wrapper {
+    top: 60px;
+    width: 92%;
+  }
+
+  /* Haupttitel */
+  .hero-main-heading {
+    font-size: clamp(18px, 5.8vw, 28px);
+    padding: 8px 14px;
+    line-height: 1.25;
+  }
+
+  /* Subline (zweite Zeile) – auf Mobile ausblenden */
+  .hero-main-heading .hero-subline {
+    font-size: 0.75em;
+    opacity: 0.9;
+    display: none;
+  }
+
+  /* Winkel verkleinern für Mobile */
+  .hero-main-heading::before,
+  .hero-main-heading::after {
+    width: 18px;
+    height: 18px;
+    border-width: 3px;
+  }
+
+  .slider-item .slide-title {
+    font-size: 1.2rem; /* vorher größer */
+  }
+
+  .slider-item .slide-description {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    margin-top: 0.3rem;
+  }
+
+  .slider-item .slide-button {
+    font-size: 0.9rem;
+    padding: 8px 18px;
+    margin-top: 0.8rem;
+  }
+
+  .slide-content {
+    padding-top: 1rem; /* leicht mehr Abstand intern */
+  }
+
+  .slider-show .slide-content {
+  margin-top: calc(var(--hero-heading-height, 120px) + 20px);
+}
+
+.hero-main-heading-wrapper {
+  --hero-heading-height: 150px; /* je nach Heading-Größe */
+}
+
+  /* Kein horizontales Scrollen */
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  /* --- Vorteile / Prozess / Kacheln --- */
   .prozess-container {
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 7rem;
   }
 
   .vorteil-box,
@@ -90,7 +218,7 @@
   .vorteil-box,
   .prozess-box {
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
   }
 
   .vorteil-box h3,
@@ -102,9 +230,7 @@
   .prozess-box p {
     font-size: 0.95rem;
   }
-}
 
-@media (max-width: 768px) {
   .vorteil-section .card {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -133,88 +259,13 @@
     margin-bottom: 2rem;
   }
 
-  .kachel-text {
-    margin-bottom: 3rem;
-  }
-
-  .projekt-stapel-wrapper,
-  .prozess-container {
-    margin-bottom: 7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  /* 1. Projektbilder korrekt zentrieren */
-  .projekt-stapel-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    padding: 0;
-  }
-
-  .projekt-stapel {
-    margin: 0 auto;
-  }
-
-  /* 2. Inhalte in mobiler Version zentrieren */
-  .kachel-text,
-  .vorteil-box,
-  .prozess-box,
-  .prozess-container {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* 3. Icon & Pfeil zentrieren */
-  .prozess-schritt {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .prozess-pfeil {
-    align-self: center;
-  }
-
-  /* 4. ZusÃ¤tzliche vertikale AbstÃ¤nde */
-  .kachel-text {
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .vorteil-box,
-  .prozess-box {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
-
   #vorteile .row {
     margin-bottom: 3rem;
   }
 
-  .stapel-bild {
-    margin-bottom: 2rem;
-  }
-
+  .stapel-bild,
   .dot-indikator {
     margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    max-width: 100%;
-    
-  }
-
-  .kachel-text,
-  .kachel-bild-wrapper,
-  .prozess-container,
-  .projekt-stapel-wrapper {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .kachel-text {
@@ -227,80 +278,76 @@
     justify-content: center;
   }
 
-  .kachel-title {
-    text-align: center;
-  }
-
+  .kachel-title,
   .kachel-subtext {
     text-align: center;
   }
 
   .prozess-schritt {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     padding: 1.5rem 0;
+  }
+
+  .prozess-pfeil {
+    align-self: center;
+  }
+
+  .projekt-stapel-wrapper {
+    margin-bottom: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 0;
+  }
+
+  .projekt-stapel {
+    margin: 0 auto;
   }
 
   .modern-card {
     margin-bottom: 1rem;
   }
+
+
+  /* --- Cards & Bilder --- */
   .card {
     height: 300px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .card-body {
-    max-height: 70%; /* oder 60%, je nach Bedarf */
-    overflow-y: auto; /* Scrollbar falls nÃ¶tig */
-        padding: 1rem 0.5rem;
-  }  
+    max-height: 70%;
+    overflow-y: auto;
+    padding: 1rem 0.5rem;
+  }
 
   .card-body .hover-description {
     display: block;
     margin-top: 1rem;
   }
-  #kontaktbereich .form-row {
-    display: flex;
-    gap: 1rem;
-  }
-
-  #kontaktbereich .form-col {
-    flex: 1;
-  }
 
   .card-image {
-  object-fit: contain;
-  background: #f8f8f8; /* damit kein leerer weißer Raum entsteht */
+    object-fit: contain;
+    background: #f8f8f8;
+  }
+
+
+  /* --- Typografie global --- */
+  body {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .gallery-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;   /* nie höher als 70 % der Displayhöhe */
+  object-fit: cover;
 }
-
 }
-
-
-
-@media (max-width: 576px) {
-  #kontaktbereich .row {
-    flex-direction: column !important;
-  }
-
-  #kontaktbereich .col-md-6 {
-    width: 100% !important;
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
-
-  #kontaktbereich .form-control,
-  #kontaktbereich .form-select {
-    font-size: 1rem;
-  }
-
-  #kontaktbereich .form-label {
-    font-size: 0.95rem;
-  }
-
-  #kontaktbereich .upload-label {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-
