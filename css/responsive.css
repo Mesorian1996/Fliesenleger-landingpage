@@ -155,11 +155,6 @@
     border-width: 3px;
   }
 
-
-  .slider-item   {
-    font-size: 10%;   /* kleiner, fixer Abstand */
-  }
-
   .slider-show {
     padding-top: 0;       /* kein künstlicher Abstand mehr nötig */
     margin-top: 1rem;   /* kleiner, fixer Abstand */
@@ -175,7 +170,7 @@
 
   .slider-item .slide-button {
     font-size: 0.85rem;
-    padding: 7px 16px;
+    padding: 10px 20px;
   }
 
 

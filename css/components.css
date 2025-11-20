@@ -241,122 +241,96 @@ form input:focus, form textarea:focus, form select:focus {
 
 /* === components.css (Formular-Styling modernisiert) === */
 
-#kontaktbereich input:not([type="radio"]):not([type="checkbox"]),
-#kontaktbereich textarea,
-#kontaktbereich select {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  padding: 0.65rem 0;
-  font-size: 1rem;
-  width: 100%;
-  transition: border-color 0.3s ease;
-  border-radius: 0;
+/* === Kontaktbereich – Card Layout wie circleoflife-bjj === */
+
+#kontaktbereich {
+  background-color: #f5f6f8;
 }
 
-#kontaktbereich input:focus,
-#kontaktbereich textarea:focus,
-#kontaktbereich select:focus {
-  outline: none;
-  border-color: var(--primary-orange);
-  box-shadow: none;
+#kontaktbereich .section-title {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-#kontaktbereich label {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 0.25rem;
-  display: block;
+#kontaktbereich .section-subline {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 0.98rem;
+  color: #6c757d;
 }
 
-#kontaktbereich .form-check-label {
-  color: #333;
-  font-size: 0.95rem;
+#kontaktbereich .contact-card-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
 }
 
-#kontaktbereich .form-check-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(243, 156, 18, 0.25);
-  border-color: var(--primary-orange);
+/* Form-Card & Info-Card */
+#kontaktbereich .contact-form-card,
+#kontaktbereich .contact-info-card {
+  background-color: #ffffff;
 }
 
-#kontaktbereich .form-select,
-#kontaktbereich .form-control {
-  background-color: transparent;
-  border-radius: 0;
+#kontaktbereich .contact-info-card {
+  border-left: 1px solid rgba(0, 0, 0, 0.04);
+  padding-left: 1.75rem;
 }
 
-#kontaktbereich .form-control:focus,
-#kontaktbereich .form-select:focus {
-  box-shadow: none;
+#kontaktbereich .contact-list i {
+  font-size: 1.1rem;
 }
 
-#kontaktbereich .btn {
-  padding: 0.6rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0;
-  transition: background-color 0.3s ease;
+/* Buttons im Kontaktbereich */
+#kontaktbereich .btn-warning {
+  border-radius: 999px;
+  padding-inline: 1.75rem;
 }
 
-#kontaktbereich .btn:hover {
-  background-color: #e08e0b;
+/* Mobile / Tablet Anpassungen */
+@media (max-width: 991.98px) {
+  #kontaktbereich .contact-card-wrapper {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  #kontaktbereich .contact-info-card {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
 }
 
-#kontaktbereich .alert-success {
-  background-color: #d4edda;
-  border: none;
-  color: #155724;
+@media (max-width: 767.98px) {
+  #kontaktbereich .section-title {
+    font-size: 1.6rem;
+  }
+
+  #kontaktbereich .section-subline {
+    font-size: 0.9rem;
+  }
+
+  #kontaktbereich label,
+  #kontaktbereich .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  #kontaktbereich input:not([type="radio"]):not([type="checkbox"]),
+  #kontaktbereich textarea,
+  #kontaktbereich select {
+    font-size: 0.9rem;
+  }
+
+  #kontaktbereich .btn-warning {
+    width: 100%;
+    text-align: center;
+  }
 }
 
-#kontaktbereich small.text-muted {
-  font-size: 0.8rem;
-}
-
-#kontaktbereich .form-check-input {
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.25rem;
-  margin-right: 0.4rem;
-}
-#kontaktbereich .form-check-label {
-  margin-right: 1.25rem;
-  font-size: 0.95rem;
-  color: #333;
-}
-#kontaktbereich .form-label {
-  margin-bottom: 0.25rem;
-}
-#kontaktbereich .form-control,
-#kontaktbereich .form-select {
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-  height: 2rem;
-}
-#kontaktbereich .form-check-input[type="radio"] {
-  appearance: radio;
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.2rem;
-  margin-right: 0.5rem;
-}
-
-#kontaktbereich .form-check-input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  margin-top: 0.3rem;
-  margin-right: 0.5rem;
-  border: 1px solid #ccc;
-}
-
-#kontaktbereich .form-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-kontaktbereich input[type="checkbox"] {
-  border: 1px solid #ccc; /* nötig wegen reset */
-}
 
 .custom-file-upload .upload-label {
   display: inline-block;

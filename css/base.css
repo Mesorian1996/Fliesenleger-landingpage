@@ -3,6 +3,10 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* an deine Navbar-Höhe anpassen */
+}
 
 
 body {
@@ -137,4 +141,22 @@ header img {
 }
 
 
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #f39c12;
+}
+
+.nav-icon-link:hover {
+  opacity: 0.8;
+}
+
+.nav-cta {
+  font-weight: 600;
+  border-radius: 999px; /* pill-shape */
+  padding-inline: 1.5rem;
+}
 

@@ -96,28 +96,73 @@ document.addEventListener("DOMContentLoaded", function () {
     zeigeBild(aktuelleIndex);
   }
 
-  // Active-Link ScrollSpy
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.querySelector('.navbar');
+  const navbarCollapse = document.getElementById('navbarNav');
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop - 100;
-      const sectionHeight = section.offsetHeight;
-      if (
-        scrollY >= sectionTop &&
-        scrollY < sectionTop + sectionHeight
-      ) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${section.id}`) {
-            link.classList.add("active");
-          }
+  // Hilfsfunktion: Pfad normalisieren ("/" == "/index.html")
+  const normalizePath = (path) => {
+    if (!path) return '/';
+    return path
+      .replace(/index\.html$/i, '')  // index.html entfernen
+      .replace(/\/+$/, '')           // trailing Slash entfernen
+      || '/';
+  };
+
+  // Smooth Scroll mit Offset = Navbar-Höhe
+  const navLinks = document.querySelectorAll(
+    'a.nav-link[href^="#"], a.nav-link[href^="/#"], ' +
+    'a.dropdown-item[href^="#"], a.dropdown-item[href^="/#"], ' +
+    'a.btn[href^="#"], a.btn[href^="/#"]'
+  );
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const url = new URL(link.href, window.location.origin);
+      const currentPath = normalizePath(window.location.pathname);
+      const targetPath = normalizePath(url.pathname);
+
+      // Nur smooth scrollen, wenn es wirklich die gleiche Seite ist
+      if (targetPath === currentPath && url.hash) {
+        const target = document.querySelector(url.hash);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const extraMargin = 12; // etwas Luft unter der Navbar
+        const targetTop = target.getBoundingClientRect().top + window.scrollY
+          - navbarHeight - extraMargin;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth'
         });
+
+        // Mobile: Menü einklappen
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+          bsCollapse.hide();
+        }
       }
+      // andere Seite -> normaler Link (kein preventDefault)
     });
   });
+
+  // Fallback: bei Klick im mobilen Menü einklappen
+  if (navbarCollapse) {
+    navbarCollapse.addEventListener('click', (e) => {
+      if (
+        (e.target.matches('.nav-link') || e.target.matches('.dropdown-item') || e.target.closest('.btn')) &&
+        navbarCollapse.classList.contains('show')
+      ) {
+        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+        bsCollapse.hide();
+      }
+    });
+  }
+});
+
 
   // AOS Init
   if (window.AOS) AOS.init({ duration: 800, once: true });
@@ -280,3 +325,5 @@ document.addEventListener("scroll", () => {
     }
   });
 })();
+
+
