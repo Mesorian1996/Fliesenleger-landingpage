@@ -22,7 +22,7 @@
 .slider-wrapper .slider-item {
   position: relative;
   width: 100%;
-  height: 94vh;
+  height: 90vh;
   display: flex;
   align-items: center;
 }
@@ -137,30 +137,29 @@
   opacity: 0.9;
 }
 
-/* Winkel oben links – direkt am Rand der Blur-Box */
-.hero-main-heading::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  width: 28px;
-  height: 28px;
-  border-top: 4px solid var(--limani-orange);
-  border-left: 4px solid var(--limani-orange);
-  border-radius: 3px;
-}
-
-/* Winkel unten rechts – ebenfalls am Rand */
+/* Ecken immer AN der Blur-Box, nicht außerhalb */
+.hero-main-heading::before,
 .hero-main-heading::after {
   content: "";
   position: absolute;
-  bottom: -10px;
-  right: -10px;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
+  border-radius: 3px;
+}
+
+.hero-main-heading::before {
+  top: 0;          /* statt -10px */
+  left: 0;         /* statt -10px */
+  border-top: 4px solid var(--limani-orange);
+  border-left: 4px solid var(--limani-orange);
+}
+
+.hero-main-heading::after {
+  bottom: 0;       /* statt -10px */
+  right: 0;        /* statt -10px */
   border-bottom: 4px solid var(--limani-orange);
   border-right: 4px solid var(--limani-orange);
-  border-radius: 3px;
 }
 
 

@@ -131,36 +131,38 @@
 
 
 /* Hero-Heading Wrapper – etwas höher platzieren */
-.hero-main-heading-wrapper {
-  top: 60px;
-  width: 80%;
-}
+  .hero-main-heading-wrapper {
+    top: 40px;
+    width: 90%;              /* mehr Luft links/rechts */
+  }
 
-/* Haupttitel */
-.hero-main-heading {
-  font-size: clamp(18px, 5.8vw, 28px);
-  padding: 8px 14px;
-  line-height: 1.25;
-}
+  .hero-main-heading {
+    font-size: clamp(18px, 5vw, 24px);
+    padding: 8px 10px;       /* weniger Padding horizontal */
+        max-width: 90vw;
+  }
 
-/* Subline (zweite Zeile) – auf Mobile ausblenden */
-.hero-main-heading .hero-subline {
-  font-size: 0.75em;
-  opacity: 0.9;
-  display: none;
-}
+  .hero-main-heading .hero-subline {
+    font-size: 0.7em;
+    display: none;           /* wenn du sie ausblenden willst */
+  }
 
-/* Winkel verkleinern für Mobile */
-.hero-main-heading::before,
-.hero-main-heading::after {
-  width: 18px;
-  height: 18px;
-  border-width: 3px;
-}
+  /* Winkel kompakter + näher an den Rand */
+  .hero-main-heading::before,
+  .hero-main-heading::after {
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+
+  .slider-item   {
+    font-size: 10%;   /* kleiner, fixer Abstand */
+  }
 
   .slider-show {
     padding-top: 0;       /* kein künstlicher Abstand mehr nötig */
-    margin-top: 0.5rem;   /* kleiner, fixer Abstand */
+    margin-top: 1rem;   /* kleiner, fixer Abstand */
   }
 
   .slider-item .slide-title {
@@ -200,6 +202,7 @@
   .vorteil-text {
     text-align: center;
     align-items: center;
+    line-height: 1.5;
   }
 
   .vorteil-box .icon,
