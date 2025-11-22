@@ -17,24 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   };
 
-  const navLinks = document.querySelectorAll(
-    'a.nav-link[href^="#"], a.nav-link[href^="/#"], ' +
-      'a.dropdown-item[href^="#"], a.dropdown-item[href^="/#"], ' +
-      'a.btn[href^="#"], a.btn[href^="/#"]'
-  );
+const navLinks = document.querySelectorAll(
+  'a.nav-link[href^="#"], a.nav-link[href^="/#"], ' +
+  'a.dropdown-item[href^="#"], a.dropdown-item[href^="/#"], ' +
+  'a.btn[href^="#"], a.btn[href^="/#"]'
+);
 
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const url = new URL(link.href, window.location.origin);
-      const currentPath = normalizePath(window.location.pathname);
-      const targetPath = normalizePath(url.pathname);
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    // WICHTIG: Dropdown-Toggle komplett ignorieren
+    if (link.matches('[data-bs-toggle="dropdown"]')) {
+      return; // Bootstrap soll das Dropdown normal öffnen
+    }
 
-      // Nur smooth scrollen, wenn es wirklich die gleiche Seite ist
-      if (targetPath === currentPath && url.hash) {
-        const target = document.querySelector(url.hash);
-        if (!target) return;
+    const url = new URL(link.href, window.location.origin);
+    const currentPath = normalizePath(window.location.pathname);
+    const targetPath = normalizePath(url.pathname);
 
-        e.preventDefault();
+    if (targetPath === currentPath && url.hash) {
+      const target = document.querySelector(url.hash);
+      if (!target) return;
+
+      e.preventDefault();
 
         const navbarHeight = navbar ? navbar.offsetHeight : 0;
         const extraMargin = 12; // etwas Luft unter der Navbar
