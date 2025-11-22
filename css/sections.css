@@ -238,6 +238,12 @@
     center center / cover no-repeat;
 }
 
+/* Hintergrundbild je Unterseite */
+.subpage-hero-maler {
+  background: url("../assets/images/Malerarbeiten_bunt.jpeg")
+    center center / cover no-repeat;
+}
+
 /* Overlay */
 .subpage-hero-overlay {
   position: absolute;
