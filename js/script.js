@@ -1,53 +1,85 @@
 // script.js – UI-Features (ohne Formular-Backend)
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Navbar Collapse beim Klick auf Link
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector(".navbar");
   const navbarToggler = document.querySelector(".navbar-toggler");
   const navbarCollapse = document.getElementById("navbarNav");
 
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      const collapse = bootstrap.Collapse.getInstance(navbarCollapse);
-      if (collapse && navbarCollapse.classList.contains("show")) {
-        collapse.hide();
+  // -----------------------------
+  // Smooth Scroll mit Offset = Navbar-Höhe
+  // -----------------------------
+  const normalizePath = (path) => {
+    if (!path) return "/";
+    return (
+      path
+        .replace(/index\.html$/i, "") // index.html entfernen
+        .replace(/\/+$/, "") || "/"
+    );
+  };
+
+  const navLinks = document.querySelectorAll(
+    'a.nav-link[href^="#"], a.nav-link[href^="/#"], ' +
+      'a.dropdown-item[href^="#"], a.dropdown-item[href^="/#"], ' +
+      'a.btn[href^="#"], a.btn[href^="/#"]'
+  );
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const url = new URL(link.href, window.location.origin);
+      const currentPath = normalizePath(window.location.pathname);
+      const targetPath = normalizePath(url.pathname);
+
+      // Nur smooth scrollen, wenn es wirklich die gleiche Seite ist
+      if (targetPath === currentPath && url.hash) {
+        const target = document.querySelector(url.hash);
+        if (!target) return;
+
+        e.preventDefault();
+
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const extraMargin = 12; // etwas Luft unter der Navbar
+        const targetTop =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          navbarHeight -
+          extraMargin;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: "smooth",
+        });
+
+        // Mobile: Menü einklappen
+        if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+          const bsCollapse =
+            bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+          bsCollapse.hide();
+        }
       }
+      // andere Seite -> normaler Link (kein preventDefault)
     });
   });
 
-  // Smooth Scroll mit Offset
-  document.querySelectorAll("a[href^='#']").forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const href = this.getAttribute("href");
-      if (!href || href === "#") return;
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetEl = document.getElementById(targetId);
-      const offset = 80;
+  // -----------------------------
+  // Collapse beim Klick außerhalb der Navbar
+  // -----------------------------
+  if (navbarCollapse && navbarToggler) {
+    document.addEventListener("click", (event) => {
+      const isNavbarOpen = navbarCollapse.classList.contains("show");
+      const clickInside =
+        navbarCollapse.contains(event.target) ||
+        navbarToggler.contains(event.target);
 
-      if (targetEl) {
-        const offsetPosition =
-          targetEl.getBoundingClientRect().top +
-          window.pageYOffset -
-          offset;
-        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      if (isNavbarOpen && !clickInside) {
+        const collapse = bootstrap.Collapse.getInstance(navbarCollapse);
+        if (collapse) collapse.hide();
       }
     });
-  });
+  }
 
-  // Collapse beim Klick außerhalb
-  document.addEventListener("click", function (event) {
-    if (!navbarCollapse || !navbarToggler) return;
-    const isNavbarOpen = navbarCollapse.classList.contains("show");
-    const clickInside =
-      navbarCollapse.contains(event.target) ||
-      navbarToggler.contains(event.target);
-    if (isNavbarOpen && !clickInside) {
-      const collapse = bootstrap.Collapse.getInstance(navbarCollapse);
-      if (collapse) collapse.hide();
-    }
-  });
-
+  // -----------------------------
   // Galerie (Karten-Stapel)
+  // -----------------------------
   const bilder = document.querySelectorAll(".stapel-bild");
   const dotIndikator = document.getElementById("dotIndikator");
   let aktuelleIndex = 0;
@@ -96,87 +128,50 @@ document.addEventListener("DOMContentLoaded", function () {
     zeigeBild(aktuelleIndex);
   }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const navbar = document.querySelector('.navbar');
-  const navbarCollapse = document.getElementById('navbarNav');
-
-  // Hilfsfunktion: Pfad normalisieren ("/" == "/index.html")
-  const normalizePath = (path) => {
-    if (!path) return '/';
-    return path
-      .replace(/index\.html$/i, '')  // index.html entfernen
-      .replace(/\/+$/, '')           // trailing Slash entfernen
-      || '/';
-  };
-
-  // Smooth Scroll mit Offset = Navbar-Höhe
-  const navLinks = document.querySelectorAll(
-    'a.nav-link[href^="#"], a.nav-link[href^="/#"], ' +
-    'a.dropdown-item[href^="#"], a.dropdown-item[href^="/#"], ' +
-    'a.btn[href^="#"], a.btn[href^="/#"]'
-  );
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const url = new URL(link.href, window.location.origin);
-      const currentPath = normalizePath(window.location.pathname);
-      const targetPath = normalizePath(url.pathname);
-
-      // Nur smooth scrollen, wenn es wirklich die gleiche Seite ist
-      if (targetPath === currentPath && url.hash) {
-        const target = document.querySelector(url.hash);
-        if (!target) return;
-
-        e.preventDefault();
-
-        const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        const extraMargin = 12; // etwas Luft unter der Navbar
-        const targetTop = target.getBoundingClientRect().top + window.scrollY
-          - navbarHeight - extraMargin;
-
-        window.scrollTo({
-          top: targetTop,
-          behavior: 'smooth'
-        });
-
-        // Mobile: Menü einklappen
-        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-          const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
-          bsCollapse.hide();
-        }
-      }
-      // andere Seite -> normaler Link (kein preventDefault)
-    });
-  });
-
+  // -----------------------------
   // Fallback: bei Klick im mobilen Menü einklappen
+  // (Dropdown-Toggle bleibt offen)
+  // -----------------------------
   if (navbarCollapse) {
-    navbarCollapse.addEventListener('click', (e) => {
-      if (
-        (e.target.matches('.nav-link') || e.target.matches('.dropdown-item') || e.target.closest('.btn')) &&
-        navbarCollapse.classList.contains('show')
-      ) {
-        const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+    navbarCollapse.addEventListener("click", (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+
+      const isNavTarget = link.matches(".nav-link, .dropdown-item, .btn");
+      const isDropdownToggle = link.matches('[data-bs-toggle="dropdown"]');
+
+      // Dropdown-Toggle NICHT schließen, nur echte Navigationsziele
+      if (!isNavTarget || isDropdownToggle) {
+        return;
+      }
+
+      if (navbarCollapse.classList.contains("show")) {
+        const bsCollapse =
+          bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
         bsCollapse.hide();
       }
     });
   }
-});
 
+  // -----------------------------
+  // AOS-Init (falls nicht schon inline)
+  // -----------------------------
+  if (window.AOS) {
+    AOS.init({ duration: 800, once: true });
+  }
 
-  // AOS Init
-  if (window.AOS) AOS.init({ duration: 800, once: true });
-
+  // -----------------------------
   // Jahr im Footer
+  // -----------------------------
   const jahrEl = document.getElementById("jahr");
   if (jahrEl) jahrEl.textContent = new Date().getFullYear();
 });
 
+// --------------------------------------
 // Swiper / Slider-Logik
+// --------------------------------------
 function updateRauten(index) {
-  const rauten = document.querySelectorAll(
-    ".rauten-indikator .diamond"
-  );
+  const rauten = document.querySelectorAll(".rauten-indikator .diamond");
   rauten.forEach((r, i) => {
     r.classList.toggle("active", i === index);
   });
@@ -187,11 +182,8 @@ const sliderIndicator = document.querySelector(".slider-indicator");
 const sliderControls = document.querySelector(".slider-controls");
 
 const updateIndicator = (tab, index) => {
-  if (!tab || !sliderIndicator || !sliderControls || !sliderTabs.length)
-    return;
-  sliderIndicator.style.transform = `translateX(${
-    tab.offsetLeft - 20
-  }px)`;
+  if (!tab || !sliderIndicator || !sliderControls || !sliderTabs.length) return;
+  sliderIndicator.style.transform = `translateX(${tab.offsetLeft - 20}px)`;
   sliderIndicator.style.width = `${tab.getBoundingClientRect().width}px`;
 
   const scrollLeft =
@@ -201,40 +193,44 @@ const updateIndicator = (tab, index) => {
   sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
 };
 
-const swiper = new Swiper(".slider-container", {
-  effect: "fade",
-  speed: 1300,
-  autoplay: { delay: 6000 },
-  navigation: {
-    prevEl: "#slide-prev",
-    nextEl: "#slide-next",
-  },
-  on: {
-    slideChange: () => {
-      const currentTabIndex = [...sliderTabs].indexOf(
-        sliderTabs[swiper.activeIndex]
-      );
-      updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+if (typeof Swiper !== "undefined") {
+  const swiper = new Swiper(".slider-container", {
+    effect: "fade",
+    speed: 1300,
+    autoplay: { delay: 6000 },
+    navigation: {
+      prevEl: "#slide-prev",
+      nextEl: "#slide-next",
     },
-    reachEnd: () => swiper.autoplay.stop(),
-  },
-});
-
-sliderTabs.forEach((tab, index) => {
-  tab.addEventListener("click", () => {
-    swiper.slideTo(index);
-    updateIndicator(tab, index);
+    on: {
+      slideChange: () => {
+        const currentTabIndex = [...sliderTabs].indexOf(
+          sliderTabs[swiper.activeIndex]
+        );
+        updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+      },
+      reachEnd: () => swiper.autoplay.stop(),
+    },
   });
-});
 
-if (sliderTabs.length) {
-  updateIndicator(sliderTabs[0], 0);
-  window.addEventListener("resize", () =>
-    updateIndicator(sliderTabs[swiper.activeIndex], 0)
-  );
+  sliderTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      swiper.slideTo(index);
+      updateIndicator(tab, index);
+    });
+  });
+
+  if (sliderTabs.length) {
+    updateIndicator(sliderTabs[0], 0);
+    window.addEventListener("resize", () =>
+      updateIndicator(sliderTabs[swiper.activeIndex], swiper.activeIndex)
+    );
+  }
 }
 
+// --------------------------------------
 // Go-Top Button
+// --------------------------------------
 const goTopBtn = document.getElementById("goTopBtn");
 if (goTopBtn) {
   window.addEventListener("scroll", () => {
@@ -247,24 +243,28 @@ if (goTopBtn) {
   });
 }
 
-document.addEventListener("scroll", () => {
-  const hero = document.querySelector(".hero-main-heading-wrapper");
-  const scrollY = window.scrollY;
+// --------------------------------------
+// Hero-Heading Fade-Out (nur Startseite)
+// --------------------------------------
+const heroHeading = document.querySelector(".hero-main-heading-wrapper");
+if (heroHeading) {
+  document.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const fadePoint = 180; // Nach 0–180px Scroll fade-out
 
-  // Nach 0–180px Scroll fade-out
-  const fadePoint = 180;
+    if (scrollY < fadePoint) {
+      const opacity = 1 - scrollY / fadePoint;
+      heroHeading.style.opacity = opacity;
+      heroHeading.style.transform = `translate(-50%, ${scrollY * 0.1}px)`;
+    } else {
+      heroHeading.style.opacity = 0;
+    }
+  });
+}
 
-  if (scrollY < fadePoint) {
-    const opacity = 1 - scrollY / fadePoint;
-    hero.style.opacity = opacity;
-    hero.style.transform = `translate(-50%, ${scrollY * 0.1}px)`; // leicht nach oben weg
-  } else {
-    hero.style.opacity = 0;
-  }
-});
-
-
+// --------------------------------------
 // Galerie-Slider "Beispiele für Fliesenarbeiten"
+// --------------------------------------
 (function () {
   const gallery = document.querySelector(".fliesen-gallery");
   if (!gallery) return;
@@ -292,8 +292,10 @@ document.addEventListener("scroll", () => {
     updateSlider();
   }
 
-  prevBtn.addEventListener("click", goPrev);
-  nextBtn.addEventListener("click", goNext);
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", goPrev);
+    nextBtn.addEventListener("click", goNext);
+  }
 
   // Swipe-Unterstützung für Mobile
   let startX = 0;
@@ -307,23 +309,19 @@ document.addEventListener("scroll", () => {
   track.addEventListener("touchmove", (e) => {
     if (!isDragging) return;
     const diff = e.touches[0].clientX - startX;
-    // optional: leichtes „Mitziehen“ könntest du später ergänzen
+    // optional: visuelles Mitziehen einbauen
   });
 
   track.addEventListener("touchend", (e) => {
     if (!isDragging) return;
-    isDragging = false;
-    const endX = e.changedTouches[0].clientX;
-    const deltaX = endX - startX;
+    const diff = e.changedTouches[0].clientX - startX;
 
-    if (Math.abs(deltaX) > 50) {
-      if (deltaX < 0) {
-        goNext();
-      } else {
-        goPrev();
-      }
+    if (diff > 50) {
+      goPrev();
+    } else if (diff < -50) {
+      goNext();
     }
+
+    isDragging = false;
   });
 })();
-
-
