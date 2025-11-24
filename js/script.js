@@ -41,7 +41,7 @@ navLinks.forEach((link) => {
       e.preventDefault();
 
         const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        const extraMargin = 12; // etwas Luft unter der Navbar
+        const extraMargin = 0; // etwas Luft unter der Navbar
         const targetTop =
           target.getBoundingClientRect().top +
           window.scrollY -

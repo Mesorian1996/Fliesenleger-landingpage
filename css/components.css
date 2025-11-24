@@ -289,6 +289,40 @@ form input:focus, form textarea:focus, form select:focus {
   padding-inline: 1.75rem;
 }
 
+/* CTA-Link in Cards */
+.card-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #f39c12;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.card-cta-link i {
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+}
+
+.card-cta-link:hover {
+  color: #d98107;
+}
+
+.card-cta-link:hover i {
+  transform: translateX(3px);
+}
+
+/* Optional: etwas Abstand zu Hover-Description */
+.modern-card .hover-description {
+  margin-top: 10px;
+}
+
+
 /* Mobile / Tablet Anpassungen */
 @media (max-width: 991.98px) {
   #kontaktbereich .contact-card-wrapper {
@@ -436,6 +470,12 @@ form input:focus, form textarea:focus, form select:focus {
   margin-bottom: 1.3rem;
 }
 
+.trust-icon-img {
+  max-width: 28px;
+  max-height: 28px;
+  color: #f39c12;
+}
+
 /* TEXTE */
 .trust-card-title {
   font-size: 1.15rem;
@@ -449,6 +489,41 @@ form input:focus, form textarea:focus, form select:focus {
   line-height: 1.55;
   max-width: 90%;
 }
+
+/* Pfeile zwischen den Trust Cards – Prozess-Darstellung */
+.process-flow > [class*="col-"] {
+  position: relative;
+}
+
+/* Desktop: Horizontaler Pfeil zwischen den Cards (4 in einer Reihe) */
+@media (min-width: 992px) {
+  .process-flow > [class*="col-"]:not(:last-child)::after {
+    content: "›";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    color: #f39c12;
+    font-weight: 700;
+  }
+}
+
+/* Mobile/Tablet: Pfeil nach unten zwischen den Cards */
+@media (max-width: 991.98px) {
+  .process-flow > [class*="col-"]:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #f39c12;
+    opacity: 0.7;
+  }
+}
+
+
 
 /* Galerie Section */
 .gallery-section {
