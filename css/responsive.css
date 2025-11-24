@@ -340,4 +340,12 @@
   max-height: 70vh;   /* nie höher als 70 % der Displayhöhe */
   object-fit: cover;
 }
+
+  .process-inline-cta {
+    text-align: center;
+  }
+  .process-inline-cta a {
+    display: block;
+    margin-top: 4px;
+  }
 }
