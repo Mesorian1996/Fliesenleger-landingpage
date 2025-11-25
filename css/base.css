@@ -1,4 +1,4 @@
-/* === Grundlayout === */
+/* ==== base.css ==== */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
@@ -160,3 +160,1798 @@ header img {
   padding-inline: 1.5rem;
 }
 
+/* ==== components.css ==== */
+.nav-link:hover {
+  color: #f39c12;
+}
+
+/* === Buttons === */
+.btn-warning {
+  background-color: #f39c12;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-warning:hover {
+  background-color: #d35400;
+}
+
+/* === Formulare === */
+form input:focus,
+form textarea:focus {
+  border-color: #f39c12;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+.service-tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.service-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.service-description {
+  font-size: 0.95rem;
+  color: #666;
+  text-align: center;
+}
+
+.service-tile:hover .service-icon {
+  transform: scale(1.1);
+  filter: grayscale(0%) brightness(1) sepia(1) hue-rotate(-20deg) saturate(500%) brightness(1.1);
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+/* === Animationen === */
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+.modern-card {
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.modern-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-container {
+  width: 100%;
+  height: 200px; /* kannst du anpassen */
+  overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* modernes Cropping: füllt Fläche, bleibt ästhetisch */
+}
+
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card-title-over-image {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+
+.card-body {
+  padding: 1.5rem;
+  border-top: none;
+}
+
+/* Hover-Fokus ohne Blur */
+.card-group-hover:hover .modern-card {
+  opacity: 0.92;
+  transform: scale(0.99);
+}
+
+.card-group-hover .modern-card:hover {
+  opacity: 1 !important;
+  transform: scale(1.015) !important;
+  z-index: 10;
+}
+
+.service-title::after {
+  content: '';
+  display: block;
+  margin: 0.25rem auto 0;
+  width: 40px;
+  height: 3px;
+  background: #f39c12;
+  border-radius: 2px;
+}
+
+.service-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.service-list li {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.service-list li::before {
+  content: 'Ã¢â‚¬Âº';
+  color: #f39c12;
+  position: absolute;
+  left: 0;
+}
+
+.hover-description {
+  opacity: 0;
+  transform: translateY(5px);
+  font-size: 0.9rem;
+  color: #999;
+  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.modern-card:hover .hover-description {
+  opacity: 1;
+  max-height: 150px;
+}
+
+form label {
+  font-weight: 500;
+}
+
+form input, form select, form textarea {
+  border-radius: 0.375rem;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+  border-color: #f39c12;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
+}
+
+.projekt-img {
+  transition: transform 0.3s ease;
+}
+
+.projekt-img:hover {
+  transform: scale(1.05);
+}
+
+.stapel-bild {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.95) rotate(-2deg);
+  transition: all 0.6s ease;
+  z-index: 1;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.stapel-bild.active {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  z-index: 10;
+}
+
+.stapel-bild.next-1 {
+  opacity: 0.8;
+  transform: translateY(12px) scale(0.95) rotate(3deg);
+  z-index: 5;
+}
+
+.stapel-bild.next-2 {
+  opacity: 0.6;
+  transform: translateY(24px) scale(0.9) rotate(-2deg);
+  z-index: 3;
+}
+
+.dot-indikator {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.dot-indikator .dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dot-indikator .dot.active {
+  background-color: #f39c12;
+}
+
+/* === components.css (Formular-Styling modernisiert) === */
+
+/* === Kontaktbereich – Card Layout wie circleoflife-bjj === */
+
+#kontaktbereich {
+  background-color: #f5f6f8;
+}
+
+#kontaktbereich .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#kontaktbereich .section-subline {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 0.98rem;
+  color: #6c757d;
+}
+
+#kontaktbereich .contact-card-wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 2.25rem 1.75rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* Form-Card & Info-Card */
+#kontaktbereich .contact-form-card,
+#kontaktbereich .contact-info-card {
+  background-color: #ffffff;
+}
+
+#kontaktbereich .contact-info-card {
+  border-left: 1px solid rgba(0, 0, 0, 0.04);
+  padding-left: 1.75rem;
+}
+
+#kontaktbereich .contact-list i {
+  font-size: 1.1rem;
+}
+
+/* Buttons im Kontaktbereich */
+#kontaktbereich .btn-warning {
+  border-radius: 999px;
+  padding-inline: 1.75rem;
+}
+
+/* CTA-Link in Cards */
+.card-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #f39c12;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.card-cta-link i {
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+}
+
+.card-cta-link:hover {
+  color: #d98107;
+}
+
+.card-cta-link:hover i {
+  transform: translateX(3px);
+}
+
+/* Optional: etwas Abstand zu Hover-Description */
+.modern-card .hover-description {
+  margin-top: 10px;
+}
+
+
+/* Mobile / Tablet Anpassungen */
+@media (max-width: 991.98px) {
+  #kontaktbereich .contact-card-wrapper {
+    padding: 1.75rem 1.25rem;
+    border-radius: 18px;
+  }
+
+  #kontaktbereich .contact-info-card {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    padding-left: 0;
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #kontaktbereich .section-title {
+    font-size: 1.6rem;
+  }
+
+  #kontaktbereich .section-subline {
+    font-size: 0.9rem;
+  }
+
+  #kontaktbereich label,
+  #kontaktbereich .form-check-label {
+    font-size: 0.85rem;
+  }
+
+  #kontaktbereich input:not([type="radio"]):not([type="checkbox"]),
+  #kontaktbereich textarea,
+  #kontaktbereich select {
+    font-size: 0.9rem;
+  }
+
+  #kontaktbereich .btn-warning {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+.custom-file-upload .upload-label {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-file-upload .upload-label:hover {
+  background-color: #f9f9f9;
+  border-color: #aaa;
+}
+
+.custom-file-upload .file-name {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+/* Titel-Style optional (nutzt dein Unterstrich-Muster) */
+
+/* .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: #f39c12;
+  border-radius: 2px;
+} */
+
+.section-subline {
+  margin-top: 0.5rem;
+  color: #6c757d;
+}
+
+/* ===== Modern Trust Cards ===== */
+
+.trust-card-m {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.05);
+  transition: transform .25s ease, box-shadow .25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-card-m:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+}
+
+/* leichtes Pattern */
+.trust-card-m::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  bottom: -15px;
+  right: -15px;
+  background-image: url("assets/icons/tile-pattern.svg");
+  background-size: cover;
+  opacity: 0.06;
+}
+
+/* Icon Kreis */
+.trust-icon-m {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(243, 156, 18, .12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.2rem auto;
+}
+
+.trust-icon-m img {
+  width: 28px;
+  height: 28px;
+}
+
+/* Titel + mini-Underline */
+.trust-card-m-title {
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin-bottom: .85rem;
+  position: relative;
+}
+
+.trust-card-m-title::after {
+  content: "";
+  width: 32px;
+  height: 3px;
+  background: #f39c12;
+  border-radius: 2px;
+  display: block;
+  margin: .45rem auto 0 auto;
+}
+
+/* Text */
+.trust-card-m-text {
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ===== Prozess-Cards (Ablauf) ===== */
+
+.process-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 1.6rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+  height: 100%;
+}
+
+.process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Step-Nummer im Kreis */
+.process-step-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(243, 156, 18, 0.12);
+  color: #f39c12;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.process-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.process-card-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ===== Pfeile zwischen den Prozess-Schritten ===== */
+
+.process-steps > [class*="col-"] {
+  position: relative;
+}
+
+/* Desktop: horizontaler Pfeil ">" zwischen den Cards */
+@media (min-width: 992px) {
+  .process-steps > [class*="col-"]::after {
+    content: "›";
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    color: #f39c12;
+    font-weight: 700;
+  }
+
+  /* letzte Karte: kein Pfeil */
+  .process-steps > [class*="col-"]:last-child::after {
+    content: none;
+  }
+}
+
+/* Mobile/Tablet: Pfeil nach unten */
+@media (max-width: 991.98px) {
+  .process-steps > [class*="col-"]::after {
+    content: "↓";
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    color: #f39c12;
+    opacity: 0.75;
+  }
+
+  .process-steps > [class*="col-"]:last-child::after {
+    content: none;
+  }
+}
+
+/* ===== CTA-Zeile unter dem Prozess ===== */
+
+.process-inline-cta {
+  font-size: 0.98rem;
+}
+
+.process-inline-link {
+  font-weight: 600;
+  color: #f39c12;
+  text-decoration: none;
+}
+
+.process-inline-link:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+/* Galerie Section */
+.gallery-section {
+  background: #f8f9fa;
+}
+
+.fliesen-gallery {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.gallery-track-wrapper {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.gallery-slide {
+  min-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 660px;       /* vorher 320px */
+  object-fit: cover;
+  object-position: center; /* oder z.B. center top; */
+}
+
+.gallery-slide figcaption {
+  padding: 0.9rem 1.2rem 1.2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Pfeile */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-arrow-prev {
+  left: 12px;
+}
+
+.gallery-arrow-next {
+  right: 12px;
+}
+
+.gallery-arrow:hover {
+  background: rgba(0, 0, 0, 0.75);
+  transform: translateY(-50%) scale(1.03);
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+  .gallery-slide img {
+    height: 420px;
+  }
+
+  .gallery-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+  }
+}
+
+.process-inline-cta {
+  font-size: 1rem;
+  color: #555;
+}
+
+.process-inline-link {
+  font-weight: 600;
+  color: #f39c12;
+  text-decoration: underline;
+  text-decoration-color: #f39c12;
+  text-underline-offset: 3px;
+  margin-left: 4px;
+}
+
+.process-inline-link:hover {
+  color: #c7780e;
+}
+
+
+
+/* ==== sections.css ==== */
+
+
+/* === Leistungs-Kacheln === */
+.service-tile {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* === Icon in Kachel === */
+.service-icon {
+  height: 48px;
+  width: 48px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: grayscale(100%) brightness(0.7);
+}
+
+
+
+.projekt-stapel-wrapper {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  height: 480px;
+  perspective: 1500px;
+}
+
+.projekt-stapel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.kachel-bild-wrapper {
+  text-align: center;
+  padding: 1rem;
+}
+
+.kachel-logo {
+  max-width: 250px;
+  border-radius: 50%;
+  border: 3px solid #f39c12;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.kachel-text {
+  background: #fff;
+  border-left: 5px solid #f39c12;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.kachel-icon {
+  font-size: 2rem;
+  color: #f39c12;
+  margin-bottom: 0.5rem;
+}
+
+.kachel-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.kachel-subtext {
+  color: #666;
+}
+
+.prozess-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  align-items: center;
+}
+
+.prozess-schritt {
+  background: #fff;
+  border-left: 4px solid #f39c12;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.prozess-text h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.prozess-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.prozess-pfeil {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #ccc;
+  align-self: center;
+}
+
+.karte-label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.karte-label i {
+  color: #f39c12;
+  font-size: 1.2rem;
+}
+
+
+
+.vorteil-box,
+.prozess-box {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+
+.go-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background-color: #f39c12;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.go-top-btn span {
+  font-size: 28px;
+  color: white;
+}
+
+.go-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footer-dark {
+  background-color: #1b1b1d;
+  color: #ccc;
+}
+
+.footer-dark h6 {
+  color: #f1f1f1;
+}
+
+.footer-dark .footer-link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-dark .footer-link:hover {
+  color: #f39c12;
+  text-decoration: none;
+}
+
+.footer-dark .bi-whatsapp {
+  font-size: 1.1rem;
+  vertical-align: text-bottom;
+}
+
+.kontakt-zeile {
+  display: flex;
+  align-items: center; /* vertikal zentriert */
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.kontakt-zeile .icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  display: inline-block;
+  width: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .kontakt-zeile {
+    justify-content: center;
+  }
+}
+
+/* --- Subpage Hero (Basis) --- */
+.subpage-hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 7rem 0 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-fliesen {
+  background: url("../assets/images/Fliesenarbeiten\ 2.webp")
+    center center / cover no-repeat;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-maler {
+  background: url("../assets/images/Malerarbeiten_bunt.webp")
+    center center / cover no-repeat;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-wohnung {
+  background: url("../assets/images/Wohnung_1.webp")
+    center center / cover no-repeat;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-trockenbau {
+  background: url("../assets/images/Trockenbau_1.webp")
+    center center / cover no-repeat;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-boden {
+  background: url("../assets/images/Bodenarbeiten.webp")
+    center center / cover no-repeat;
+}
+
+/* Hintergrundbild je Unterseite */
+.subpage-hero-abbruch {
+  background: url("../assets/images/Abbrucharbeiten.webp")
+    center center / cover no-repeat;
+}
+
+
+/* Overlay */
+.subpage-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.35)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content */
+.subpage-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+/* Typo */
+.subpage-hero-kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f39c12;
+}
+
+.subpage-hero-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.subpage-hero-subline {
+  font-size: 1rem;
+  color: #f5f5f5;
+  margin-bottom: 1.6rem;
+}
+
+/* CTA */
+.subpage-hero-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.subpage-hero-note {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .subpage-hero {
+    padding: 6rem 0 3.5rem;
+  }
+}
+
+
+.final-cta-soft {
+  background: #eef2f7; /* sanftes Grau-Blau */
+  color: #333;
+}
+
+.final-cta-soft-panel {
+  border-radius: 22px;
+  padding: 2.2rem 2rem;
+  background: #ffffff;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.final-cta-soft-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.final-cta-soft-subline {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.final-cta-soft-note {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.final-cta-soft-contact a {
+  color: #333;
+  text-decoration: underline;
+  text-decoration-color: #c0c7d3;
+  text-underline-offset: 3px;
+}
+
+.final-cta-soft-actions .btn {
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .final-cta-soft-panel {
+    grid-template-columns: 1fr;
+    padding: 1.8rem 1.4rem;
+  }
+}
+
+
+
+
+/* ==== slide.css ==== */
+/* Importing Google Fonts - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+:root {
+  --limani-orange: #f39c12; /* dein Orange hier eintragen */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.slider-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider-wrapper .slider-item {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.slider-wrapper .slider-item::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(20%);
+  background-image: url("../assets/images/Fliesen_schwimmbad_hero.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.slider-wrapper .slider-item:nth-child(2):before {
+    background-image: url("../assets/images/Malerarbeiten_bunt.webp");
+}
+
+.slider-wrapper .slider-item:nth-child(3):before {
+    background-image: url("../assets/images/Parkett_1.webp");
+}
+
+.slider-wrapper .slider-item:nth-child(4):before {
+    background-image: url("../assets/images/Verputzen2_hero.webp");
+}
+
+.slider-wrapper .slider-item:nth-child(5):before {
+    background-image: url("../assets/images/Wohnung_1._hero.webp");
+    background-color: rgba(0, 0, 0, 0.441); /* dunkelt ab */
+    background-blend-mode: darken;
+}
+
+.slider-wrapper .slider-item .slide-content {
+  opacity: 0;
+  color: #fff;
+  z-index: 2;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px 10px;
+  max-width: 1400px;
+  position: relative;
+}
+
+.slider-wrapper .slider-item::before {
+  background-color: rgba(0, 0, 0, 0.262); /* dunkelt ab */
+  background-blend-mode: darken;
+}
+
+
+.slider-item.swiper-slide-active .slide-content {
+  animation: animate_opacity 0.8s 0.6s linear forwards;
+}
+
+@keyframes animate_opacity {
+  100% {
+    opacity: 1;
+  }
+}
+
+.slider-wrapper .slider-item .slide-content > * {
+    max-width: 35%;
+}
+
+.slider-item .slide-content .slide-subtitle {
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0;
+  transform: translateY(60%);
+}
+
+
+.hero-main-heading-wrapper {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;              /* nimmt volle Breite */
+  text-align: center;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeInHero 1.2s ease-out forwards;
+}
+
+/* FADE-IN Animation */
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translate(-50%, 20px); }
+  100% { opacity: 1; transform: translate(-50%, 0px); }
+}
+
+.hero-main-heading {
+  display: inline-block;                    /* Box schrumpft auf Inhalt */
+  position: relative;
+  font-size: clamp(26px, 3.2vw, 46px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.97);
+  padding: 18px 30px;
+  line-height: 1.2;
+
+  /* Glass-Effekt jetzt HIER */
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+}
+
+/* Subline bleibt wie gehabt */
+.hero-main-heading .hero-subline {
+  font-size: 0.70em;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Ecken immer AN der Blur-Box, nicht außerhalb */
+.hero-main-heading::before,
+.hero-main-heading::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
+  border-radius: 3px;
+}
+
+.hero-main-heading::before {
+  top: 0;          /* statt -10px */
+  left: 0;         /* statt -10px */
+  border-top: 4px solid var(--limani-orange);
+  border-left: 4px solid var(--limani-orange);
+}
+
+.hero-main-heading::after {
+  bottom: 0;       /* statt -10px */
+  right: 0;        /* statt -10px */
+  border-bottom: 4px solid var(--limani-orange);
+  border-right: 4px solid var(--limani-orange);
+}
+
+
+
+
+
+.slider-item .slide-content .slide-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(60%);
+}
+
+.slider-item.swiper-slide-active :where(.slide-subtitle, .slide-title) {
+  animation: animate_text 0.6s 0.6s linear forwards;
+}
+
+@keyframes animate_text {
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.slider-item .slide-content .slide-description {
+  line-height: 25px;
+  margin-top: 25px;
+  opacity: 0;
+  transform: translateY(60%);
+}
+
+.slider-item.swiper-slide-active .slide-description {
+  animation: animate_text 0.6s 1s linear forwards;
+}
+
+.slider-item .slide-content .slide-button {
+    color: #fff;
+    opacity: 0;
+    width: 0;
+    padding: 13px 0;
+    display: block;
+    margin-top: 45px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #fff;
+    transition: 0.5s ease;
+}
+
+.slider-item .slide-content .slide-button span {
+  opacity: 0;
+}
+
+.slider-item.swiper-slide-active .slide-button span {
+  animation: animate_opacity 0.6s 1.5s linear forwards;
+}
+
+.slider-item.swiper-slide-active .slide-button {
+  animation: animate_button 0.6s 1.3s linear forwards;
+}
+
+@keyframes animate_button {
+  100% {
+    opacity: 1;
+    width: 250px;
+  }
+}
+
+.slider-item .slide-content .slide-button:hover {
+    color: #000;
+    background: #fff;
+
+}
+
+.slider-container .slider-controls {
+    position: absolute;
+    bottom: 45px;
+    z-index: 20;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.slider-controls .slider-pagination {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1400;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.slider-pagination .slider-indicator {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 2px solid #f39c12;
+    transition: 0.4s ease-in-out;
+}
+
+
+
+.slider-pagination .slider-tab {
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.slider-navigations button {
+    position: absolute;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 20;
+    color: #fff;
+    border: none;
+    background: #202022;
+    transform: translateY(-50%);
+    transition: 0.4s ease;
+}
+
+.slider-navigations button.swiper-button-disabled {
+    display: none;
+}
+
+.slider-navigations button:hover {
+    background: #323235;
+}
+
+.slider-navigations button#slide-prev {
+    left: 20px;
+}
+
+.slider-navigations button#slide-next {
+    right: 20px;
+}
+
+@media (max-width: 1536px) {
+    .slider-wrapper .slider-item .slide-content,
+    .slider-controls .slider-pagination .slider-indicator {
+      width: 85%;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+    .slider-wrapper .slider-item .slide-content,
+    .slider-controls .slider-pagination .slider-indicator {
+      width: 85%;
+  }
+    .slider-wrapper .slider-item .slide-content > * {
+      max-width: 66%;
+  }
+
+  .slider-navigations button {
+    top: unset;
+    bottom: -15px;
+    background: none;
+  }
+
+  .slider-navigations button:hover {
+    background: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-wrapper .slider-item .slide-content  > * {
+    max-width: 100%;
+  }
+  .slider-pagination .slider-indicator {
+    width: 85%;
+  }
+  .slider-wrapper {
+    height: 85vh;
+  }
+
+  .slider-show .slide-content {
+    margin-top: 40px;  /* Abstand erhöhen */
+  }
+
+}
+
+/* ==== responsive.css ==== */
+/* =========================================
+   DESKTOP (>= 1200px)
+   ========================================= */
+@media (min-width: 1200px) {
+  .container {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+
+/* =========================================
+   TABLET (>= 768px)
+   ========================================= */
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .formular-abstand {
+    padding-left: 2rem;
+  }
+}
+
+
+/* =========================================
+   MOBILE (<= 576px)
+   ========================================= */
+@media (max-width: 576px) {
+
+.slider-show {
+  min-height: 100vh;   /* mindestens Viewport-Höhe */
+  display: flex;
+  align-items: center;
+}
+
+.subpage-hero {
+  /* Desktop/Allgemein */
+  min-height: clamp(70vh, 600px, 900px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+      min-height: 100dvh;  /* iOS Safari korrekt */
+    min-height: 100vh;   /* Fallback */
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+  /* --- Forms & Buttons --- */
+  .form-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+    height: auto;
+  }
+
+  .form-check {
+    margin-bottom: 0.5rem;
+  }
+
+  .form-check-input {
+    margin-top: 0.1rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .form-group,
+  .mb-3 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Kontaktbereich Layout */
+  #kontaktbereich .row {
+    flex-direction: column !important;
+  }
+
+  #kontaktbereich .col-md-6 {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  #kontaktbereich .form-control,
+  #kontaktbereich .form-select {
+    font-size: 1rem;
+  }
+
+  #kontaktbereich .form-label {
+    font-size: 0.95rem;
+  }
+
+  #kontaktbereich .upload-label {
+    width: 100%;
+    text-align: center;
+  }
+
+  #kontaktbereich .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  #kontaktbereich .form-col {
+    flex: 1;
+  }
+
+
+  /* --- Container / Layout --- */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+  }
+
+  .kachel-text,
+  .kachel-bild-wrapper,
+  .prozess-container,
+  .projekt-stapel-wrapper {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+/* Hero-Heading Wrapper – etwas höher platzieren */
+  .hero-main-heading-wrapper {
+    top: 40px;
+    width: 90%;              /* mehr Luft links/rechts */
+  }
+
+  .hero-main-heading {
+    font-size: clamp(18px, 5vw, 24px);
+    padding: 8px 10px;       /* weniger Padding horizontal */
+        max-width: 90vw;
+  }
+
+  .hero-main-heading .hero-subline {
+    font-size: 0.7em;
+    display: none;           /* wenn du sie ausblenden willst */
+  }
+
+  /* Winkel kompakter + näher an den Rand */
+  .hero-main-heading::before,
+  .hero-main-heading::after {
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
+  }
+
+  .slider-show {
+    padding-top: 0;       /* kein künstlicher Abstand mehr nötig */
+    margin-top: 1rem;   /* kleiner, fixer Abstand */
+  }
+
+  .slider-item .slide-title {
+    font-size: 1rem;
+  }
+
+  .slider-item .slide-description {
+    font-size: 0.9rem;
+  }
+
+  .slider-item .slide-button {
+    font-size: 0.85rem;
+    padding: 10px 20px;
+  }
+
+
+
+  /* Kein horizontales Scrollen */
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  /* --- Vorteile / Prozess / Kacheln --- */
+  .prozess-container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 7rem;
+  }
+
+  .vorteil-box,
+  .prozess-box,
+  .section-title,
+  .vorteil-text {
+    text-align: center;
+    align-items: center;
+    line-height: 1.5;
+  }
+
+  .vorteil-box .icon,
+  .prozess-box .icon {
+    margin: 0 auto;
+  }
+
+  .vorteil-box,
+  .prozess-box {
+    padding: 1rem;
+    margin: 2rem 0;
+  }
+
+  .vorteil-box h3,
+  .prozess-box h4 {
+    font-size: 1.1rem;
+  }
+
+  .vorteil-box p,
+  .prozess-box p {
+    font-size: 0.95rem;
+  }
+
+  .vorteil-section .card {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .vorteil-section .stapel-bild {
+    margin-bottom: 2rem;
+  }
+
+  .vorteil-section .prozess-schritt {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .vorteil-section .section-title {
+    margin-bottom: 2rem;
+  }
+
+  .vorteil-section .stapel-bild + .dot-indikator {
+    margin-bottom: 2rem;
+  }
+
+  .vorteils-kachel,
+  .vorteils-bild {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  #vorteile .row {
+    margin-bottom: 3rem;
+  }
+
+  .stapel-bild,
+  .dot-indikator {
+    margin-bottom: 2rem;
+  }
+
+  .kachel-text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .kachel-icon {
+    justify-content: center;
+  }
+
+  .kachel-title,
+  .kachel-subtext {
+    text-align: center;
+  }
+
+  .prozess-schritt {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 0;
+  }
+
+  .prozess-pfeil {
+    align-self: center;
+  }
+
+  .projekt-stapel-wrapper {
+    margin-bottom: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 0;
+  }
+
+  .projekt-stapel {
+    margin: 0 auto;
+  }
+
+  .modern-card {
+    margin-bottom: 1rem;
+  }
+
+
+  /* --- Cards & Bilder --- */
+  .card {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body {
+    max-height: 70%;
+    overflow-y: auto;
+    padding: 1rem 0.5rem;
+  }
+
+  .card-body .hover-description {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .card-image {
+    object-fit: contain;
+    background: #f8f8f8;
+  }
+
+
+  /* --- Typografie global --- */
+  body {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .gallery-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;   /* nie höher als 70 % der Displayhöhe */
+  object-fit: cover;
+}
+
+  .process-inline-cta {
+    text-align: center;
+  }
+  .process-inline-cta a {
+    display: block;
+    margin-top: 4px;
+  }
+}
