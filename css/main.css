@@ -1393,36 +1393,42 @@ form textarea:focus {
 @media (max-width: 767.98px) {
   .hero-mobile {
     position: relative;
-    min-height: 70vh;
-    padding: 4.5rem 1.5rem 4rem;
-    display: flex;
-    align-items: center;
+    display: flex;               /* <– wichtig: sichtbar machen */
+    align-items: center;       /* Content nach unten, wirkt moderner */
     justify-content: center;
-    text-align: center;
+    min-height: 85vh;
+    padding: 6rem 1.5rem 3.5rem; /* Platz für Navbar + Button */
     color: #fff;
     overflow: hidden;
-    background-image: url("/assets/images/Fliesen_schwimmbad_hero.webp");
-    background-size: cover;
-    background-position: center;
   }
 
-  /* dunkles Overlay für bessere Lesbarkeit */
+  /* dunkles Overlay über dem Bild */
   .hero-mobile::before {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.55),
-      rgba(0, 0, 0, 0.7)
+      180deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.75)
     );
     z-index: 0;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;                 /* Bild hinter Overlay + Text */
   }
 
   .hero-mobile-inner {
     position: relative;
     z-index: 1;
     max-width: 32rem;
+    text-align: center;
   }
 
   .hero-kicker {
@@ -1455,6 +1461,7 @@ form textarea:focus {
     display: none;
   }
 }
+
 
 
 
