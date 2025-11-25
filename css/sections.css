@@ -234,37 +234,37 @@
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-fliesen {
-  background: url("../assets/images/Fliesenarbeiten\ 2.jpg")
+  background: url("../assets/images/Fliesenarbeiten\ 2.webp")
     center center / cover no-repeat;
 }
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-maler {
-  background: url("../assets/images/Malerarbeiten_bunt.jpeg")
+  background: url("../assets/images/Malerarbeiten_bunt.webp")
     center center / cover no-repeat;
 }
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-wohnung {
-  background: url("../assets/images/Wohnung_1.jpg")
+  background: url("../assets/images/Wohnung_1.webp")
     center center / cover no-repeat;
 }
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-trockenbau {
-  background: url("../assets/images/Trockenbau_1.jpg")
+  background: url("../assets/images/Trockenbau_1.webp")
     center center / cover no-repeat;
 }
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-boden {
-  background: url("../assets/images/Bodenarbeiten.png")
+  background: url("../assets/images/Bodenarbeiten.webp")
     center center / cover no-repeat;
 }
 
 /* Hintergrundbild je Unterseite */
 .subpage-hero-abbruch {
-  background: url("../assets/images/Abbrucharbeiten.png")
+  background: url("../assets/images/Abbrucharbeiten.webp")
     center center / cover no-repeat;
 }
 

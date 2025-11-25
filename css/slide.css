@@ -35,25 +35,25 @@
   width: 100%;
   height: 100%;
   filter: grayscale(20%);
-  background-image: url("../assets/images/Fliesen_schwimmbad.jpeg");
+  background-image: url("../assets/images/Fliesen_schwimmbad_hero.webp");
   background-size: cover;
   background-position: center;
 }
 
 .slider-wrapper .slider-item:nth-child(2):before {
-    background-image: url("../assets/images/Malerarbeiten_bunt.jpeg");
+    background-image: url("../assets/images/Malerarbeiten_bunt.webp");
 }
 
 .slider-wrapper .slider-item:nth-child(3):before {
-    background-image: url("../assets/images/Parkett_1.jpeg");
+    background-image: url("../assets/images/Parkett_1.webp");
 }
 
 .slider-wrapper .slider-item:nth-child(4):before {
-    background-image: url("../assets/images/Verputzen2.jpg");
+    background-image: url("../assets/images/Verputzen2_hero.webp");
 }
 
 .slider-wrapper .slider-item:nth-child(5):before {
-    background-image: url("../assets/images/Wohnung_1.jpg");
+    background-image: url("../assets/images/Wohnung_1._hero.webp");
     background-color: rgba(0, 0, 0, 0.441); /* dunkelt ab */
     background-blend-mode: darken;
 }
