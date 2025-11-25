@@ -1546,7 +1546,6 @@ form textarea:focus {
 
 @media (max-width:576px) {
 
-    .slider-show,
     .subpage-hero {
         min-height: 100vh;
         display: flex
