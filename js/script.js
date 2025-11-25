@@ -365,25 +365,27 @@ if (heroHeading) {
 
 
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".slider-item");
+document.addEventListener("DOMContentLoaded", () => {
+  // Nur ab 768px Slider-Backgrounds laden
+  if (!window.matchMedia("(min-width: 768px)").matches) return;
 
-    slides.forEach((slide, index) => {
-      const bg = slide.dataset.bg;
-      if (!bg) return;
+  const slides = document.querySelectorAll(".slider-item");
 
-      const img = new Image();
-      img.src = bg;
+  slides.forEach((slide, index) => {
+    const bg = slide.dataset.bg;
+    if (!bg) return;
 
-      // Erster Slide = LCP → sofort priorisiert laden
-      if (index === 0) {
-        img.loading = "eager";
-      }
+    const img = new Image();
+    img.src = bg;
 
-      img.onload = () => {
-        slide.style.setProperty("--bg-img", `url('${bg}')`);
-        slide.classList.add("bg-loaded");
-      };
-    });
+    if (index === 0) {
+      img.loading = "eager";
+    }
+
+    img.onload = () => {
+      slide.style.setProperty("--bg-img", `url('${bg}')`);
+      slide.classList.add("bg-loaded");
+    };
   });
+});
 
