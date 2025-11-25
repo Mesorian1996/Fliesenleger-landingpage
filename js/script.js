@@ -328,4 +328,30 @@ if (heroHeading) {
 
     isDragging = false;
   });
+
+  
 })();
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".slider-item");
+
+    slides.forEach((slide, index) => {
+      const bg = slide.dataset.bg;
+      if (!bg) return;
+
+      const img = new Image();
+      img.src = bg;
+
+      // Erster Slide = LCP → sofort priorisiert laden
+      if (index === 0) {
+        img.loading = "eager";
+      }
+
+      img.onload = () => {
+        slide.style.setProperty("--bg-img", `url('${bg}')`);
+        slide.classList.add("bg-loaded");
+      };
+    });
+  });
+
