@@ -172,7 +172,7 @@ navLinks.forEach((link) => {
 });
 
 // --------------------------------------
-// Swiper / Slider-Logik
+// Swiper / Slider-Logik – nur Desktop (>= 768px)
 // --------------------------------------
 function updateRauten(index) {
   const rauten = document.querySelectorAll(".rauten-indikator .diamond");
@@ -197,8 +197,17 @@ const updateIndicator = (tab, index) => {
   sliderControls.scrollTo({ left: scrollLeft, behavior: "smooth" });
 };
 
-if (typeof Swiper !== "undefined") {
-  const swiper = new Swiper(".slider-container", {
+let heroSwiper = null;
+const heroMq = window.matchMedia("(min-width: 768px)");
+
+function initHeroSwiper() {
+  if (heroSwiper || typeof Swiper === "undefined") return;
+
+  // Slider existiert z. B. auf Unterseiten evtl. nicht
+  const sliderContainer = document.querySelector(".slider-container");
+  if (!sliderContainer) return;
+
+  heroSwiper = new Swiper(".slider-container", {
     effect: "fade",
     speed: 1300,
     autoplay: { delay: 6000 },
@@ -208,29 +217,52 @@ if (typeof Swiper !== "undefined") {
     },
     on: {
       slideChange: () => {
-        const currentTabIndex = [...sliderTabs].indexOf(
-          sliderTabs[swiper.activeIndex]
-        );
-        updateIndicator(sliderTabs[swiper.activeIndex], currentTabIndex);
+        const idx = heroSwiper.activeIndex;
+        updateIndicator(sliderTabs[idx], idx);
       },
-      reachEnd: () => swiper.autoplay.stop(),
+      reachEnd: () => heroSwiper.autoplay.stop(),
     },
   });
 
   sliderTabs.forEach((tab, index) => {
     tab.addEventListener("click", () => {
-      swiper.slideTo(index);
+      heroSwiper.slideTo(index);
       updateIndicator(tab, index);
     });
   });
 
   if (sliderTabs.length) {
     updateIndicator(sliderTabs[0], 0);
-    window.addEventListener("resize", () =>
-      updateIndicator(sliderTabs[swiper.activeIndex], swiper.activeIndex)
-    );
   }
 }
+
+function destroyHeroSwiper() {
+  if (!heroSwiper) return;
+  heroSwiper.destroy(true, true);
+  heroSwiper = null;
+}
+
+// Beim ersten Laden
+if (heroMq.matches) {
+  initHeroSwiper();
+}
+
+// Auf Änderungen (Mobile ↔ Desktop) reagieren
+const heroMqHandler = (e) => {
+  if (e.matches) {
+    initHeroSwiper();      // wird Desktop
+  } else {
+    destroyHeroSwiper();   // wird Mobile
+  }
+};
+
+if (heroMq.addEventListener) {
+  heroMq.addEventListener("change", heroMqHandler);
+} else if (heroMq.addListener) {
+  // Fallback für ältere Browser
+  heroMq.addListener(heroMqHandler);
+}
+
 
 // --------------------------------------
 // Go-Top Button
@@ -274,12 +306,12 @@ if (heroHeading) {
   if (!gallery) return;
 
   const track = gallery.querySelector(".gallery-track");
-  const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
+  const gallerySlides = Array.from(gallery.querySelectorAll(".gallery-slide"));
   const prevBtn = gallery.querySelector(".gallery-arrow-prev");
   const nextBtn = gallery.querySelector(".gallery-arrow-next");
 
   let currentIndex = 0;
-  const maxIndex = slides.length - 1;
+  const maxIndex = gallerySlides.length - 1;
 
   function updateSlider() {
     const offset = -currentIndex * 100;
@@ -313,7 +345,6 @@ if (heroHeading) {
   track.addEventListener("touchmove", (e) => {
     if (!isDragging) return;
     const diff = e.touches[0].clientX - startX;
-    // optional: visuelles Mitziehen einbauen
   });
 
   track.addEventListener("touchend", (e) => {
@@ -331,6 +362,7 @@ if (heroHeading) {
 
   
 })();
+
 
 
   document.addEventListener("DOMContentLoaded", () => {

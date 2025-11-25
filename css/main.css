@@ -1147,7 +1147,7 @@ form textarea:focus {
 }
 
 .slider-wrapper .slider-item .slide-content {
-    opacity: 0;
+    opacity: 1;
     color: #fff;
     z-index: 2;
     width: 100%;
@@ -1383,6 +1383,80 @@ form textarea:focus {
 .slider-navigations button#slide-next {
     right: 20px
 }
+
+/* Standard: Desktop – Mobile-Hero aus, Slider an */
+.hero-mobile {
+  display: none;
+}
+
+/* Mobile-Version */
+@media (max-width: 767.98px) {
+  .hero-mobile {
+    position: relative;
+    min-height: 70vh;
+    padding: 4.5rem 1.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    background-image: url("/assets/images/Fliesen_schwimmbad_hero.webp");
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* dunkles Overlay für bessere Lesbarkeit */
+  .hero-mobile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.7)
+    );
+    z-index: 0;
+  }
+
+  .hero-mobile-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 32rem;
+  }
+
+  .hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .hero-subline {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.95;
+  }
+
+  .hero-mobile .btn {
+    font-size: 0.95rem;
+  }
+
+  /* Slider auf Mobile ausblenden */
+  .slider-show {
+    display: none;
+  }
+}
+
+
 
 @media (max-width:1536px) {
 
