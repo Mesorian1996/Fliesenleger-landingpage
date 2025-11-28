@@ -68,6 +68,10 @@ footer {
     padding-top: 1rem
 }
 
+.footer-icon {
+    height: 22px;
+    width: 22px;
+    }
 header img {
     margin-top: 10px;
     margin-bottom: 0;
@@ -549,7 +553,6 @@ form textarea:focus {
     height: 70px;
     bottom: -15px;
     right: -15px;
-    background-image: url("assets/icons/tile-pattern.svg");
     background-size: cover;
     opacity: .06
 }
