@@ -1015,13 +1015,17 @@ form textarea:focus {
 
 .subpage-hero {
   position: relative;
-  min-height: 60vh;
-  color: #fff;
+  min-height: 80vh;
   display: flex;
-  align-items: center;
+  justify-content: center;   /* horizontal zentriert */
+  align-items: center;       /* vertikal zentriert */
+  text-align: center;
+  color: #fff;
+  padding: 4rem 1.5rem;      /* etwas Luft zum Rand */
   overflow: hidden;
 }
 
+/* Hintergrundbild */
 .subpage-hero-bg {
   position: absolute;
   inset: 0;
@@ -1034,52 +1038,57 @@ form textarea:focus {
   object-fit: cover;
 }
 
+/* Abdunkelung */
 .subpage-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.7)
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.65) 100%
   );
   z-index: 1;
 }
 
+/* Inhalt */
 .subpage-hero-inner {
   position: relative;
   z-index: 2;
+  max-width: 750px;
+  margin: 0 auto;
 }
 
-
 .subpage-hero-kicker {
-    font-size: .9rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: #f39c12
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+  color: #f39c12;
 }
 
 .subpage-hero-title {
-    font-size: clamp(2rem, 3vw, 2.6rem);
-    font-weight: 700;
-    margin-bottom: 1rem
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .subpage-hero-subline {
-    font-size: 1rem;
-    color: #f5f5f5;
-    margin-bottom: 1.6rem
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
 }
 
 .subpage-hero-cta {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    align-items: center
+  margin-top: 1rem;
 }
 
 .subpage-hero-note {
-    font-size: .9rem;
-    opacity: .9
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 .final-cta-soft {
