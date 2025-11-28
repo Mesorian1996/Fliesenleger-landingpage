@@ -990,7 +990,7 @@ form textarea:focus {
 
 
 .subpage-hero-fliesen {
-    background: url("../assets/images/Fliesenarbeiten\ 2.webp") center center/cover no-repeat
+    background: url("../assets/images/Fliesenarbeiten_2.webp") center center/cover no-repeat
 }
 
 .subpage-hero-maler {
@@ -1056,6 +1056,7 @@ form textarea:focus {
   z-index: 2;
   max-width: 750px;
   margin: 0 auto;
+  max-width: 650px
 }
 
 .subpage-hero-kicker {
