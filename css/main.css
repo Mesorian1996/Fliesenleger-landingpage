@@ -71,7 +71,9 @@ footer {
 .footer-icon {
     height: 22px;
     width: 22px;
-    }
+    display: inline-block;
+}
+
 header img {
     margin-top: 10px;
     margin-bottom: 0;
