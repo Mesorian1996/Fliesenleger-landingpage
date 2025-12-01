@@ -43,8 +43,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Hero Bild preload -->
-  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority=high as="image">
-  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero.webp" fetchpriority=high as="image">
+  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority="high" as="image"
+    type="image/webp">
+  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero.webp" fetchpriority="high" as="image"
+    type="image/webp" media="(min-width: 768px)">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -307,7 +309,8 @@
   <main id="main-content">
   <!-- Statischer Hero NUR für Mobile -->
   <section class="hero-mobile">
-    <img src="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" alt="Fliesenarbeiten Mannheim" class="hero-bg">
+    <img src="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" alt="Fliesenarbeiten Mannheim" class="hero-bg"
+      width="650" height="867" decoding="async" loading="eager" fetchpriority="high" sizes="100vw">
     <div class="hero-mobile-inner container">
       <p class="hero-kicker">Fliesenleger in Mannheim & Rhein-Neckar</p>
 
@@ -339,9 +342,7 @@
       <div class="slider-wrapper swiper-wrapper">
 
         <!-- 1. Slide – Fliesen -->
-        <div class="slider-item swiper-slide bg-loaded"
-          style="--bg-img: url('/assets/images/Fliesen_schwimmbad_hero.webp');"
-          data-bg="/assets/images/Fliesen_schwimmbad_hero.webp">
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Fliesen_schwimmbad_hero.webp">
           <div class="slide-content">
             <h2 class="slide-title">Fliesenarbeiten</h2>
             <p class="slide-description">
