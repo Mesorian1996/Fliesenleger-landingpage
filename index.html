@@ -196,6 +196,7 @@
 
 
 <body>
+  <header>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
     <div class="container">
@@ -299,8 +300,9 @@
     </div>
   </nav>
 
+</header>
 
-
+  <main id="main-content">
   <!-- Statischer Hero NUR für Mobile -->
   <section class="hero-mobile">
     <img src="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" alt="Fliesenarbeiten Mannheim" class="hero-bg">
@@ -396,13 +398,13 @@
 
       <!-- Slider Pagination -->
       <div class="slider-controls">
-        <ul class="slider-pagination">
-          <div class="slider-indicator"></div>
-          <li class="slider-tab">Fliesenarbeiten</li>
-          <li class="slider-tab">Malerarbeiten</li>
-          <li class="slider-tab">Bodenverlegung</li>
-          <li class="slider-tab">Verputzarbeiten</li>
-          <li class="slider-tab">Wohnungssanierung</li>
+      <ul class="slider-pagination">
+        <div class="slider-indicator"></div>
+          <li class="slider-tab" role="tab">Fliesenarbeiten</li>
+          <li class="slider-tab" role="tab">Malerarbeiten</li>
+          <li class="slider-tab" role="tab">Bodenverlegung</li>
+          <li class="slider-tab" role="tab">Verputzarbeiten</li>
+          <li class="slider-tab" role="tab">Wohnungssanierung</li>
         </ul>
       </div>
 
@@ -698,11 +700,13 @@
       <!-- Prozessgrafik rechts -->
       <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-left">
         <div class="prozess-container">
-          <div class="prozess-schritt"><a class="nav-link" href="#kontaktbereich">
+          <div class="prozess-schritt">
+            <a class="nav-link d-flex" href="#kontaktbereich" aria-label="Zum Kontaktformular scrollen">
               <div class="icon-box"><i class="bi bi-clipboard-check"></i></div>
               <div class="prozess-text">
                 <h5>Anfrage erstellen</h5>
                 <p>Schnell & unkompliziert über unser Formular oder telefonisch.</p>
+              </div>
             </a>
           </div>
         </div>
@@ -1104,21 +1108,21 @@
     </div>
   </section>
 
-
+</main>
 
   <footer class="footer-dark mt-5 pt-4 pb-3">
     <div class="container">
       <div class="row text-center text-md-start gy-3">
         <!-- Firma -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Limani Fliesenleger</h6>
+          <p class="fw-bold mb-2">Limani Fliesenleger</p>
           <p class="mb-0">Inhaber Milaim Limani</p>
           <p class="mb-0">E7 13, 68161 Mannheim</p>
         </div>
 
         <!-- Kontakt -->
         <div class="col-md-4 text-center text-md-start">
-          <h6 class="fw-bold mb-2">Kontakt</h6>
+          <p class="fw-bold mb-2">Kontakt</h6>
 
           <div class="kontakt-zeile">
             <img src="/assets/icons/mail.svg" alt="" class="footer-icon">

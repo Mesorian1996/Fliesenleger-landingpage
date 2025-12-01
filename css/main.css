@@ -1980,3 +1980,11 @@ form textarea:focus {
     padding-block: 3.5rem;
   }
 }
+.slider-tab {
+  color: #ffffff;
+  background-color: rgba(0,0,0,0.65); /* statt sehr hellem Grau */
+}
+.slider-tab.active {
+  background-color: #f39c12;
+  color: #111;
+}
