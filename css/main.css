@@ -1871,3 +1871,112 @@ form textarea:focus {
         margin-top: 4px
     }
 }
+
+/* ============================
+   SEO-Text-Passagen / Typografie
+   ============================ */
+
+/* Gemeinsames Verhalten für Content-Section-Titel */
+.section-title {
+  text-align: left;
+}
+
+/* Subline/Erklärtexte unter Überschriften */
+.section-subline {
+  text-align: left;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+/* ============================
+   SEO-Text-Sektionen / Typografie
+   ============================ */
+
+/* Wrapper für Textsektionen mit Fokus auf Inhalt */
+.seo-section {
+  padding-block: 3rem;
+}
+
+/* Innerer Container: begrenzte Breite für bessere Lesbarkeit */
+.seo-section-inner {
+  max-width: 52rem;  /* ~830px */
+  margin: 0 auto;
+}
+
+/* Überschrift: Desktop linksbündig, mobil zentriert */
+.seo-section .section-title {
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.1rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+  position: relative;
+}
+
+
+
+/* Haupt-Textkörper */
+.seo-body {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: left;
+}
+
+/* Optional dezente Betonung: nur eine schmale Linie links, kein Card-Look */
+.seo-body--accent {
+  border-left: 3px solid rgba(243, 156, 18, 0.4);
+  padding-left: 1.25rem;
+}
+
+/* Mehrere Absätze hintereinander: saubere Abstände */
+.seo-body + .seo-body {
+  margin-top: 0.9rem;
+}
+
+/* Subline / kurze erklärende Sätze unter H2 */
+.seo-subline {
+  font-size: 0.95rem;
+  color: #777;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+
+
+/* MOBILE: Überschrift zentriert, Text linksbündig */
+@media (max-width: 767.98px) {
+  .section-title {
+    text-align: center;
+  }
+
+  .seo-text-body,
+  .section-subline {
+    text-align: left;
+  }
+    .seo-section .section-title {
+    text-align: center;
+  }
+
+  .seo-section .section-title::before {
+    margin-inline: auto;
+  }
+
+  .seo-body,
+  .seo-subline {
+    text-align: left;
+  }
+}
+
+/* DESKTOP: alles klar linksbündig, saubere Breite */
+@media (min-width: 768px) {
+  .seo-text-section {
+    padding-block: 3.5rem;
+  }
+
+  .seo-text-body {
+    font-size: 1rem;
+  }
+    .seo-section {
+    padding-block: 3.5rem;
+  }
+}

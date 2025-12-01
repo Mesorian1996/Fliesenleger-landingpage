@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
   <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon">
-  
+
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -43,10 +43,8 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,200,0,0" />
 
-  <!-- Hero Bild preload -->    
-<link rel="preload"
-      href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority=high
-      as="image">
+  <!-- Hero Bild preload -->
+  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority=high as="image">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -198,137 +196,130 @@
 
 
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
-  <div class="container">
-    <!-- Brand -->
-    <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="assets/images/Limani_Logo_modern.webp" alt="Limani Fliesenleger Logo" style="max-height: 75px;">
-    </a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-md navbar-light bg-white sticky-top">
+    <div class="container">
+      <!-- Brand -->
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="assets/images/Limani_Logo_modern.webp" alt="Limani Fliesenleger Logo" style="max-height: 75px;">
+      </a>
 
-    <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Collapsed Content -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav align-items-md-center">
+      <!-- Collapsed Content -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-md-center">
 
-        <!-- Leistungen (Dropdown) -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/#leistungen" id="navLeistungen" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Leistungen
+          <!-- Leistungen (Dropdown) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/#leistungen" id="navLeistungen" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Leistungen
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navLeistungen">
+              <!-- Startseiten-Abschnitt -->
+              <li>
+                <a class="dropdown-item" href="/#leistungen">
+                  Übersicht: Bau- & Sanierungsleistungen
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+
+              <!-- Unterseiten -->
+              <li>
+                <a class="dropdown-item" href="/fliesenarbeiten-mannheim.html">
+                  Fliesenarbeiten
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/malerarbeiten-mannheim.html">
+                  Verputz- und Malerarbeiten
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/trockenbauarbeiten-mannheim.html">
+                  Trockenbauarbeiten
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/bodenarbeiten-mannheim.html">
+                  Bodenverlegung und Estrich
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/abbrucharbeiten-mannheim.html">
+                  Abbruch- und Entsorgungsarbeiten
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/wohnungssanierung-mannheim.html">
+                  Wohnungssanierung
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Über uns -->
+          <li class="nav-item">
+            <a class="nav-link" href="/#vorteile">Über uns</a>
+          </li>
+
+          <!-- CTA im mobilen Menü (für bessere Usability) -->
+          <li class="nav-item d-md-none mt-2">
+            <a class="btn btn-warning w-100" href="/#kontaktbereich">
+              Jetzt unverbindliches Angebot einholen
+            </a>
+          </li>
+        </ul>
+
+        <!-- Icons + CTA (nur Desktop) -->
+        <div class="d-none d-md-flex align-items-center ms-md-3 gap-3">
+          <!-- Telefon -->
+          <a href="tel:+491733293668" class="nav-icon-link" aria-label="Anrufen">
+            <i class="bi bi-telephone-fill"></i>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navLeistungen">
-            <!-- Startseiten-Abschnitt -->
-            <li>
-              <a class="dropdown-item" href="/#leistungen">
-                Übersicht: Bau- & Sanierungsleistungen
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
 
-            <!-- Unterseiten -->
-            <li>
-              <a class="dropdown-item" href="/fliesenarbeiten-mannheim.html">
-                Fliesenarbeiten
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/malerarbeiten-mannheim.html">
-                Verputz- und Malerarbeiten
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/trockenbauarbeiten-mannheim.html">
-                Trockenbauarbeiten
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/bodenarbeiten-mannheim.html">
-                Bodenverlegung und Estrich
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/abbrucharbeiten-mannheim.html">
-                Abbruch- und Entsorgungsarbeiten
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/wohnungssanierung-mannheim.html">
-                Wohnungssanierung
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Über uns -->
-        <li class="nav-item">
-          <a class="nav-link" href="/#vorteile">Über uns</a>
-        </li>
-
-        <!-- CTA im mobilen Menü (für bessere Usability) -->
-        <li class="nav-item d-md-none mt-2">
-          <a class="btn btn-warning w-100" href="/#kontaktbereich">
-            Jetzt unverbindliches Angebot einholen
+          <!-- E-Mail -->
+          <a href="mailto:kontakt@limani-fliesenleger.de" class="nav-icon-link" aria-label="E-Mail schreiben">
+            <i class="bi bi-envelope-fill"></i>
           </a>
-        </li>
-      </ul>
 
-      <!-- Icons + CTA (nur Desktop) -->
-      <div class="d-none d-md-flex align-items-center ms-md-3 gap-3">
-        <!-- Telefon -->
-        <a href="tel:+491733293668"
-           class="nav-icon-link"
-           aria-label="Anrufen">
-          <i class="bi bi-telephone-fill"></i>
-        </a>
-
-        <!-- E-Mail -->
-        <a href="mailto:kontakt@limani-fliesenleger.de"
-           class="nav-icon-link"
-           aria-label="E-Mail schreiben">
-          <i class="bi bi-envelope-fill"></i>
-        </a>
-
-        <!-- Haupt-CTA -->
-        <a href="/#kontaktbereich"
-           class="btn btn-warning nav-cta">
-          Jetzt Angebot einholen
-        </a>
+          <!-- Haupt-CTA -->
+          <a href="/#kontaktbereich" class="btn btn-warning nav-cta">
+            Jetzt Angebot einholen
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
 
 
-<!-- Statischer Hero NUR für Mobile -->
-<section class="hero-mobile">
-     <img src="/assets/images/Fliesen_schwimmbad_hero_mobile.webp"
-        alt="Fliesenarbeiten Mannheim"
-        class="hero-bg">
-  <div class="hero-mobile-inner container">
-    <p class="hero-kicker">Fliesenleger in Mannheim & Rhein-Neckar</p>
+  <!-- Statischer Hero NUR für Mobile -->
+  <section class="hero-mobile">
+    <img src="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" alt="Fliesenarbeiten Mannheim" class="hero-bg">
+    <div class="hero-mobile-inner container">
+      <p class="hero-kicker">Fliesenleger in Mannheim & Rhein-Neckar</p>
 
-    <h1 class="hero-title">
-      Fliesen, Böden & Wohnungssanierung aus einer Hand
-    </h1>
+      <h1 class="hero-title">
+        Fliesen, Böden & Wohnungssanierung aus einer Hand
+      </h1>
 
-    <p class="hero-subline">
-      Komplettsanierungen, Teilrenovierungen und einzelne Gewerke – sauber koordiniert, termintreu und zuverlässig.
-    </p>
+      <p class="hero-subline">
+        Komplettsanierungen, Teilrenovierungen und einzelne Gewerke – sauber koordiniert, termintreu und zuverlässig.
+      </p>
 
-    <a href="#kontaktbereich" class="btn btn-warning btn-lg">
-      Jetzt unverbindlich anfragen
-    </a>
-  </div>
-</section>
+      <a href="#kontaktbereich" class="btn btn-warning btn-lg">
+        Jetzt unverbindlich anfragen
+      </a>
+    </div>
+  </section>
 
   <section class="slider-show">
 
@@ -339,71 +330,69 @@
       </h1>
     </div> -->
 
-  <div class="slider-container">
+    <div class="slider-container">
 
-    <div class="slider-wrapper swiper-wrapper">
+      <div class="slider-wrapper swiper-wrapper">
 
-      <!-- 1. Slide – Fliesen -->
-      <div class="slider-item swiper-slide"
-           data-bg="/assets/images/Fliesen_schwimmbad_hero.webp">
-        <div class="slide-content">
-          <h2 class="slide-title">Fliesenarbeiten</h2>
-          <p class="slide-description">
-            Präzise verlegte Wand- und Bodenfliesen für Bad, Küche und Wohnräume – in Mannheim, Ludwigshafen & Umgebung.
-          </p>
-          <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+        <!-- 1. Slide – Fliesen -->
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Fliesen_schwimmbad_hero.webp">
+          <div class="slide-content">
+            <h2 class="slide-title">Fliesenarbeiten</h2>
+            <p class="slide-description">
+              Präzise verlegte Wand- und Bodenfliesen für Bad, Küche und Wohnräume – in Mannheim, Ludwigshafen &
+              Umgebung.
+            </p>
+            <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+          </div>
         </div>
-      </div>
 
-      <!-- 2. Slide – Maler -->
-      <div class="slider-item swiper-slide"
-           data-bg="/assets/images/Malerarbeiten_bunt.webp">
-        <div class="slide-content">
-          <h2 class="slide-title">Malerarbeiten</h2>
-          <p class="slide-description">
-            Saubere Maler- und Spachtelarbeiten für Ihre Wohnungssanierung – zuverlässig im Raum Mannheim.
-          </p>
-          <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+        <!-- 2. Slide – Maler -->
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Malerarbeiten_bunt.webp">
+          <div class="slide-content">
+            <h2 class="slide-title">Malerarbeiten</h2>
+            <p class="slide-description">
+              Saubere Maler- und Spachtelarbeiten für Ihre Wohnungssanierung – zuverlässig im Raum Mannheim.
+            </p>
+            <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+          </div>
         </div>
-      </div>
 
-      <!-- 3. Slide – Boden -->
-      <div class="slider-item swiper-slide"
-           data-bg="/assets/images/Parkett_1.webp">
-        <div class="slide-content">
-          <h2 class="slide-title">Bodenarbeiten</h2>
-          <p class="slide-description">
-            Bodenverlegung von Vinyl, Laminat, Parkett und Estrich – ideal für Miet- und Eigentumswohnungen in Mannheim & Ludwigshafen.
-          </p>
-          <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+        <!-- 3. Slide – Boden -->
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Parkett_1.webp">
+          <div class="slide-content">
+            <h2 class="slide-title">Bodenarbeiten</h2>
+            <p class="slide-description">
+              Bodenverlegung von Vinyl, Laminat, Parkett und Estrich – ideal für Miet- und Eigentumswohnungen in
+              Mannheim & Ludwigshafen.
+            </p>
+            <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+          </div>
         </div>
-      </div>
 
-      <!-- 4. Slide – Verputz -->
-      <div class="slider-item swiper-slide"
-           data-bg="/assets/images/Verputzen2_hero.webp">
-        <div class="slide-content">
-          <h2 class="slide-title">Verputzarbeiten</h2>
-          <p class="slide-description">
-            Glatte oder strukturierte Innenwände von Q1 bis Q4 – perfekt vorbereitet für Fliesen oder Anstrich.
-          </p>
-          <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+        <!-- 4. Slide – Verputz -->
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Verputzen2_hero.webp">
+          <div class="slide-content">
+            <h2 class="slide-title">Verputzarbeiten</h2>
+            <p class="slide-description">
+              Glatte oder strukturierte Innenwände von Q1 bis Q4 – perfekt vorbereitet für Fliesen oder Anstrich.
+            </p>
+            <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+          </div>
         </div>
-      </div>
 
-      <!-- 5. Slide – Wohnungssanierung -->
-      <div class="slider-item swiper-slide"
-           data-bg="/assets/images/Wohnung_1_hero.webp">
-        <div class="slide-content">
-          <h2 class="slide-title">Ganze Wohnungen sanieren</h2>
-          <p class="slide-description">
-            Komplette Wohnungssanierungen in Mannheim & Umgebung – von Abbruch bis Fertigstellung aus einer Hand koordiniert.
-          </p>
-          <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+        <!-- 5. Slide – Wohnungssanierung -->
+        <div class="slider-item swiper-slide" data-bg="/assets/images/Wohnung_1_hero.webp">
+          <div class="slide-content">
+            <h2 class="slide-title">Ganze Wohnungen sanieren</h2>
+            <p class="slide-description">
+              Komplette Wohnungssanierungen in Mannheim & Umgebung – von Abbruch bis Fertigstellung aus einer Hand
+              koordiniert.
+            </p>
+            <a href="#kontaktbereich" class="slide-button"><span>Anfrage senden</span></a>
+          </div>
         </div>
-      </div>
 
-    </div>
+      </div>
 
       <!-- Slider Pagination -->
       <div class="slider-controls">
@@ -425,23 +414,56 @@
     </div>
   </section>
 
+  <!-- Einleitung für SEO -->
+  <section class="seo-section bg-white">
+    <div class="container">
+      <div class="seo-section-inner">
+        <h2 class="section-title">
+          Ihr Fliesenleger in Mannheim – Fliesen, Böden &amp; Sanierung aus einer Hand
+        </h2>
 
+        <p class="seo-body seo-body--accent">
+          Als regionaler Fliesenleger in Mannheim unterstützen wir private und gewerbliche Kunden bei allen Arbeiten
+          rund um Fliesen, Badsanierung, Bodenverlegung und komplette Wohnungssanierungen. Wir fliesen Bäder, Küchen,
+          Wohnräume, Balkone und Terrassen – sauber, präzise und zuverlässig. Besonders gefragt sind heute großformatige
+          Feinsteinzeugfliesen, fugenarme Designs und hochwertige Bodenbeläge, die wir mit moderner Verlegetechnik
+          professionell umsetzen.
+          <br><br>
+          Unser Einsatzgebiet umfasst Mannheim, Ludwigshafen, Heidelberg und die gesamte Rhein-Neckar-Region. Ob in
+          Neckarau, Käfertal, Waldhof, Lindenhof, Feudenheim oder Innenstadt – wir sind schnell vor Ort und begleiten
+          Ihr Projekt von der ersten Beratung bis zur fertigen Übergabe. Mit über 30 Jahren Erfahrung und mehr als
+          900 abgeschlossenen Projekten stehen wir für Qualität, Zuverlässigkeit und saubere Handwerksarbeit.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Leistungen -->
-  <section id="leistungen" class="py-5 bg-white">
+  <section id="leistungen" class="py-5 bg-white seo-section">
     <div class="container">
-      <h2 class="text-center section-title mb-4">Unsere Bau- und Sanierungsleistungen</h2>
-      <p class="text-left text-muted mb-5">
-        Ob Fliesenarbeiten, Bodenverlegung, Verputz & Malerarbeiten, Trockenbau, Abbruch oder komplette
-        Wohnungssanierung –
-        Limani Fliesenleger ist Ihr Partner für präzises Handwerk in Mannheim, Ludwigshafen und der Rhein-Neckar-Region.
-      </p>
+      <div class="seo-section-inner">
+        <h2 class="section-title mb-4">Unsere Bau- und Sanierungsleistungen</h2>
+        <p class="seo-body seo-body--accent">
+          Als Handwerksbetrieb aus Mannheim bieten wir ein breites Spektrum an Bau- und Sanierungsleistungen aus einer
+          Hand. Dazu gehören professionelle Fliesenarbeiten für Badezimmer, Küchen und Wohnräume, Verputz- &amp;
+          Malerarbeiten, Trockenbau, Estrich- &amp; Bodenverlegung sowie Abbruch und Entsorgung bei Sanierungen.
+          <br><br>
+          Durch die Kombination dieser Gewerke können wir sowohl einzelne Räume als auch komplette Wohnungen
+          modernisieren.
+          Unsere Kunden profitieren von klaren Abläufen, sauberer Ausführung und einem festen Ansprechpartner während
+          des
+          gesamten Projekts. Ob Modernisierung, Renovierung oder komplette Wohnungssanierung – wir sind Ihr
+          zuverlässiger
+          Partner im Raum Mannheim, Ludwigshafen und der Rhein-Neckar-Region.
+        </p>
+      </div>
       <div class="row g-4 service-grid card-group-hover" data-aos="fade-up" data-aos-duration="700">
         <!-- Fliesenarbeiten Card -->
         <div class="col-md-4" data-aos="fade-up">
           <div class="modern-card shadow-sm">
             <div class="card-image-container">
-              <img src="assets/images/Fliesenarbeiten_compressed.webp" alt="Fliesenarbeiten Badezimmer Mannheim" class="card-image">
+              <img src="assets/images/Fliesenarbeiten_compressed.webp" alt="Fliesenarbeiten Badezimmer Mannheim"
+                class="card-image">
             </div>
             <div class="card-body text-center">
               <h4 class="service-title">Fliesenarbeiten</h4>
@@ -583,152 +605,160 @@
 
 
 
-
-  <section id="vorteile" class="py-5 bg-light">
+  <section id="vorteile" class="py-5 bg-light seo-section">
     <div class="container">
+      <div class="seo-section-inner">
       <h2 class="section-title mb-4">Wofür wir stehen</h2>
-      <p class="text-left text-muted mb-5">Gegründet 2017 – gewachsen mit Erfahrung, Qualität und über 900 realisierten
-        Projekten.
-        </br>Für private und gewerbliche Kunden in Mannheim, Ludwigshafen und Umgebung.
-        </br>Von Badezimmern und Küchen bis hin zu kompletten Wohnungssanierungen bringen wir Räume zum Leben.
-        Auch im Außenbereich – Terrassen, Balkone, Haussockel oder sogar Pools – setzen wir Fliesenarbeiten zuverlässig
-        um.
+      <p class="seo-body seo-body--accent">
+        Seit 2017 stehen wir für präzises Handwerk, ehrliche Beratung und hochwertige Ergebnisse. Mit über 900
+        realisierten Projekten
+        in Mannheim, Ludwigshafen und der Umgebung haben wir uns als zuverlässiger Partner für Fliesenarbeiten,
+        Badmodernisierungen
+        und Wohnungssanierungen etabliert. Egal ob Badezimmer, Küche, Wohnraum oder Außenbereich – wir setzen Ihre
+        Wünsche sauber,
+        termintreu und professionell um.
+        <br><br>
+        Durch kurze Wege in Mannheim und die enge Zusammenarbeit mit regionalen Partnergewerken können wir Projekte
+        effizient planen
+        und perfekt koordinieren. Das sorgt für reibungslose Abläufe – von der Planung über den Rückbau bis zur
+        Fertigstellung.
       </p>
+    </div>
 
 
-      <!-- Vertrauen & Erfahrung neu gestaltet -->
-      <div class="row align-items-center mb-5">
-        <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-right">
-          <div class="kachel-bild-wrapper">
-            <img src="assets/images/Limani_Logo2.webp" alt="Erfahrung" class="img-fluid kachel-logo">
-          </div>
-        </div>
-        <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-left">
-          <div class="kachel-text">
-            <div class="kachel-icon"><i class="fas fa-award"></i></div>
-            <h4 class="kachel-title">Über drei Jahrzehnte Erfahrung</h4>
-            <p class="kachel-subtext">Verlässliche Handwerkskunst, höchste Präzision und familiäre Werte – seit
-              Jahrzehnten im Einsatz für unsere Kunden.</p>
-          </div>
+    <!-- Vertrauen & Erfahrung neu gestaltet -->
+    <div class="row align-items-center mb-5">
+      <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-right">
+        <div class="kachel-bild-wrapper">
+          <img src="assets/images/Limani_Logo2.webp" alt="Erfahrung" class="img-fluid kachel-logo">
         </div>
       </div>
-
-
-      <!-- 2. Projekte & Galerie -->
-      <div class="row align-items-center flex-md-row-reverse mb-5">
-        <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-left">
-          <div class="kachel-text">
-            <div class="kachel-icon"><i class="fas fa-layer-group"></i></div>
-            <h4 class="kachel-title">900+ abgeschlossene Projekte</h4>
-            <p class="kachel-subtext">Von Bädern bis Wohnräumen – unsere Galerie spricht für sich.</p>
-          </div>
-        </div>
-        <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-right">
-
-          <!-- Bildergalerie -->
-          <!-- Bilder-Galerie mit Karten-Stapel -->
-          <div class="projekt-stapel-wrapper">
-            <div class="projekt-stapel" id="projektStapel">
-              <img src="assets/images/Malerarbeiten_bunt_compressed.webp" alt="Bild 1" class="stapel-bild active">
-              <img src="assets/images/Fliesen_bad_10_klein.webp" alt="Bild 2" class="stapel-bild">
-              <img src="assets/images/Wohnung_3.webp" alt="Bild 3" class="stapel-bild">
-              <img src="assets/images/Wohnung_5.webp" alt="Bild 4" class="stapel-bild">
-              <img src="assets/images/Fliesen_bad_12_compressed.webp" alt="Bild 5" class="stapel-bild">
-              <img src="assets/images/Parkett_2_compressed.webp" alt="Bild 6" class="stapel-bild">
-              <img src="assets/images/Mosaik_1_compressed.webp" alt="Bild 7" class="stapel-bild">
-              <img src="assets/images/Mosaik_2_compressed.webp" alt="Bild 8" class="stapel-bild">
-              <img src="assets/images/Fliesen_bad_10_compressed.webp" alt="Bild 9" class="stapel-bild">
-              <img src="assets/images/Fliesen_bad_3.webp" alt="Bild 10" class="stapel-bild">
-              <img src="assets/images/Bodenfliesen_außen_compressed.webp" alt="Bild 11" class="stapel-bild">
-              <!-- Weitere Bilder können hier einfach ergänzt werden -->
-            </div>
-            <div class="dot-indikator" id="dotIndikator"></div>
-          </div>
+      <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-left">
+        <div class="kachel-text">
+          <div class="kachel-icon"><i class="fas fa-award"></i></div>
+          <h4 class="kachel-title">Über drei Jahrzehnte Erfahrung</h4>
+          <p class="kachel-subtext">Verlässliche Handwerkskunst, höchste Präzision und familiäre Werte – seit
+            Jahrzehnten im Einsatz für unsere Kunden.</p>
         </div>
       </div>
+    </div>
 
 
-
-      <!-- Prozess-Kacheln -->
-      <!-- 3. Alles aus einer Hand -->
-      <div class="row align-items-center mb-5">
-        <!-- Textblock links -->
-        <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-right">
-          <div class="kachel-text">
-            <div class="kachel-icon"><i class="fas fa-sitemap"></i></div>
-            <h4 class="kachel-title">Alles aus einer Hand</h4>
-            <p class="kachel-subtext">
-              Für größere Projekte wie die Sanierung einer ganzen Wohnung übernehmen wir die Koordination und Bauleitung
-              –
-              damit der Prozess reibungslos abläuft. Wir sind während der gesamten Bauphase Ihr Ansprechpartner.
-            </p>
-          </div>
+    <!-- 2. Projekte & Galerie -->
+    <div class="row align-items-center flex-md-row-reverse mb-5">
+      <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-left">
+        <div class="kachel-text">
+          <div class="kachel-icon"><i class="fas fa-layer-group"></i></div>
+          <h4 class="kachel-title">900+ abgeschlossene Projekte</h4>
+          <p class="kachel-subtext">Von Bädern bis Wohnräumen – unsere Galerie spricht für sich.</p>
         </div>
+      </div>
+      <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-right">
 
-        <!-- Prozessgrafik rechts -->
-        <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-left">
-          <div class="prozess-container">
-            <div class="prozess-schritt"><a class="nav-link" href="#kontaktbereich">
-                <div class="icon-box"><i class="bi bi-clipboard-check"></i></div>
-                <div class="prozess-text">
-                  <h5>Anfrage erstellen</h5>
-                  <p>Schnell & unkompliziert über unser Formular oder telefonisch.</p>
-              </a>
-            </div>
+        <!-- Bildergalerie -->
+        <!-- Bilder-Galerie mit Karten-Stapel -->
+        <div class="projekt-stapel-wrapper">
+          <div class="projekt-stapel" id="projektStapel">
+            <img src="assets/images/Malerarbeiten_bunt_compressed.webp" alt="Bild 1" class="stapel-bild active">
+            <img src="assets/images/Fliesen_bad_10_klein.webp" alt="Bild 2" class="stapel-bild">
+            <img src="assets/images/Wohnung_3.webp" alt="Bild 3" class="stapel-bild">
+            <img src="assets/images/Wohnung_5.webp" alt="Bild 4" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_12_compressed.webp" alt="Bild 5" class="stapel-bild">
+            <img src="assets/images/Parkett_2_compressed.webp" alt="Bild 6" class="stapel-bild">
+            <img src="assets/images/Mosaik_1_compressed.webp" alt="Bild 7" class="stapel-bild">
+            <img src="assets/images/Mosaik_2_compressed.webp" alt="Bild 8" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_10_compressed.webp" alt="Bild 9" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_3.webp" alt="Bild 10" class="stapel-bild">
+            <img src="assets/images/Bodenfliesen_außen_compressed.webp" alt="Bild 11" class="stapel-bild">
+            <!-- Weitere Bilder können hier einfach ergänzt werden -->
           </div>
-          <div class="prozess-pfeil">↓</div>
+          <div class="dot-indikator" id="dotIndikator"></div>
+        </div>
+      </div>
+    </div>
 
-          <div class="prozess-schritt" onclick="zeigeTerminFormular()" style="cursor: pointer;">
-            <div class="icon-box"><i class="bi bi-calendar-event"></i></div>
-            <div class="prozess-text">
-              <h5>Termin vereinbaren</h5>
-              <p>Vor Ort besprechen wir Ihre Wünsche & besichtigen das Objekt.</p>
-            </div>
-          </div>
-          <div id="terminFormular" class="mt-3" style="display: none;">
-            <label for="wunschtermin">📅 Wunschtermin wählen:</label>
-            <input type="datetime-local" id="wunschtermin" class="form-control mb-2" required>
 
-            <label for="kalendername">👤 Ihr Name (optional):</label>
-            <input type="text" id="kalendername" class="form-control mb-2">
 
-            <label for="telefon">📞 Ihre Telefonnummer (optional):</label>
-            <input type="tel" id="telefon" class="form-control mb-3">
-
-            <label for="terminEmail">📧 Ihre E-Mail-Adresse (optional):</label>
-            <input type="email" id="terminEmail" class="form-control mb-2">
-
-            <small class="form-text text-muted ms-1">
-              Geben Sie gerne eine E-Mail an, damit wir den Termin bestätigen können.
-            </small>
-
-            <button class="btn btn-warning" onclick="terminErstellen()">📅 .ics-Datei herunterladen</button>
-          </div>
-          <!-- ✅ Hinweistext nach erfolgreicher Erstellung -->
-          <p id="terminHinweis" class="text-success d-none mt-3 text-center">
-            ✅ Vielen Dank! Wir melden uns zur Bestätigung bei Ihnen.
+    <!-- Prozess-Kacheln -->
+    <!-- 3. Alles aus einer Hand -->
+    <div class="row align-items-center mb-5">
+      <!-- Textblock links -->
+      <div class="row.mb-5 col-md-6 order-1 order-md-2" data-aos="fade-right">
+        <div class="kachel-text">
+          <div class="kachel-icon"><i class="fas fa-sitemap"></i></div>
+          <h4 class="kachel-title">Alles aus einer Hand</h4>
+          <p class="kachel-subtext">
+            Für größere Projekte wie die Sanierung einer ganzen Wohnung übernehmen wir die Koordination und Bauleitung
+            –
+            damit der Prozess reibungslos abläuft. Wir sind während der gesamten Bauphase Ihr Ansprechpartner.
           </p>
+        </div>
+      </div>
 
-          <div class="prozess-pfeil">↓</div>
-
-          <div class="prozess-schritt">
-            <div class="icon-box"><i class="bi bi-file-earmark-text"></i></div>
-            <div class="prozess-text">
-              <h5>Unverbindliches Angebot</h5>
-              <p>Transparent kalkuliert, auf Ihre Anforderungen zugeschnitten.</p>
-            </div>
+      <!-- Prozessgrafik rechts -->
+      <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-left">
+        <div class="prozess-container">
+          <div class="prozess-schritt"><a class="nav-link" href="#kontaktbereich">
+              <div class="icon-box"><i class="bi bi-clipboard-check"></i></div>
+              <div class="prozess-text">
+                <h5>Anfrage erstellen</h5>
+                <p>Schnell & unkompliziert über unser Formular oder telefonisch.</p>
+            </a>
           </div>
-          <div class="prozess-pfeil">↓</div>
+        </div>
+        <div class="prozess-pfeil">↓</div>
 
-          <div class="prozess-schritt">
-            <div class="icon-box"><i class="bi bi-tools"></i></div>
-            <div class="prozess-text">
-              <h5>Bauprojekt durchführen</h5>
-              <p>Von der Planung bis zur Fertigstellung – alles aus einer Hand.</p>
-            </div>
+        <div class="prozess-schritt" onclick="zeigeTerminFormular()" style="cursor: pointer;">
+          <div class="icon-box"><i class="bi bi-calendar-event"></i></div>
+          <div class="prozess-text">
+            <h5>Termin vereinbaren</h5>
+            <p>Vor Ort besprechen wir Ihre Wünsche & besichtigen das Objekt.</p>
+          </div>
+        </div>
+        <div id="terminFormular" class="mt-3" style="display: none;">
+          <label for="wunschtermin">📅 Wunschtermin wählen:</label>
+          <input type="datetime-local" id="wunschtermin" class="form-control mb-2" required>
+
+          <label for="kalendername">👤 Ihr Name (optional):</label>
+          <input type="text" id="kalendername" class="form-control mb-2">
+
+          <label for="telefon">📞 Ihre Telefonnummer (optional):</label>
+          <input type="tel" id="telefon" class="form-control mb-3">
+
+          <label for="terminEmail">📧 Ihre E-Mail-Adresse (optional):</label>
+          <input type="email" id="terminEmail" class="form-control mb-2">
+
+          <small class="form-text text-muted ms-1">
+            Geben Sie gerne eine E-Mail an, damit wir den Termin bestätigen können.
+          </small>
+
+          <button class="btn btn-warning" onclick="terminErstellen()">📅 .ics-Datei herunterladen</button>
+        </div>
+        <!-- ✅ Hinweistext nach erfolgreicher Erstellung -->
+        <p id="terminHinweis" class="text-success d-none mt-3 text-center">
+          ✅ Vielen Dank! Wir melden uns zur Bestätigung bei Ihnen.
+        </p>
+
+        <div class="prozess-pfeil">↓</div>
+
+        <div class="prozess-schritt">
+          <div class="icon-box"><i class="bi bi-file-earmark-text"></i></div>
+          <div class="prozess-text">
+            <h5>Unverbindliches Angebot</h5>
+            <p>Transparent kalkuliert, auf Ihre Anforderungen zugeschnitten.</p>
+          </div>
+        </div>
+        <div class="prozess-pfeil">↓</div>
+
+        <div class="prozess-schritt">
+          <div class="icon-box"><i class="bi bi-tools"></i></div>
+          <div class="prozess-text">
+            <h5>Bauprojekt durchführen</h5>
+            <p>Von der Planung bis zur Fertigstellung – alles aus einer Hand.</p>
           </div>
         </div>
       </div>
+    </div>
     </div>
 
 
@@ -763,262 +793,309 @@
     </div>
   </section>
 
-
-<section id="kontaktbereich" class="py-5 bg-light">
-  <div class="container">
-
-    <!-- Intro -->
-    <div class="text-center mb-4">
-      <h2 class="section-title mb-2">
-        Kontaktieren Sie Ihren Fliesenleger in Mannheim
-      </h2>
-      <p class="section-subline">
-        Jetzt unverbindliches Angebot für Fliesenarbeiten, Bodenverlegung
-        oder Wohnungssanierung in Mannheim, Ludwigshafen & Umgebung einholen –
-        wir melden uns schnellstmöglich zurück.
+  <section class="py-5 bg-light seo-section">
+    <div class="container">
+      <div class="seo-section-inner">
+      <h2 class="section-title mb-4">Was kosten Fliesenarbeiten oder eine Sanierung?</h2>
+      <p class="seo-body seo-body--accent">
+        Die Kosten für Fliesenarbeiten oder eine Badsanierung in Mannheim hängen von Fläche, Material, Fliesenformat,
+        Untergrund und gewünschter Ausführung ab. Nach einem kurzen Vor-Ort-Termin erhalten Sie ein transparentes
+        Angebot,
+        das alle nötigen Arbeitsschritte – von der Untergrundvorbereitung über Abdichtung bis zur Verlegung –
+        berücksichtigt.
+        <br><br>
+        Auf Wunsch erstellen wir mehrere Varianten für unterschiedliche Budgets und beraten Sie zu passenden
+        Materialien,
+        langlebigen Lösungen und modernen Gestaltungsoptionen.
       </p>
     </div>
+    </div>
+  </section>
 
-    <!-- Card-Layout wie bei circleoflife-bjj -->
-    <div class="contact-card-wrapper">
-      <div class="row g-4 align-items-start">
 
-        <!-- Formular (links auf Desktop) -->
-        <div class="col-lg-7 order-2 order-lg-1">
-          <div class="contact-form-card h-100">
-            <form class="needs-validation" id="kontaktformular" novalidate>
-              <!-- Art der Anfrage -->
-              <div class="mb-3">
-                <label for="anfrageart" class="form-label">Art der Anfrage *</label>
-                <select class="form-select" id="anfrageart" name="anfrageart" required>
-                  <option value="">Bitte wählen</option>
-                  <option value="offen">Offene Anfrage</option>
-                  <option value="konkret">Konkrete Anfrage</option>
-                </select>
-                <div class="invalid-feedback">Bitte wählen Sie eine Anfragenart aus.</div>
-              </div>
+  <section id="kontaktbereich" class="py-5 bg-light">
+    <div class="container">
 
-              <!-- Anrede -->
-              <div class="mb-3">
-                <label class="form-label">Anrede *</label>
-                <div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anrede" id="herr" value="Herr" required>
-                    <label class="form-check-label" for="herr">Herr</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anrede" id="frau" value="Frau" required>
-                    <label class="form-check-label" for="frau">Frau</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="anrede" id="divers" value="Divers" required>
-                    <label class="form-check-label" for="divers">Keine Angabe</label>
-                  </div>
-                </div>
-              </div>
+      <!-- Intro -->
+      <div class="text-center mb-4">
+        <h2 class="section-title mb-2">
+          Kontaktieren Sie Ihren Fliesenleger in Mannheim
+        </h2>
+        <p class="section-subline">
+          Jetzt unverbindliches Angebot für Fliesenarbeiten, Bodenverlegung
+          oder Wohnungssanierung in Mannheim, Ludwigshafen & Umgebung einholen –
+          wir melden uns schnellstmöglich zurück.
+        </p>
+      </div>
 
-              <!-- Name -->
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="vorname" class="form-label">Vorname *</label>
-                  <input type="text" class="form-control" id="vorname" name="vorname"
-                         pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
-                  <div class="invalid-feedback">Bitte geben Sie einen gültigen Vornamen ein.</div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="nachname" class="form-label">Nachname *</label>
-                  <input type="text" class="form-control" id="nachname" name="nachname"
-                         pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
-                  <div class="invalid-feedback">Bitte geben Sie einen gültigen Nachnamen ein.</div>
-                </div>
-              </div>
+      <!-- Card-Layout wie bei circleoflife-bjj -->
+      <div class="contact-card-wrapper">
+        <div class="row g-4 align-items-start">
 
-              <!-- Kontaktinfos -->
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="email" class="form-label">E-Mail *</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                  <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="phone" class="form-label">Telefonnummer *</label>
-                  <input type="tel" id="phone" name="phone" class="form-control" required>
-                  <input type="hidden" name="tel" id="telefon_voll">
-                  <div class="invalid-feedback">Bitte geben Sie eine gültige Telefonnummer ein.</div>
-                </div>
-              </div>
-
-              <!-- Adresse optional -->
-              <div class="mb-3">
-                <label for="adresse" class="form-label">Projektadresse (optional)</label>
-                <input type="text" class="form-control" id="adresse" name="adresse">
-              </div>
-
-              <!-- Konkrete Angaben -->
-              <div id="konkreteAngaben" style="display:none;">
+          <!-- Formular (links auf Desktop) -->
+          <div class="col-lg-7 order-2 order-lg-1">
+            <div class="contact-form-card h-100">
+              <form class="needs-validation" id="kontaktformular" novalidate>
+                <!-- Art der Anfrage -->
                 <div class="mb-3">
-                  <label for="projektart" class="form-label">Projektart</label>
-                  <select class="form-select" id="projektart" name="projektart">
+                  <label for="anfrageart" class="form-label">Art der Anfrage *</label>
+                  <select class="form-select" id="anfrageart" name="anfrageart" required>
                     <option value="">Bitte wählen</option>
-                    <option value="Badezimmer">Badezimmer</option>
-                    <option value="Küche">Küche</option>
-                    <option value="Wohnungssanierung">Wohnungssanierung</option>
-                    <option value="Sonstiges">Sonstiges</option>
+                    <option value="offen">Offene Anfrage</option>
+                    <option value="konkret">Konkrete Anfrage</option>
                   </select>
+                  <div class="invalid-feedback">Bitte wählen Sie eine Anfragenart aus.</div>
                 </div>
 
+                <!-- Anrede -->
                 <div class="mb-3">
-                  <label for="qm" class="form-label">Quadratmeter (optional)</label>
-                  <input type="number" class="form-control" id="qm" name="qm" min="0" placeholder="z.B. 25">
+                  <label class="form-label">Anrede *</label>
+                  <div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="anrede" id="herr" value="Herr" required>
+                      <label class="form-check-label" for="herr">Herr</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="anrede" id="frau" value="Frau" required>
+                      <label class="form-check-label" for="frau">Frau</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="anrede" id="divers" value="Divers" required>
+                      <label class="form-check-label" for="divers">Keine Angabe</label>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Beschreibung -->
-              <div class="mb-3">
-                <label for="beschreibung" class="form-label">Weitere Beschreibung (optional)</label>
-                <textarea class="form-control" maxlength="500" name="beschreibung" id="beschreibung"
-                          rows="3" placeholder="Was soll gemacht werden?"></textarea>
-              </div>
+                <!-- Name -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="vorname" class="form-label">Vorname *</label>
+                    <input type="text" class="form-control" id="vorname" name="vorname" pattern="[a-zA-ZäöüÄÖÜß \-]{2,}"
+                      required>
+                    <div class="invalid-feedback">Bitte geben Sie einen gültigen Vornamen ein.</div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="nachname" class="form-label">Nachname *</label>
+                    <input type="text" class="form-control" id="nachname" name="nachname"
+                      pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
+                    <div class="invalid-feedback">Bitte geben Sie einen gültigen Nachnamen ein.</div>
+                  </div>
+                </div>
 
-              <!-- Datenschutz -->
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="datenschutz" name="datenschutz" required>
-                <label class="form-check-label" for="datenschutz">
-                  Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere sie.
-                </label>
-              </div>
+                <!-- Kontaktinfos -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">E-Mail *</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                    <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="phone" class="form-label">Telefonnummer *</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                    <input type="hidden" name="tel" id="telefon_voll">
+                    <div class="invalid-feedback">Bitte geben Sie eine gültige Telefonnummer ein.</div>
+                  </div>
+                </div>
 
-              <!-- Submit -->
-              <div class="text-center text-md-start">
-                <button type="submit" class="btn btn-warning w-100 w-md-auto">
-                  Anfrage senden
-                </button>
-              </div>
+                <!-- Adresse optional -->
+                <div class="mb-3">
+                  <label for="adresse" class="form-label">Projektadresse (optional)</label>
+                  <input type="text" class="form-control" id="adresse" name="adresse">
+                </div>
 
-              <div id="successMessage"
-                   class="alert alert-success d-none mt-3 text-center"
-                   role="alert">
-                ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
-              </div>
-            </form>
+                <!-- Konkrete Angaben -->
+                <div id="konkreteAngaben" style="display:none;">
+                  <div class="mb-3">
+                    <label for="projektart" class="form-label">Projektart</label>
+                    <select class="form-select" id="projektart" name="projektart">
+                      <option value="">Bitte wählen</option>
+                      <option value="Badezimmer">Badezimmer</option>
+                      <option value="Küche">Küche</option>
+                      <option value="Wohnungssanierung">Wohnungssanierung</option>
+                      <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="qm" class="form-label">Quadratmeter (optional)</label>
+                    <input type="number" class="form-control" id="qm" name="qm" min="0" placeholder="z.B. 25">
+                  </div>
+                </div>
+
+                <!-- Beschreibung -->
+                <div class="mb-3">
+                  <label for="beschreibung" class="form-label">Weitere Beschreibung (optional)</label>
+                  <textarea class="form-control" maxlength="500" name="beschreibung" id="beschreibung" rows="3"
+                    placeholder="Was soll gemacht werden?"></textarea>
+                </div>
+
+                <!-- Datenschutz -->
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="datenschutz" name="datenschutz" required>
+                  <label class="form-check-label" for="datenschutz">
+                    Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere sie.
+                  </label>
+                </div>
+
+                <!-- Submit -->
+                <div class="text-center text-md-start">
+                  <button type="submit" class="btn btn-warning w-100 w-md-auto">
+                    Anfrage senden
+                  </button>
+                </div>
+
+                <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
+                  ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
 
-        <!-- Kontaktinfo (rechts auf Desktop) -->
-        <div class="col-lg-5 order-1 order-lg-2">
-          <aside class="contact-info-card h-100">
-            <h3 class="h5 mb-3">Kontakt</h3>
-            <p class="mb-4 small text-muted">
-              Sie möchten lieber direkt anrufen oder eine E-Mail schreiben?
-              Nutzen Sie gerne die folgenden Kontaktmöglichkeiten.
-            </p>
-            <ul class="list-unstyled contact-list mb-0">
-              <li class="mb-3 d-flex align-items-center">
-                <i class="bi bi-telephone-fill text-warning me-2"></i>
-                <a href="tel:+491733293668" class="text-dark text-decoration-none">
-                  0173 3293668
-                </a>
-              </li>
-              <li class="mb-3 d-flex align-items-center">
-                <i class="bi bi-envelope-fill text-warning me-2"></i>
-                <a href="mailto:kontakt@limani-fliesenleger.de"
-                   class="text-dark text-decoration-none">
-                  kontakt@limani-fliesenleger.de
-                </a>
-              </li>
-              <!-- Optional: weiterer Hinweistext -->
-              <li class="mt-3 small text-muted">
-                Wir melden uns in der Regel innerhalb von 24–48&nbsp;Stunden bei Ihnen.
-              </li>
-            </ul>
-          </aside>
-        </div>
+          <!-- Kontaktinfo (rechts auf Desktop) -->
+          <div class="col-lg-5 order-1 order-lg-2">
+            <aside class="contact-info-card h-100">
+              <h3 class="h5 mb-3">Kontakt</h3>
+              <p class="mb-4 small text-muted">
+                Sie möchten lieber direkt anrufen oder eine E-Mail schreiben?
+                Nutzen Sie gerne die folgenden Kontaktmöglichkeiten.
+              </p>
+              <ul class="list-unstyled contact-list mb-0">
+                <li class="mb-3 d-flex align-items-center">
+                  <i class="bi bi-telephone-fill text-warning me-2"></i>
+                  <a href="tel:+491733293668" class="text-dark text-decoration-none">
+                    0173 3293668
+                  </a>
+                </li>
+                <li class="mb-3 d-flex align-items-center">
+                  <i class="bi bi-envelope-fill text-warning me-2"></i>
+                  <a href="mailto:kontakt@limani-fliesenleger.de" class="text-dark text-decoration-none">
+                    kontakt@limani-fliesenleger.de
+                  </a>
+                </li>
+                <!-- Optional: weiterer Hinweistext -->
+                <li class="mt-3 small text-muted">
+                  Wir melden uns in der Regel innerhalb von 24–48&nbsp;Stunden bei Ihnen.
+                </li>
+              </ul>
+            </aside>
+          </div>
 
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+
+  <section class="py-5 bg-white seo-section">
+    <div class="container">
+            <div class="seo-section-inner">
+      <h2 class="section-title mb-4 text-center">Regional in Mannheim & Rhein-Neckar verwurzelt</h2>
+      <p class="seo-body seo-body--accent">
+        Wir sind in Mannheim zuhause und regelmäßig in allen Stadtteilen im Einsatz – darunter Neckarau, Lindenhof,
+        Almenhof,
+        Feudenheim, Käfertal, Waldhof, Vogelstang, Sandhofen und Innenstadt. Auch in Ludwigshafen, Heidelberg,
+        Viernheim,
+        Frankenthal und der gesamten Rhein-Neckar-Region übernehmen wir Fliesenarbeiten, Bodenverlegung und komplette
+        Wohnungssanierungen.
+        <br><br>
+        Kurze Wege, schnelle Terminvereinbarungen und persönliche Erreichbarkeit sind uns wichtig – deshalb setzen viele
+        unserer Kunden seit Jahren auf uns als regionalen Handwerksbetrieb.
+      </p>
+      </div>
+    </div>
+  </section>
 
 
   <!-- FAQ -->
   <section id="faq" class="py-5 bg-white">
     <div class="container">
-      <h2 class="text-center section-title mb-4">Häufige Fragen</h2>
+      <h2 class="section-title mb-4 text-center">Häufige Fragen</h2>
 
       <div class="accordion" id="faqAccordion">
 
         <div class="accordion-item">
-          <h3 class="accordion-header" id="faq1-heading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-              In welchen Regionen sind Sie als Fliesenleger unterwegs?
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqA">
+              Was kostet eine Badsanierung in Mannheim?
             </button>
           </h3>
-          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faqA" class="accordion-collapse collapse">
             <div class="accordion-body">
-              Unser Schwerpunkt liegt in Mannheim, Ludwigshafen und der umliegenden Rhein-Neckar-Region.
-              Je nach Projektumfang sind Einsätze auch in benachbarten Orten möglich – sprechen Sie uns einfach an.
+              Die Kosten richten sich nach Größe, Material, Untergrund und gewünschter Ausstattung. Nach einer
+              Besichtigung
+              erhalten Sie ein transparentes und detailliertes Angebot.
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
-          <h3 class="accordion-header" id="faq2-heading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-              Welche Leistungen bieten Sie neben Fliesenarbeiten an?
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqB">
+              Verlegen Sie auch großformatige Fliesen?
             </button>
           </h3>
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faqB" class="accordion-collapse collapse">
             <div class="accordion-body">
-              Neben klassischen Fliesenarbeiten übernehmen wir Verputz- & Malerarbeiten, Trockenbau,
-              Bodenverlegung & Estrich sowie Abbruch & Entsorgung. Auf Wunsch koordinieren wir auch komplette
-              Wohnungssanierungen.
+              Ja, wir haben langjährige Erfahrung mit großformatigen Feinsteinzeugfliesen. Diese erfordern spezielle
+              Technik,
+              passende Werkzeuge und professionelle Untergrundvorbereitung.
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
-          <h3 class="accordion-header" id="faq3-heading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-              Wie läuft eine Wohnungssanierung mit Limani Fliesenleger ab?
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqC">
+              Können Sie Fliesen überfliesen?
             </button>
           </h3>
-          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faqC" class="accordion-collapse collapse">
             <div class="accordion-body">
-              Nach Ihrer Anfrage vereinbaren wir einen Vor-Ort-Termin in Mannheim oder Umgebung,
-              besprechen Ihre Wünsche und nehmen alle Maße auf. Anschließend erhalten Sie ein
-              transparentes Angebot. Während der Ausführung koordinieren wir die Gewerke,
-              damit Ihre Wohnungssanierung reibungslos und termingerecht abläuft.
+              Ja – sofern die bestehenden Fliesen tragfähig und eben sind. Wir prüfen den Untergrund vor Ort und
+              beraten,
+              ob Überfliesen sinnvoll oder eine Neuverlegung besser ist.
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
-          <h3 class="accordion-header" id="faq4-heading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-              Mit welchen Kosten muss ich für Fliesenarbeiten rechnen?
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqD">
+              Welche Materialien eignen sich für Badezimmer und Feuchträume?
             </button>
           </h3>
-          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faqD" class="accordion-collapse collapse">
             <div class="accordion-body">
-              Die Kosten für Fliesenarbeiten hängen von Fläche, Untergrund, Fliesenformat und gewünschter Ausführung ab.
-              Nach einem kurzen Gespräch und einer Besichtigung in Mannheim, Ludwigshafen oder Umgebung
-              erstellen wir Ihnen ein individuelles, unverbindliches Angebot mit transparenten Preisen.
+              Empfehlenswert sind Feinsteinzeug, Naturstein und rutschhemmende Bodenfliesen. Wir beraten Sie zu Optik,
+              Pflegeaufwand und Einsatzbereichen.
             </div>
           </div>
         </div>
 
         <div class="accordion-item">
-          <h3 class="accordion-header" id="faq5-heading">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-              Übernehmen Sie auch kleinere Reparaturen oder Teilsanierungen?
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqE">
+              Führen Sie auch kleine Reparaturen oder Teilsanierungen durch?
             </button>
           </h3>
-          <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faqE" class="accordion-collapse collapse">
             <div class="accordion-body">
-              Ja, wir übernehmen sowohl komplette Sanierungen als auch kleinere Projekte –
-              zum Beispiel das Erneuern einzelner Flächen, das Nachbessern von Fugen oder
-              die Teilsanierung von Bad oder Küche. Schreiben Sie uns einfach mit einer kurzen Beschreibung Ihres
-              Vorhabens.
+              Ja, wir reparieren beschädigte Fliesen, erneuern Silikonfugen, bessern Mängel aus oder übernehmen
+              Teilbereiche
+              einer Sanierung.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqF">
+              Arbeiten Sie auch in Ludwigshafen und Heidelberg?
+            </button>
+          </h3>
+          <div id="faqF" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              Ja – wir sind regelmäßig in Ludwigshafen, Heidelberg und dem gesamten Rhein-Neckar-Kreis im Einsatz.
             </div>
           </div>
         </div>
@@ -1075,7 +1152,7 @@
           <p class="mb-1">
             <a href="datenschutz.html" class="footer-link">Datenschutz</a>
           </p>
-                    <p class=" mb-0">© <span id="jahr"></span> – Alle Rechte vorbehalten.</p>
+          <p class=" mb-0">© <span id="jahr"></span> – Alle Rechte vorbehalten.</p>
         </div>
       </div>
     </div>
@@ -1084,11 +1161,12 @@
 
 
 
-<button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen">
-  <svg class="go-top-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</button>
+  <button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen">
+    <svg class="go-top-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
