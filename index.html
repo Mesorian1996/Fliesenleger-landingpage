@@ -34,13 +34,17 @@
   <!-- intl-tel-input CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/main.css">
+  </noscript>
 
   <!-- Linking Swiper CSS-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Hero Bild preload -->
   <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority=high as="image">
+  <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero.webp" fetchpriority=high as="image">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -472,7 +476,7 @@
                 class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Fliesenarbeiten</h4>
+              <h3 class="service-title">Fliesenarbeiten</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Badezimmer, Küchen, Balkone & Terassen</li>
                 <li><span class="text-orange">&rsaquo;</span> Wand- & Bodenfliesen</li>
@@ -497,7 +501,7 @@
               <img src="assets/images/Verputzen_compressed.webp" alt="Verputzarbeiten" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Verputz- & Malerarbeiten</h4>
+              <h3 class="service-title">Verputz- & Malerarbeiten</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Glatt- & Strukturputz</li>
                 <li><span class="text-orange">&rsaquo;</span> Decken & Wände</li>
@@ -523,7 +527,7 @@
               <img src="assets/images/Trockenbau_1_compressed.webp" alt="Trockenbauarbeiten" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Trockenbau</h4>
+              <h3 class="service-title">Trockenbau</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Trennwände & Decken</li>
                 <li><span class="text-orange">&rsaquo;</span> Unterkonstruktionen</li>
@@ -546,7 +550,7 @@
               <img src="assets/images/Abbrucharbeiten.webp" alt="Abbruch & Entsorgung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Abbruch & Entsorgung</h4>
+              <h3 class="service-title">Abbruch & Entsorgung</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Rückbau & Demontage</li>
                 <li><span class="text-orange">&rsaquo;</span> Containerdienst</li>
@@ -572,7 +576,7 @@
               <img src="assets/images/Bodenarbeiten.webp" alt="Bodenverlegung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Bodenverlegung & Estrich</h4>
+              <h3 class="service-title">Bodenverlegung & Estrich</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Spachteln & Bodenausgleich</li>
                 <li><span class="text-orange">&rsaquo;</span> Verlegung von Vinyl, Laminat & Parkett</li>
@@ -598,7 +602,7 @@
               <img src="assets/images/Wohnung_compressed.webp" alt="Wohnungssanierung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Wohnungssanierung</h4>
+              <h3 class="service-title">Wohnungssanierung</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Komplettsanierung</li>
                 <li><span class="text-orange">&rsaquo;</span> Koordination von Subunternehmen</li>
@@ -657,7 +661,7 @@
             <img src="/assets/icons/quality.svg" alt="" width="48" height="48" class="icon icon-quality"
               loading="lazy" aria-hidden="true">
           </div>
-          <h4 class="kachel-title">Über drei Jahrzehnte Erfahrung</h4>
+          <h3 class="kachel-title">Über drei Jahrzehnte Erfahrung</h3>
           <p class="kachel-subtext">Verlässliche Handwerkskunst, höchste Präzision und familiäre Werte – seit
             Jahrzehnten im Einsatz für unsere Kunden.</p>
         </div>
@@ -673,7 +677,7 @@
             <img src="/assets/icons/projekte.svg" alt="" width="48" height="48" class="icon icon-projekte"
               loading="lazy" aria-hidden="true">
           </div>
-          <h4 class="kachel-title">900+ abgeschlossene Projekte</h4>
+          <h3 class="kachel-title">900+ abgeschlossene Projekte</h3>
           <p class="kachel-subtext">Von Bädern bis Wohnräumen – unsere Galerie spricht für sich.</p>
         </div>
       </div>
@@ -725,7 +729,7 @@
               <line x1="18" y1="13" x2="18" y2="16" stroke-linecap="round"></line>
             </svg>
           </div>
-          <h4 class="kachel-title">Alles aus einer Hand</h4>
+          <h3 class="kachel-title">Alles aus einer Hand</h3>
           <p class="kachel-subtext">
             Für größere Projekte wie die Sanierung einer ganzen Wohnung übernehmen wir die Koordination und Bauleitung
             –
@@ -854,7 +858,7 @@
             <img src="/assets/icons/standort.svg" alt="" width="48" height="48" class="icon icon-location" loading="lazy"
               aria-hidden="true">
           </div>
-          <h4 class="kachel-title">Regional & zuverlässig</h4>
+          <h3 class="kachel-title">Regional & zuverlässig</h3>
           <p class="kachel-subtext">
             Wir sind aus Mannheim – regional verwurzelt und persönlich für Sie erreichbar.
             Durch kurze Wege nach Ludwigshafen, Heidelberg und in die umliegenden Städten
@@ -1222,7 +1226,7 @@
 
         <!-- Rechtliches -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Rechtliches</h6>
+          <p class="fw-bold mb-2">Rechtliches</h4>
           <p class="mb-1">
             <a href="impressum.html" class="footer-link">Impressum</a>
           </p>

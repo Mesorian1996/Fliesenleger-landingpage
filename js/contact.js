@@ -18,6 +18,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const enhanceTelAccessibility = () => {
+    if (!phoneInputField) return;
+    const itiWrapper = phoneInputField.closest(".iti");
+    if (!itiWrapper) return;
+    const flagButton = itiWrapper.querySelector(".iti__selected-flag");
+    const countryList = itiWrapper.querySelector(".iti__country-list");
+    if (!flagButton || !countryList) return;
+    const listId = `${phoneInputField.id || "phone"}-country-listbox`;
+    countryList.id = listId;
+    flagButton.setAttribute("role", "combobox");
+    flagButton.setAttribute("aria-haspopup", "listbox");
+    flagButton.setAttribute("aria-controls", listId);
+    flagButton.setAttribute("aria-label", "Ländervorwahl auswählen");
+    flagButton.setAttribute("aria-expanded", "false");
+    const setExpanded = (isOpen) =>
+      flagButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    phoneInputField.addEventListener("open:countrydropdown", () =>
+      setExpanded(true)
+    );
+    phoneInputField.addEventListener("close:countrydropdown", () =>
+      setExpanded(false)
+    );
+  };
+
   // intl-tel-input initialisieren (falls eingebunden)
   let iti = null;
   if (phoneInputField && window.intlTelInput) {
@@ -28,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
       utilsScript:
         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
+    requestAnimationFrame(enhanceTelAccessibility);
   }
 
   if (!form) return;

@@ -424,7 +424,7 @@ form textarea:focus {
     max-width: 720px;
     margin: 0 auto;
     font-size: .98rem;
-    color: #6c757d
+    color: #2f343a
 }
 
 #kontaktbereich .contact-card-wrapper {
@@ -530,7 +530,7 @@ form textarea:focus {
 
 .section-subline {
     margin-top: .5rem;
-    color: #6c757d
+    color: #343a40
 }
 
 .trust-card-m {
@@ -967,7 +967,7 @@ form textarea:focus {
 }
 
 .footer-dark .footer-link {
-    color: #aaa;
+    color: #d7d7d7;
     text-decoration: none;
     transition: color .3s
 }
@@ -975,6 +975,11 @@ form textarea:focus {
 .footer-dark .footer-link:hover {
     color: #f39c12;
     text-decoration: none
+}
+
+.footer-dark .text-success {
+    color: #4cd97b !important;
+    font-weight: 600
 }
 
 .footer-dark .bi-whatsapp {
