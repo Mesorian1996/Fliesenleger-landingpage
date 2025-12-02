@@ -1,5 +1,118 @@
 // script.js – UI-Features (ohne Formular-Backend)
 
+const SWIPER_CSS_URL =
+  "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+const SWIPER_JS_URL =
+  "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js";
+const AOS_CSS_URL =
+  "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css";
+const AOS_JS_URL =
+  "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js";
+
+const heroMq = window.matchMedia("(min-width: 768px)");
+const stylesheetPromises = new Map();
+const scriptPromises = new Map();
+
+const loadStylesheet = (href) => {
+  if (stylesheetPromises.has(href)) {
+    return stylesheetPromises.get(href);
+  }
+  if (document.querySelector(`link[href="${href}"]`)) {
+    const resolved = Promise.resolve();
+    stylesheetPromises.set(href, resolved);
+    return resolved;
+  }
+  const promise = new Promise((resolve, reject) => {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    link.onload = resolve;
+    link.onerror = reject;
+    document.head.appendChild(link);
+  });
+  stylesheetPromises.set(href, promise);
+  return promise;
+};
+
+const loadScript = (src) => {
+  if (scriptPromises.has(src)) {
+    return scriptPromises.get(src);
+  }
+  const existing = document.querySelector(`script[src="${src}"]`);
+  if (existing) {
+    const promise = new Promise((resolve, reject) => {
+      if (existing.dataset.loaded === "true") {
+        resolve();
+      } else {
+        existing.addEventListener("load", () => resolve(), { once: true });
+        existing.addEventListener("error", reject, { once: true });
+      }
+    });
+    scriptPromises.set(src, promise);
+    return promise;
+  }
+  const promise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.defer = true;
+    script.onload = () => {
+      script.dataset.loaded = "true";
+      resolve();
+    };
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+  scriptPromises.set(src, promise);
+  return promise;
+};
+
+let swiperAssetsPromise = null;
+const ensureSwiperAssets = () => {
+  if (!swiperAssetsPromise) {
+    swiperAssetsPromise = Promise.all([
+      loadStylesheet(SWIPER_CSS_URL),
+      loadScript(SWIPER_JS_URL),
+    ]);
+  }
+  return swiperAssetsPromise;
+};
+
+let aosAssetsPromise = null;
+const ensureAosAssets = () => {
+  if (!aosAssetsPromise) {
+    aosAssetsPromise = Promise.all([
+      loadStylesheet(AOS_CSS_URL),
+      loadScript(AOS_JS_URL),
+    ]).then(() => {
+      if (window.AOS) {
+        window.AOS.init({ duration: 800, once: true });
+      }
+    });
+  }
+  return aosAssetsPromise;
+};
+
+let sliderBackgroundsLoaded = false;
+const loadSliderBackgrounds = () => {
+  if (sliderBackgroundsLoaded || !heroMq.matches) return;
+  const slides = document.querySelectorAll(".slider-item");
+  if (!slides.length) return;
+  sliderBackgroundsLoaded = true;
+  slides.forEach((slide, index) => {
+    const bg = slide.dataset.bg;
+    if (!bg) return;
+    const img = new Image();
+    img.src = bg;
+    if (index === 0) {
+      img.loading = "eager";
+    }
+    img.onload = () => {
+      slide.style.setProperty("--bg-img", `url('${bg}')`);
+      slide.classList.add("bg-loaded");
+    };
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar");
   const navbarToggler = document.querySelector(".navbar-toggler");
@@ -158,17 +271,24 @@ navLinks.forEach((link) => {
   }
 
   // -----------------------------
-  // AOS-Init (falls nicht schon inline)
-  // -----------------------------
-  if (window.AOS) {
-    AOS.init({ duration: 800, once: true });
-  }
-
-  // -----------------------------
   // Jahr im Footer
   // -----------------------------
   const jahrEl = document.getElementById("jahr");
   if (jahrEl) jahrEl.textContent = new Date().getFullYear();
+
+  loadSliderBackgrounds();
+
+  if (document.querySelector("[data-aos]")) {
+    const scheduleAosLoad = () =>
+      ensureAosAssets().catch((error) =>
+        console.error("AOS konnte nicht geladen werden:", error)
+      );
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(scheduleAosLoad, { timeout: 1500 });
+    } else {
+      setTimeout(scheduleAosLoad, 0);
+    }
+  }
 });
 
 // --------------------------------------
@@ -198,14 +318,21 @@ const updateIndicator = (tab, index) => {
 };
 
 let heroSwiper = null;
-const heroMq = window.matchMedia("(min-width: 768px)");
 
-function initHeroSwiper() {
-  if (heroSwiper || typeof Swiper === "undefined") return;
+async function initHeroSwiper() {
+  if (heroSwiper || !heroMq.matches) return;
 
-  // Slider existiert z. B. auf Unterseiten evtl. nicht
   const sliderContainer = document.querySelector(".slider-container");
   if (!sliderContainer) return;
+
+  try {
+    await ensureSwiperAssets();
+  } catch (error) {
+    console.error("Swiper konnte nicht geladen werden:", error);
+    return;
+  }
+
+  if (heroSwiper) return;
 
   heroSwiper = new Swiper(".slider-container", {
     effect: "fade",
@@ -244,13 +371,18 @@ function destroyHeroSwiper() {
 
 // Beim ersten Laden
 if (heroMq.matches) {
-  initHeroSwiper();
+  initHeroSwiper().catch((error) =>
+    console.error("Swiper-Initialisierung fehlgeschlagen:", error)
+  );
 }
 
 // Auf Änderungen (Mobile ↔ Desktop) reagieren
 const heroMqHandler = (e) => {
   if (e.matches) {
-    initHeroSwiper();      // wird Desktop
+    loadSliderBackgrounds();
+    initHeroSwiper().catch((error) =>
+      console.error("Swiper-Initialisierung fehlgeschlagen:", error)
+    );
   } else {
     destroyHeroSwiper();   // wird Mobile
   }
@@ -363,29 +495,4 @@ if (heroHeading) {
   
 })();
 
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Nur ab 768px Slider-Backgrounds laden
-  if (!window.matchMedia("(min-width: 768px)").matches) return;
-
-  const slides = document.querySelectorAll(".slider-item");
-
-  slides.forEach((slide, index) => {
-    const bg = slide.dataset.bg;
-    if (!bg) return;
-
-    const img = new Image();
-    img.src = bg;
-
-    if (index === 0) {
-      img.loading = "eager";
-    }
-
-    img.onload = () => {
-      slide.style.setProperty("--bg-img", `url('${bg}')`);
-      slide.classList.add("bg-loaded");
-    };
-  });
-});
 
