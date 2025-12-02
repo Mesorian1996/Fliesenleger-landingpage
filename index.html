@@ -31,8 +31,6 @@
   <!-- <link rel="stylesheet" href="css/style.css"> -->
   <!-- AOS CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- intl-tel-input CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
   <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
   <noscript>
@@ -944,8 +942,8 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="phone" class="form-label">Telefonnummer *</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required>
-                    <input type="hidden" name="tel" id="telefon_voll">
+                    <input type="tel" id="phone" name="phone" class="form-control" required
+                      pattern="^[0-9+()\/\-\s]{6,}$">
                     <div class="invalid-feedback">Bitte geben Sie eine gültige Telefonnummer ein.</div>
                   </div>
                 </div>
@@ -982,19 +980,14 @@
                     placeholder="Was soll gemacht werden?"></textarea>
                 </div>
 
-                <!-- Datenschutz -->
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="datenschutz" name="datenschutz" required>
-                  <label class="form-check-label" for="datenschutz">
-                    Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und akzeptiere sie.
-                  </label>
-                </div>
-
                 <!-- Submit -->
                 <div class="text-center text-md-start">
                   <button type="submit" class="btn btn-warning w-100 w-md-auto">
                     Anfrage senden
                   </button>
+                  <small class="d-block mt-2 text-muted">
+                    Durch das Übermitteln Ihrer Daten stimmen Sie der <a href="datenschutz.html">Datenschutzerklärung</a> zu.
+                  </small>
                 </div>
 
                 <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
@@ -1231,7 +1224,6 @@
     });
   </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
   <!-- Linking Swiper Script -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- Drittanbieter (Bootstrap, AOS, Swiper, intl-tel-input etc.) wie bisher -->
