@@ -327,6 +327,7 @@
   .subpage-hero {
     padding: 6rem 0 3.5rem;
     min-height: 100vh;
+    min-height: 100dvh;
   }
 }
 
