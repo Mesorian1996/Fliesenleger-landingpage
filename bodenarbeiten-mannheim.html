@@ -28,26 +28,13 @@
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
-  <!-- AOS CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- intl-tel-input CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/main.css">
+  </noscript>
 
-  <link rel="stylesheet" href="css/slide.css">
-  <!-- Linking Swiper CSS-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Linking Google Fonts for Icons -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,200,0,0" />
+  <link rel="preload" href="/assets/images/Bodenarbeiten.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -153,6 +140,9 @@
         <img src="assets/images/Limani_Logo_modern.png" alt="Limani Fliesenleger Logo" style="max-height: 75px;">
       </a>
 
+      <a class="btn btn-warning btn-sm d-md-none ms-2 flex-shrink-0 px-3 py-1 btn-mobile-cta" href="/#kontaktbereich">
+        Anfrage senden
+      </a>
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
@@ -226,9 +216,9 @@
 
 
           <!-- CTA im mobilen Menü (für bessere Usability) -->
-          <li class="nav-item d-md-none mt-2">
-            <a class="btn btn-warning w-100" href="/#kontaktbereich">
-              Jetzt unverbindliches Angebot einholen
+          <li class="nav-item d-md-none mt-3">
+            <a class="btn btn-warning w-100 fw-semibold btn-mobile-cta" href="/#kontaktbereich">
+              Anfrage erstellen
             </a>
           </li>
         </ul>
@@ -237,12 +227,14 @@
         <div class="d-none d-md-flex align-items-center ms-md-3 gap-3">
           <!-- Telefon -->
           <a href="tel:+491733293668" class="nav-icon-link" aria-label="Anrufen">
-            <i class="bi bi-telephone-fill"></i>
+            <img src="/assets/icons/telefon.svg" alt="" width="20" height="20" class="icon icon-phone" loading="lazy"
+              aria-hidden="true">
           </a>
 
           <!-- E-Mail -->
           <a href="mailto:kontakt@limani-fliesenleger.de" class="nav-icon-link" aria-label="E-Mail schreiben">
-            <i class="bi bi-envelope-fill"></i>
+            <img src="/assets/icons/mail.svg" alt="" width="20" height="20" class="icon icon-mail" loading="lazy"
+              aria-hidden="true">
           </a>
 
           <!-- Haupt-CTA -->
@@ -293,9 +285,21 @@
   <div class="container">
 
     <h2 class="text-center section-title mb-4">Unsere Bodenleistungen</h2>
-    <p class="text-left text-muted mb-5">
-      Wir bereiten Untergründe vor, erstellen Estrich und verlegen moderne Bodenbeläge
-      für Wohnungen, Häuser und Gewerbeobjekte – langlebig, optisch sauber und fachgerecht.
+    <p class="seo-body">
+      Wir bereiten Untergründe vor, erstellen Estrich und verlegen moderne Bodenbeläge für Wohnungen, Häuser und
+      Gewerbeflächen – langlebig, optisch sauber und fachgerecht. Wer nach “Boden verlegen Mannheim”, “Vinylboden
+      installieren” oder “Parkett sanieren” sucht, erhält bei uns eine Planung aus einer Hand inklusive Materialberatung
+      und Terminabstimmung.
+    </p>
+    <p class="seo-body seo-body--accent">
+      Als Bodenleger für Mannheim, Ludwigshafen und Heidelberg verarbeiten wir Vinyl- und Designböden, Laminat,
+      Fertigparkett sowie Estrichsysteme inklusive Feuchtesperren und Ausgleichsspachtel. So entstehen robuste
+      Bodenaufbauten, die Vermieter wie Eigentümer überzeugen – egal ob Sie “Bodenleger in Mannheim gesucht” oder “Estrich
+      erneuern” googeln.
+    </p>
+    <p class="process-inline-cta">
+      Bodenarbeiten in Mannheim geplant?
+      <a href="/#kontaktbereich" class="process-inline-link">Jetzt unverbindlich anfragen</a>
     </p>
 
     <div class="row g-4 service-grid card-group-hover">
@@ -308,7 +312,7 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Estrich & Untergrund</h4>
+            <h3 class="service-title">Estrich & Untergrund</h3>
             <ul class="list-unstyled text-start text-muted mt-3">
               <li><span class="text-orange">&rsaquo;</span> Ausgleichs- und Nivellierarbeiten</li>
               <li><span class="text-orange">&rsaquo;</span> Estrichsanierung & Reparaturen</li>
@@ -326,7 +330,7 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Vinyl- & Designböden</h4>
+            <h3 class="service-title">Vinyl- & Designböden</h3>
             <ul class="list-unstyled text-start text-muted mt-3">
               <li><span class="text-orange">&rsaquo;</span> Strapazierfähige Böden für Wohnen & Gewerbe</li>
               <li><span class="text-orange">&rsaquo;</span> Feuchtraumgeeignete Lösungen</li>
@@ -344,7 +348,7 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Laminat & Parkett</h4>
+            <h3 class="service-title">Laminat & Parkett</h3>
             <ul class="list-unstyled text-start text-muted mt-3">
               <li><span class="text-orange">&rsaquo;</span> Verlegung von Laminat & Fertigparkett</li>
               <li><span class="text-orange">&rsaquo;</span> Passgenauer Zuschnitt an Türen & Zargen</li>
@@ -362,7 +366,7 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Sockelleisten & Übergänge</h4>
+            <h3 class="service-title">Sockelleisten & Übergänge</h3>
             <ul class="list-unstyled text-start text-muted mt-3">
               <li><span class="text-orange">&rsaquo;</span> Montage von Sockelleisten</li>
               <li><span class="text-orange">&rsaquo;</span> Saubere Übergangsprofile zwischen Räumen</li>
@@ -390,8 +394,11 @@
 <section class="why-limani py-5 bg-light">
   <div class="container">
     <h2 class="text-center section-title mb-4">Warum Kunden unsere Bodenarbeiten wählen</h2>
-    <p class="text-left text-muted mb-5">
-      Langlebige Bodenaufbauten, saubere Verlegung und klar strukturierte Abläufe – passend für Eigentümer, Vermieter und Selbstnutzer.
+    <p class="seo-body seo-body--accent">
+      Langlebige Bodenaufbauten, saubere Verlegung und klar strukturierte Abläufe – passend für Eigentümer, Vermieter und
+      Selbstnutzer in Mannheim, Heidelberg und der gesamten Rhein-Neckar-Region. Wir kombinieren Untergrundausgleich,
+      Sockelleistenmontage und exakte Schnitte, damit Anfragen wie “Bodenleger Mannheim kurzfristig” oder “Boden verlegen
+      lassen” schnell beantwortet sind.
     </p>
 
     <div class="row g-4 trust-cards-modern">
@@ -628,27 +635,27 @@
       <div class="row text-center text-md-start gy-3">
         <!-- Firma -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Limani Fliesenleger</h6>
+          <h4 class="fw-bold mb-2">Limani Fliesenleger</h4>
           <p class="mb-0">Inhaber Milaim Limani</p>
           <p class="mb-0">E7 13, 68161 Mannheim</p>
         </div>
 
         <!-- Kontakt -->
         <div class="col-md-4 text-center text-md-start">
-          <h6 class="fw-bold mb-2">Kontakt</h6>
+          <h4 class="fw-bold mb-2">Kontakt</h4>
 
           <div class="kontakt-zeile">
-            <span class="icon">📧</span>
-            <a href="mailto:limani.fliesenleger@gmail.de" class="footer-link">kontakt@limani-fliesenleger.de</a>
+            <img src="/assets/icons/mail.svg" alt="" class="footer-icon">
+            <a href="mailto:kontakt@limani-fliesenleger.de" class="footer-link">kontakt@limani-fliesenleger.de</a>
           </div>
 
           <div class="kontakt-zeile">
-            <span class="icon">📞</span>
+            <img src="/assets/icons/telefon.svg" alt="" class="footer-icon">
             <a href="tel:+491733293668" class="footer-link">0173 3293668</a>
           </div>
 
           <div class="kontakt-zeile">
-            <i class="bi bi-whatsapp text-success icon"></i>
+            <img src="/assets/icons/whatsapp.svg" alt="" class="footer-icon text-success">
             <a href="https://wa.me/491733293668" target="_blank" class="footer-link text-success">WhatsApp schreiben</a>
           </div>
         </div>
@@ -656,7 +663,7 @@
 
         <!-- Rechtliches -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Rechtliches</h6>
+          <h4 class="fw-bold mb-2">Rechtliches</h4>
           <p class="mb-1">
             <a href="impressum.html" class="footer-link">Impressum</a>
           </p>
@@ -669,26 +676,18 @@
     </div>
   </footer>
 
+  <a href="tel:+491733293668" class="quick-call-btn" aria-label="Jetzt anrufen">
+    <img src="/assets/icons/telefon.svg" alt="" width="20" height="20" loading="lazy">
+  </a>
 
-
-
-  <button id="goTopBtn" class="go-top-btn" title="Nach oben">
-    <span class="material-symbols-rounded">arrow_upward_alt</span>
+  <button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen">
+    <svg class="go-top-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
   </button>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-  </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
-  <!-- Linking Swiper Script -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- Drittanbieter (Bootstrap, AOS, Swiper, intl-tel-input etc.) wie bisher -->
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/contact.js" defer></script>
 

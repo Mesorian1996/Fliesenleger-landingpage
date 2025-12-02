@@ -29,26 +29,13 @@
 
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
-  <!-- AOS CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <!-- intl-tel-input CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="css/main.css">
+  </noscript>
 
-  <link rel="stylesheet" href="css/slide.css">
-  <!-- Linking Swiper CSS-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <!-- Linking Google Fonts for Icons -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,200,0,0" />
+  <link rel="preload" href="/assets/images/Wohnung_1.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -160,7 +147,10 @@
       <img src="assets/images/Limani_Logo_modern.png" alt="Limani Fliesenleger Logo" style="max-height: 75px;">
     </a>
 
-    <!-- Toggler -->
+  <a class="btn btn-warning btn-sm d-md-none ms-2 flex-shrink-0 px-3 py-1 btn-mobile-cta" href="/#kontaktbereich">
+    Anfrage senden
+  </a>
+  <!-- Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
       <span class="navbar-toggler-icon"></span>
@@ -233,9 +223,9 @@
 
 
         <!-- CTA im mobilen Menü (für bessere Usability) -->
-        <li class="nav-item d-md-none mt-2">
-          <a class="btn btn-warning w-100" href="/#kontaktbereich">
-            Jetzt unverbindliches Angebot einholen
+        <li class="nav-item d-md-none mt-3">
+          <a class="btn btn-warning w-100 fw-semibold btn-mobile-cta" href="/#kontaktbereich">
+            Anfrage erstellen
           </a>
         </li>
       </ul>
@@ -243,17 +233,15 @@
       <!-- Icons + CTA (nur Desktop) -->
       <div class="d-none d-md-flex align-items-center ms-md-3 gap-3">
         <!-- Telefon -->
-        <a href="tel:+491733293668"
-           class="nav-icon-link"
-           aria-label="Anrufen">
-          <i class="bi bi-telephone-fill"></i>
+        <a href="tel:+491733293668" class="nav-icon-link" aria-label="Anrufen">
+          <img src="/assets/icons/telefon.svg" alt="" width="20" height="20" class="icon icon-phone" loading="lazy"
+            aria-hidden="true">
         </a>
 
         <!-- E-Mail -->
-        <a href="mailto:kontakt@limani-fliesenleger.de"
-           class="nav-icon-link"
-           aria-label="E-Mail schreiben">
-          <i class="bi bi-envelope-fill"></i>
+        <a href="mailto:kontakt@limani-fliesenleger.de" class="nav-icon-link" aria-label="E-Mail schreiben">
+          <img src="/assets/icons/mail.svg" alt="" width="20" height="20" class="icon icon-mail" loading="lazy"
+            aria-hidden="true">
         </a>
 
         <!-- Haupt-CTA -->
@@ -308,6 +296,22 @@
       Als Sanierungsbetrieb übernehmen wir alle wichtigen Gewerke aus einer Hand – sauber koordiniert,
       termintreu und mit klaren Abläufen. Ideal für Komplett- und Teilsanierungen in Mannheim & Umgebung.
     </p>
+    <p class="seo-body">
+      Wir begleiten Eigentümer, Vermieter und Investoren in Mannheim, Ludwigshafen und Heidelberg mit kompletten
+      Wohnungssanierungen – von Abbruch und Trockenbau über Fliesen, Böden und Malerarbeiten bis zur finalen Übergabe.
+      Transparente Abläufe und ein Ansprechpartner sparen Zeit und Budget, egal ob Sie nach “Wohnungssanierung Mannheim”,
+      “Komplettsanierung Rhein-Neckar” oder “Sanierung aus einer Hand” suchen.
+    </p>
+    <p class="seo-body seo-body--accent">
+      Wir koordinieren alle Gewerke, sorgen für saubere Timings und schaffen so eine reibungslose Modernisierung Ihrer
+      Wohnung oder Ihres Mehrfamilienhauses – perfekt abgestimmt auf Vermietung, Verkauf oder Eigennutzung. Dadurch lassen
+      sich Suchanfragen wie “Sanierungsfirma Mannheim”, “Wohnung renovieren lassen” oder “Komplettsanierung Festpreis”
+      schnell in fertige Projekte verwandeln.
+    </p>
+    <p class="process-inline-cta">
+      Wohnungssanierung in Mannheim planen?
+      <a href="/#kontaktbereich" class="process-inline-link">Jetzt unverbindlich anfragen</a>
+    </p>
 
     <div class="row g-4 service-grid card-group-hover">
 
@@ -320,13 +324,14 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Fliesenarbeiten</h4>
+            <h3 class="service-title">Fliesenarbeiten</h3>
             <p class="text-muted mt-3">
               Fliesenverlegung für Bäder, Küchen und Wohnräume – von klassischem Format
               bis zu großformatigen Fliesen, inklusive Untergrundvorbereitung und Abdichtung.
             </p>
             <span class="card-cta-link">
-              Zu den Fliesenleistungen <i class="bi bi-arrow-right-short"></i>
+              Zu den Fliesenleistungen
+              <img src="/assets/icons/richtungspfeil_rechts.svg" alt="" width="16" height="16" aria-hidden="true">
             </span>
           </div>
         </a>
@@ -341,13 +346,14 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Maler- & Verputzarbeiten</h4>
+            <h3 class="service-title">Maler- & Verputzarbeiten</h3>
             <p class="text-muted mt-3">
               Innenanstriche, Spachtelarbeiten (Q1–Q4) und Verputz für glatte, saubere Wände –
               perfekt als Abschluss jeder Wohnungssanierung oder Renovierung.
             </p>
             <span class="card-cta-link">
-              Mehr zu Maler- & Verputzarbeiten <i class="bi bi-arrow-right-short"></i>
+              Mehr zu Maler- & Verputzarbeiten
+              <img src="/assets/icons/richtungspfeil_rechts.svg" alt="" width="16" height="16" aria-hidden="true">
             </span>
           </div>
         </a>
@@ -362,13 +368,14 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Trockenbau</h4>
+            <h3 class="service-title">Trockenbau</h3>
             <p class="text-muted mt-3">
               Neue Raumaufteilungen, Vorsatzschalen, Abhängungen und Schallschutz –
               ideal, um Grundrisse bei einer Wohnungssanierung neu zu denken.
             </p>
             <span class="card-cta-link">
-              Zu den Trockenbauleistungen <i class="bi bi-arrow-right-short"></i>
+              Zu den Trockenbauleistungen
+              <img src="/assets/icons/richtungspfeil_rechts.svg" alt="" width="16" height="16" aria-hidden="true">
             </span>
           </div>
         </a>
@@ -383,13 +390,14 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Bodenverlegung</h4>
+            <h3 class="service-title">Bodenverlegung</h3>
             <p class="text-muted mt-3">
               Vinyl, Laminat oder Parkett – inklusive Untergrundausgleich und Sockelleisten
               für einen optisch und technisch sauberen Abschluss.
             </p>
             <span class="card-cta-link">
-              Mehr zu Bodenarbeiten <i class="bi bi-arrow-right-short"></i>
+              Mehr zu Bodenarbeiten
+              <img src="/assets/icons/richtungspfeil_rechts.svg" alt="" width="16" height="16" aria-hidden="true">
             </span>
           </div>
         </a>
@@ -404,13 +412,14 @@
                  class="card-image">
           </div>
           <div class="card-body text-center">
-            <h4 class="service-title">Abbruch- & Entsorgungsarbeiten</h4>
+            <h3 class="service-title">Abbruch- & Entsorgungsarbeiten</h3>
             <p class="text-muted mt-3">
               Rückbau alter Fliesen, Böden, Wände und Sanitärobjekte inklusive fachgerechter
               Entsorgung – die Basis für eine saubere und effiziente Wohnungssanierung.
             </p>
             <span class="card-cta-link">
-              Zu Abbruch- & Entsorgungsleistungen <i class="bi bi-arrow-right-short"></i>
+              Zu Abbruch- & Entsorgungsleistungen
+              <img src="/assets/icons/richtungspfeil_rechts.svg" alt="" width="16" height="16" aria-hidden="true">
             </span>
           </div>
         </a>
@@ -434,8 +443,9 @@
   <section class="why-limani py-5 bg-light">
     <div class="container">
       <h2 class="text-center section-title mb-4">Warum Kunden unsere Komplettsanierungen schätzen</h2>
-      <p class="text-left text-muted mb-5">
-        Ein Ansprechpartner für alle Gewerke – transparent, verlässlich und sauber koordiniert.
+      <p class="seo-body seo-body--accent">
+        Ein Ansprechpartner für alle Gewerke – transparent, verlässlich und sauber koordiniert für Projekte in Mannheim,
+        Ludwigshafen und der gesamten Rhein-Neckar-Region.
       </p>
 
       <div class="row g-4 trust-cards-modern">
@@ -780,27 +790,27 @@
       <div class="row text-center text-md-start gy-3">
         <!-- Firma -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Limani Fliesenleger</h6>
+          <h4 class="fw-bold mb-2">Limani Fliesenleger</h4>
           <p class="mb-0">Inhaber Milaim Limani</p>
           <p class="mb-0">E7 13, 68161 Mannheim</p>
         </div>
 
         <!-- Kontakt -->
         <div class="col-md-4 text-center text-md-start">
-          <h6 class="fw-bold mb-2">Kontakt</h6>
+          <h4 class="fw-bold mb-2">Kontakt</h4>
 
           <div class="kontakt-zeile">
-            <span class="icon">📧</span>
-            <a href="mailto:limani.fliesenleger@gmail.de" class="footer-link">kontakt@limani-fliesenleger.de</a>
+            <img src="/assets/icons/mail.svg" alt="" class="footer-icon">
+            <a href="mailto:kontakt@limani-fliesenleger.de" class="footer-link">kontakt@limani-fliesenleger.de</a>
           </div>
 
           <div class="kontakt-zeile">
-            <span class="icon">📞</span>
+            <img src="/assets/icons/telefon.svg" alt="" class="footer-icon">
             <a href="tel:+491733293668" class="footer-link">0173 3293668</a>
           </div>
 
           <div class="kontakt-zeile">
-            <i class="bi bi-whatsapp text-success icon"></i>
+            <img src="/assets/icons/whatsapp.svg" alt="" class="footer-icon text-success">
             <a href="https://wa.me/491733293668" target="_blank" class="footer-link text-success">WhatsApp schreiben</a>
           </div>
         </div>
@@ -808,7 +818,7 @@
 
         <!-- Rechtliches -->
         <div class="col-md-4">
-          <h6 class="fw-bold mb-2">Rechtliches</h6>
+          <h4 class="fw-bold mb-2">Rechtliches</h4>
           <p class="mb-1">
             <a href="impressum.html" class="footer-link">Impressum</a>
           </p>
@@ -821,26 +831,18 @@
     </div>
   </footer>
 
+  <a href="tel:+491733293668" class="quick-call-btn" aria-label="Jetzt anrufen">
+    <img src="/assets/icons/telefon.svg" alt="" width="20" height="20" loading="lazy">
+  </a>
 
-
-
-  <button id="goTopBtn" class="go-top-btn" title="Nach oben">
-    <span class="material-symbols-rounded">arrow_upward_alt</span>
+  <button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen">
+    <svg class="go-top-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
   </button>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-  </script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
-  <!-- Linking Swiper Script -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- Drittanbieter (Bootstrap, AOS, Swiper, intl-tel-input etc.) wie bisher -->
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="js/contact.js" defer></script>
 
