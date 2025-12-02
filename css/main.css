@@ -706,22 +706,32 @@ form textarea:focus {
 
 .gallery-track {
     display: flex;
+    align-items: stretch;
     transition: transform .3s;
     will-change: transform
 }
 
 .gallery-slide {
     min-width: 100%;
+    flex: 0 0 100%;
     margin: 0;
     display: flex;
     flex-direction: column
 }
 
 .gallery-slide img {
+    display: block;
     width: 100%;
-    height: 660px;
+    height: auto;
+    aspect-ratio: 4 / 3;
     object-fit: cover;
     object-position: center
+}
+
+@supports not (aspect-ratio: 4 / 3) {
+    .gallery-slide img {
+        min-height: 420px;
+    }
 }
 
 .gallery-slide figcaption {
@@ -1627,7 +1637,7 @@ form textarea:focus {
 
 @media (max-width:768px) {
     .gallery-slide img {
-        height: 420px
+        aspect-ratio: 3 / 2;
     }
 
     .gallery-arrow {
@@ -1700,6 +1710,10 @@ form textarea:focus {
     .slider-show {
         display: none !important;
         min-height: 0;
+    }
+
+    .gallery-slide img {
+        aspect-ratio: 4 / 3;
     }
 
     .form-label {
