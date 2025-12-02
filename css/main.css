@@ -49,8 +49,16 @@ h2 {
 
 .final-cta-soft-contact a,
 .process-inline-link {
+    color: #0f2e5a;
+    font-weight: 600;
     text-underline-offset: 3px;
-    text-decoration: underline
+    text-decoration: underline;
+    transition: color .2s
+}
+
+.process-inline-link:hover,
+.process-inline-link:focus-visible {
+    color: #0a1f3c;
 }
 
 .navbar {
@@ -2000,9 +2008,9 @@ form textarea:focus {
 
 /* Haupt-Textkörper */
 .seo-body {
-  font-size: 0.98rem;
+  font-size: 1rem;
   line-height: 1.8;
-  color: #555;
+  color: #222;
   text-align: left;
 }
 
@@ -2010,6 +2018,7 @@ form textarea:focus {
 .seo-body--accent {
   border-left: 3px solid rgba(243, 156, 18, 0.4);
   padding-left: 1.25rem;
+  color: #0f2e5a;
 }
 
 /* Mehrere Absätze hintereinander: saubere Abstände */
