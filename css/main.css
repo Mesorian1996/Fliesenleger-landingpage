@@ -993,6 +993,45 @@ form textarea:focus {
     }
 }
 
+.btn-mobile-cta {
+    border-radius: 999px;
+    font-size: .85rem;
+    padding: .35rem .85rem !important;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .btn-mobile-cta {
+        font-size: .78rem;
+        padding: .35rem .65rem !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .btn-mobile-cta {
+        font-size: .72rem;
+        padding: .3rem .55rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .prozess-schritt,
+    .prozess-schritt>a {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .prozess-schritt .prozess-text {
+        text-align: center;
+    }
+
+    .prozess-schritt .icon {
+        margin-bottom: .35rem;
+    }
+}
+
 .footer-dark {
     background-color: #1b1b1d;
     color: #ccc
@@ -1428,11 +1467,13 @@ form textarea:focus {
     justify-content: space-between
 }
 
-.slider-pagination .slider-indicator {
+.slider-controls .slider-indicator {
     position: absolute;
     bottom: 0;
     border-bottom: 2px solid #f39c12;
-    transition: .4s ease-in-out
+    transition: .4s ease-in-out;
+    list-style: none;
+    pointer-events: none
 }
 
 .slider-pagination .slider-tab {
@@ -1484,7 +1525,7 @@ form textarea:focus {
     display: flex;               /* <– wichtig: sichtbar machen */
     align-items: center;       /* Content nach unten, wirkt moderner */
     justify-content: center;
-    min-height: 85vh;
+    min-height: 100vh;
     padding: 6rem 1.5rem 3.5rem; /* Platz für Navbar + Button */
     color: #fff;
     overflow: hidden;
@@ -2033,7 +2074,7 @@ form textarea:focus {
   }
 }
 .slider-tab {
-  color: #ffffff;
+  color: #212529;
   background-color: transparent;
 }
 .slider-tab.active {
