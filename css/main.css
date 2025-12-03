@@ -49,7 +49,7 @@ h2 {
 
 .final-cta-soft-contact a,
 .process-inline-link {
-    color: #0f2e5a;
+    color: #4682B4;
     font-weight: 600;
     text-underline-offset: 3px;
     text-decoration: underline;
@@ -775,8 +775,8 @@ form textarea:focus {
 
 .process-inline-link {
     font-weight: 600;
-    color: #f39c12;
-    text-decoration-color: #f39c12;
+    color: #4682B4;
+    text-decoration-color: #4682B4;
     margin-left: 4px
 }
 
