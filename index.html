@@ -898,123 +898,95 @@
         </p>
       </div>
 
-      <!-- Card-Layout wie bei circleoflife-bjj -->
-      <div class="contact-card-wrapper">
-        <div class="row g-4 align-items-start">
+<!-- Card-Layout wie bei circleoflife-bjj -->
+<div class="contact-card-wrapper">
+  <div class="row g-4 align-items-start">
 
-          <!-- Formular (links auf Desktop) -->
-          <div class="col-lg-7 order-2 order-lg-1">
-            <div class="contact-form-card h-100">
-              <form class="needs-validation" id="kontaktformular" novalidate>
-                <!-- Art der Anfrage -->
-                <div class="mb-3">
-                  <label for="anfrageart" class="form-label">Art der Anfrage *</label>
-                  <select class="form-select" id="anfrageart" name="anfrageart" required>
-                    <option value="">Bitte wählen</option>
-                    <option value="offen">Offene Anfrage</option>
-                    <option value="konkret">Konkrete Anfrage</option>
-                  </select>
-                  <div class="invalid-feedback">Bitte wählen Sie eine Anfragenart aus.</div>
-                </div>
+    <!-- Formular (links auf Desktop) -->
+    <div class="col-lg-7 order-2 order-lg-1">
+      <div class="contact-form-card h-100">
+        <form class="needs-validation" id="kontaktformular" novalidate>
+          <!-- Honeypot -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
 
-                <!-- Anrede -->
-                <div class="mb-3">
-                  <label class="form-label">Anrede *</label>
-                  <div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="anrede" id="herr" value="Herr" required>
-                      <label class="form-check-label" for="herr">Herr</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="anrede" id="frau" value="Frau" required>
-                      <label class="form-check-label" for="frau">Frau</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="anrede" id="divers" value="Divers" required>
-                      <label class="form-check-label" for="divers">Keine Angabe</label>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Name -->
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="vorname" class="form-label">Vorname *</label>
-                    <input type="text" class="form-control" id="vorname" name="vorname" pattern="[a-zA-ZäöüÄÖÜß \-]{2,}"
-                      required>
-                    <div class="invalid-feedback">Bitte geben Sie einen gültigen Vornamen ein.</div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="nachname" class="form-label">Nachname *</label>
-                    <input type="text" class="form-control" id="nachname" name="nachname"
-                      pattern="[a-zA-ZäöüÄÖÜß \-]{2,}" required>
-                    <div class="invalid-feedback">Bitte geben Sie einen gültigen Nachnamen ein.</div>
-                  </div>
-                </div>
-
-                <!-- Kontaktinfos -->
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="email" class="form-label">E-Mail *</label>
-                    <input type="email" class="form-control" name="email" id="email" required>
-                    <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="phone" class="form-label">Telefonnummer *</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" required
-                      pattern="^[0-9+()\/\-\s]{6,}$">
-                    <div class="invalid-feedback">Bitte geben Sie eine gültige Telefonnummer ein.</div>
-                  </div>
-                </div>
-
-                <!-- Adresse optional -->
-                <div class="mb-3">
-                  <label for="adresse" class="form-label">Projektadresse (optional)</label>
-                  <input type="text" class="form-control" id="adresse" name="adresse">
-                </div>
-
-                <!-- Konkrete Angaben -->
-                <div id="konkreteAngaben" style="display:none;">
-                  <div class="mb-3">
-                    <label for="projektart" class="form-label">Projektart</label>
-                    <select class="form-select" id="projektart" name="projektart">
-                      <option value="">Bitte wählen</option>
-                      <option value="Badezimmer">Badezimmer</option>
-                      <option value="Küche">Küche</option>
-                      <option value="Wohnungssanierung">Wohnungssanierung</option>
-                      <option value="Sonstiges">Sonstiges</option>
-                    </select>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="qm" class="form-label">Quadratmeter (optional)</label>
-                    <input type="number" class="form-control" id="qm" name="qm" min="0" placeholder="z.B. 25">
-                  </div>
-                </div>
-
-                <!-- Beschreibung -->
-                <div class="mb-3">
-                  <label for="beschreibung" class="form-label">Weitere Beschreibung (optional)</label>
-                  <textarea class="form-control" maxlength="500" name="beschreibung" id="beschreibung" rows="3"
-                    placeholder="Was soll gemacht werden?"></textarea>
-                </div>
-
-                <!-- Submit -->
-                <div class="text-center text-md-start">
-                  <button type="submit" class="btn btn-warning w-100 w-md-auto">
-                    Anfrage senden
-                  </button>
-                  <small class="d-block mt-2 text-muted">
-                    Durch das Übermitteln Ihrer Daten stimmen Sie der <a href="datenschutz.html" title="Zur Datenschutzerklärung">Datenschutzerklärung</a> zu.
-                  </small>
-                </div>
-
-                <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
-                  ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
-                </div>
-              </form>
+          <!-- Name -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="vorname" class="form-label">Vorname *</label>
+              <input type="text" class="form-control" id="vorname" name="Vorname" required>
+              <div class="invalid-feedback">Bitte geben Sie Ihren Vornamen ein.</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="nachname" class="form-label">Nachname *</label>
+              <input type="text" class="form-control" id="nachname" name="Nachname" required>
+              <div class="invalid-feedback">Bitte geben Sie Ihren Nachnamen ein.</div>
             </div>
           </div>
+
+          <!-- Kontakt -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">E-Mail *</label>
+              <input type="email" class="form-control" id="email" name="Email" required>
+              <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label">Telefon *</label>
+              <input type="tel" class="form-control" id="phone" name="Telefon" required>
+              <div class="invalid-feedback">Bitte geben Sie Ihre Telefonnummer ein.</div>
+            </div>
+          </div>
+
+          <!-- Ort des Bauvorhabens -->
+          <div class="mb-3">
+            <label for="ort" class="form-label">Ort des Bauvorhabens</label>
+            <input type="text" class="form-control" id="ort" name="Ort" 
+              placeholder="Adresse des Bauvorhabens">
+            <div class="invalid-feedback">Bitte geben Sie den Ort an.</div>
+          </div>
+
+          <!-- Art der Arbeiten -->
+          <div class="mb-3">
+            <label for="projektart" class="form-label">Art der Arbeiten</label>
+            <select class="form-select" id="projektart" name="Projektart">
+              <option value="">Bitte wählen</option>
+              <option value="Fliesenarbeiten">Fliesenarbeiten</option>
+              <option value="Badsanierung">Badsanierung</option>
+              <option value="Bodenverlegung">Bodenverlegung (Vinyl, Laminat, Parkett)</option>
+              <option value="Malerarbeiten">Malerarbeiten</option>
+              <option value="Verputz / Spachtel">Verputz- & Spachtelarbeiten</option>
+              <option value="Trockenbau">Trockenbau</option>
+              <option value="Wohnungssanierung">Wohnungssanierung</option>
+              <option value="Sonstiges">Sonstiges</option>
+            </select>
+          </div>
+
+          <!-- Nachricht -->
+          <div class="mb-3">
+            <label for="nachricht" class="form-label">Nachricht (optional)</label>
+            <textarea class="form-control" id="nachricht" name="Nachricht" rows="3"
+              maxlength="500" placeholder="Was soll gemacht werden?"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <div class="text-center text-md-start">
+            <button type="submit" id="submitBtn" class="btn btn-warning w-100 w-md-auto">
+              Anfrage senden
+            </button>
+            <small class="d-block mt-2 text-muted">
+              Durch das Übermitteln Ihrer Daten stimmen Sie der <a href="datenschutz.html" title="Zur Datenschutzerklärung">Datenschutzerklärung</a> zu.
+            </small>
+          </div>
+
+          <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
+            ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
+          </div>
+          <div id="errorMessage" class="alert alert-danger d-none mt-3 text-center" role="alert">
+            ❌ Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.
+          </div>
+        </form>
+      </div>
+    </div>
 
           <!-- Kontaktinfo (rechts auf Desktop) -->
             <div class="col-lg-5 order-1 order-lg-2">

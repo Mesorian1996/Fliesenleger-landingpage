@@ -1,85 +1,55 @@
-// js/contact.js
-const CONTACT_API = "https://contact-backend-chm2.onrender.com/v1/contact";
-const SITE_ID = "limani-fliesenleger";
+// js/contact.js – Web3Forms
+const WEB3FORMS_KEY = "e97b83e8-b4b2-496c-985f-868c0ae9b607"; // ← Web3Forms Access Key
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("kontaktformular");
-  const successMessage = document.getElementById("successMessage");
-  const phoneInputField = document.getElementById("phone");
-  const anfrageartSelect = document.getElementById("anfrageart");
-  const konkreteAngaben = document.getElementById("konkreteAngaben");
-
-  // Konkrete Angaben ein-/ausblenden
-  if (anfrageartSelect && konkreteAngaben) {
-    anfrageartSelect.addEventListener("change", () => {
-      konkreteAngaben.style.display =
-        anfrageartSelect.value === "konkret" ? "block" : "none";
-    });
-  }
-
   if (!form) return;
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const submitBtn = document.getElementById("submitBtn");
+  const successMsg = document.getElementById("successMessage");
+  const errorMsg = document.getElementById("errorMessage");
 
-    // Bootstrap-Validation
-    const formValid = form.checkValidity();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    if (!formValid) {
+    if (!form.checkValidity()) {
       form.classList.add("was-validated");
       return;
     }
 
     const formData = new FormData(form);
-    const payload = { siteId: SITE_ID };
+    formData.append("access_key", WEB3FORMS_KEY);
+    formData.append("subject", "Neue Anfrage – Limani Fliesenleger");
+    formData.append("from_name", "Limani Website");
 
-    formData.forEach((value, key) => {
-      const v = (value ?? "").toString().trim();
-      if (v !== "") payload[key] = v;
-    });
-
-    if (payload.phone) {
-      payload.tel = payload.phone;
-      delete payload.phone;
-    }
-
-    if (successMessage) {
-      successMessage.classList.add("d-none");
-    }
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = "Wird gesendet...";
+    submitBtn.disabled = true;
+    successMsg?.classList.add("d-none");
+    errorMsg?.classList.add("d-none");
 
     try {
-      const res = await fetch(CONTACT_API, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: formData,
       });
+      const data = await res.json();
 
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok || !data.ok) {
-        console.error("Kontaktfehler:", data);
-        alert(
-          "Leider ist ein Fehler beim Versenden Ihrer Anfrage aufgetreten. Bitte versuchen Sie es später erneut."
-        );
-        return;
-      }
-
-      // Erfolg
-      form.reset();
-      form.classList.remove("was-validated");
-      if (successMessage) {
-        successMessage.classList.remove("d-none");
-        setTimeout(
-          () => successMessage.classList.add("d-none"),
-          8000
-        );
+      if (res.ok && data.success) {
+        form.reset();
+        form.classList.remove("was-validated");
+        successMsg?.classList.remove("d-none");
+        successMsg?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        setTimeout(() => successMsg?.classList.add("d-none"), 8000);
+      } else {
+        errorMsg?.classList.remove("d-none");
       }
     } catch (err) {
       console.error("Netzwerkfehler:", err);
-      alert(
-        "Es ist ein Netzwerkfehler aufgetreten. Bitte versuchen Sie es später erneut."
-      );
+      errorMsg?.classList.remove("d-none");
+    } finally {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.disabled = false;
     }
   });
 });
