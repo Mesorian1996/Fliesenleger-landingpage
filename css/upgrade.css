@@ -1,0 +1,510 @@
+/* ============================================
+   LIMANI FLIESENLEGER – CSS UPGRADE
+   Lade diese Datei NACH main.css:
+   <link rel="stylesheet" href="css/upgrade.css">
+   ============================================ */
+
+/* ──────────────────────────────────────────────
+   0. DESIGN TOKENS
+   ────────────────────────────────────────────── */
+   :root {
+    --limani-dark:    #0f2035;
+    --limani-text:    #2c3e50;
+    --limani-muted:   #5a6a7a;
+    --limani-orange:  #f39c12;
+    --limani-orange-hover: #d98107;
+    --limani-warm-bg: #faf6f1;
+    --limani-light-bg:#f5f7fa;
+    --limani-card-bg: #ffffff;
+    --limani-border:  rgba(15, 32, 53, 0.08);
+    --limani-shadow:  0 4px 24px rgba(15, 32, 53, 0.07);
+    --limani-shadow-hover: 0 12px 40px rgba(15, 32, 53, 0.12);
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --section-py: clamp(3.5rem, 6vw, 5.5rem);
+    --section-py-lg: clamp(4.5rem, 8vw, 7rem);
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     1. GLOBALE TYPOGRAFIE
+     ────────────────────────────────────────────── */
+  * { font-family: var(--font-body) !important; }
+  
+  body {
+    color: var(--limani-text);
+    line-height: 1.75;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--limani-dark);
+    line-height: 1.25;
+  }
+  
+  p { color: var(--limani-text); }
+  
+  
+  /* ──────────────────────────────────────────────
+     2. SEO-TEXTE – MODERN, KEIN NOTIZBUCH
+     ────────────────────────────────────────────── */
+  .seo-body {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--limani-text);
+    letter-spacing: 0.01em;
+  }
+  
+  /* Border-left Notiz-Stil komplett entfernen */
+  .seo-body--accent {
+    border-left: none !important;
+    padding-left: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    color: var(--limani-dark);
+    font-weight: 400;
+  }
+  
+  /* Text-Sektionen: subtiler Card-Look auf farbigen Hintergründen */
+  .seo-section-inner {
+    max-width: 52rem;
+    margin: 0 auto;
+    background: var(--limani-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem 2.5rem 2rem;
+    box-shadow: 0 2px 16px rgba(15, 32, 53, 0.04);
+    border: 1px solid var(--limani-border);
+  }
+  
+  /* Auf weißem Hintergrund: kein doppelter Card */
+  .bg-white .seo-section-inner,
+  section.bg-white .seo-section-inner {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  /* Listen schöner */
+  .seo-body.text-muted,
+  .seo-section-inner ul li {
+    color: var(--limani-text) !important;
+  }
+  
+  .seo-section-inner ul {
+    padding-left: 1.25rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .seo-section-inner ul li {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 0.35rem;
+  }
+  
+  .seo-section-inner ul li::marker {
+    color: var(--limani-orange);
+  }
+  
+  @media (max-width: 767.98px) {
+    .seo-section-inner {
+      padding: 1.75rem 1.25rem 1.5rem;
+      border-radius: 12px;
+    }
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     3. SECTION-ÜBERSCHRIFTEN
+     ────────────────────────────────────────────── */
+  .section-title {
+    font-size: clamp(1.6rem, 2.5vw + 0.5rem, 2.4rem);
+    font-weight: 700;
+    color: var(--limani-dark);
+    text-decoration: none !important;
+    padding-bottom: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--limani-orange);
+    border-radius: 2px;
+    margin-top: 0.6rem;
+  }
+  
+  @media (max-width: 767.98px) {
+    .section-title::after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  .section-subline {
+    font-size: 1.05rem;
+    color: var(--limani-muted);
+    line-height: 1.7;
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     4. HERO – LESBARKEIT (DESKTOP-SLIDER + MOBILE + SUBPAGES)
+     ────────────────────────────────────────────── */
+
+  /* ── Globale Farb-Resets NICHT in Heros ── */
+  .slider-wrapper .slide-content p,
+  .slider-wrapper .slide-content h1,
+  .slider-wrapper .slide-content h2,
+  .slider-wrapper .slide-content h3,
+  .slider-wrapper .slide-content h4,
+  .hero-mobile p,
+  .hero-mobile h1,
+  .hero-mobile h2,
+  .subpage-hero p,
+  .subpage-hero h1,
+  .subpage-hero h2 {
+    color: #fff !important;
+  }
+
+  /* Desktop-Slider: Stärkeres Overlay */
+  .slider-wrapper .slider-item::before {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-blend-mode: darken !important;
+  }
+
+  /* Slide-Title: Weiß + dezenter Schatten */
+  .slide-title {
+    color: #fff !important;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.6),
+      0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Slide-Description: Weiß + subtiler Schatten */
+  .slide-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  /* Slide-Button: Glasmorphism */
+  .slider-item .slide-content .slide-button {
+    color: #fff !important;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .slider-item .slide-content .slide-button:hover {
+    background: #fff;
+    color: var(--limani-dark) !important;
+  }
+
+  /* Slider Tabs unten */
+  .slider-pagination .slider-tab {
+    color: #fff !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+  }
+
+  /* ── Mobile Hero ── */
+  @media (max-width: 767.98px) {
+    .hero-mobile::before {
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(15, 32, 53, 0.82) 100%
+      ) !important;
+    }
+
+    .hero-title {
+      color: #fff !important;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+      font-weight: 700;
+    }
+
+    .hero-subline,
+    .hero-kicker {
+      color: rgba(255, 255, 255, 0.95) !important;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  /* ── Subpage-Heros (Unterseiten) ── */
+  .subpage-hero-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(15, 32, 53, 0.72) 100%
+    ) !important;
+  }
+
+  .subpage-hero-kicker {
+    color: var(--limani-orange) !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .subpage-hero-title {
+    color: #fff !important;
+    text-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.5),
+      0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+
+  .subpage-hero-subline {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+  }
+
+  .subpage-hero-note {
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     5. FOOTER – DEUTLICH BESSER LESBAR
+     ────────────────────────────────────────────── */
+  .footer-dark {
+    background-color: #0c1a2b;
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-top: none;
+  }
+  
+  /* Spalten-Überschriften: voll weiß */
+  .footer-dark p.fw-bold,
+  .footer-dark .fw-bold {
+    color: #ffffff !important;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  
+  /* Alle Absätze im Footer */
+  .footer-dark p:not(.fw-bold) {
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.65;
+  }
+  
+  /* Links: hell genug zum Lesen */
+  .footer-dark .footer-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    transition: color 0.2s;
+  }
+  
+  .footer-dark .footer-link:hover {
+    color: var(--limani-orange) !important;
+  }
+  
+  /* WhatsApp */
+  .footer-dark .text-success {
+    color: #5ae67b !important;
+  }
+  
+  /* Icons im Footer invertieren (damit sie auf dark sichtbar sind) – WhatsApp ausnehmen */
+  .footer-dark .footer-icon:not([src*="whatsapp"]),
+  .footer-dark .kontakt-zeile img:not([src*="whatsapp"]) {
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.8;
+  }
+  
+  /* Copyright */
+  .footer-dark #jahr,
+  .footer-dark .col-md-4:last-child p:last-child {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     6. SEKTIONS-ABSTÄNDE & HINTERGRÜNDE
+     ────────────────────────────────────────────── */
+  .seo-section { padding-block: var(--section-py); }
+  #leistungen { padding-block: var(--section-py); background-color: var(--limani-warm-bg); }
+  #vorteile { padding-block: var(--section-py); background: linear-gradient(180deg, var(--limani-light-bg) 0%, #fff 100%); }
+  #kontaktbereich { padding-block: var(--section-py-lg); background: linear-gradient(180deg, #eef1f6 0%, var(--limani-light-bg) 100%); }
+  #faq { padding-block: var(--section-py); }
+  .partner-section { background: var(--limani-warm-bg); }
+  
+  
+  /* ──────────────────────────────────────────────
+     7. LEISTUNGSKARTEN
+     ────────────────────────────────────────────── */
+  .modern-card {
+    border-radius: 16px;
+    border: 1px solid var(--limani-border);
+    box-shadow: var(--limani-shadow);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+  }
+  .modern-card:hover { transform: translateY(-6px); box-shadow: var(--limani-shadow-hover); }
+  .card-image-container { height: 220px; }
+  @media (min-width: 768px) { .card-image-container { height: 240px; } }
+  .modern-card .card-body { padding: 1.75rem 1.5rem !important; }
+  .modern-card .card-image-container { margin-bottom: 0.5rem; }
+  .service-title { font-size: 1.15rem; font-weight: 700; color: var(--limani-dark); }
+
+  /* Service-Cards: Abstand zwischen Karten */
+  .service-grid .col-md-4 { margin-bottom: 0.5rem; }
+  .service-title::after { width: 32px; height: 2.5px; background: var(--limani-orange); margin-top: 0.5rem; }
+  .card-cta-link { font-size: 0.9rem; font-weight: 600; color: var(--limani-orange); gap: 6px; transition: color 0.2s, gap 0.2s; }
+  .card-cta-link:hover { color: var(--limani-orange-hover); gap: 10px; }
+  .hover-description { font-size: 0.88rem; color: var(--limani-muted); line-height: 1.6; }
+  .card-group-hover:hover .modern-card { opacity: 0.94; transform: scale(0.995); }
+  .card-group-hover .modern-card:hover { opacity: 1 !important; transform: translateY(-6px) scale(1) !important; }
+  
+  /* Galerie: Abstand zwischen Textbox und Galerie-Bildern */
+  .fliesen-gallery { margin-top: 2.5rem; }
+  /* Galerie: mehr Platz zwischen Bild und Bildunterschrift */
+  .gallery-slide figcaption { padding: 1.25rem 1.4rem 1.4rem; }
+  
+  
+  /* ──────────────────────────────────────────────
+     8. BUTTONS
+     ────────────────────────────────────────────── */
+  .btn-warning {
+    background-color: var(--limani-orange);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 1.6rem;
+    transition: background-color 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 2px 8px rgba(243, 156, 18, 0.25);
+  }
+  .btn-warning:hover, .btn-warning:focus-visible {
+    background-color: var(--limani-orange-hover);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.35);
+  }
+  .nav-cta { border-radius: 999px; padding: 0.55rem 1.5rem; font-size: 0.9rem; }
+  
+  
+  /* ──────────────────────────────────────────────
+     9. KONTAKTBEREICH
+     ────────────────────────────────────────────── */
+  #kontaktbereich .contact-card-wrapper { border: 1px solid var(--limani-border); box-shadow: 0 16px 48px rgba(15, 32, 53, 0.06); }
+  #kontaktbereich .section-title { color: var(--limani-dark); }
+  #kontaktbereich .section-subline { color: var(--limani-muted); font-size: 1rem; line-height: 1.7; }
+  
+  form input:not([type="radio"]):not([type="checkbox"]),
+  form select,
+  form textarea {
+    border: 1px solid #d4d8de;
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    background-color: #fafbfc;
+  }
+  form input:focus, form select:focus, form textarea:focus {
+    border-color: var(--limani-orange);
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
+    background-color: #fff;
+  }
+  form label { font-weight: 600; font-size: 0.9rem; color: var(--limani-dark); }
+  #kontaktbereich .btn-warning { border-radius: 12px; padding: 0.75rem 2rem; font-size: 1rem; }
+
+  /* Google Maps im Kontaktbereich */
+  .contact-map {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15, 32, 53, 0.06);
+  }
+
+  .contact-map iframe {
+    display: block;
+  }
+  
+  
+  /* ──────────────────────────────────────────────
+     10. TRUST / VORTEILE / PROZESS
+     ────────────────────────────────────────────── */
+  .kachel-text { background: var(--limani-card-bg); border-left: 4px solid var(--limani-orange); border-radius: 12px; box-shadow: var(--limani-shadow); padding: 1.75rem; }
+  .kachel-title { color: var(--limani-dark); font-weight: 700; }
+  .kachel-subtext { color: var(--limani-muted); line-height: 1.7; }
+  /* Trust-Karten: gleiche Höhe */
+  .trust-cards-modern { align-items: stretch !important; }
+  .trust-cards-modern > [class*="col-"] { display: flex; }
+
+  .trust-card-m {
+    border: 1px solid var(--limani-border);
+    box-shadow: var(--limani-shadow);
+    border-radius: 16px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .trust-card-m:hover { box-shadow: var(--limani-shadow-hover); }
+  .trust-card-m-title { color: var(--limani-dark); }
+  .trust-card-m-text,
+  .trust-card-text { color: var(--limani-muted); line-height: 1.7; flex-grow: 1; }
+  
+  .prozess-schritt { background: var(--limani-card-bg); border-left: 4px solid var(--limani-orange); border-radius: 12px; box-shadow: var(--limani-shadow); padding: 1.25rem 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
+  .prozess-schritt:hover { transform: translateY(-2px); box-shadow: var(--limani-shadow-hover); }
+  .prozess-text h4, .prozess-text h5 { color: var(--limani-dark); font-weight: 700; }
+  .prozess-text p { color: var(--limani-muted); }
+  .prozess-pfeil { color: var(--limani-orange); opacity: 0.6; }
+  
+  
+  /* ──────────────────────────────────────────────
+     11. FAQ
+     ────────────────────────────────────────────── */
+  .accordion-item { border: 1px solid var(--limani-border); border-radius: 12px !important; margin-bottom: 0.75rem; overflow: hidden; }
+  .accordion-button { font-weight: 600; color: var(--limani-dark); font-size: 1rem; padding: 1.1rem 1.25rem; }
+  .accordion-button:not(.collapsed) { background-color: rgba(243, 156, 18, 0.06); color: var(--limani-dark); box-shadow: none; }
+  .accordion-button:focus { box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15); }
+  .accordion-body { color: var(--limani-text); line-height: 1.75; }
+  
+  
+  /* ──────────────────────────────────────────────
+     12. PARTNER
+     ────────────────────────────────────────────── */
+  .partner-card { border: 1px solid var(--limani-border); border-radius: 16px; box-shadow: var(--limani-shadow); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; }
+  .partner-card:hover { transform: translateY(-4px); box-shadow: var(--limani-shadow-hover); border-color: var(--limani-orange); }
+  .partner-text { color: var(--limani-muted); line-height: 1.65; }
+  .partner-link { color: var(--limani-dark); font-weight: 600; }
+  .partner-link:hover { color: var(--limani-orange); }
+  
+  
+  /* ──────────────────────────────────────────────
+     13. NAVBAR
+     ────────────────────────────────────────────── */
+  .navbar { background: rgba(255, 255, 255, 0.97) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06); }
+  .nav-link { font-weight: 500; color: var(--limani-dark) !important; font-size: 0.95rem; }
+  .nav-link:hover { color: var(--limani-orange) !important; }
+  .dropdown-item { font-size: 0.92rem; padding: 0.5rem 1.25rem; color: var(--limani-text); transition: background-color 0.15s; }
+  .dropdown-item:hover { background-color: rgba(243, 156, 18, 0.08); color: var(--limani-dark); }
+  .dropdown-menu { border: 1px solid var(--limani-border); border-radius: 12px; box-shadow: 0 8px 32px rgba(15, 32, 53, 0.1); padding: 0.5rem 0; }
+  
+  
+  /* ──────────────────────────────────────────────
+     14. DETAILS
+     ────────────────────────────────────────────── */
+  ::selection { background: rgba(243, 156, 18, 0.2); color: var(--limani-dark); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--limani-orange); outline-offset: 2px; }
+  .go-top-btn { background-color: var(--limani-dark); box-shadow: 0 4px 16px rgba(15, 32, 53, 0.2); border-radius: 12px; width: 48px; height: 48px; }
+  .go-top-btn:hover { background-color: var(--limani-orange); }
+  
+  
+  /* ──────────────────────────────────────────────
+     15. MOBILE
+     ────────────────────────────────────────────── */
+  @media (max-width: 767.98px) {
+    body { font-size: 0.95rem; line-height: 1.7; }
+    .section-title { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+    .seo-body { font-size: 0.98rem; line-height: 1.75; }
+    .card-image-container { height: 200px; }
+    .modern-card .card-body { padding: 1.25rem 1rem !important; }
+    .modern-card .hover-description { opacity: 1; max-height: none; transform: none; margin-top: 0.5rem; font-size: 0.85rem; }
+  }
