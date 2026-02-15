@@ -1,0 +1,707 @@
+/* ============================================
+   LIMANI ANFRAGE-FUNNEL – CSS
+   Laden NACH upgrade.css
+   ============================================ */
+
+/* ── Section ── */
+.funnel-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    background: linear-gradient(175deg, #ffffff 0%, var(--limani-warm-bg, #faf6f1) 40%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .funnel-section::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(243, 156, 18, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  /* ── Wrapper ── */
+  .funnel-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--limani-card-bg, #ffffff);
+    border-radius: 20px;
+    border: 1px solid var(--limani-border, rgba(15, 32, 53, 0.08));
+    box-shadow:
+      0 4px 24px rgba(15, 32, 53, 0.05),
+      0 24px 80px -20px rgba(15, 32, 53, 0.08);
+    padding: clamp(1.5rem, 4vw, 2.75rem);
+    position: relative;
+  }
+  
+  /* ── Header ── */
+  .funnel-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+  }
+  
+  .funnel-kicker {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--limani-orange, #f39c12);
+    margin-bottom: 0.5rem;
+  }
+  
+  .funnel-title {
+    font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+    font-weight: 700;
+    color: var(--limani-dark, #0f2035);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  
+  .funnel-subtitle {
+    font-size: 0.95rem;
+    color: var(--limani-muted, #5a6a7a);
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  /* ── Progress Bar ── */
+  .funnel-progress {
+    position: relative;
+    background: var(--limani-light-bg, #f5f7fa);
+    height: 4px;
+    border-radius: 99px;
+    margin-bottom: 2rem;
+    overflow: visible;
+  }
+  
+  .funnel-progress-bar {
+    height: 100%;
+    background: var(--limani-orange, #f39c12);
+    border-radius: 99px;
+    transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .funnel-progress-steps {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0;
+  }
+  
+  .funnel-step-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--limani-light-bg, #f5f7fa);
+    border: 2px solid #dce2e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #9aa8b5;
+    transition: all 0.35s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .funnel-step-dot.active {
+    background: var(--limani-orange, #f39c12);
+    border-color: var(--limani-orange, #f39c12);
+    color: #fff;
+    box-shadow: 0 2px 12px rgba(243, 156, 18, 0.3);
+    transform: scale(1.1);
+  }
+  
+  .funnel-step-dot.done {
+    background: var(--limani-dark, #0f2035);
+    border-color: var(--limani-dark, #0f2035);
+    color: #fff;
+  }
+  
+  /* ── Steps ── */
+  .funnel-steps {
+    position: relative;
+    min-height: 320px;
+  }
+  
+  .funnel-step {
+    display: none;
+    animation: funnelFadeIn 0.4s ease both;
+  }
+  
+  .funnel-step.active {
+    display: block;
+  }
+  
+  @keyframes funnelFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .step-question {
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    color: var(--limani-dark, #0f2035);
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+  
+  .step-hint {
+    font-size: 0.85rem;
+    color: var(--limani-muted, #5a6a7a);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ── Option Cards ── */
+  .option-grid {
+    display: grid;
+    gap: 12px;
+  }
+  
+  .option-grid--services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .option-grid--size {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .option-grid--time,
+  .option-grid--binary {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .option-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 1.25rem 0.75rem;
+    background: var(--limani-light-bg, #f5f7fa);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      transform 0.2s ease,
+      box-shadow 0.25s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .option-card:hover {
+    border-color: rgba(243, 156, 18, 0.3);
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(15, 32, 53, 0.06);
+  }
+  
+  .option-card:has(.option-input:checked) {
+    border-color: var(--limani-orange, #f39c12);
+    background: rgba(243, 156, 18, 0.06);
+    box-shadow: 0 4px 16px rgba(243, 156, 18, 0.12);
+  }
+  
+  .option-card:has(.option-input:focus-visible) {
+    outline: 3px solid rgba(243, 156, 18, 0.4);
+    outline-offset: 2px;
+  }
+  
+  .option-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+  
+  .option-icon {
+    color: var(--limani-muted, #5a6a7a);
+    transition: color 0.25s ease;
+  }
+  
+  .option-card:has(.option-input:checked) .option-icon {
+    color: var(--limani-orange, #f39c12);
+  }
+  
+  .option-icon-img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+  
+  .option-card:has(.option-input:checked) .option-icon-img {
+    transform: scale(1.08);
+  }
+  
+  .option-icon-text {
+    font-size: 1.5rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  .option-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--limani-dark, #0f2035);
+    line-height: 1.25;
+    hyphens: auto;
+  }
+  
+  .option-sub {
+    font-size: 0.72rem;
+    color: var(--limani-muted, #5a6a7a);
+    line-height: 1.3;
+  }
+  
+  .option-check {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--limani-orange, #f39c12);
+    color: #fff;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  
+  .option-card:has(.option-input:checked) .option-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* ── Step 6: Contact Form ── */
+  .funnel-summary {
+    background: var(--limani-light-bg, #f5f7fa);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--limani-muted, #5a6a7a);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+  
+  .summary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .summary-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(243, 156, 18, 0.1);
+    border: 1px solid rgba(243, 156, 18, 0.25);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--limani-dark, #0f2035);
+  }
+  
+  .summary-tag-label {
+    font-weight: 600;
+    color: var(--limani-orange, #f39c12);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  
+  .funnel-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .funnel-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .funnel-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .funnel-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--limani-dark, #0f2035);
+  }
+  
+  .optional-hint {
+    font-weight: 400;
+    color: var(--limani-muted, #5a6a7a);
+  }
+  
+  .funnel-input {
+    padding: 0.7rem 0.9rem;
+    border: 1.5px solid #dce2e8;
+    border-radius: 10px;
+    font-size: 16px; /* prevents iOS zoom */
+    color: var(--limani-dark, #0f2035);
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+  }
+  
+  .funnel-input:focus {
+    outline: none;
+    border-color: var(--limani-orange, #f39c12);
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.12);
+  }
+  
+  .funnel-input::placeholder {
+    color: #b0bac4;
+  }
+  
+  .funnel-input.invalid {
+    border-color: #e74c3c;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+  }
+  
+  .funnel-textarea {
+    resize: vertical;
+    min-height: 60px;
+  }
+  
+  /* ── Navigation ── */
+  .funnel-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.75rem;
+    gap: 1rem;
+  }
+  
+  .funnel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition:
+      background 0.25s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  
+  .funnel-btn:active {
+    transform: scale(0.97);
+  }
+  
+  .funnel-btn--back {
+    background: transparent;
+    color: var(--limani-muted, #5a6a7a);
+    padding-left: 0.75rem;
+  }
+  
+  .funnel-btn--back:hover {
+    color: var(--limani-dark, #0f2035);
+  }
+  
+  .funnel-btn--next {
+    background: var(--limani-dark, #0f2035);
+    color: #fff;
+    margin-left: auto;
+  }
+  
+  .funnel-btn--next:hover {
+    background: #1a3550;
+    box-shadow: 0 4px 20px rgba(15, 32, 53, 0.2);
+  }
+  
+  .funnel-btn--submit {
+    background: var(--limani-orange, #f39c12);
+    color: #fff;
+    margin-left: auto;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .funnel-btn--submit:hover {
+    background: var(--limani-orange-hover, #d98107);
+    box-shadow: 0 6px 24px rgba(243, 156, 18, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  .funnel-btn--submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .funnel-btn--reset {
+    background: var(--limani-light-bg, #f5f7fa);
+    color: var(--limani-dark, #0f2035);
+    margin-top: 1rem;
+  }
+  
+  .funnel-btn--reset:hover {
+    background: #e8ecf0;
+  }
+  
+  /* ── Validation Hint ── */
+  .funnel-validation-hint {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #e74c3c;
+    min-height: 1.2em;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease;
+  }
+  
+  /* ── Success State ── */
+  .funnel-success {
+    text-align: center;
+    padding: 2rem 0;
+    animation: funnelFadeIn 0.5s ease both;
+  }
+  
+  .success-icon {
+    color: #27ae60;
+    margin-bottom: 1rem;
+  }
+  
+  .success-icon svg {
+    filter: drop-shadow(0 4px 12px rgba(39, 174, 96, 0.25));
+  }
+  
+  .success-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--limani-dark, #0f2035);
+    margin-bottom: 0.5rem;
+  }
+  
+  .success-text {
+    font-size: 0.95rem;
+    color: var(--limani-muted, #5a6a7a);
+  }
+  
+  /* ── Error State ── */
+  .funnel-error {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(231, 76, 60, 0.08);
+    border-radius: 10px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #c0392b;
+    animation: funnelFadeIn 0.3s ease both;
+  }
+  
+  .funnel-error a {
+    color: #c0392b;
+    font-weight: 600;
+  }
+  
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  
+  @media (max-width: 640px) {
+    .funnel-wrapper {
+      padding: 1.5rem 1.15rem;
+      border-radius: 16px;
+      margin-left: -4px;
+      margin-right: -4px;
+    }
+  
+    .funnel-header {
+      margin-bottom: 1.25rem;
+    }
+  
+    .funnel-kicker {
+      font-size: 0.72rem;
+    }
+  
+    .funnel-subtitle {
+      font-size: 0.88rem;
+    }
+  
+    /* Service-Grid: 2 Spalten auf Mobile */
+    .option-grid--services {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .option-grid--services .option-card {
+      padding: 1.1rem 0.65rem;
+      flex-direction: column;
+      text-align: center;
+      min-height: 110px;
+      justify-content: center;
+    }
+  
+    /* Flächen-Grid: 2 Spalten */
+    .option-grid--size {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+  
+    .option-grid--size .option-card {
+      padding: 1rem 0.75rem;
+      flex-direction: column;
+      text-align: center;
+      min-height: 100px;
+      justify-content: center;
+    }
+  
+    /* Zeit/Material/Rückbau: Vollbreite Zeilen */
+    .option-grid--time,
+    .option-grid--binary {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  
+    .option-grid--time .option-card,
+    .option-grid--binary .option-card {
+      flex-direction: row;
+      align-items: center;
+      text-align: left;
+      padding: 1rem 1.15rem;
+      gap: 14px;
+      min-height: 64px;
+    }
+  
+    .option-grid--time .option-icon,
+    .option-grid--binary .option-icon {
+      flex-shrink: 0;
+      width: 28px;
+    }
+  
+    .option-grid--time .option-label,
+    .option-grid--binary .option-label {
+      font-size: 0.92rem;
+    }
+  
+    .option-grid--time .option-sub,
+    .option-grid--binary .option-sub {
+      display: none; /* Weniger Text auf Mobile für Klarheit */
+    }
+  
+    /* Formular-Felder untereinander */
+    .funnel-form-row {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  
+    .funnel-steps {
+      min-height: auto;
+    }
+  
+    /* Progress: kein Dots, nur Bar */
+    .funnel-progress-steps {
+      display: none;
+    }
+  
+    .funnel-progress {
+      height: 5px;
+      margin-bottom: 1.25rem;
+      border-radius: 99px;
+    }
+  
+    /* Buttons vollbreit */
+    .funnel-nav {
+      margin-top: 1.5rem;
+    }
+  
+    .funnel-btn--next,
+    .funnel-btn--submit {
+      flex: 1;
+      justify-content: center;
+      padding: 0.85rem 1.25rem;
+    }
+  
+    .funnel-btn--submit {
+      font-size: 0.95rem;
+    }
+  
+    .step-question {
+      font-size: 1.08rem;
+    }
+  
+    .step-hint {
+      font-size: 0.82rem;
+      margin-bottom: 1.25rem;
+    }
+  
+    /* Summary kompakter */
+    .funnel-summary {
+      padding: 0.85rem 1rem;
+    }
+  
+    .summary-tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+    }
+  
+    /* Inputs: größere Touch-Targets */
+    .funnel-input {
+      padding: 0.8rem 0.9rem;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+  }
+  
+  /* Größere Services-Grid Darstellung auf Tablets */
+  @media (min-width: 641px) and (max-width: 768px) {
+    .option-grid--services {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* ── Reduced Motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    .funnel-step { animation: none; }
+    .funnel-progress-bar { transition: none; }
+    .option-card { transition: none; }
+    .funnel-btn { transition: none; }
+    .funnel-step-dot { transition: none; }
+    .option-check { transition: none; }
+    .funnel-success { animation: none; }
+  }

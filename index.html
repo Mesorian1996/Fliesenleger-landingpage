@@ -8,7 +8,7 @@
   <title>Fliesenleger Mannheim – Fliesen, Bad & Boden | Limani Handwerk</title>
 
   <meta name="description"
-    content="Fliesenleger Mannheim: Badrenovierung, Fliesenverlegung für Bad, Küche & Böden. Saubere Arbeit, faire Preise, schnelle Termine. Jetzt unverbindlich anfragen.">
+    content="Fliesenleger Mannheim – Limani: Fliesen, Badsanierung, Bodenverlegung, Trockenbau & Wohnungssanierung. 900+ Projekte, 30+ Jahre Erfahrung. Kostenlose Beratung & schnelle Termine. ☎ 0173 329 3668">
 
   <link rel="canonical" href="https://www.limani-fliesenleger.de/">
 
@@ -33,10 +33,17 @@
 
   <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
   <link rel="stylesheet" href="css/upgrade.css">
+  <link rel="stylesheet" href="css/funnel.css">
   <noscript>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/upgrade.css">
   </noscript>
+
+  <!-- Im <head> – lokal hosten für DSGVO! -->
+<link rel="preload" as="font" type="font/woff2" 
+href="/assets/fonts/DMSans-Bold.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" 
+href="/assets/fonts/DMSans-Regular.woff2" crossorigin>
 
   <!-- Hero Bild preload -->
   <link rel="preload" href="/assets/images/Fliesen_schwimmbad_hero_mobile.webp" fetchpriority="high" as="image"
@@ -121,6 +128,52 @@
     "ratingValue": "5",
     "reviewCount": "4"
   },
+  "sameAs": [
+    "https://www.instagram.com/limani_fliesenleger/",
+    "https://www.facebook.com/limanifliesenleger/"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Handwerksleistungen",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fliesenarbeiten Mannheim",
+          "description": "Wand- und Bodenfliesen für Bad, Küche und Wohnräume"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Badsanierung Mannheim",
+          "description": "Komplette Badmodernisierung inkl. Fliesen, Sanitär und Trockenbau"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Bodenverlegung Mannheim",
+          "description": "Vinyl, Laminat, Parkett und Estricharbeiten"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Wohnungssanierung Mannheim",
+          "description": "Komplettsanierung von Wohnungen aus einer Hand"
+        }
+      }
+    ]
+  },
+  "knowsAbout": [
+    "Fliesenverlegung", "Badsanierung", "Bodenbeläge",
+    "Trockenbau", "Wohnungssanierung", "Malerarbeiten"
+  ],
   "review": [
     {
       "@type": "Review",
@@ -207,7 +260,36 @@
   }
   </script>
 
+<!-- WebSite-Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Limani Fliesenleger",
+  "url": "https://www.limani-fliesenleger.de",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.limani-fliesenleger.de/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
+<!-- BreadcrumbList-Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Startseite",
+      "item": "https://www.limani-fliesenleger.de/"
+    }
+  ]
+}
+</script>
 
 <body>
   <header>
@@ -219,8 +301,8 @@
         <img src="assets/images/Limani_Logo_modern.webp" alt="Limani Fliesenleger Logo" title="Limani Fliesenleger Logo" style="max-height: 75px;">
       </a>
 
-      <a class="btn btn-warning btn-sm d-md-none ms-2 flex-shrink-0 px-3 py-1 btn-mobile-cta" href="/#kontaktbereich" title="Kontaktformular öffnen">
-        Anfrage senden
+      <a class="btn btn-warning btn-sm d-md-none ms-2 flex-shrink-0 px-3 py-1 btn-mobile-cta" href="/#anfrage-funnel" title="Jetzt Anfrage starten">
+        Anfrage starten
       </a>
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -293,31 +375,34 @@
             <a class="nav-link" href="/#vorteile" title="Mehr über uns erfahren">Über uns</a>
           </li>
 
-          <!-- CTA im mobilen Menü (für bessere Usability) -->
+          <!-- Kontakt -->
+          <li class="nav-item">
+            <a class="nav-link" href="/kontakt-mannheim.html" title="Zur Kontaktseite">Kontakt</a>
+          </li>
+
+          <!-- CTA im mobilen Menü -->
           <li class="nav-item d-md-none mt-2">
-            <a class="btn btn-warning w-100" href="/#kontaktbereich" title="Kontaktformular öffnen">
-              Jetzt unverbindliches Angebot einholen
+            <a class="btn btn-warning w-100" href="/#anfrage-funnel" title="Jetzt Anfrage starten">
+              Projekt anfragen
             </a>
           </li>
         </ul>
 
         <!-- Icons + CTA (nur Desktop) -->
-        <div class="d-none d-md-flex align-items-center ms-md-3 gap-3">
+        <div class="d-none d-md-flex align-items-center ms-md-3 nav-actions">
           <!-- Telefon -->
           <a href="tel:+491733293668" class="nav-icon-link" aria-label="Anrufen" title="Telefonische Anfrage starten">
-            <img src="/assets/icons/telefon.svg" alt="Telefon Symbol" title="Telefon Symbol" width="20" height="20" class="icon icon-phone" loading="lazy"
-              aria-hidden="true">
+            <img src="/assets/icons/telefon.svg" alt="Telefon" width="20" height="20" aria-hidden="true">
           </a>
 
           <!-- E-Mail -->
           <a href="mailto:kontakt@limani-fliesenleger.de" class="nav-icon-link" aria-label="E-Mail schreiben" title="E-Mail schreiben">
-            <img src="/assets/icons/mail.svg" alt="E-Mail Symbol" title="E-Mail Symbol" width="20" height="20" class="icon icon-mail" loading="lazy"
-              aria-hidden="true">
+            <img src="/assets/icons/mail.svg" alt="E-Mail" width="20" height="20" aria-hidden="true">
           </a>
 
           <!-- Haupt-CTA -->
-          <a href="/#kontaktbereich" class="btn btn-warning nav-cta" title="Kontaktformular öffnen">
-            Jetzt Angebot einholen
+          <a href="/#anfrage-funnel" class="btn btn-warning nav-cta" title="Jetzt Projekt anfragen">
+            Projekt anfragen
           </a>
         </div>
       </div>
@@ -342,8 +427,8 @@
         Komplettsanierungen, Teilrenovierungen und einzelne Gewerke – sauber koordiniert, termintreu und zuverlässig.
       </p>
 
-      <a href="#kontaktbereich" class="btn btn-warning btn-lg" title="Kontaktformular öffnen">
-        Jetzt unverbindlich anfragen
+      <a href="#anfrage-funnel" class="btn btn-warning btn-lg" title="Jetzt Anfrage starten">
+        Kostenlose Beratung – Antwort heute noch
       </a>
     </div>
   </section>
@@ -371,7 +456,7 @@
               Präzise verlegte Wand- und Bodenfliesen für Bad, Küche und Wohnräume – in Mannheim, Ludwigshafen &
               Umgebung.
             </p>
-            <a href="#kontaktbereich" class="slide-button" title="Kontaktformular öffnen"><span>Anfrage senden</span></a>
+            <a href="#anfrage-funnel" class="slide-button" title="Jetzt Anfrage starten"><span>Kostenloses Angebot anfragen</span></a>
           </div>
         </div>
 
@@ -382,7 +467,7 @@
             <p class="slide-description">
               Saubere Maler- und Spachtelarbeiten für Ihre Wohnungssanierung – zuverlässig im Raum Mannheim.
             </p>
-            <a href="#kontaktbereich" class="slide-button" title="Kontaktformular öffnen"><span>Anfrage senden</span></a>
+            <a href="#anfrage-funnel" class="slide-button" title="Jetzt Anfrage starten"><span>Kostenloses Angebot anfragen</span></a>
           </div>
         </div>
 
@@ -394,7 +479,7 @@
               Bodenverlegung von Vinyl, Laminat, Parkett und Estrich – ideal für Miet- und Eigentumswohnungen in
               Mannheim & Ludwigshafen.
             </p>
-            <a href="#kontaktbereich" class="slide-button" title="Kontaktformular öffnen"><span>Anfrage senden</span></a>
+            <a href="#anfrage-funnel" class="slide-button" title="Jetzt Anfrage starten"><span>Kostenloses Angebot anfragen</span></a>
           </div>
         </div>
 
@@ -405,7 +490,7 @@
             <p class="slide-description">
               Glatte oder strukturierte Innenwände von Q1 bis Q4 – perfekt vorbereitet für Fliesen oder Anstrich.
             </p>
-            <a href="#kontaktbereich" class="slide-button" title="Kontaktformular öffnen"><span>Anfrage senden</span></a>
+            <a href="#anfrage-funnel" class="slide-button" title="Jetzt Anfrage starten"><span>Kostenloses Angebot anfragen</span></a>
           </div>
         </div>
 
@@ -417,7 +502,7 @@
               Komplette Wohnungssanierungen in Mannheim & Umgebung – von Abbruch bis Fertigstellung aus einer Hand
               koordiniert.
             </p>
-            <a href="#kontaktbereich" class="slide-button" title="Kontaktformular öffnen"><span>Anfrage senden</span></a>
+            <a href="#anfrage-funnel" class="slide-button" title="Jetzt Anfrage starten"><span>Kostenloses Angebot anfragen</span></a>
           </div>
         </div>
 
@@ -449,23 +534,353 @@
     </div>
   </section>
 
+  <!-- Trust-Leiste -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item">
+          <span class="trust-stars" aria-label="5 von 5 Sternen">★★★★★</span>
+          <span>5.0 auf Google</span>
+        </div>
+        <div class="trust-item">
+          <img src="/assets/icons/tools.svg" alt="" width="18" height="18" class="trust-icon-img" aria-hidden="true">
+          <span>900+ Projekte</span>
+        </div>
+        <div class="trust-item">
+          <img src="/assets/icons/quality.svg" alt="" width="18" height="18" class="trust-icon-img" aria-hidden="true">
+          <span>30+ Jahre Erfahrung</span>
+        </div>
+        <div class="trust-item">
+          <img src="/assets/icons/standort.svg" alt="" width="18" height="18" class="trust-icon-img" aria-hidden="true">
+          <span>Mannheim & Umgebung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ANFRAGE-FUNNEL – Multi-Step Qualification
+       ============================================ -->
+  <section id="anfrage-funnel" class="funnel-section">
+    <div class="container">
+      <div class="funnel-wrapper">
+
+        <div class="funnel-header">
+          <p class="funnel-kicker">In nur 60 Sekunden zur Anfrage</p>
+          <h2 class="funnel-title">Was können wir für Sie tun?</h2>
+          <p class="funnel-subtitle">Beantworten Sie ein paar kurze Fragen – wir melden uns mit einem passenden Angebot.</p>
+        </div>
+
+        <div class="funnel-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6" aria-label="Fortschritt">
+          <div class="funnel-progress-bar" id="funnelProgressBar" style="width: 16.66%"></div>
+          <div class="funnel-progress-steps">
+            <span class="funnel-step-dot active" data-step="1">1</span>
+            <span class="funnel-step-dot" data-step="2">2</span>
+            <span class="funnel-step-dot" data-step="3">3</span>
+            <span class="funnel-step-dot" data-step="4">4</span>
+            <span class="funnel-step-dot" data-step="5">5</span>
+            <span class="funnel-step-dot" data-step="6">6</span>
+          </div>
+        </div>
+
+        <div class="funnel-steps" id="funnelSteps">
+
+          <!-- STEP 1: Leistung -->
+          <div class="funnel-step active" data-step="1">
+            <h3 class="step-question">Welche Arbeiten sollen erledigt werden?</h3>
+            <p class="step-hint">Mehrfachauswahl möglich</p>
+            <div class="option-grid option-grid--services">
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Fliesenarbeiten" class="option-input">
+                <img src="/assets/icons/fliesenverlegung.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Fliesen&shy;arbeiten</span>
+                <span class="option-sub">Bad, Küche, Wände, Böden</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Badsanierung" class="option-input">
+                <img src="/assets/icons/badsanierung.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Bad&shy;sanierung</span>
+                <span class="option-sub">Komplett oder Teilsanierung</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Bodenverlegung" class="option-input">
+                <img src="/assets/icons/bodenverlegung.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Boden&shy;verlegung</span>
+                <span class="option-sub">Vinyl, Laminat, Parkett, Estrich</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Malerarbeiten" class="option-input">
+                <img src="/assets/icons/malerarbeiten.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Maler- & Verputz</span>
+                <span class="option-sub">Wände, Decken, Spachtel</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Trockenbau" class="option-input">
+                <img src="/assets/icons/trockenbau.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Trockenbau</span>
+                <span class="option-sub">Wände, Decken, Dämmung</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card">
+                <input type="checkbox" name="leistung" value="Wohnungssanierung" class="option-input">
+                <img src="/assets/icons/wohnungssanierung.svg" alt="" width="36" height="36" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Wohnungs&shy;sanierung</span>
+                <span class="option-sub">Komplett aus einer Hand</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 2: Fläche -->
+          <div class="funnel-step" data-step="2">
+            <h3 class="step-question">Wie groß ist die Fläche ungefähr?</h3>
+            <p class="step-hint">Eine grobe Schätzung reicht völlig</p>
+            <div class="option-grid option-grid--size">
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="flaeche" value="Unter 10 m²" class="option-input">
+                <span class="option-icon-text">~10</span>
+                <span class="option-label">Unter 10 m²</span>
+                <span class="option-sub">z.B. Gäste-WC, kleine Küche</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="flaeche" value="10–25 m²" class="option-input">
+                <span class="option-icon-text">~20</span>
+                <span class="option-label">10 – 25 m²</span>
+                <span class="option-sub">z.B. Bad, Küche, Flur</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="flaeche" value="25–50 m²" class="option-input">
+                <span class="option-icon-text">~40</span>
+                <span class="option-label">25 – 50 m²</span>
+                <span class="option-sub">z.B. Wohnzimmer, großes Bad</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="flaeche" value="Über 50 m²" class="option-input">
+                <span class="option-icon-text">50+</span>
+                <span class="option-label">Über 50 m²</span>
+                <span class="option-sub">z.B. Wohnung, mehrere Räume</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 3: Zeitrahmen -->
+          <div class="funnel-step" data-step="3">
+            <h3 class="step-question">Wann sollen die Arbeiten stattfinden?</h3>
+            <p class="step-hint">Wir planen Sie so schnell wie möglich ein</p>
+            <div class="option-grid option-grid--time">
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="zeitrahmen" value="So schnell wie möglich" class="option-input">
+                <img src="/assets/icons/fast_appointment.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">So schnell wie möglich</span>
+                <span class="option-sub">Innerhalb von 1–2 Wochen</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="zeitrahmen" value="In 1–3 Monaten" class="option-input">
+                <img src="/assets/icons/regular_appointment.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">In 1 – 3 Monaten</span>
+                <span class="option-sub">In Ruhe planen</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="zeitrahmen" value="Bin flexibel" class="option-input">
+                <img src="/assets/icons/flexible_appointment.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Bin flexibel</span>
+                <span class="option-sub">Richten wir uns nach Ihnen</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 4: Material -->
+          <div class="funnel-step" data-step="4">
+            <h3 class="step-question">Sollen wir das Material besorgen?</h3>
+            <p class="step-hint">Wir arbeiten mit ausgewählten Partnern für beste Qualität</p>
+            <div class="option-grid option-grid--binary">
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="material" value="Ja, Material durch Limani" class="option-input">
+                <img src="/assets/icons/bring_material.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Ja, komplett durch euch</span>
+                <span class="option-sub">Wir besorgen alles – bequem & zuverlässig</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="material" value="Nein, Material vorhanden" class="option-input">
+                <img src="/assets/icons/check_mark.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Nein, Material vorhanden</span>
+                <span class="option-sub">Nur Handwerksleistung gewünscht</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="material" value="Noch unsicher" class="option-input">
+                <img src="/assets/icons/request.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Weiß ich noch nicht</span>
+                <span class="option-sub">Möchte ich gerne besprechen</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 5: Rückbau -->
+          <div class="funnel-step" data-step="5">
+            <h3 class="step-question">Ist ein Rückbau notwendig?</h3>
+            <p class="step-hint">z.B. alte Fliesen entfernen, Wände abbrechen, Böden rausreißen</p>
+            <div class="option-grid option-grid--binary">
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="rueckbau" value="Ja, Rückbau nötig" class="option-input">
+                <img src="/assets/icons/demolition.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Ja, Rückbau nötig</span>
+                <span class="option-sub">Altes muss raus</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="rueckbau" value="Nein, kein Rückbau" class="option-input">
+                <img src="/assets/icons/check_mark.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Nein, kein Rückbau</span>
+                <span class="option-sub">Fläche ist vorbereitet</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+              <label class="option-card option-card--radio">
+                <input type="radio" name="rueckbau" value="Rückbau unsicher" class="option-input">
+                <img src="/assets/icons/request.svg" alt="" width="32" height="32" class="option-icon-img" loading="lazy" aria-hidden="true">
+                <span class="option-label">Bin mir unsicher</span>
+                <span class="option-sub">Klären wir vor Ort</span>
+                <span class="option-check" aria-hidden="true"><img src="/assets/icons/check_mark.svg" alt="" width="16" height="16"></span>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- STEP 6: Kontaktdaten -->
+          <div class="funnel-step" data-step="6">
+            <h3 class="step-question">Fast geschafft – wie erreichen wir Sie?</h3>
+            <p class="step-hint">Wir melden uns innerhalb von 24 Stunden</p>
+
+            <div class="funnel-summary" id="funnelSummary">
+              <p class="summary-title">Ihre Angaben im Überblick:</p>
+              <div class="summary-tags" id="summaryTags"></div>
+            </div>
+
+            <div class="funnel-contact-form">
+              <div class="funnel-form-row">
+                <div class="funnel-field">
+                  <label for="funnel-vorname" class="funnel-label">Vorname *</label>
+                  <input type="text" id="funnel-vorname" name="Vorname" class="funnel-input" required autocomplete="given-name" placeholder="Max">
+                </div>
+                <div class="funnel-field">
+                  <label for="funnel-nachname" class="funnel-label">Nachname *</label>
+                  <input type="text" id="funnel-nachname" name="Nachname" class="funnel-input" required autocomplete="family-name" placeholder="Mustermann">
+                </div>
+              </div>
+              <div class="funnel-form-row">
+                <div class="funnel-field">
+                  <label for="funnel-telefon" class="funnel-label">Telefon *</label>
+                  <input type="tel" id="funnel-telefon" name="Telefon" class="funnel-input" required autocomplete="tel" placeholder="0173 1234567">
+                </div>
+                <div class="funnel-field">
+                  <label for="funnel-email" class="funnel-label">E-Mail *</label>
+                  <input type="email" id="funnel-email" name="Email" class="funnel-input" required autocomplete="email" placeholder="max@beispiel.de">
+                </div>
+              </div>
+              <div class="funnel-field">
+                <label for="funnel-notiz" class="funnel-label">Ergänzung <span class="optional-hint">(optional)</span></label>
+                <textarea id="funnel-notiz" name="Nachricht" class="funnel-input funnel-textarea" rows="2" maxlength="400" placeholder="z.B. Adresse, besondere Wünsche, Fotos folgen per WhatsApp..."></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation -->
+        <div class="funnel-nav">
+          <button type="button" class="funnel-btn funnel-btn--back" id="funnelBack" style="visibility: hidden" aria-label="Zurück">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+            Zurück
+          </button>
+          <button type="button" class="funnel-btn funnel-btn--next" id="funnelNext" aria-label="Weiter">
+            Weiter
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+          </button>
+          <button type="button" class="funnel-btn funnel-btn--submit" id="funnelSubmit" style="display: none" aria-label="Absenden">
+            Kostenlos Angebot anfragen
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg>
+          </button>
+        </div>
+
+        <p class="funnel-validation-hint" id="funnelHint" aria-live="polite"></p>
+
+        <div class="funnel-success" id="funnelSuccess" style="display: none">
+          <div class="success-icon" aria-hidden="true">
+            <img src="/assets/icons/check_mark.svg" alt="" width="56" height="56">
+          </div>
+          <h3 class="success-title">Anfrage erfolgreich gesendet!</h3>
+          <p class="success-text">Vielen Dank – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+          <button type="button" class="funnel-btn funnel-btn--reset" id="funnelReset">Neue Anfrage starten</button>
+        </div>
+
+        <div class="funnel-error" id="funnelError" style="display: none">
+          <p>Fehler aufgetreten. Versuchen Sie es erneut oder rufen Sie uns an: <a href="tel:+491733293668">0173 329 3668</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Leistungen -->
   <section id="leistungen" class="py-5 bg-white seo-section">
     <div class="container">
       <div class="seo-section-inner">
-        <h2 class="section-title mb-4">Ihr Fliesenleger in Mannheim – das machen wir</h2>
-        <p class="seo-body seo-body--accent">
-          Wir fliesen Bäder, Küchen und Wohnräume, verlegen Böden und übernehmen komplette Sanierungen.
-          Unsere Arbeit ist sauber, schnell und zuverlässig – täglich in Mannheim, Ludwigshafen und Heidelberg.
+        <h2 class="section-title mb-4">Fliesenleger in Mannheim – Fliesen, Böden und Sanierung aus einer Hand</h2>
+        <p class="seo-body">
+          Wir sind Ihr Handwerksbetrieb in Mannheim für Fliesen, Bäder und komplette Wohnungssanierungen. 
+          Ob einzelne Räume oder eine ganze Wohnung – wir übernehmen alles aus einer Hand: Fliesenarbeiten, 
+          Badsanierung, Malerarbeiten wie Tapezieren und Streichen, Verputzarbeiten, Bodenverlegung, 
+          Trockenbau sowie Abbruch und Entsorgung. Unsere Arbeit ist sauber, schnell und zuverlässig.
         </p>
-          
-          <ul class="seo-body text-muted mb-4">
-            <li>Bäder, Duschen, Küchen und Balkone fliesen</li>
-            <li>Ebenerdige Duschen, Großformate und Mosaik</li>
-            <li>Silikonfugen erneuern und kleine Reparaturen</li>
-            <li>Bodenbeläge: Vinyl, Laminat, Parkett, Estrich</li>
-            <li>Trockenbau, Malerarbeiten und komplette Wohnungssanierungen</li>
-          </ul>
+        <p class="seo-body">
+          In den meisten Projekten sanieren wir komplette Bäder oder ganze Wohnungen. Dabei kümmern wir uns 
+          um den Rückbau, verlegen Wand- und Bodenfliesen, bauen ebenerdige Duschen, verputzen und streichen 
+          Wände, verlegen Vinylböden, Laminat oder Parkett und koordinieren bei Bedarf auch Estricharbeiten. 
+          Kleine Arbeiten wie Silikonfugen erneuern oder einzelne Fliesen austauschen erledigen wir natürlich genauso.
+        </p>
+        <p class="seo-body">
+          Wir sind täglich in Mannheim, Ludwigshafen und Heidelberg unterwegs. Durch kurze Wege können wir 
+          schnelle Termine anbieten und Projekte zügig umsetzen – von der ersten Beratung bis zur sauberen Übergabe.
+        </p>
+        <a href="#anfrage-funnel" class="btn btn-warning btn-lg mt-2" title="Jetzt Anfrage starten">
+          Jetzt unverbindliches Angebot einholen
+        </a>
       </div>
       <div class="row g-4 service-grid card-group-hover" data-aos="fade-up" data-aos-duration="700">
         <!-- Fliesenarbeiten Card -->
@@ -476,7 +891,7 @@
                 class="card-image" loading="eager" decoding="async" fetchpriority="high">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Fliesenarbeiten</h4>
+              <h3 class="service-title">Fliesenarbeiten</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Badezimmer, Küchen, Balkone & Terrassen</li>
                 <li><span class="text-orange">&rsaquo;</span> Wand- & Bodenfliesen</li>
@@ -501,7 +916,7 @@
               <img src="assets/images/Verputzen_compressed.webp" alt="Verputzarbeiten" title="Verputzarbeiten" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Verputz- & Malerarbeiten</h4>
+              <h3 class="service-title">Verputz- & Malerarbeiten</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Glatt- & Strukturputz</li>
                 <li><span class="text-orange">&rsaquo;</span> Decken & Wände</li>
@@ -526,7 +941,7 @@
               <img src="assets/images/Trockenbau_1_compressed.webp" alt="Trockenbauarbeiten" title="Trockenbauarbeiten" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Trockenbau</h4>
+              <h3 class="service-title">Trockenbau</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Trennwände & Decken</li>
                 <li><span class="text-orange">&rsaquo;</span> Unterkonstruktionen</li>
@@ -549,7 +964,7 @@
               <img src="assets/images/Abbrucharbeiten_compressed.webp" alt="Abbruch & Entsorgung" title="Abbruch & Entsorgung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Abbruch & Entsorgung</h4>
+              <h3 class="service-title">Abbruch & Entsorgung</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Rückbau & Demontage</li>
                 <li><span class="text-orange">&rsaquo;</span> Containerdienst</li>
@@ -574,7 +989,7 @@
               <img src="assets/images/Bodenarbeiten.webp" alt="Bodenverlegung" title="Bodenverlegung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Bodenverlegung & Estrich</h4>
+              <h3 class="service-title">Bodenverlegung & Estrich</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Spachteln & Bodenausgleich</li>
                 <li><span class="text-orange">&rsaquo;</span> Verlegung von Vinyl, Laminat & Parkett</li>
@@ -599,7 +1014,7 @@
               <img src="assets/images/Wohnung_compressed.webp" alt="Wohnungssanierung" title="Wohnungssanierung" class="card-image">
             </div>
             <div class="card-body text-center">
-              <h4 class="service-title">Wohnungssanierung</h4>
+              <h3 class="service-title">Wohnungssanierung</h3>
               <ul class="list-unstyled text-start small text-muted mt-3">
                 <li><span class="text-orange">&rsaquo;</span> Komplettsanierung</li>
                 <li><span class="text-orange">&rsaquo;</span> Koordination von Subunternehmen</li>
@@ -652,7 +1067,7 @@
             <img src="/assets/icons/quality.svg" alt="Qualitätssiegel Icon" title="Qualitätssiegel Icon" width="48" height="48" class="icon icon-quality"
               loading="lazy" aria-hidden="true">
           </div>
-          <h4 class="kachel-title">Über drei Jahrzehnte Erfahrung</h4>
+          <h3 class="kachel-title">Über drei Jahrzehnte Erfahrung</h3>
           <p class="kachel-subtext">Verlässliche Handwerkskunst, höchste Präzision und familiäre Werte – seit
             Jahrzehnten im Einsatz für unsere Kunden.</p>
         </div>
@@ -668,7 +1083,7 @@
             <img src="/assets/icons/projekte.svg" alt="Projekt Icon" title="Projekt Icon" width="48" height="48" class="icon icon-projekte"
               loading="lazy" aria-hidden="true">
           </div>
-          <h4 class="kachel-title">900+ abgeschlossene Projekte</h4>
+          <h3 class="kachel-title">900+ abgeschlossene Projekte</h3>
           <p class="kachel-subtext">Von Bädern bis Wohnräumen – unsere Galerie spricht für sich.</p>
         </div>
       </div>
@@ -678,17 +1093,17 @@
         <!-- Bilder-Galerie mit Karten-Stapel -->
         <div class="projekt-stapel-wrapper">
           <div class="projekt-stapel" id="projektStapel">
-            <img src="assets/images/Malerarbeiten_bunt_compressed.webp" alt="Bild 1" title="Bild 1" class="stapel-bild active">
-            <img src="assets/images/Fliesen_bad_10_klein.webp" alt="Bild 2" title="Bild 2" class="stapel-bild">
-            <img src="assets/images/Wohnung_3_compressed.webp" alt="Bild 3" title="Bild 3" class="stapel-bild">
-            <img src="assets/images/Wohnung_6_compressed.webp" alt="Bild 4" title="Bild 4" class="stapel-bild">
-            <img src="assets/images/Fliesen_bad_12_compressed.webp" alt="Bild 5" title="Bild 5" class="stapel-bild">
-            <img src="assets/images/Parkett_2_compressed.webp" alt="Bild 6" title="Bild 6" class="stapel-bild">
-            <img src="assets/images/Mosaik_1_compressed_1.webp" alt="Bild 7" title="Bild 7" class="stapel-bild">
-            <img src="assets/images/Mosaik_2_compressed.webp" alt="Bild 8" title="Bild 8" class="stapel-bild">
-            <img src="assets/images/Fliesen_bad_10_compressed.webp" alt="Bild 9" title="Bild 9" class="stapel-bild">
-            <img src="assets/images/Fliesen_bad_3_compressed.webp" alt="Bild 10" title="Bild 10" class="stapel-bild">
-            <img src="assets/images/Bodenfliesen_außen_compressed.webp" alt="Bild 11" title="Bild 11" class="stapel-bild">
+            <img src="assets/images/Malerarbeiten_bunt_compressed.webp" alt="Malerarbeiten Wohnung Mannheim – farbiger Wandanstrich" title="Malerarbeiten Wohnung Mannheim" class="stapel-bild active">
+            <img src="assets/images/Fliesen_bad_10_klein.webp" alt="Fliesen Badezimmer Mannheim – Großformat weiß" title="Fliesen Badezimmer Mannheim" class="stapel-bild">
+            <img src="assets/images/Wohnung_3_compressed.webp" alt="Wohnungssanierung Mannheim – fertiges Wohnzimmer" title="Wohnungssanierung Mannheim Wohnzimmer" class="stapel-bild">
+            <img src="assets/images/Wohnung_6_compressed.webp" alt="Komplettsanierung Wohnung Mannheim – Innenausbau" title="Komplettsanierung Wohnung Mannheim" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_12_compressed.webp" alt="Badsanierung Mannheim – moderne Fliesen Dusche" title="Badsanierung Mannheim Dusche" class="stapel-bild">
+            <img src="assets/images/Parkett_2_compressed.webp" alt="Parkettverlegung Mannheim – Echtholzboden Wohnraum" title="Parkettverlegung Mannheim" class="stapel-bild">
+            <img src="assets/images/Mosaik_1_compressed_1.webp" alt="Mosaikfliesen Bad Mannheim – Detailarbeit" title="Mosaikfliesen Bad Mannheim" class="stapel-bild">
+            <img src="assets/images/Mosaik_2_compressed.webp" alt="Mosaik Duschbereich Mannheim – Premiumverlegung" title="Mosaik Duschbereich Mannheim" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_10_compressed.webp" alt="Fliesenleger Badezimmer Neckarau – Wandfliesen hell" title="Fliesenleger Badezimmer Neckarau" class="stapel-bild">
+            <img src="assets/images/Fliesen_bad_3_compressed.webp" alt="Bad Fliesen Ludwigshafen – bodengleiche Dusche" title="Bad Fliesen Ludwigshafen" class="stapel-bild">
+            <img src="assets/images/Bodenfliesen_außen_compressed.webp" alt="Terrassenfliesen Außenbereich Mannheim – Bodenfliesen" title="Terrassenfliesen Außenbereich Mannheim" class="stapel-bild">
             <!-- Weitere Bilder können hier einfach ergänzt werden -->
           </div>
           <div class="dot-indikator" id="dotIndikator"></div>
@@ -708,7 +1123,7 @@
             <img src="/assets/icons/warranty.svg" alt="Garantie Icon" title="Garantie Icon" width="48" height="48" class="icon icon-warranty"
               loading="lazy" aria-hidden="true">
           </div>
-          <h4 class="kachel-title">Alles aus einer Hand</h4>
+          <h3 class="kachel-title">Alles aus einer Hand</h3>
           <p class="kachel-subtext">
             Für größere Projekte wie die Sanierung einer ganzen Wohnung übernehmen wir die Koordination und Bauleitung
             –
@@ -721,13 +1136,13 @@
       <div class="row.mb-5 col-md-6 order-2 order-md-1" data-aos="fade-left">
         <div class="prozess-container">
           <div class="prozess-schritt">
-            <a class="nav-link d-flex" href="#kontaktbereich" aria-label="Zum Kontaktformular scrollen" title="Kontaktformular anzeigen">
+            <a class="nav-link d-flex" href="/kontakt-mannheim.html" aria-label="Zur Kontaktseite" title="Kontaktseite öffnen">
               <div class="icon-box">
               <img src="/assets/icons/liste.svg" alt="Checkliste Icon" title="Checkliste Icon" width="28" height="28" class="icon icon-clipboard"
                   loading="lazy" aria-hidden="true">
               </div>
               <div class="prozess-text">
-                <h4>Anfrage erstellen</h4>
+                <h3 class="h5">Anfrage erstellen</h3>
                 <p>Schnell & unkompliziert über unser Formular oder telefonisch.</p>
               </div>
             </a>
@@ -740,7 +1155,7 @@
                 loading="lazy" aria-hidden="true">
             </div>
             <div class="prozess-text">
-              <h4>Termin vereinbaren</h4>
+              <h3 class="h5">Termin vereinbaren</h3>
               <p>Vor Ort besprechen wir Ihre Wünsche & besichtigen das Objekt.</p>
             </div>
           </div>
@@ -776,7 +1191,7 @@
                 aria-hidden="true">
             </div>
             <div class="prozess-text">
-              <h4>Unverbindliches Angebot</h4>
+              <h3 class="h5">Unverbindliches Angebot</h3>
               <p>Transparent kalkuliert, auf Ihre Anforderungen zugeschnitten.</p>
             </div>
           </div>
@@ -788,7 +1203,7 @@
                 aria-hidden="true">
             </div>
             <div class="prozess-text">
-              <h4>Bauprojekt durchführen</h4>
+              <h3 class="h5">Bauprojekt durchführen</h3>
               <p>Von der Planung bis zur Fertigstellung – alles aus einer Hand.</p>
             </div>
           </div>
@@ -819,7 +1234,7 @@
             <img src="/assets/icons/standort.svg" alt="Standort Icon" title="Standort Icon" width="48" height="48" class="icon icon-location" loading="lazy"
               aria-hidden="true">
           </div>
-          <h4 class="kachel-title">Regional & zuverlässig</h4>
+          <h3 class="kachel-title">Regional & zuverlässig</h3>
           <p class="kachel-subtext">
             Wir sind aus Mannheim – regional verwurzelt und persönlich für Sie erreichbar.
             Durch kurze Wege nach Ludwigshafen, Heidelberg und in die umliegenden Städte
@@ -836,21 +1251,23 @@
   <section class="py-5 bg-light seo-section">
     <div class="container">
       <div class="seo-section-inner">
-        <h2 class="section-title mb-4">Was kosten Fliesenarbeiten oder eine Sanierung?</h2>
+        <h2 class="section-title mb-4">Was kosten Fliesenarbeiten oder eine Badsanierung in Mannheim?</h2>
 
         <p class="seo-body">
-          Die Kosten lassen sich gut einschätzen, wenn wir vier Punkte kennen:
+          Die häufigste Frage, die wir hören: „Was kostet das ungefähr?" – eine berechtigte Frage,
+          die sich pauschal schwer beantworten lässt. Die Kosten hängen von mehreren Faktoren ab:
+          Größe der Fläche, gewünschtes Material, Zustand des Untergrunds und Umfang des
+          Rückbaus.
         </p>
-        <ul class="seo-body text-muted mb-4">
-          <li>Größe der Fläche</li>
-          <li>gewünschtes Material</li>
-          <li>Zustand des Untergrunds</li>
-          <li>Rückbau oder Entfernung alter Beläge</li>
-        </ul>
-        <p class="seo-body seo-body--accent">
-          Wir schauen uns alles kurz vor Ort an und schicken Ihnen dann einen transparenten Vorschlag. Meist erhalten
-          Sie zwei Varianten – eine preisbewusste Lösung und eine mit hochwertigeren Materialien. So können Sie in Ruhe
-          entscheiden.
+        <p class="seo-body">
+          Wir schauen uns alles kurz vor Ort an und erstellen Ihnen ein transparentes Angebot.
+          In der Regel erhalten Sie zwei Varianten: eine preisbewusste Lösung und eine mit
+          hochwertigeren Materialien. So können Sie in Ruhe vergleichen und entscheiden –
+          ohne Zeitdruck und ohne versteckte Kosten.
+        </p>
+        <p class="seo-body">
+          <a href="#anfrage-funnel" style="color: var(--limani-orange, #f39c12); font-weight: 600; text-decoration: none;" title="Jetzt Anfrage starten">Jetzt
+            unverbindlich anfragen</a> – wir melden uns in der Regel innerhalb von 24–48&nbsp;Stunden.
         </p>
         
     </div>
@@ -919,155 +1336,6 @@
     </div>
   </section>
 
-  <!-- Kontakt + Google Maps -->
-  <section id="kontaktbereich" class="py-5 bg-light">
-    <div class="container">
-
-      <!-- Intro -->
-      <div class="text-center mb-4">
-        <h2 class="section-title mb-2">
-          Kontaktieren Sie Ihren Fliesenleger in Mannheim
-        </h2>
-        <p class="section-subline">
-          Unverbindliches Angebot für Fliesen, Badsanierung, Boden oder Trockenbau –
-          in Mannheim, Ludwigshafen und der gesamten Rhein-Neckar-Region.
-          Wir melden uns in der Regel innerhalb von 24–48&nbsp;Stunden.
-        </p>
-      </div>
-
-      <!-- Card-Layout -->
-      <div class="contact-card-wrapper">
-        <div class="row g-4 align-items-start">
-
-          <!-- Formular (links auf Desktop, oben auf Mobile) -->
-          <div class="col-lg-7">
-            <div class="contact-form-card h-100">
-              <form class="needs-validation" id="kontaktformular" novalidate>
-                <!-- Honeypot -->
-                <input type="checkbox" name="botcheck" class="hidden" style="display:none">
-
-                <!-- Name -->
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="vorname" class="form-label">Vorname *</label>
-                    <input type="text" class="form-control" id="vorname" name="Vorname" required>
-                    <div class="invalid-feedback">Bitte geben Sie Ihren Vornamen ein.</div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="nachname" class="form-label">Nachname *</label>
-                    <input type="text" class="form-control" id="nachname" name="Nachname" required>
-                    <div class="invalid-feedback">Bitte geben Sie Ihren Nachnamen ein.</div>
-                  </div>
-                </div>
-
-                <!-- Kontakt -->
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="email" class="form-label">E-Mail *</label>
-                    <input type="email" class="form-control" id="email" name="Email" required>
-                    <div class="invalid-feedback">Bitte geben Sie eine gültige E-Mail ein.</div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="phone" class="form-label">Telefon *</label>
-                    <input type="tel" class="form-control" id="phone" name="Telefon" required>
-                    <div class="invalid-feedback">Bitte geben Sie Ihre Telefonnummer ein.</div>
-                  </div>
-                </div>
-
-                <!-- Ort des Bauvorhabens -->
-                <div class="mb-3">
-                  <label for="ort" class="form-label">Ort des Bauvorhabens</label>
-                  <input type="text" class="form-control" id="ort" name="Ort"
-                    placeholder="Adresse des Bauvorhabens">
-                  <div class="invalid-feedback">Bitte geben Sie den Ort an.</div>
-                </div>
-
-                <!-- Art der Arbeiten -->
-                <div class="mb-3">
-                  <label for="projektart" class="form-label">Art der Arbeiten</label>
-                  <select class="form-select" id="projektart" name="Projektart">
-                    <option value="">Bitte wählen</option>
-                    <option value="Fliesenarbeiten">Fliesenarbeiten</option>
-                    <option value="Badsanierung">Badsanierung</option>
-                    <option value="Bodenverlegung">Bodenverlegung (Vinyl, Laminat, Parkett)</option>
-                    <option value="Malerarbeiten">Malerarbeiten</option>
-                    <option value="Verputz / Spachtel">Verputz- & Spachtelarbeiten</option>
-                    <option value="Trockenbau">Trockenbau</option>
-                    <option value="Wohnungssanierung">Wohnungssanierung</option>
-                    <option value="Sonstiges">Sonstiges</option>
-                  </select>
-                </div>
-
-                <!-- Nachricht -->
-                <div class="mb-3">
-                  <label for="nachricht" class="form-label">Nachricht (optional)</label>
-                  <textarea class="form-control" id="nachricht" name="Nachricht" rows="3"
-                    maxlength="500" placeholder="Was soll gemacht werden?"></textarea>
-                </div>
-
-                <!-- Submit -->
-                <div class="text-center text-md-start">
-                  <button type="submit" id="submitBtn" class="btn btn-warning w-100 w-md-auto">
-                    Anfrage senden
-                  </button>
-                  <small class="d-block mt-2 text-muted">
-                    Durch das Übermitteln Ihrer Daten stimmen Sie der <a href="datenschutz.html" title="Zur Datenschutzerklärung">Datenschutzerklärung</a> zu.
-                  </small>
-                </div>
-
-                <div id="successMessage" class="alert alert-success d-none mt-3 text-center" role="alert">
-                  ✅ Ihre Anfrage wurde erfolgreich versendet. Wir melden uns zeitnah bei Ihnen!
-                </div>
-                <div id="errorMessage" class="alert alert-danger d-none mt-3 text-center" role="alert">
-                  ❌ Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Kontaktinfo + Maps (rechts auf Desktop, unten auf Mobile) -->
-          <div class="col-lg-5">
-            <aside class="contact-info-card h-100">
-              <h4 class="h4 mb-3">Kontakt</h4>
-              <p class="mb-4 small text-muted">
-                Sie möchten lieber direkt anrufen oder eine E-Mail schreiben?
-              </p>
-              <ul class="list-unstyled contact-list mb-4">
-                <li class="mb-3 d-flex align-items-center">
-                  <img src="/assets/icons/telefon.svg" alt="Telefon Icon" title="Telefon Icon" width="20" height="20"
-                    class="icon icon-phone text-warning me-2" loading="lazy" aria-hidden="true">
-                  <a href="tel:+491733293668" class="text-dark text-decoration-none" title="Telefonnummer anrufen">
-                    0173 3293668
-                  </a>
-                </li>
-                <li class="mb-3 d-flex align-items-center">
-                  <img src="/assets/icons/mail.svg" alt="E-Mail Icon" title="E-Mail Icon" width="20" height="20"
-                    class="icon icon-mail text-warning me-2" loading="lazy" aria-hidden="true">
-                  <a href="mailto:kontakt@limani-fliesenleger.de" class="text-dark text-decoration-none" title="E-Mail schreiben">
-                    kontakt@limani-fliesenleger.de
-                  </a>
-                </li>
-                <li class="mt-3 small text-muted">
-                  Rückmeldung in der Regel innerhalb von 24–48&nbsp;Stunden.
-                </li>
-              </ul>
-
-              <!-- Google Maps – Limani Fliesenleger Geschäftseintrag mit Pin -->
-              <div class="contact-map rounded overflow-hidden" style="border: 1px solid var(--limani-border);">
-                <iframe
-                  src="https://maps.google.com/maps?q=Limani+Fliesenleger+E7+13+68161+Mannheim&t=&z=16&ie=UTF8&iwloc=B&output=embed"
-                  width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  title="Limani Fliesenleger auf Google Maps">
-                </iframe>
-              </div>
-            </aside>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Regional & SEO -->
   <section class="py-5 bg-white seo-section">
@@ -1090,6 +1358,48 @@
     </div>
   </section>
 
+
+  <!-- Bewertungen / Social Proof -->
+  <section class="reviews-section py-5">
+    <div class="container">
+      <h2 class="section-title mb-4 text-center">Das sagen unsere Kunden</h2>
+      <p class="text-center text-muted mb-4" style="max-width: 600px; margin: 0 auto;">
+        5.0 Sterne auf Google – überzeugen Sie sich selbst von unserer Arbeit.
+      </p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p class="review-text">
+            „Sehr saubere Arbeit, freundliche Beratung und schnelle 
+            Ausführung. Absolut zu empfehlen."
+          </p>
+          <p class="review-author">— Kunde aus Mannheim</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p class="review-text">
+            „Professionelle Arbeit. Herr Limani und sein Team haben unsere 
+            komplette Wohnung saniert. Alles top!"
+          </p>
+          <p class="review-author">— Kunde aus Mannheim</p>
+        </div>
+        <div class="review-card">
+          <div class="review-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+          <p class="review-text">
+            „Schnelle Terminvergabe, pünktliches Erscheinen und ein 
+            perfektes Ergebnis. Klare Empfehlung!"
+          </p>
+          <p class="review-author">— Kunde aus Mannheim</p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://maps.app.goo.gl/gayv2hFuPx7h2xTm6" class="btn btn-outline-dark" 
+           target="_blank" rel="noopener" title="Alle Bewertungen auf Google ansehen">
+          Alle Bewertungen auf Google ansehen
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- FAQ -->
   <section id="faq" class="py-5 bg-white">
@@ -1218,7 +1528,7 @@
 
         <!-- Kontakt -->
         <div class="col-md-4 text-center text-md-start">
-          <p class="fw-bold mb-2">Kontakt</h6>
+          <p class="fw-bold mb-2">Kontakt</p>
 
           <div class="kontakt-zeile">
             <img src="/assets/icons/mail.svg" alt="E-Mail Icon" title="E-Mail Icon" class="footer-icon">
@@ -1245,7 +1555,7 @@
 
         <!-- Rechtliches -->
         <div class="col-md-4">
-          <p class="fw-bold mb-2">Rechtliches</h4>
+          <p class="fw-bold mb-2">Rechtliches</p>
           <p class="mb-1">
             <a href="impressum.html" class="footer-link" title="Zum Impressum">Impressum</a>
           </p>
@@ -1267,14 +1577,17 @@
 
   <button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen">
     <svg class="go-top-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 12l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
-        stroke-linejoin="round" />
+      <path d="M18 15l-6-6-6 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
+
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 
   <script src="js/script.js" defer></script>
-  <script src="js/contact.js" defer></script>
+  <script src="js/funnel.js" defer></script>
 
 </body>
 

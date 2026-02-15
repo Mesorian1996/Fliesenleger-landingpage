@@ -496,3 +496,56 @@ if (heroHeading) {
 })();
 
 
+// ============================================
+// NAVBAR AUTO-HIDE ON MOBILE SCROLL
+// Zum Einfügen am Ende von script.js
+// ============================================
+(function () {
+  const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
+
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  const SCROLL_THRESHOLD = 8;
+
+  function handleScroll() {
+    if (!mobileQuery.matches) {
+      navbar.classList.remove("nav-hidden");
+      return;
+    }
+
+    const currentScrollY = window.scrollY;
+    const diff = currentScrollY - lastScrollY;
+
+    if (Math.abs(diff) < SCROLL_THRESHOLD) return;
+
+    if (diff > 0 && currentScrollY > 80) {
+      navbar.classList.add("nav-hidden");
+      navbar.classList.remove("nav-visible");
+    } else {
+      navbar.classList.remove("nav-hidden");
+      navbar.classList.add("nav-visible");
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  if (mobileQuery.addEventListener) {
+    mobileQuery.addEventListener("change", (e) => {
+      if (!e.matches) {
+        navbar.classList.remove("nav-hidden", "nav-visible");
+      }
+    });
+  }
+})();

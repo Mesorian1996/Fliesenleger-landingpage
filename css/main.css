@@ -2154,3 +2154,25 @@ form textarea:focus {
   }
 }
 
+/* ============================================
+   NAVBAR AUTO-HIDE ON MOBILE SCROLL
+   Zum Einfügen am Ende von main.css
+   Versteckt die Navbar beim Runterscrollen,
+   zeigt sie wieder beim Hochscrollen.
+   Nur auf Mobile (< 768px).
+   ============================================ */
+
+   @media (max-width: 767px) {
+    .navbar {
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+    .navbar.nav-hidden {
+      transform: translateY(-100%);
+    }
+    .navbar.nav-visible {
+      transform: translateY(0);
+    }
+  }
+
+  
