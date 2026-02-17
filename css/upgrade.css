@@ -660,6 +660,19 @@
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--limani-orange); outline-offset: 2px; }
   .go-top-btn { background-color: var(--limani-dark); box-shadow: 0 4px 16px rgba(15, 32, 53, 0.2); border-radius: 12px; width: 48px; height: 48px; }
   .go-top-btn:hover { background-color: var(--limani-orange); }
+
+  /* Slider-Pfeile: Icons zentriert in der Box */
+  .slider-navigations button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .slider-navigations button img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
   
   
   /* ──────────────────────────────────────────────

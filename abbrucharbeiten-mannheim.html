@@ -27,17 +27,62 @@
 
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Critical CSS – Navbar, Subpage-Hero, Fixed Buttons -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; color: #0f2035; background: #fff; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; width: 100%; }
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1020; padding: .85rem 1.25rem; background: rgba(255,255,255,0.97); box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .navbar-brand img { max-height: 75px; }
+    .navbar-toggler { border: 1px solid rgba(0,0,0,.1); padding: .25rem .75rem; background: transparent; }
+    .navbar-collapse { display: none; }
+    .navbar-collapse.show { display: block; }
+    @media (min-width: 768px) { .navbar-collapse { display: flex !important; align-items: center; justify-content: flex-end; } }
+    .nav-link { color: #333; padding: 0.5rem 0.75rem; font-weight: 500; }
+    .nav-icon-link { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; color: #f39c12; }
+    .nav-icon-link img { width: 20px; height: 20px; display: block; object-fit: contain; }
+    .nav-cta { font-weight: 600; border-radius: 999px; padding: 0.5rem 1.5rem; }
+    .btn-warning { background-color: #f39c12; border: none; color: #fff; padding: 0.5rem 1.5rem; border-radius: 999px; font-weight: 600; display: inline-block; cursor: pointer; }
+    .subpage-hero { position: relative; min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; align-items: center; text-align: center; color: #fff; padding: 4rem 1.5rem; overflow: hidden; }
+    .subpage-hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .subpage-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+    .subpage-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(15,32,53,0.75) 100%); z-index: 1; display: flex; align-items: center; justify-content: center; }
+    .subpage-hero-inner { position: relative; z-index: 2; max-width: 650px; margin: 0 auto; }
+    .subpage-hero-kicker { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.08em; margin-bottom: 0.75rem; opacity: 0.9; color: #f39c12; }
+    .subpage-hero-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; color: #fff; }
+    .subpage-hero-subline { font-size: 1.1rem; opacity: 0.95; margin-bottom: 1.5rem; }
+    .go-top-btn { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background-color: #0f2035; border: none; border-radius: 12px; cursor: pointer; padding: 12px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; color: #fff; }
+    .go-top-btn.show { opacity: 1; pointer-events: auto; }
+    .go-top-icon { width: 22px; height: 22px; color: #fff; }
+    .quick-call-btn { position: fixed; bottom: 90px; right: 30px; z-index: 1100; width: 48px; height: 48px; border-radius: 50%; background-color: #fff; border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 8px 20px rgba(0,0,0,0.12); display: flex; align-items: center; justify-content: center; }
+    .quick-call-btn img { width: 20px; height: 20px; }
+    .d-md-none { display: block; }
+    .d-none { display: none !important; }
+    @media (min-width: 768px) { .d-md-none { display: none !important; } .d-none.d-md-flex { display: flex !important; } }
+    @media (max-width: 767px) {
+      .navbar { transition: transform 0.3s ease; will-change: transform; padding: .45rem .9rem; min-height: 62px; }
+      .navbar.nav-hidden { transform: translateY(-100%); }
+      .navbar-brand img { max-height: 56px; }
+      .subpage-hero { padding: 6rem 0 3.5rem; }
+    }
+  </style>
 
+  <!-- Hero-Bild preload -->
+  <link rel="preload" href="/assets/images/Abbrucharbeiten.webp" as="image" type="image/webp" fetchpriority="high">
 
+  <!-- CSS: Alles non-blocking -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" as="style" onload="this.rel='stylesheet'">
   <link rel="preload" href="css/main.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="stylesheet" href="css/upgrade.css">
+  <link rel="preload" href="css/upgrade.css" as="style" onload="this.rel='stylesheet'">
+
   <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/upgrade.css">
   </noscript>
-
-  <link rel="preload" href="/assets/images/Abbrucharbeiten.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMM9L4YHL0"></script>
@@ -676,7 +721,7 @@
         <div class="col-md-4">
           <h4 class="fw-bold mb-2">Limani Fliesenleger</h4>
           <p class="mb-0">Inhaber Milaim Limani</p>
-          <p class="mb-0">E7 13, 68161 Mannheim</p>
+          <p class="mb-0">E7 13, 68159 Mannheim</p>
         </div>
 
         <!-- Kontakt -->
