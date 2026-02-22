@@ -57,8 +57,14 @@
         btnNext.style.display = "none";
         btnSubmit.style.display = "inline-flex";
         buildSummary();
+      } else if (n >= 2 && n <= 5) {
+        // Single-Select: Auto-Advance, kein Weiter-Button nötig
+        btnNext.style.display = "none";
+        btnSubmit.style.display = "none";
       } else {
-        btnNext.style.display = "inline-flex";
+        // Step 1 (Multi-Select): Button nur zeigen wenn etwas gewählt ist
+        const hasSelection = getStep(1).querySelectorAll('input[name="leistung"]:checked').length > 0;
+        btnNext.style.display = hasSelection ? "inline-flex" : "none";
         btnSubmit.style.display = "none";
       }
   
@@ -134,6 +140,20 @@
       return true;
     }
   
+    // ── Step 1: Weiter-Button erst bei Auswahl einblenden ──
+    function setupStep1Toggle() {
+      const step1 = getStep(1);
+      if (!step1) return;
+      const checkboxes = step1.querySelectorAll('input[name="leistung"]');
+      checkboxes.forEach((cb) => {
+        cb.addEventListener("change", () => {
+          if (currentStep !== 1) return;
+          const hasSelection = step1.querySelectorAll('input[name="leistung"]:checked').length > 0;
+          btnNext.style.display = hasSelection ? "inline-flex" : "none";
+        });
+      });
+    }
+
     // ── Auto-Advance für Radio-Schritte ──
     function setupAutoAdvance() {
       // Steps 2-5: Bei Radio-Klick automatisch weiter nach kurzer Verzögerung
@@ -374,6 +394,7 @@
   
     // ── Init ──
     setupAutoAdvance();
+    setupStep1Toggle();
     showStep(1);
   
     // Shake animation keyframes

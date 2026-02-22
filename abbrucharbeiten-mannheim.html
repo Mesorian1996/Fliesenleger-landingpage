@@ -62,6 +62,12 @@
     .d-md-none { display: block; }
     .d-none { display: none !important; }
     @media (min-width: 768px) { .d-md-none { display: none !important; } .d-none.d-md-flex { display: flex !important; } }
+    @media (min-width: 768px) {
+      .navbar { transition: padding 0.3s ease, box-shadow 0.3s ease; }
+      .navbar-brand img { transition: max-height 0.3s ease; }
+      .navbar.navbar-shrink { padding-top: 0.35rem; padding-bottom: 0.35rem; box-shadow: 0 2px 16px rgba(0,0,0,0.1); }
+      .navbar.navbar-shrink .navbar-brand img { max-height: 50px; }
+    }
     @media (max-width: 767px) {
       .navbar { transition: transform 0.3s ease; will-change: transform; padding: .45rem .9rem; min-height: 62px; }
       .navbar.nav-hidden { transform: translateY(-100%); }

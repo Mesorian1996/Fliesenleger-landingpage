@@ -412,6 +412,23 @@ if (goTopBtn) {
 }
 
 // --------------------------------------
+// Navbar Shrink on Desktop Scroll
+// --------------------------------------
+(function () {
+  const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
+  const SHRINK_THRESHOLD = 60;
+
+  let shrunk = false;
+  window.addEventListener("scroll", () => {
+    const shouldShrink = window.scrollY > SHRINK_THRESHOLD;
+    if (shouldShrink === shrunk) return;
+    shrunk = shouldShrink;
+    navbar.classList.toggle("navbar-shrink", shrunk);
+  }, { passive: true });
+})();
+
+// --------------------------------------
 // Hero-Heading Fade-Out (nur Startseite)
 // --------------------------------------
 const heroHeading = document.querySelector(".hero-main-heading-wrapper");

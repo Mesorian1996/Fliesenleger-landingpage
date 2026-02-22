@@ -957,3 +957,35 @@ h3.kachel-title {
   color: var(--limani-dark);
   margin-bottom: 0.25rem;
 }
+
+/* ── Navbar Shrink on Desktop Scroll ──
+   Füge dieses Snippet in upgrade.css UND in das inline Critical CSS ein.
+   ──────────────────────────────────────── */
+
+/* Desktop: Navbar verkleinert sich beim Scrollen */
+@media (min-width: 768px) {
+  .navbar {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .navbar-brand img {
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar.navbar-shrink {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar.navbar-shrink .navbar-brand img {
+    max-height: 50px;
+  }
+}
+
+/* ── Minified Version für Critical CSS inline ──
+   Ersetze/ergänze im <style>-Block im <head>:
+
+@media (min-width:768px){.navbar{transition:padding 0.3s ease,box-shadow 0.3s ease}.navbar-brand img{transition:max-height 0.3s ease}.navbar.navbar-shrink{padding-top:0.35rem;padding-bottom:0.35rem;box-shadow:0 2px 16px rgba(0,0,0,0.1)}.navbar.navbar-shrink .navbar-brand img{max-height:50px}}
+
+*/
