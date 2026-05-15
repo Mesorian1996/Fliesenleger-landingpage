@@ -1,0 +1,188 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Was kostet eine komplette Badsanierung in Mannheim?',
+    a: 'Kleinere Modernisierungen (nur Fliesen und Sanitär tauschen) starten bei ca. 8.000 €. Eine vollständige Badsanierung mit ebenerdiger Dusche, neuen Leitungen und Trockenbau liegt je nach Größe und Ausstattung zwischen 15.000 € und 30.000 €. Wir kalkulieren nach Vor-Ort-Besichtigung transparent und ohne versteckte Kosten.',
+  },
+  {
+    q: 'Wie lange dauert eine Badsanierung?',
+    a: 'Ein Standard-Bad (6–8 m²) ist in 10–14 Werktagen saniert. Bei größeren Bädern oder komplexen Umbaumaßnahmen (Wandversetzung, neue Leitungen) planen Sie 3–4 Wochen ein.',
+  },
+  {
+    q: 'Bauen Sie auch ebenerdige Duschen (bodengleich) ein?',
+    a: 'Ja – barrierefreie, bodengleiche Duschen sind eine unserer Spezialitäten. Wir planen Gefälle, Abdichtung, Duschrinne und Fliesenbelag so, dass alles dauerhaft wasserdicht und optisch makellos ist.',
+  },
+  {
+    q: 'Übernehmen Sie auch die Koordination von Sanitär und Elektriker?',
+    a: 'Wir koordinieren das gesamte Projekt und arbeiten mit zuverlässigen Partnern für Sanitär- und Elektroarbeiten zusammen. Sie haben einen Ansprechpartner von Anfang bis Ende.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Badsanierung Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Komplette Badsanierung in Mannheim – ebenerdige Duschen, großformatige Fliesen, Trockenbau, Koordination. 900+ Projekte, 30+ Jahre Erfahrung."
+};
+---
+
+<Base
+  title="Badsanierung Mannheim – Komplettbad & Teilrenovierung"
+  description="Badsanierung Mannheim vom Profi. Komplettes Bad inklusive ebenerdiger Dusche, Trockenbau & Koordination. 15.000–30.000 €, transparente Kalkulation. Jetzt anfragen."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Badsanierung"
+      headline="Badsanierung Mannheim – alles aus einer Hand"
+      subline="Von der Demontage bis zur sauberen Übergabe. Ebenerdige Duschen, großformatige Fliesen, Trockenbau – wir koordinieren Ihr Badbad-Projekt in Mannheim und Umgebung."
+      image="/assets/images/Fliesen_bad_12_compressed.webp"
+      imageAlt="Badsanierung Mannheim – Limani Fliesenleger"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Badsanierung Mannheim' }]}
+    />
+
+    <section class="py-20 bg-white" aria-labelledby="badHeading">
+      <div class="container">
+        <div class="content-layout">
+          <div data-aos="fade-right">
+            <span class="section-label">Leistungsumfang</span>
+            <h2 id="badHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+              Was wir bei der Badsanierung übernehmen
+            </h2>
+            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1.5rem;">
+              Eine Badsanierung ist mehr als Fliesen legen. Wir begleiten Ihr Projekt von der Planung über den Rückbau bis zur fertigen Übergabe – koordiniert, termingerecht, sauber.
+            </p>
+
+            <div class="steps-list">
+              {[
+                { num: '01', title: 'Planung & Beratung', desc: 'Grundrissoptimierung, Materialwahl, Kostenrahmen. Zwei Angebotsvarianten zum Vergleich.' },
+                { num: '02', title: 'Rückbau & Entsorgung', desc: 'Fachgerechte Demontage von Fliesen, Sanitär und ggf. Trockenbauwänden. Saubere Entsorgung inklusive.' },
+                { num: '03', title: 'Abdichtung & Vorbereitung', desc: 'Flächen- und Verbundabdichtung nach DIN 18534 – Grundlage für dauerhaft dichte Bäder.' },
+                { num: '04', title: 'Trockenbau & Installationen', desc: 'Wandsysteme für ebenerdige Duschen, Nischen, Vorwandinstallationen. Koordination Sanitär/Elektro.' },
+                { num: '05', title: 'Fliesen & Fertigstellung', desc: 'Präzises Verlegen aller Fliesen, Verfugen, Silikon, Abschlüsse – bis zur besenreinen Übergabe.' },
+              ].map(s => (
+                <div class="step-item">
+                  <span class="step-num">{s.num}</span>
+                  <div>
+                    <strong style="font-size:0.9375rem; color:var(--color-text-heading); display:block; margin-bottom:0.25rem;">{s.title}</strong>
+                    <span style="font-size:0.875rem; color:var(--color-text-muted); line-height:1.5;">{s.desc}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div data-aos="fade-left">
+            <img
+              src="/assets/images/Fliesen_bad_10_klein.webp"
+              alt="Badsanierung Ergebnis Mannheim"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="750"
+              style="width:100%; border-radius:var(--radius-card); object-fit:cover; aspect-ratio:4/5;"
+            />
+            <div class="price-info-box">
+              <div class="price-info-row">
+                <span>Teilmodernisierung</span>
+                <strong>ab 8.000 €</strong>
+              </div>
+              <div class="price-info-row">
+                <span>Komplettsanierung</span>
+                <strong>15.000 – 30.000 €</strong>
+              </div>
+              <p style="font-size:0.75rem; color:var(--color-text-muted); margin:0.75rem 0 0; line-height:1.5;">
+                Richtwerte. Genaues Angebot nach Vor-Ort-Besichtigung.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Badsanierung anfragen" subheading="Beschreiben Sie kurz Ihr Bad – Größe, Zustand, Wünsche. Wir melden uns für einen kostenlosen Vor-Ort-Termin." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .content-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .step-item:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    background: rgba(232, 146, 42, 0.1);
+    min-width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .price-info-box {
+    margin-top: 1.25rem;
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+  }
+
+  .price-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+  }
+  .price-info-row:last-of-type { border-bottom: none; }
+  .price-info-row strong { color: var(--color-brand-accent); font-weight: 700; }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

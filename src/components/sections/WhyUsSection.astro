@@ -1,0 +1,412 @@
+---
+/**
+ * WhyUsSection
+ * @category sections
+ * @description Why choose Limani — stats, gallery stack, process timeline, and regional map.
+ */
+---
+
+<section id="vorteile" class="bg-warm" aria-labelledby="whyHeading">
+  <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
+
+    <!-- Header -->
+    <div class="why-header" data-aos="fade-up">
+      <span class="section-label">Warum Limani</span>
+      <h2 id="whyHeading" style="font-size:clamp(1.75rem,3vw,2.5rem); margin:0 0 1rem; letter-spacing:-0.025em;">
+        Warum Kunden uns wählen
+      </h2>
+      <p style="color:var(--color-text-muted); font-size:1.0625rem; line-height:1.7; margin:0; max-width:560px;">
+        Familienbetrieb aus Mannheim. Über 900 abgeschlossene Projekte.
+        Pünktlich, termintreu, persönliche Beratung – egal ob kleines Projekt oder komplette Sanierung.
+      </p>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="stats-row" data-aos="fade-up">
+      {[
+        { value: '900+', label: 'Abgeschlossene Projekte' },
+        { value: '30+', label: 'Jahre Erfahrung' },
+        { value: '5.0', label: 'Sterne auf Google' },
+        { value: '24h', label: 'Rückmeldung garantiert' },
+      ].map(stat => (
+        <div class="stat-card">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Features Grid -->
+    <div class="features-grid">
+
+      <!-- 1: Gallery / Projects -->
+      <div class="feature-block" data-aos="fade-right">
+        <div class="gallery-stack" id="galleryStack">
+          <div class="gallery-stack-inner">
+            {[
+              { src: '/assets/images/Malerarbeiten_bunt_compressed.webp', alt: 'Malerarbeiten Wohnung Mannheim' },
+              { src: '/assets/images/Fliesen_bad_10_klein.webp', alt: 'Fliesen Badezimmer Mannheim' },
+              { src: '/assets/images/Wohnung_3_compressed.webp', alt: 'Wohnungssanierung Mannheim' },
+              { src: '/assets/images/Fliesen_bad_12_compressed.webp', alt: 'Badsanierung Mannheim' },
+              { src: '/assets/images/Parkett_2_compressed.webp', alt: 'Parkettverlegung Mannheim' },
+              { src: '/assets/images/Mosaik_1_compressed_1.webp', alt: 'Mosaikfliesen Bad Mannheim' },
+            ].map((img, i) => (
+              <img
+                src={img.src}
+                alt={img.alt}
+                class:list={['stack-img', i === 0 ? 'active' : '']}
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="450"
+              />
+            ))}
+          </div>
+          <div class="stack-dots" id="stackDots" aria-hidden="true"></div>
+        </div>
+
+        <div class="feature-text">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21,15 16,10 5,21"/>
+            </svg>
+          </div>
+          <h3>900+ abgeschlossene Projekte</h3>
+          <p>Von Bädern bis Wohnräumen – unsere Referenzen sprechen für sich. Qualität, die man sieht.</p>
+        </div>
+      </div>
+
+      <!-- 2: Process -->
+      <div class="feature-block" data-aos="fade-left">
+        <div class="feature-text">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+          </div>
+          <h3>Alles aus einer Hand</h3>
+          <p>Für größere Projekte übernehmen wir die Koordination – damit der Prozess reibungslos abläuft. Sie haben einen Ansprechpartner von Anfang bis Ende.</p>
+        </div>
+
+        <div class="process-steps">
+          {[
+            { step: '01', title: 'Anfrage stellen', text: 'Schnell & unkompliziert über unser Formular oder telefonisch.' },
+            { step: '02', title: 'Termin vereinbaren', text: 'Vor Ort besprechen wir Ihre Wünsche und besichtigen das Objekt.' },
+            { step: '03', title: 'Angebot erhalten', text: 'Transparent kalkuliert, auf Ihre Anforderungen zugeschnitten.' },
+            { step: '04', title: 'Projekt durchführen', text: 'Von der Planung bis zur sauberen Übergabe – alles koordiniert.' },
+          ].map(item => (
+            <div class="process-step">
+              <span class="process-num">{item.step}</span>
+              <div>
+                <h4>{item.title}</h4>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- 3: Experience -->
+      <div class="feature-block feature-block--dark" data-aos="fade-up">
+        <div class="feature-text feature-text--light">
+          <div class="feature-icon feature-icon--light">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 style="color:#fff;">Über drei Jahrzehnte Erfahrung</h3>
+          <p style="color:rgba(255,255,255,0.75);">
+            Verlässliche Handwerkskunst, höchste Präzision und familiäre Werte –
+            seit Jahrzehnten im Einsatz für unsere Kunden in Mannheim & der Rhein-Neckar-Region.
+          </p>
+        </div>
+        <div style="margin-top:1.5rem; display:flex; gap:1.5rem; flex-wrap:wrap;">
+          <a href="#anfrage-funnel" class="btn-primary" style="font-size:0.9rem;">
+            Jetzt anfragen
+          </a>
+          <a href="/kontakt-mannheim" class="btn-outline-light" style="font-size:0.9rem;">
+            Kontakt aufnehmen
+          </a>
+        </div>
+      </div>
+
+      <!-- 4: Regional -->
+      <div class="feature-block" data-aos="fade-up">
+        <div class="feature-text">
+          <div class="feature-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3>Regional &amp; zuverlässig</h3>
+          <p>
+            Wir sind aus Mannheim – täglich in den Stadtteilen und der Rhein-Neckar-Region unterwegs.
+            Kurze Wege bedeuten schnelle Termine und persönliche Erreichbarkeit.
+          </p>
+          <div class="regions-grid">
+            {['Mannheim', 'Ludwigshafen', 'Heidelberg', 'Viernheim', 'Frankenthal', 'Rhein-Neckar'].map(r => (
+              <span class="region-tag">{r}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-header {
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .stats-row { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .stat-card {
+    background: #fff;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.375rem;
+  }
+
+  .stat-value {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .features-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .feature-block {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .feature-block--dark {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 0.75rem;
+    background: rgba(232, 146, 42, 0.12);
+    color: var(--color-brand-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .feature-icon--light {
+    background: rgba(255,255,255,0.12);
+    color: var(--color-brand-accent);
+  }
+
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+  .feature-text h3 {
+    font-size: 1.25rem;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  .feature-text p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Gallery Stack */
+  .gallery-stack {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-subtle);
+    cursor: pointer;
+  }
+
+  .gallery-stack-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .stack-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .stack-img.active { opacity: 1; }
+
+  .stack-dots {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.375rem;
+    z-index: 10;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .process-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .process-step:last-child { border-bottom: none; }
+
+  .process-num {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-brand-accent);
+    background: rgba(232, 146, 42, 0.1);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .process-step h4 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    color: var(--color-text-heading);
+  }
+  .process-step p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Regions */
+  .regions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .region-tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+  }
+</style>
+
+<script>
+  function initGalleryStack() {
+    const stack = document.getElementById('galleryStack');
+    if (!stack) return;
+
+    const images = stack.querySelectorAll<HTMLImageElement>('.stack-img');
+    const dotsContainer = document.getElementById('stackDots');
+    let current = 0;
+
+    // Build dots
+    images.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'stack-dot';
+      dot.setAttribute('aria-label', `Bild ${i + 1}`);
+      dot.style.cssText = `
+        width:8px; height:8px; border-radius:50%;
+        background:${i === 0 ? '#fff' : 'rgba(255,255,255,0.45)'};
+        border:none; cursor:pointer; padding:0;
+        transition:background 0.2s ease;
+      `;
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer?.appendChild(dot);
+    });
+
+    function goTo(n: number) {
+      images.forEach((img, i) => img.classList.toggle('active', i === n));
+      dotsContainer?.querySelectorAll('.stack-dot').forEach((dot, i) => {
+        (dot as HTMLElement).style.background = i === n ? '#fff' : 'rgba(255,255,255,0.45)';
+      });
+      current = n;
+    }
+
+    // Auto advance
+    setInterval(() => goTo((current + 1) % images.length), 3500);
+
+    // Click to advance
+    stack.addEventListener('click', () => goTo((current + 1) % images.length));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGalleryStack);
+  } else {
+    initGalleryStack();
+  }
+</script>

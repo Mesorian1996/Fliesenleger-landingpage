@@ -1,1 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment & secrets — NEVER commit
 .env
+.env.*
+.dev.vars
+
+# Cloudflare Wrangler
+.wrangler/
+worker/.wrangler/
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

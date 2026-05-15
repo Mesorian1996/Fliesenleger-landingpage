@@ -1,0 +1,109 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import TrustBar from '@/components/sections/TrustBar.astro';
+import ServicesSection from '@/components/sections/ServicesSection.astro';
+import WhyUsSection from '@/components/sections/WhyUsSection.astro';
+import FunnelSection from '@/components/sections/FunnelSection.astro';
+import ReviewsSection from '@/components/sections/ReviewsSection.astro';
+import PartnerSection from '@/components/sections/PartnerSection.astro';
+import LocalSeoSection from '@/components/sections/LocalSeoSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Was kostet eine Badsanierung in Mannheim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kleinere Teilmodernisierungen starten bei rund 8.000 €, komplette Badmodernisierungen liegen je nach Ausstattung zwischen 15.000 € und 30.000 €. Nach einem Vor-Ort-Termin kalkulieren wir transparent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie schnell bekomme ich einen Termin bei einem Fliesenleger in Mannheim?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reparaturen und Silikonfugen sind häufig innerhalb weniger Tage möglich, größere Sanierungen je nach Materialverfügbarkeit. Mit Fotos, Maßen und Adresse im Kontaktformular können wir Sie schneller einplanen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Arbeiten Sie auch in Stadtteilen wie Neckarau, Käfertal oder Ludwigshafen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja – wir fahren täglich nach Neckarau, Lindenhof, Almenhof, Feudenheim, Käfertal, Waldhof, Sandhofen, Rheinau, Innenstadt sowie nach Ludwigshafen, Viernheim, Heidelberg und in den gesamten Rhein-Neckar-Kreis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Übernehmen Sie großformatige Fliesen, Mosaike und ebenerdige Duschen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja – wir verlegen großformatige Feinsteinzeugfliesen, Mosaikfliesen und planen barrierefreie, ebenerdige Duschen inklusive Gefälle, Abdichtung und Duschrinne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können Sie Fliesen überfliesen oder Silikonfugen erneuern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wenn die bestehende Fläche tragfähig ist, überfliesen wir sie oder bessern einzelne Bereiche aus. Auch Silikonfugen erneuern oder Fliesen reparieren erledigen wir kurzfristig."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche Bodenarbeiten führen Sie aus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir verlegen Vinylboden, Laminat, Parkett und Fliesen, führen Estricharbeiten und Bodenausgleich durch und koordinieren Sockelleisten – alle Bodenleistungen aus einer Hand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie läuft die Kontaktaufnahme und Angebotserstellung?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nutzen Sie das Kontaktformular, rufen Sie an oder schreiben Sie per WhatsApp. Wir melden uns schnell, vereinbaren einen Vor-Ort-Termin und senden Ihnen ein unverbindliches Angebot."
+      }
+    }
+  ]
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Limani Fliesenleger",
+  "url": "https://www.limani-fliesenleger.de",
+  "inLanguage": "de-DE"
+};
+---
+
+<Base
+  title="Fliesenleger Mannheim & Rhein-Neckar"
+  description="Fliesenleger Mannheim & Rhein-Neckar. Fliesen, Badsanierung, Bodenverlegung & Wohnungssanierung. 900+ Projekte, 30+ Jahre Erfahrung. Kostenlose Beratung."
+  schema={[faqSchema, webSiteSchema]}
+>
+  <fragment slot="preload">
+    <link rel="preload" as="image" href="/assets/images/Fliesen_bad_12_compressed.webp" />
+  </fragment>
+
+  <Navbar />
+  <main>
+    <HeroSection />
+    <TrustBar />
+    <ServicesSection />
+    <WhyUsSection />
+    <FunnelSection />
+    <ReviewsSection />
+    <PartnerSection />
+    <LocalSeoSection />
+    <FaqSection />
+  </main>
+  <Footer />
+</Base>

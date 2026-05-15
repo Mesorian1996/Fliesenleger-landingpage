@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /datenschutz/
+Disallow: /datenschutz
+Disallow: /impressum/
+Disallow: /impressum
+
+Sitemap: https://www.limani-fliesenleger.de/sitemap-index.xml

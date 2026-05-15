@@ -1,0 +1,59 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const contactFaqs = [
+  {
+    q: 'Wie schnell melden Sie sich nach der Anfrage?',
+    a: 'Wir antworten in der Regel innerhalb von 24 Stunden, häufig noch am selben Tag. Für dringende Anfragen empfehlen wir den direkten Anruf unter 0173 329 3668.',
+  },
+  {
+    q: 'Bieten Sie kostenlose Angebote an?',
+    a: 'Ja – unser Angebot nach Vor-Ort-Besichtigung ist vollständig kostenlos und unverbindlich. Wir kalkulieren transparent und erklären jeden Posten.',
+  },
+  {
+    q: 'Wo ist Ihr Einzugsgebiet?',
+    a: 'Wir arbeiten in Mannheim und allen Stadtteilen sowie in der Rhein-Neckar-Region: Ludwigshafen, Heidelberg, Viernheim, Frankenthal, Weinheim, Speyer, Worms und Umgebung.',
+  },
+  {
+    q: 'Kann ich Fotos meines Projekts vorab schicken?',
+    a: 'Sehr gerne! Fotos, Grundrisse und Maße helfen uns, die Anfrage schneller einzuschätzen und eine genauere Kostenschätzung zu geben – noch bevor wir vor Ort waren.',
+  },
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.limani-fliesenleger.de/" },
+    { "@type": "ListItem", "position": 2, "name": "Kontakt Mannheim" }
+  ]
+};
+---
+
+<Base
+  title="Kontakt – Fliesenleger Mannheim"
+  description="Kontakt zum Fliesenleger in Mannheim. Kostenlose Anfrage, schnelle Rückmeldung. Telefon, E-Mail, WhatsApp oder Kontaktformular – wir melden uns innerhalb von 24 Stunden."
+  schema={breadcrumbSchema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Kontakt aufnehmen"
+      headline="Ihr Fliesenleger in Mannheim – jetzt anfragen"
+      subline="Kostenlose Beratung, transparentes Angebot, schnelle Terminvergabe. Schreiben Sie uns oder rufen Sie direkt an."
+      image="/assets/images/Fliesen_bad_10_klein.webp"
+      imageAlt="Kontakt Limani Fliesenleger Mannheim"
+      ctaLabel="Zum Formular"
+      ctaHref="#kontakt-form"
+      breadcrumb={[{ label: 'Kontakt Mannheim' }]}
+    />
+    <ContactSection showMap={true} />
+    <FaqSection faqs={contactFaqs} />
+  </main>
+  <Footer />
+</Base>

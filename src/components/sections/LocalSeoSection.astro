@@ -1,0 +1,142 @@
+---
+/**
+ * LocalSeoSection
+ * @category sections
+ * @description SEO-rich regional section with cost info and city coverage.
+ */
+---
+
+<section class="py-20 bg-subtle" aria-labelledby="localSeoHeading">
+  <div class="container">
+    <div class="local-layout">
+
+      <!-- Cost Info -->
+      <div data-aos="fade-right">
+        <span class="section-label">Preise & Kosten</span>
+        <h2 id="localSeoHeading" style="font-size:clamp(1.5rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+          Was kosten Fliesenarbeiten in Mannheim?
+        </h2>
+        <div style="display:flex; flex-direction:column; gap:0.875rem;">
+          <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0;">
+            Die häufigste Frage: „Was kostet das ungefähr?" – sie lässt sich pauschal schwer beantworten.
+            Die Kosten hängen von Fläche, Material, Untergrundkondition und Rückbau ab.
+          </p>
+          <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0;">
+            Wir schauen uns alles vor Ort an und erstellen ein transparentes Angebot – in der Regel
+            zwei Varianten: preisbewusst und premium. So können Sie vergleichen und entscheiden,
+            ohne Zeitdruck und ohne versteckte Kosten.
+          </p>
+          <div class="price-hints">
+            {[
+              { label: 'Silikonfugen erneuern', range: 'ab 150 €' },
+              { label: 'Fliesen verlegen (m²)', range: '65 – 120 €' },
+              { label: 'Badsanierung (komplett)', range: '15.000 – 30.000 €' },
+              { label: 'Bodenverlegung (m²)', range: '25 – 60 €' },
+            ].map(item => (
+              <div class="price-hint-row">
+                <span style="font-size:0.9rem; color:var(--color-text-body);">{item.label}</span>
+                <span style="font-size:0.9rem; font-weight:600; color:var(--color-brand-accent);">{item.range}</span>
+              </div>
+            ))}
+          </div>
+          <p style="font-size:0.8125rem; color:var(--color-text-muted); margin:0;">
+            Alle Preise sind Richtwerte. Das genaue Angebot erstellen wir nach Vor-Ort-Besichtigung.
+          </p>
+          <a href="#anfrage-funnel" class="btn-primary" style="align-self:flex-start; font-size:0.9rem; margin-top:0.5rem;">
+            Unverbindlich anfragen
+          </a>
+        </div>
+      </div>
+
+      <!-- Regional Coverage -->
+      <div data-aos="fade-left">
+        <span class="section-label">Unser Einzugsgebiet</span>
+        <h3 style="font-size:clamp(1.375rem,2vw,1.75rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+          Regional in Mannheim &amp; Rhein-Neckar
+        </h3>
+        <p style="color:var(--color-text-muted); font-size:0.9375rem; line-height:1.75; margin:0 0 1.25rem;">
+          Wir sind täglich in den Mannheimer Stadtteilen unterwegs – und in der ganzen Region.
+          Durch lokale Präsenz kennen wir Anfahrtswege, Hausverwaltungen und typische Gebäudestrukturen.
+        </p>
+
+        <div class="city-groups">
+          <div>
+            <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-text-muted); margin:0 0 0.625rem;">
+              Mannheim – Stadtteile
+            </p>
+            <div class="city-tags">
+              {['Neckarau','Lindenhof','Almenhof','Feudenheim','Käfertal','Waldhof','Sandhofen','Vogelstang','Rheinau','Innenstadt','Seckenheim','Friedrichsfeld'].map(c => (
+                <span class="city-tag">{c}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-text-muted); margin:0 0 0.625rem;">
+              Region
+            </p>
+            <div class="city-tags">
+              {['Ludwigshafen','Heidelberg','Viernheim','Frankenthal','Weinheim','Speyer','Worms','Lampertheim'].map(c => (
+                <span class="city-tag">{c}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .local-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .local-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  }
+
+  .price-hints {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin: 0.25rem 0;
+  }
+
+  .price-hint-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .price-hint-row:last-child { border-bottom: none; }
+
+  .city-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .city-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .city-tag {
+    padding: 0.3rem 0.75rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

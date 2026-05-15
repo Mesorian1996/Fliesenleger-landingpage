@@ -1,0 +1,430 @@
+---
+/**
+ * HeroSection
+ * @category sections
+ * @description Fullscreen hero with image slider, left-aligned text, and animated slide tabs.
+ */
+
+import { SITE } from '@/config/site';
+
+const slides = [
+  {
+    bg: '/assets/images/Fliesen_schwimmbad_hero.webp',
+    bgMobile: '/assets/images/Fliesen_schwimmbad_hero_mobile.webp',
+    label: 'Fliesenarbeiten',
+    title: 'Fliesen für Bad,\nKüche & Boden',
+    text: 'Präzise verlegte Wand- und Bodenfliesen für Wohnräume, Bäder und Außenbereiche in Mannheim & Umgebung.',
+  },
+  {
+    bg: '/assets/images/Malerarbeiten_bunt.webp',
+    bgMobile: '/assets/images/Malerarbeiten_bunt.webp',
+    label: 'Malerarbeiten',
+    title: 'Saubere Maler-\nund Verputzarbeiten',
+    text: 'Spachtel, Glattputz, Strukturputz und Anstrich – für Ihre Renovierung im Raum Mannheim.',
+  },
+  {
+    bg: '/assets/images/Parkett_1.webp',
+    bgMobile: '/assets/images/Parkett_1.webp',
+    label: 'Bodenverlegung',
+    title: 'Vinylboden, Parkett\nund Laminat',
+    text: 'Bodenverlegung und Estricharbeiten für Miet- und Eigentumswohnungen in Mannheim & Ludwigshafen.',
+  },
+  {
+    bg: '/assets/images/Verputzen2_hero.webp',
+    bgMobile: '/assets/images/Verputzen2_compressed.webp',
+    label: 'Verputzarbeiten',
+    title: 'Glatte Wände\nvon Q1 bis Q4',
+    text: 'Glatt- oder Strukturputz – perfekt vorbereitet für Fliesen, Tapete oder Anstrich.',
+  },
+  {
+    bg: '/assets/images/Wohnung_1_hero.webp',
+    bgMobile: '/assets/images/Wohnung_6_compressed.webp',
+    label: 'Wohnungssanierung',
+    title: 'Ganze Wohnungen\nsanieren',
+    text: 'Von Abbruch bis Fertigstellung – alle Gewerke aus einer Hand koordiniert in Mannheim.',
+  },
+];
+---
+
+<!-- Mobile Hero (static, first slide) -->
+<section
+  class="hero-mobile-only"
+  aria-label="Limani Fliesenleger – Ihr Handwerksbetrieb in Mannheim"
+>
+  <div class="hero-mobile-bg">
+    <img
+      src={slides[0].bgMobile}
+      alt="Fliesenarbeiten Mannheim – Limani Fliesenleger"
+      width="750"
+      height="1000"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container" style="position:relative; z-index:2;">
+    <p class="hero-kicker">Ihr Fliesenleger in Mannheim</p>
+    <h1 class="hero-title-mobile">
+      Fliesen, Böden &amp;<br>Wohnungssanierung
+    </h1>
+    <p class="hero-sub-mobile">
+      Komplettsanierungen, Teilrenovierungen und einzelne Gewerke –
+      sauber koordiniert und termintreu.
+    </p>
+    <a href="#anfrage-funnel" class="btn-primary hero-cta" style="font-size:1rem; padding:0.875rem 2rem;">
+      Kostenlose Beratung
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9,18 15,12 9,6"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<!-- Desktop Hero Slider -->
+<section class="hero-desktop-only" id="heroSlider" aria-label="Limani Fliesenleger – Leistungsübersicht">
+  <!-- Slide images (preloaded) -->
+  {slides.map((slide, i) => (
+    <div
+      class:list={['hero-slide-bg', i === 0 ? 'active' : '']}
+      data-slide={i}
+      aria-hidden="true"
+    >
+      <img
+        src={slide.bg}
+        alt={slide.label}
+        loading={i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={i === 0 ? 'high' : 'auto'}
+        decoding="async"
+        style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;"
+      />
+    </div>
+  ))}
+  <div class="hero-overlay"></div>
+
+  <!-- Slide Content -->
+  <div class="container" style="position:relative; z-index:3; width:100%;">
+    <div class="hero-desktop-content">
+      {slides.map((slide, i) => (
+        <div class:list={['hero-text-block', i === 0 ? 'active' : '']} data-slide={i}>
+          <span class="hero-kicker">{slide.label}</span>
+          <h1 class="hero-title-desktop">
+            {slide.title.split('\n').map((line, j) => (
+              <>
+                {line}
+                {j === 0 && <br />}
+              </>
+            ))}
+          </h1>
+          <p class="hero-sub-desktop">{slide.text}</p>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+            <a href="#anfrage-funnel" class="btn-primary" style="font-size:1rem; padding:0.875rem 2rem;">
+              Kostenloses Angebot
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9,18 15,12 9,6"/>
+              </svg>
+            </a>
+            <a href={`tel:${SITE.phoneTel}`} class="btn-outline-light" style="font-size:1rem; padding:0.875rem 1.75rem;">
+              {SITE.phone}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Slide Tabs -->
+    <div class="hero-tabs" role="tablist" aria-label="Leistungsauswahl">
+      {slides.map((slide, i) => (
+        <button
+          class:list={['hero-tab', i === 0 ? 'active' : '']}
+          data-slide={i}
+          role="tab"
+          aria-selected={i === 0}
+          type="button"
+        >
+          <span class="hero-tab-progress" aria-hidden="true"></span>
+          {slide.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Prev/Next -->
+  <div class="hero-nav">
+    <button id="heroPrev" class="hero-nav-btn" type="button" aria-label="Vorheriger Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15,18 9,12 15,6"/>
+      </svg>
+    </button>
+    <button id="heroNext" class="hero-nav-btn" type="button" aria-label="Nächster Slide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9,18 15,12 9,6"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  /* Mobile Hero */
+  .hero-mobile-only {
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 4rem;
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero-mobile-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(12, 27, 46, 0.25) 0%,
+      rgba(12, 27, 46, 0.72) 100%
+    );
+    z-index: 1;
+  }
+
+  @media (min-width: 768px) {
+    .hero-mobile-only { display: none !important; }
+  }
+
+  .hero-kicker {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand-accent);
+    margin-bottom: 0.75rem;
+  }
+  .hero-title-mobile {
+    font-size: clamp(1.875rem, 6vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+  }
+  .hero-sub-mobile {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.65;
+    margin: 0 0 1.75rem;
+    max-width: 420px;
+  }
+  .hero-cta { position: relative; z-index: 2; }
+
+  /* Desktop Hero */
+  .hero-desktop-only {
+    display: none;
+    position: relative;
+    min-height: 100dvh;
+    align-items: flex-end;
+    padding-bottom: 0;
+    overflow: hidden;
+    color: #fff;
+  }
+  @media (min-width: 768px) {
+    .hero-desktop-only {
+      display: flex;
+    }
+  }
+
+  .hero-slide-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+  .hero-slide-bg.active { opacity: 1; }
+
+  .hero-desktop-content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    padding-bottom: 6rem;
+  }
+
+  .hero-text-block {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-text-block.active { display: flex; }
+
+  .hero-title-desktop {
+    font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.08;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub-desktop {
+    font-size: 1.0625rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    max-width: 500px;
+  }
+
+  /* Slide Tabs */
+  .hero-tabs {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    gap: 0;
+    background: rgba(12,27,46,0.65);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-top: auto;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 0 1.25rem;
+  }
+  .hero-tabs::-webkit-scrollbar { display: none; }
+
+  .hero-tab {
+    position: relative;
+    flex-shrink: 0;
+    padding: 1.1rem 1.25rem 1rem;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  .hero-tab:hover { color: rgba(255,255,255,0.9); }
+  .hero-tab.active { color: #fff; font-weight: 600; }
+  .hero-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-brand-accent);
+    border-radius: 3px 3px 0 0;
+  }
+
+  .hero-tab-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-brand-accent);
+    border-radius: 3px 3px 0 0;
+    width: 0;
+    opacity: 0;
+  }
+  .hero-tab.running .hero-tab-progress {
+    opacity: 1;
+    animation: tabProgress 5s linear forwards;
+  }
+  @keyframes tabProgress {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  /* Nav buttons */
+  .hero-nav {
+    position: absolute;
+    bottom: 4.5rem;
+    right: 1.25rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .hero-nav-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 0.625rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .hero-nav-btn:hover { background: rgba(255,255,255,0.22); }
+</style>
+
+<script>
+  function initHero() {
+    const slider = document.getElementById('heroSlider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll<HTMLElement>('[data-slide]');
+    const slideBgs = slider.querySelectorAll<HTMLElement>('.hero-slide-bg');
+    const textBlocks = slider.querySelectorAll<HTMLElement>('.hero-text-block');
+    const tabs = slider.querySelectorAll<HTMLElement>('.hero-tab');
+    const prevBtn = document.getElementById('heroPrev');
+    const nextBtn = document.getElementById('heroNext');
+
+    let current = 0;
+    let autoTimer: ReturnType<typeof setInterval> | null = null;
+
+    function goTo(index: number) {
+      const total = slideBgs.length;
+      const next = (index + total) % total;
+
+      slideBgs.forEach((bg, i) => bg.classList.toggle('active', i === next));
+      textBlocks.forEach((block, i) => block.classList.toggle('active', i === next));
+      tabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === next);
+        tab.classList.remove('running');
+        tab.setAttribute('aria-selected', String(i === next));
+        void (tab as HTMLElement).offsetWidth;
+        if (i === next) tab.classList.add('running');
+      });
+
+      current = next;
+    }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(() => goTo(current + 1), 5500);
+    }
+
+    function stopAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        goTo(i);
+        stopAuto();
+        startAuto();
+      });
+    });
+
+    prevBtn?.addEventListener('click', () => { goTo(current - 1); stopAuto(); startAuto(); });
+    nextBtn?.addEventListener('click', () => { goTo(current + 1); stopAuto(); startAuto(); });
+
+    goTo(0);
+    startAuto();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHero);
+  } else {
+    initHero();
+  }
+</script>

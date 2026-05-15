@@ -1,0 +1,752 @@
+---
+/**
+ * FunnelSection
+ * @category sections
+ * @description 6-step qualification funnel with Resend backend.
+ */
+
+import { SITE } from '@/config/site';
+---
+
+<section id="anfrage-funnel" class="funnel-section py-16 md:py-24" aria-labelledby="funnelHeading">
+  <div class="container">
+    <div class="funnel-wrapper">
+
+      <!-- Header -->
+      <div class="funnel-header">
+        <span class="section-label">Kostenloses Angebot</span>
+        <h2 id="funnelHeading" style="font-size:clamp(1.625rem,3vw,2.25rem); margin:0 0 0.75rem; letter-spacing:-0.02em;">
+          Was können wir für Sie tun?
+        </h2>
+        <p style="color:var(--color-text-muted); font-size:1rem; margin:0; max-width:460px; margin:0 auto;">
+          Beantworten Sie ein paar kurze Fragen – wir melden uns mit einem passenden Angebot.
+        </p>
+      </div>
+
+      <!-- Progress -->
+      <div class="funnel-progress" id="funnelProgress" role="progressbar" aria-valuenow={1} aria-valuemin={1} aria-valuemax={6} aria-label="Fortschritt der Anfrage">
+        <div class="funnel-progress-track">
+          <div class="funnel-progress-fill" id="funnelProgressFill" style="width:16.66%"></div>
+        </div>
+        <div class="funnel-step-dots">
+          {[1,2,3,4,5,6].map(n => (
+            <span class:list={['funnel-dot', n === 1 ? 'active' : '']} data-step={n} aria-hidden="true">{n}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div id="funnelSteps">
+
+        <!-- Step 1: Service -->
+        <div class="funnel-step active" data-step="1">
+          <h3 class="step-q">Welche Arbeiten sollen erledigt werden?</h3>
+          <p class="step-hint">Mehrfachauswahl möglich</p>
+          <div class="option-grid-6">
+            {[
+              { value: 'Fliesenarbeiten', label: 'Fliesenarbeiten', sub: 'Bad, Küche, Wände, Böden' },
+              { value: 'Badsanierung', label: 'Badsanierung', sub: 'Komplett oder Teilsanierung' },
+              { value: 'Bodenverlegung', label: 'Bodenverlegung', sub: 'Vinyl, Laminat, Parkett, Estrich' },
+              { value: 'Malerarbeiten', label: 'Maler & Verputz', sub: 'Wände, Decken, Spachtel' },
+              { value: 'Trockenbau', label: 'Trockenbau', sub: 'Wände, Decken, Dämmung' },
+              { value: 'Wohnungssanierung', label: 'Wohnungssanierung', sub: 'Komplett aus einer Hand' },
+            ].map(opt => (
+              <label class="option-card" data-for={opt.value}>
+                <input type="checkbox" name="leistung" value={opt.value} class="sr-only" />
+                <span class="option-label">{opt.label}</span>
+                <span class="option-sub">{opt.sub}</span>
+                <span class="option-check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 2: Area -->
+        <div class="funnel-step" data-step="2">
+          <h3 class="step-q">Wie groß ist die Fläche ungefähr?</h3>
+          <p class="step-hint">Eine grobe Schätzung reicht</p>
+          <div class="option-grid-4">
+            {[
+              { value: 'Unter 10 m²', label: 'Unter 10 m²', sub: 'z.B. Gäste-WC, kleine Küche' },
+              { value: '10–25 m²', label: '10 – 25 m²', sub: 'z.B. Bad, Küche, Flur' },
+              { value: '25–50 m²', label: '25 – 50 m²', sub: 'z.B. Wohnzimmer, großes Bad' },
+              { value: 'Über 50 m²', label: 'Über 50 m²', sub: 'z.B. Wohnung, mehrere Räume' },
+            ].map(opt => (
+              <label class="option-card option-card--radio" data-for={opt.value}>
+                <input type="radio" name="flaeche" value={opt.value} class="sr-only" />
+                <span class="option-label">{opt.label}</span>
+                <span class="option-sub">{opt.sub}</span>
+                <span class="option-check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 3: Timeline -->
+        <div class="funnel-step" data-step="3">
+          <h3 class="step-q">Wann sollen die Arbeiten stattfinden?</h3>
+          <p class="step-hint">Wir planen Sie so schnell wie möglich ein</p>
+          <div class="option-grid-3">
+            {[
+              { value: 'So schnell wie möglich', label: 'So schnell wie möglich', sub: 'Innerhalb von 1–2 Wochen' },
+              { value: 'In 1–3 Monaten', label: 'In 1 – 3 Monaten', sub: 'In Ruhe planen' },
+              { value: 'Bin flexibel', label: 'Bin flexibel', sub: 'Richten uns nach Ihnen' },
+            ].map(opt => (
+              <label class="option-card option-card--radio" data-for={opt.value}>
+                <input type="radio" name="zeitrahmen" value={opt.value} class="sr-only" />
+                <span class="option-label">{opt.label}</span>
+                <span class="option-sub">{opt.sub}</span>
+                <span class="option-check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 4: Material -->
+        <div class="funnel-step" data-step="4">
+          <h3 class="step-q">Sollen wir das Material besorgen?</h3>
+          <p class="step-hint">Wir arbeiten mit ausgewählten Partnern für beste Qualität</p>
+          <div class="option-grid-3">
+            {[
+              { value: 'Ja, Material durch Limani', label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig' },
+              { value: 'Nein, Material vorhanden', label: 'Nein, Material vorhanden', sub: 'Nur Handwerksleistung' },
+              { value: 'Noch unsicher', label: 'Weiß ich noch nicht', sub: 'Möchte ich gerne besprechen' },
+            ].map(opt => (
+              <label class="option-card option-card--radio" data-for={opt.value}>
+                <input type="radio" name="material" value={opt.value} class="sr-only" />
+                <span class="option-label">{opt.label}</span>
+                <span class="option-sub">{opt.sub}</span>
+                <span class="option-check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 5: Demolition -->
+        <div class="funnel-step" data-step="5">
+          <h3 class="step-q">Ist ein Rückbau notwendig?</h3>
+          <p class="step-hint">z.B. alte Fliesen entfernen, Wände abbrechen, Böden rausreißen</p>
+          <div class="option-grid-3">
+            {[
+              { value: 'Ja, Rückbau nötig', label: 'Ja, Rückbau nötig', sub: 'Altes muss raus' },
+              { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet' },
+              { value: 'Bin mir unsicher', label: 'Bin mir unsicher', sub: 'Klären wir vor Ort' },
+            ].map(opt => (
+              <label class="option-card option-card--radio" data-for={opt.value}>
+                <input type="radio" name="rueckbau" value={opt.value} class="sr-only" />
+                <span class="option-label">{opt.label}</span>
+                <span class="option-sub">{opt.sub}</span>
+                <span class="option-check" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 6: Contact -->
+        <div class="funnel-step" data-step="6">
+          <h3 class="step-q">Fast geschafft – wie erreichen wir Sie?</h3>
+          <p class="step-hint">Wir melden uns innerhalb von 24 Stunden</p>
+
+          <div class="funnel-summary" id="funnelSummary">
+            <p style="font-size:0.8125rem; font-weight:600; color:var(--color-text-muted); margin:0 0 0.625rem; text-transform:uppercase; letter-spacing:0.08em;">Ihre Angaben:</p>
+            <div class="summary-tags" id="summaryTags"></div>
+          </div>
+
+          <div class="funnel-contact-form">
+            <div class="funnel-form-row">
+              <div class="funnel-field">
+                <label for="funnel-vorname" class="funnel-label">Vorname *</label>
+                <input type="text" id="funnel-vorname" name="Vorname" class="funnel-input" required autocomplete="given-name" placeholder="Max" enterkeyhint="next" />
+              </div>
+              <div class="funnel-field">
+                <label for="funnel-nachname" class="funnel-label">Nachname *</label>
+                <input type="text" id="funnel-nachname" name="Nachname" class="funnel-input" required autocomplete="family-name" placeholder="Mustermann" enterkeyhint="next" />
+              </div>
+            </div>
+            <div class="funnel-form-row">
+              <div class="funnel-field">
+                <label for="funnel-telefon" class="funnel-label">Telefon *</label>
+                <input type="tel" id="funnel-telefon" name="Telefon" class="funnel-input" required autocomplete="tel" placeholder="0173 1234567" enterkeyhint="next" />
+              </div>
+              <div class="funnel-field">
+                <label for="funnel-email" class="funnel-label">E-Mail *</label>
+                <input type="email" id="funnel-email" name="Email" class="funnel-input" required autocomplete="email" placeholder="max@beispiel.de" enterkeyhint="next" />
+              </div>
+            </div>
+            <div class="funnel-field">
+              <label for="funnel-notiz" class="funnel-label">
+                Ergänzung
+                <span style="font-weight:400; color:var(--color-text-muted); margin-left:0.25rem;">(optional)</span>
+              </label>
+              <textarea id="funnel-notiz" name="Nachricht" class="funnel-input funnel-textarea" rows={2} maxlength={400} placeholder="z.B. Adresse, besondere Wünsche, Fotos folgen per WhatsApp..." enterkeyhint="send"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation -->
+      <div class="funnel-nav" id="funnelNav">
+        <button type="button" id="funnelBack" class="funnel-btn-back" style="visibility:hidden;" aria-label="Zurück">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15,18 9,12 15,6"/>
+          </svg>
+          Zurück
+        </button>
+        <button type="button" id="funnelNext" class="btn-primary" aria-label="Weiter" style="display:none;">
+          Weiter
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9,18 15,12 9,6"/>
+          </svg>
+        </button>
+        <button type="button" id="funnelSubmit" class="btn-primary" aria-label="Angebot anfragen" style="display:none;">
+          Kostenloses Angebot anfragen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20,6 9,17 4,12"/>
+          </svg>
+        </button>
+      </div>
+
+      <p id="funnelHint" class="funnel-hint" role="alert" aria-live="polite"></p>
+
+      <!-- Success -->
+      <div id="funnelSuccess" style="display:none; text-align:center; padding:2.5rem 0;">
+        <div style="width:64px; height:64px; border-radius:50%; background:rgba(34,197,94,0.12); display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20,6 9,17 4,12"/>
+          </svg>
+        </div>
+        <h3 style="font-size:1.375rem; margin:0 0 0.625rem;">Anfrage erfolgreich gesendet</h3>
+        <p style="color:var(--color-text-muted); margin:0 0 1.5rem;">Vielen Dank – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+        <button type="button" id="funnelReset" class="btn-outline" style="font-size:0.875rem;">Neue Anfrage starten</button>
+      </div>
+
+      <!-- Error -->
+      <div id="funnelError" style="display:none; text-align:center; padding:1rem 0;">
+        <p style="color:#dc2626; font-size:0.9375rem;">
+          Verbindungsfehler. Bitte versuchen Sie es erneut oder rufen Sie uns an:
+          <a href={`tel:${SITE.phoneTel}`} style="color:#dc2626; font-weight:600;">{SITE.phone}</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .funnel-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .funnel-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .funnel-progress {
+    margin-bottom: 2rem;
+  }
+
+  .funnel-progress-track {
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 999px;
+    margin-bottom: 0.875rem;
+    overflow: hidden;
+  }
+
+  .funnel-progress-fill {
+    height: 100%;
+    background: var(--color-brand-accent);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+
+  .funnel-step-dots {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .funnel-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .funnel-dot.active {
+    background: var(--color-brand-accent);
+    color: #fff;
+  }
+  .funnel-dot.done {
+    background: var(--color-brand-primary);
+    color: #fff;
+  }
+
+  .funnel-step {
+    display: none;
+  }
+  .funnel-step.active {
+    display: block;
+  }
+
+  .step-q {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin: 0 0 0.375rem;
+    letter-spacing: -0.01em;
+  }
+  .step-hint {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0 0 1.25rem;
+  }
+
+  .option-grid-6,
+  .option-grid-4,
+  .option-grid-3 {
+    display: grid;
+    gap: 0.625rem;
+  }
+  .option-grid-6 { grid-template-columns: repeat(2, 1fr); }
+  .option-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .option-grid-3 { grid-template-columns: repeat(1, 1fr); }
+
+  @media (min-width: 500px) {
+    .option-grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .option-grid-6 { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .option-label {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    line-height: 1.3;
+  }
+  .option-sub {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .funnel-summary {
+    background: var(--color-surface-subtle);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .summary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .summary-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.75rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    color: var(--color-text-body);
+  }
+
+  .summary-tag-label {
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .funnel-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .funnel-form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 480px) {
+    .funnel-form-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  .funnel-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .funnel-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+  }
+
+  .funnel-textarea {
+    resize: none;
+    min-height: 80px;
+  }
+
+  .funnel-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .funnel-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.15s ease;
+  }
+  .funnel-btn-back:hover { color: var(--color-text-heading); }
+
+  .funnel-hint {
+    font-size: 0.875rem;
+    color: #dc2626;
+    min-height: 1.25rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+
+  .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+  @media (min-width: 768px) { .md\:py-24 { padding-top: 6rem; padding-bottom: 6rem; } }
+</style>
+
+<script define:vars={{ workerUrl: SITE.workerUrl }}>
+  (function () {
+    'use strict';
+
+    const TOTAL = 6;
+
+    const stepsContainer = document.getElementById('funnelSteps');
+    if (!stepsContainer) return;
+
+    const progressFill = document.getElementById('funnelProgressFill');
+    const btnNext = document.getElementById('funnelNext');
+    const btnBack = document.getElementById('funnelBack');
+    const btnSubmit = document.getElementById('funnelSubmit');
+    const hint = document.getElementById('funnelHint');
+    const successEl = document.getElementById('funnelSuccess');
+    const errorEl = document.getElementById('funnelError');
+    const resetBtn = document.getElementById('funnelReset');
+    const navEl = document.getElementById('funnelNav');
+    const summaryTags = document.getElementById('summaryTags');
+    const dots = document.querySelectorAll('.funnel-dot');
+
+    let current = 1;
+
+    function getStep(n) {
+      return stepsContainer.querySelector(`.funnel-step[data-step="${n}"]`);
+    }
+
+    function showStep(n) {
+      document.querySelectorAll('.funnel-step').forEach(s => s.classList.remove('active'));
+      const step = getStep(n);
+      if (step) step.classList.add('active');
+
+      if (progressFill) progressFill.style.width = `${(n / TOTAL) * 100}%`;
+
+      dots.forEach((dot, i) => {
+        dot.classList.remove('active', 'done');
+        if (i + 1 === n) dot.classList.add('active');
+        else if (i + 1 < n) dot.classList.add('done');
+      });
+
+      if (btnBack) btnBack.style.visibility = n === 1 ? 'hidden' : 'visible';
+
+      if (btnNext && btnSubmit) {
+        if (n === TOTAL) {
+          btnNext.style.display = 'none';
+          btnSubmit.style.display = 'inline-flex';
+          buildSummary();
+        } else if (n >= 2 && n <= 5) {
+          btnNext.style.display = 'none';
+          btnSubmit.style.display = 'none';
+        } else {
+          const hasSelection = getStep(1)?.querySelectorAll('input[name="leistung"]:checked').length > 0;
+          btnNext.style.display = hasSelection ? 'inline-flex' : 'none';
+          btnSubmit.style.display = 'none';
+        }
+      }
+
+      clearHint();
+    }
+
+    function clearHint() {
+      if (hint) hint.textContent = '';
+    }
+
+    function showHint(msg) {
+      if (!hint) return;
+      hint.textContent = msg;
+    }
+
+    function validateStep(n) {
+      if (n === 1) {
+        const checked = getStep(1)?.querySelectorAll('input[name="leistung"]:checked') || [];
+        if (checked.length === 0) { showHint('Bitte wählen Sie mindestens eine Leistung aus.'); return false; }
+      }
+      if (n >= 2 && n <= 5) {
+        const radios = getStep(n)?.querySelectorAll('input[type="radio"]') || [];
+        if (radios.length > 0 && !Array.from(radios).some(r => r.checked)) {
+          showHint('Bitte wählen Sie eine Option aus.'); return false;
+        }
+      }
+      if (n === TOTAL) {
+        const fields = ['funnel-vorname', 'funnel-nachname', 'funnel-telefon', 'funnel-email'];
+        let valid = true;
+        fields.forEach(id => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          el.classList.remove('invalid');
+          if (!el.value.trim()) { el.classList.add('invalid'); valid = false; }
+        });
+        const emailEl = document.getElementById('funnel-email');
+        if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+          emailEl.classList.add('invalid'); valid = false;
+        }
+        if (!valid) { showHint('Bitte füllen Sie alle Pflichtfelder korrekt aus.'); return false; }
+      }
+      return true;
+    }
+
+    function buildSummary() {
+      if (!summaryTags) return;
+      summaryTags.innerHTML = '';
+      const d = collectData();
+      [
+        { label: 'Leistung', val: d.leistung },
+        { label: 'Fläche', val: d.flaeche },
+        { label: 'Zeitrahmen', val: d.zeitrahmen },
+        { label: 'Material', val: d.material },
+        { label: 'Rückbau', val: d.rueckbau },
+      ].forEach(({ label, val }) => {
+        if (!val) return;
+        const tag = document.createElement('span');
+        tag.className = 'summary-tag';
+        const safe = document.createElement('div');
+        safe.textContent = val;
+        tag.innerHTML = `<span class="summary-tag-label">${label}:</span> ${safe.innerHTML}`;
+        summaryTags.appendChild(tag);
+      });
+    }
+
+    function collectData() {
+      const leistungen = Array.from(
+        stepsContainer.querySelectorAll('input[name="leistung"]:checked')
+      ).map(i => i.value);
+      const getRadio = name => {
+        const el = stepsContainer.querySelector(`input[name="${name}"]:checked`);
+        return el ? el.value : '';
+      };
+      return {
+        leistung: leistungen.join(', '),
+        flaeche: getRadio('flaeche'),
+        zeitrahmen: getRadio('zeitrahmen'),
+        material: getRadio('material'),
+        rueckbau: getRadio('rueckbau'),
+        vorname: document.getElementById('funnel-vorname')?.value.trim() || '',
+        nachname: document.getElementById('funnel-nachname')?.value.trim() || '',
+        telefon: document.getElementById('funnel-telefon')?.value.trim() || '',
+        email: document.getElementById('funnel-email')?.value.trim() || '',
+        notiz: document.getElementById('funnel-notiz')?.value.trim() || '',
+      };
+    }
+
+    function scrollToFunnel() {
+      const section = document.getElementById('anfrage-funnel');
+      if (!section) return;
+      const navH = document.querySelector('.navbar')?.offsetHeight || 80;
+      window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - navH - 12, behavior: 'smooth' });
+    }
+
+    async function submitFunnel() {
+      const data = collectData();
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = 'Wird gesendet…';
+      }
+      if (errorEl) errorEl.style.display = 'none';
+
+      const body = {
+        Vorname: data.vorname,
+        Nachname: data.nachname,
+        Telefon: data.telefon,
+        Email: data.email,
+        Leistung: data.leistung,
+        Flaeche: data.flaeche,
+        Zeitrahmen: data.zeitrahmen,
+        Material: data.material,
+        Rueckbau: data.rueckbau,
+        Nachricht: data.notiz || '',
+        source: 'Funnel',
+      };
+
+      try {
+        const res = await fetch(workerUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          showSuccess();
+        } else {
+          showError();
+        }
+      } catch {
+        showError();
+      }
+    }
+
+    function showSuccess() {
+      stepsContainer.style.display = 'none';
+      if (navEl) navEl.style.display = 'none';
+      const progressEl = document.getElementById('funnelProgress');
+      if (progressEl) progressEl.style.display = 'none';
+      if (hint) hint.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'none';
+      if (successEl) successEl.style.display = 'block';
+      scrollToFunnel();
+    }
+
+    function showError() {
+      if (errorEl) errorEl.style.display = 'block';
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = 'Erneut versuchen';
+      }
+    }
+
+    function resetFunnel() {
+      stepsContainer.querySelectorAll('input, textarea').forEach(el => {
+        if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+        else el.value = '';
+        el.classList.remove('invalid');
+      });
+      stepsContainer.style.display = '';
+      if (navEl) navEl.style.display = '';
+      const progressEl = document.getElementById('funnelProgress');
+      if (progressEl) { progressEl.style.display = ''; }
+      if (hint) hint.style.display = '';
+      if (successEl) successEl.style.display = 'none';
+      if (errorEl) errorEl.style.display = 'none';
+      current = 1;
+      showStep(1);
+      scrollToFunnel();
+    }
+
+    // Step 1: Show next button on selection
+    getStep(1)?.querySelectorAll('input[name="leistung"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (current !== 1) return;
+        const has = getStep(1)?.querySelectorAll('input[name="leistung"]:checked').length > 0;
+        if (btnNext) btnNext.style.display = has ? 'inline-flex' : 'none';
+        // Update card selected state
+        const card = cb.closest('.option-card');
+        if (card) card.classList.toggle('selected', cb.checked);
+      });
+    });
+
+    // Steps 2–5: Auto-advance on radio selection
+    for (let i = 2; i <= 5; i++) {
+      getStep(i)?.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          // Update card selected state
+          getStep(i)?.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+          const card = radio.closest('.option-card');
+          if (card) card.classList.add('selected');
+          setTimeout(() => {
+            if (current === i && current < TOTAL) {
+              current++;
+              showStep(current);
+              scrollToFunnel();
+            }
+          }, 320);
+        });
+      });
+    }
+
+    btnNext?.addEventListener('click', () => {
+      if (!validateStep(current)) return;
+      if (current < TOTAL) { current++; showStep(current); scrollToFunnel(); }
+    });
+
+    btnBack?.addEventListener('click', () => {
+      if (current > 1) { current--; showStep(current); }
+    });
+
+    btnSubmit?.addEventListener('click', () => {
+      if (!validateStep(TOTAL)) return;
+      submitFunnel();
+    });
+
+    resetBtn?.addEventListener('click', resetFunnel);
+
+    stepsContainer.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        if (current < TOTAL) btnNext?.click();
+        else btnSubmit?.click();
+      }
+    });
+
+    stepsContainer.addEventListener('input', e => {
+      if (e.target.classList.contains('invalid')) e.target.classList.remove('invalid');
+      clearHint();
+    });
+
+    showStep(1);
+  })();
+</script>

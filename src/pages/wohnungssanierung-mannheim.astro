@@ -1,0 +1,152 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Was kostet eine komplette Wohnungssanierung in Mannheim?',
+    a: 'Das hängt stark von Größe und Zustand der Wohnung ab. Eine 60 m² Wohnung (Böden, Wände, Bad) liegt je nach Ausstattung zwischen 18.000 € und 45.000 €. Wir besichtigen vor Ort und kalkulieren transparent.',
+  },
+  {
+    q: 'Wie lange dauert eine komplette Wohnungssanierung?',
+    a: 'Bei einer vollständigen Sanierung rechnen wir 4–8 Wochen, je nach Größe und Umfang. Teilsanierungen (nur Bad oder nur Böden) sind deutlich kürzer.',
+  },
+  {
+    q: 'Arbeiten Sie auch für Wohnungseigentümer und Vermieter?',
+    a: 'Ja – wir sanieren sowohl für Eigennutzer als auch für Vermieter und Hausverwaltungen. Bei Leerstand können wir besonders schnell und reibungslos arbeiten.',
+  },
+  {
+    q: 'Koordinieren Sie alle Gewerke?',
+    a: 'Für die Kerngewerke (Fliesen, Boden, Maler, Trockenbau, Abbruch) sind wir Ihr einziger Ansprechpartner. Sanitär und Elektro koordinieren wir mit verlässlichen Partnern.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Wohnungssanierung Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Wohnungssanierung Mannheim – komplett aus einer Hand. Fliesen, Boden, Maler, Trockenbau, Rückbau. 900+ Projekte, 30+ Jahre Erfahrung."
+};
+---
+
+<Base
+  title="Wohnungssanierung Mannheim – Komplettsanierung aus einer Hand"
+  description="Wohnungssanierung Mannheim vom Profi. Fliesen, Boden, Maler, Trockenbau & Rückbau aus einer Hand. 900+ abgeschlossene Projekte. Kostenlose Besichtigung anfragen."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Wohnungssanierung"
+      headline="Wohnungssanierung Mannheim – alles aus einer Hand"
+      subline="Komplettsanierung oder gezielte Teilrenovierung – wir koordinieren alle Gewerke, halten Termine und liefern saubere Ergebnisse. 900+ abgeschlossene Projekte in Mannheim und der Region."
+      image="/assets/images/Wohnung_3_compressed.webp"
+      imageAlt="Wohnungssanierung Mannheim – Limani"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Wohnungssanierung Mannheim' }]}
+    />
+
+    <section class="py-20 bg-white" aria-labelledby="wohnungHeading">
+      <div class="container">
+        <div class="content-layout">
+          <div data-aos="fade-right">
+            <span class="section-label">Leistungsumfang</span>
+            <h2 id="wohnungHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+              Was wir bei der Wohnungssanierung leisten
+            </h2>
+            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1.5rem;">
+              Eine Wohnungssanierung erfordert reibungsloses Zusammenspiel aller Gewerke. Wir übernehmen Planung, Koordination und Ausführung – Sie haben einen Ansprechpartner von Anfang bis Ende.
+            </p>
+
+            <div class="scope-items">
+              {[
+                { icon: 'bad', label: 'Badsanierung', desc: 'Kompletter Badumbau mit Fliesen, Trockenbau, Abdichtung' },
+                { icon: 'boden', label: 'Bodenverlegung', desc: 'Parkett, Vinyl, Laminat, Fliesen in allen Räumen' },
+                { icon: 'maler', label: 'Maler & Verputz', desc: 'Wände und Decken frisch, Risse saniert' },
+                { icon: 'trockenbau', label: 'Trockenbau', desc: 'Wände, Nischen, Vorwandinstallationen' },
+                { icon: 'abbruch', label: 'Rückbau & Entsorgung', desc: 'Alles raus – sauber und termingerecht' },
+                { icon: 'koordination', label: 'Koordination', desc: 'Sanitär, Elektro – wir stimmen alle Gewerke ab' },
+              ].map(item => (
+                <div class="scope-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-brand-accent); flex-shrink:0; margin-top:2px;">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <div>
+                    <strong style="font-size:0.9rem; color:var(--color-text-heading);">{item.label}</strong>
+                    <p style="font-size:0.8125rem; color:var(--color-text-muted); margin:0.1rem 0 0; line-height:1.4;">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div data-aos="fade-left">
+            <div style="display:flex; flex-direction:column; gap:1.25rem;">
+              <img
+                src="/assets/images/Wohnung_3_compressed.webp"
+                alt="Wohnungssanierung Ergebnis Mannheim"
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="400"
+                style="width:100%; border-radius:var(--radius-card); object-fit:cover; aspect-ratio:3/2;"
+              />
+              <img
+                src="/assets/images/Fliesen_bad_12_compressed.webp"
+                alt="Badsanierung als Teil der Wohnungssanierung"
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="300"
+                style="width:100%; border-radius:var(--radius-card); object-fit:cover; aspect-ratio:2/1;"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Wohnungssanierung anfragen" subheading="Größe der Wohnung, Umfang der Arbeiten, Wunschtermin – wir melden uns für eine kostenlose Besichtigung." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .content-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  }
+
+  .scope-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.875rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 480px) { .scope-items { grid-template-columns: 1fr; } }
+
+  .scope-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

@@ -1,0 +1,106 @@
+---
+/**
+ * TrustBar
+ * @category sections
+ * @description Dark horizontal trust signal bar with key stats.
+ */
+
+interface Props {
+  items?: { icon: string; text: string }[];
+}
+
+const defaultItems = [
+  {
+    icon: 'stars',
+    text: '5.0 auf Google',
+  },
+  {
+    icon: 'tools',
+    text: '900+ Projekte',
+  },
+  {
+    icon: 'calendar',
+    text: '30+ Jahre Erfahrung',
+  },
+  {
+    icon: 'location',
+    text: 'Mannheim & Rhein-Neckar',
+  },
+];
+
+const { items = defaultItems } = Astro.props;
+---
+
+<section class="trust-bar" aria-label="Vertrauenssignale">
+  <div class="container">
+    <ul class="trust-list" role="list">
+      {items.map((item) => (
+        <li class="trust-item">
+          {item.icon === 'stars' ? (
+            <span class="trust-stars" aria-label="5 von 5 Sternen">★★★★★</span>
+          ) : item.icon === 'tools' ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          ) : item.icon === 'calendar' ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          )}
+          <span>{item.text}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+
+  .trust-item svg {
+    color: var(--color-brand-accent);
+    flex-shrink: 0;
+  }
+
+  .trust-stars {
+    color: var(--color-brand-accent);
+    letter-spacing: -0.05em;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 640px) {
+    .trust-list {
+      gap: 1rem 1.5rem;
+    }
+    .trust-item {
+      font-size: 0.8125rem;
+    }
+  }
+</style>

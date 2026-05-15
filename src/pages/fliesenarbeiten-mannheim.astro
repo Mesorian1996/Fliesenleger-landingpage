@@ -1,0 +1,178 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Welche Fliesenformate verlegen Sie?',
+    a: 'Wir verlegen alle gängigen Formate: von kleinen Mosaiken über Standardfliesen (30×60 cm) bis zu großformatigen Feinsteinzeugplatten (120×120 cm und größer). Auch rektifizierte Fliesen mit minimalem Fugenbild kein Problem.',
+  },
+  {
+    q: 'Können Sie Fliesen auf bestehende Fliesen verlegen?',
+    a: 'Ja, wenn der Untergrund tragfähig und eben ist. Wir prüfen das vor Ort. Überfliesen spart Rückbaukosten, erhöht aber die Aufbauhöhe leicht. Wir beraten Sie zu den Vor- und Nachteilen.',
+  },
+  {
+    q: 'Was kostet Fliesenlegen pro Quadratmeter in Mannheim?',
+    a: 'Die Verlegekosten liegen je nach Schwierigkeit (Schnitte, Muster, Fugenbild) bei 65–120 € pro m². Dazu kommen Materialkosten für Fliesen, Kleber und Fugenmörtel. Das genaue Angebot erstellen wir nach Vor-Ort-Besichtigung.',
+  },
+  {
+    q: 'Wie lange dauert die Verlegung?',
+    a: 'Ein normales Badezimmer mit 12–15 m² Wandfläche ist in 2–4 Arbeitstagen fertig. Größere Flächen entsprechend länger. Trocknungszeiten für Kleber und Fugen sind einzuplanen.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fliesenarbeiten Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Professionelle Fliesenarbeiten in Mannheim – Bad, Küche, Wohnräume. Alle Formate, präzises Fugenbild, über 30 Jahre Erfahrung."
+};
+---
+
+<Base
+  title="Fliesenarbeiten Mannheim – Bad, Küche & Wohnräume"
+  description="Fliesenarbeiten in Mannheim vom Profi. Bad, Küche, Böden – alle Formate von Mosaik bis Großformat. Über 30 Jahre Erfahrung, transparente Preise. Jetzt anfragen."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Fliesenarbeiten"
+      headline="Fliesenarbeiten in Mannheim – präzise verlegt"
+      subline="Von Mosaikfliesen bis zu großformatigen Feinsteinzeugplatten. Sauber, schnell, dauerhaft – für Bad, Küche und Wohnräume in Mannheim und der Rhein-Neckar-Region."
+      image="/assets/images/Fliesen_bad_10_klein.webp"
+      imageAlt="Fliesenarbeiten Mannheim – Limani Fliesenleger"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Fliesenarbeiten Mannheim' }]}
+    />
+
+    <!-- Services Detail -->
+    <section class="py-20 bg-white" aria-labelledby="fliesenHeading">
+      <div class="container">
+        <div class="content-layout">
+          <div data-aos="fade-right">
+            <span class="section-label">Unsere Leistungen</span>
+            <h2 id="fliesenHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+              Alles rund um Fliesen – aus einer Hand
+            </h2>
+            <div style="display:flex; flex-direction:column; gap:1rem; color:var(--color-text-body); font-size:0.9375rem; line-height:1.75;">
+              <p style="margin:0;">Ob komplette Neubadgestaltung, Küchenspiegel, Bodenfliesen im Wohnzimmer oder gezielte Reparatur einzelner Fliesen – wir beherrschen das komplette Handwerk und beraten Sie kompetent bei Materialwahl, Verlegemuster und Fugenbild.</p>
+              <p style="margin:0;">Besonders gefragt: großformatige Fliesen mit minimaler Fuge für ein modernes, sauberes Erscheinungsbild. Diese Technik erfordert präzise Untergrundvorbereitung und Erfahrung – beides bringen wir mit.</p>
+            </div>
+
+            <div class="service-cards" style="margin-top:2rem;">
+              {[
+                { title: 'Wandfliesen', desc: 'Bad, Küche, Dusche – alle Formate und Muster' },
+                { title: 'Bodenfliesen', desc: 'Feinsteinzeug, Keramik, rutschfeste Ausführungen' },
+                { title: 'Großformat', desc: '80×80 bis 120×270 cm, rektifiziert, minimale Fuge' },
+                { title: 'Mosaikfliesen', desc: 'Glasmosaik, Steinmosaik, kreative Akzente' },
+                { title: 'Fliesen reparieren', desc: 'Einzelne Fliesen austauschen, Risse ausbessern' },
+                { title: 'Silikonfugen', desc: 'Erneuern, Farbe wechseln, Schimmel beseitigen' },
+              ].map(s => (
+                <div class="service-card-mini">
+                  <span class="service-card-mini__dot"></span>
+                  <div>
+                    <strong style="font-size:0.9375rem; color:var(--color-text-heading);">{s.title}</strong>
+                    <p style="font-size:0.875rem; color:var(--color-text-muted); margin:0.125rem 0 0;">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div data-aos="fade-left">
+            <div class="img-stack-wrap">
+              <img
+                src="/assets/images/Fliesen_bad_12_compressed.webp"
+                alt="Fliesenarbeiten Bad Mannheim"
+                loading="lazy"
+                decoding="async"
+                width="600"
+                height="450"
+                style="width:100%; border-radius:var(--radius-card); object-fit:cover; aspect-ratio:4/3;"
+              />
+              <div class="price-badge">
+                <span style="font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--color-text-muted);">Ab</span>
+                <span style="font-size:1.5rem; font-weight:700; color:var(--color-brand-accent); line-height:1;">65 €/m²</span>
+                <span style="font-size:0.75rem; color:var(--color-text-muted);">Verlegekosten</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Fliesenarbeiten anfragen" subheading="Teilen Sie uns Ihre Fläche und Ihr Wunschmaterial mit – wir melden uns für einen kostenlosen Vor-Ort-Termin." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .content-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  }
+
+  .service-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  @media (max-width: 480px) { .service-cards { grid-template-columns: 1fr; } }
+
+  .service-card-mini {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 0.875rem 1rem;
+  }
+
+  .service-card-mini__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-brand-accent);
+    flex-shrink: 0;
+    margin-top: 0.375rem;
+  }
+
+  .img-stack-wrap {
+    position: relative;
+  }
+
+  .price-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

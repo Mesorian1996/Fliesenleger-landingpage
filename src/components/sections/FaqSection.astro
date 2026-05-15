@@ -1,0 +1,174 @@
+---
+/**
+ * FaqSection
+ * @category sections
+ * @description Custom accordion FAQ (no Bootstrap).
+ */
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  faqs?: FaqItem[];
+}
+
+const defaultFaqs: FaqItem[] = [
+  {
+    q: 'Was kostet eine Badsanierung in Mannheim?',
+    a: 'Kleinere Teilmodernisierungen starten bei rund 8.000 €, komplette Badmodernisierungen liegen je nach Ausstattung (z.B. bodengleiche Dusche, großformatige Fliesen, Trockenbau) zwischen 15.000 € und 30.000 €. Nach einem Vor-Ort-Termin kalkulieren wir transparent.',
+  },
+  {
+    q: 'Wie schnell bekomme ich einen Termin bei einem Fliesenleger in Mannheim?',
+    a: 'Reparaturen und Silikonfugen sind häufig innerhalb weniger Tage möglich, größere Sanierungen je nach Materialverfügbarkeit. Tipp: Mit Fotos, Maßen und Adresse im Kontaktformular können wir Sie schneller einplanen.',
+  },
+  {
+    q: 'Arbeiten Sie auch in Stadtteilen wie Neckarau, Käfertal oder Ludwigshafen?',
+    a: 'Ja – wir fahren täglich nach Neckarau, Lindenhof, Almenhof, Feudenheim, Käfertal, Waldhof, Sandhofen, Rheinau, Innenstadt sowie nach Ludwigshafen, Viernheim, Heidelberg und in den gesamten Rhein-Neckar-Kreis.',
+  },
+  {
+    q: 'Übernehmen Sie großformatige Fliesen, Mosaike und ebenerdige Duschen?',
+    a: 'Ja – wir verlegen großformatige Feinsteinzeugfliesen, Mosaikfliesen und planen barrierefreie, ebenerdige Duschen inklusive Gefälle, Abdichtung und Duschrinne.',
+  },
+  {
+    q: 'Können Sie Fliesen überfliesen oder Silikonfugen erneuern?',
+    a: 'Wenn die bestehende Fläche tragfähig ist, überfliesen wir sie oder bessern einzelne Bereiche aus. Auch Silikonfugen erneuern oder Fliesen reparieren erledigen wir kurzfristig.',
+  },
+  {
+    q: 'Welche Bodenarbeiten führen Sie aus?',
+    a: 'Wir verlegen Vinylboden, Laminat, Parkett und Fliesen, führen Estricharbeiten und Bodenausgleich durch und koordinieren Sockelleisten – alle Bodenleistungen aus einer Hand.',
+  },
+  {
+    q: 'Wie läuft die Kontaktaufnahme und Angebotserstellung?',
+    a: 'Nutzen Sie das Kontaktformular, rufen Sie an oder schreiben Sie per WhatsApp. Wir melden uns schnell, vereinbaren einen Vor-Ort-Termin und senden Ihnen ein unverbindliches Angebot.',
+  },
+];
+
+const { faqs = defaultFaqs } = Astro.props;
+---
+
+<section id="faq" class="py-20 bg-warm" aria-labelledby="faqHeading">
+  <div class="container">
+
+    <div class="faq-layout">
+
+      <!-- Left: Header -->
+      <div class="faq-header" data-aos="fade-right">
+        <span class="section-label">FAQ</span>
+        <h2 id="faqHeading" style="font-size:clamp(1.75rem,3vw,2.5rem); margin:0 0 1rem; letter-spacing:-0.025em;">
+          Häufige Fragen
+        </h2>
+        <p style="color:var(--color-text-muted); font-size:1rem; line-height:1.7; margin:0 0 1.5rem;">
+          Keine Antwort gefunden? Rufen Sie uns an oder schreiben Sie uns – wir antworten schnell.
+        </p>
+        <a href="/#anfrage-funnel" class="btn-primary" style="font-size:0.9rem;">
+          Direkt anfragen
+        </a>
+      </div>
+
+      <!-- Right: Accordion -->
+      <div class="faq-list" data-aos="fade-left">
+        {faqs.map((item, i) => (
+          <div class="faq-item">
+            <button
+              class="faq-btn"
+              type="button"
+              aria-expanded="false"
+              aria-controls={`faq-body-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span>{item.q}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </button>
+            <div
+              class="faq-body"
+              id={`faq-body-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+            >
+              {item.a}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .faq-layout {
+      grid-template-columns: 320px 1fr;
+    }
+  }
+
+  .faq-header {
+    position: sticky;
+    top: 6rem;
+  }
+
+  @media (max-width: 767px) {
+    .faq-header { position: static; }
+  }
+
+  .faq-list {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    padding: 0 1.5rem;
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>
+
+<script>
+  function initFaq() {
+    const faqList = document.querySelector('.faq-list');
+    if (!faqList) return;
+
+    faqList.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        const targetId = btn.getAttribute('aria-controls');
+        const body = targetId ? document.getElementById(targetId) : null;
+
+        // Close all
+        faqList.querySelectorAll('.faq-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const bId = b.getAttribute('aria-controls');
+          if (bId) {
+            const bBody = document.getElementById(bId);
+            if (bBody) bBody.classList.remove('open');
+          }
+        });
+
+        // Toggle clicked
+        if (!isOpen && body) {
+          btn.setAttribute('aria-expanded', 'true');
+          body.classList.add('open');
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaq);
+  } else {
+    initFaq();
+  }
+</script>

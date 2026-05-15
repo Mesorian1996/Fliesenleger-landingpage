@@ -1,0 +1,121 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Was kostet Bodenverlegung pro Quadratmeter in Mannheim?',
+    a: 'Bodenbelagverlegung kostet je nach Material 25–60 € pro m² (Verlegekosten, ohne Material). Fliesen am oberen Ende, Vinylboden und Laminat am unteren. Estricharbeiten werden separat kalkuliert.',
+  },
+  {
+    q: 'Müssen Böden vor der Verlegung vorbereitet werden?',
+    a: 'Ja – der Untergrund muss eben, trocken und tragfähig sein. Wir führen Bodenausgleich, Grundierung und ggf. Estricharbeiten durch, bevor wir den Belag verlegen.',
+  },
+  {
+    q: 'Verlegen Sie auch Parkett und Vinylböden?',
+    a: 'Ja – wir verlegen Parkett (Fertigparkett und Massivparkett), Vinylböden (LVT, Klick-Vinyl), Laminat und Bodenfliesen. Wir beraten Sie bei der Materialwahl nach Nutzung und Raumklima.',
+  },
+  {
+    q: 'Können Sie Sockelleisten montieren?',
+    a: 'Ja – Sockelleisten (Holz, MDF, PVC) montieren wir sauber und passend zum Bodenbelag. Das gehört für uns zur vollständigen Fertigstellung.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Bodenverlegung und Estrich Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Bodenverlegung in Mannheim – Parkett, Vinyl, Laminat, Fliesen, Estrich, Bodenausgleich. Alle Beläge aus einer Hand. Schnell, sauber, günstig."
+};
+---
+
+<Base
+  title="Bodenverlegung & Estrich Mannheim – Parkett, Vinyl, Fliesen"
+  description="Bodenverlegung in Mannheim: Parkett, Vinyl, Laminat, Fliesen & Estrich. Alle Bodenbeläge aus einer Hand, 25–60 €/m². Kostenlose Beratung & Angebot."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Bodenverlegung & Estrich"
+      headline="Bodenverlegung Mannheim – alle Beläge aus einer Hand"
+      subline="Parkett, Vinyl, Laminat, Fliesen, Estrich und Bodenausgleich – wir verlegen alle Bodenbeläge präzise und termingerecht in Mannheim und der Rhein-Neckar-Region."
+      image="/assets/images/Parkett_2_compressed.webp"
+      imageAlt="Parkett und Bodenverlegung Mannheim – Limani"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Bodenverlegung Mannheim' }]}
+    />
+
+    <section class="py-20 bg-white" aria-labelledby="bodenHeading">
+      <div class="container">
+        <span class="section-label">Bodenbeläge</span>
+        <h2 id="bodenHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0.5rem 0 1.5rem; letter-spacing:-0.02em; max-width:560px;">
+          Welchen Boden verlegen wir?
+        </h2>
+        <div class="boden-grid" data-aos="fade-up">
+          {[
+            { name: 'Parkett', range: '45 – 60 €/m²', desc: 'Fertig- und Massivparkett, schwimmend oder geklebt, geschliffen und geölt/lackiert.', img: '/assets/images/Parkett_2_compressed.webp' },
+            { name: 'Vinylboden (LVT)', range: '30 – 50 €/m²', desc: 'Wasserfest, robust, warmes Laufgefühl. Klick- oder Klebevinyl für alle Räume.', img: '/assets/images/Wohnung_3_compressed.webp' },
+            { name: 'Laminat', range: '25 – 40 €/m²', desc: 'Günstig, strapazierfähig, viele Dekore. Ideal für Wohn- und Schlafräume.', img: '/assets/images/Wohnung_3_compressed.webp' },
+            { name: 'Bodenfliesen', range: '35 – 60 €/m²', desc: 'Feinsteinzeug, Keramik, Naturstein. Für Bad, Küche, Terrasse, Wohnzimmer.', img: '/assets/images/Fliesen_bad_10_klein.webp' },
+          ].map(b => (
+            <article class="boden-card">
+              <div class="boden-card__img-wrap">
+                <img src={b.img} alt={`${b.name} verlegen Mannheim`} loading="lazy" decoding="async" width="400" height="220" style="width:100%; height:100%; object-fit:cover;" />
+              </div>
+              <div class="boden-card__body">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem;">
+                  <h3 style="font-size:1rem; font-weight:700; margin:0; color:var(--color-text-heading);">{b.name}</h3>
+                  <span style="font-size:0.875rem; font-weight:600; color:var(--color-brand-accent);">{b.range}</span>
+                </div>
+                <p style="font-size:0.875rem; color:var(--color-text-muted); margin:0; line-height:1.6;">{b.desc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Bodenarbeiten anfragen" subheading="Fläche in m², aktueller Belag, gewünschtes Material – wir erstellen ein kostenloses Angebot." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .boden-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) { .boden-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  .boden-card {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .boden-card__img-wrap {
+    height: 160px;
+    overflow: hidden;
+  }
+
+  .boden-card__body {
+    padding: 1.25rem;
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

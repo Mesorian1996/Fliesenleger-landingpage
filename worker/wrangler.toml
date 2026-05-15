@@ -1,0 +1,7 @@
+name = "limani-contact"
+main = "index.mjs"
+compatibility_date = "2024-01-01"
+
+# !! NIEMALS API-Keys hier eintragen !!
+# RESEND_API_KEY via CLI setzen:
+#   wrangler secret put RESEND_API_KEY

@@ -1,0 +1,642 @@
+@import "tailwindcss";
+
+/* ============================================
+   LIMANI DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Brand */
+  --color-brand-primary:        #0c1b2e;
+  --color-brand-accent:         #e8922a;
+  --color-brand-accent-dark:    #c47a1f;
+  --color-brand-accent-light:   #f5a847;
+
+  /* Surfaces */
+  --color-surface-light:        #ffffff;
+  --color-surface-warm:         #faf8f5;
+  --color-surface-subtle:       #f3f1ed;
+  --color-surface-dark:         #0c1b2e;
+
+  /* Borders */
+  --color-border:               #e5e1da;
+  --color-border-strong:        #cdc8be;
+
+  /* Text */
+  --color-text-heading:         #0c1b2e;
+  --color-text-body:            #3d4858;
+  --color-text-muted:           #7a8799;
+  --color-text-on-dark:         #ffffff;
+  --color-text-on-dark-muted:   rgba(255, 255, 255, 0.7);
+
+  /* Typography */
+  --font-heading:               'Outfit', 'DM Sans', system-ui, sans-serif;
+  --font-body:                  'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --spacing-section:            6rem;
+  --spacing-section-sm:         4rem;
+
+  /* Radii */
+  --radius-card:                1rem;
+  --radius-btn:                 999px;
+  --radius-sm:                  0.5rem;
+}
+
+/* ============================================
+   TAILWIND v4 THEME EXTENSION
+   ============================================ */
+@theme {
+  --color-brand-primary:       #0c1b2e;
+  --color-brand-accent:        #e8922a;
+  --color-brand-accent-dark:   #c47a1f;
+  --color-brand-accent-light:  #f5a847;
+  --color-surface-warm:        #faf8f5;
+  --color-surface-subtle:      #f3f1ed;
+  --color-border-default:      #e5e1da;
+  --color-text-heading:        #0c1b2e;
+  --color-text-body:           #3d4858;
+  --color-text-muted:          #7a8799;
+
+  --font-heading:              'Outfit', 'DM Sans', system-ui, sans-serif;
+  --font-body:                 'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   BASE RESETS & GLOBALS
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-body);
+  background-color: var(--color-surface-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-heading);
+  line-height: 1.15;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* iOS input zoom fix */
+@media screen and (max-width: 767px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  width: 100%;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-brand-accent);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   BUTTON SYSTEM
+   ============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--color-brand-accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-btn);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--color-brand-accent-dark);
+  box-shadow: 0 4px 20px rgba(232, 146, 42, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: var(--color-brand-primary);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-btn);
+  border: 2px solid var(--color-border-strong);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-brand-primary);
+  background: var(--color-brand-primary);
+  color: #fff;
+}
+
+.btn-outline:active {
+  transform: scale(0.98);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-btn);
+  border: 2px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-outline-light:hover {
+  border-color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.1);
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.85rem 1.25rem;
+}
+
+.navbar.scrolled {
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 2px 20px rgba(12, 27, 46, 0.08);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+  }
+  .navbar.hidden {
+    transform: none;
+  }
+}
+
+.nav-mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.99);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 1.25rem 1.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-mobile-menu.open {
+  display: flex;
+}
+
+/* ============================================
+   TRUST BAR
+   ============================================ */
+.trust-bar {
+  background: var(--color-brand-primary);
+  color: #fff;
+  padding: 0.875rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero-slide {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.service-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 12px 40px rgba(12, 27, 46, 0.1);
+  transform: translateY(-3px);
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.75rem;
+}
+
+.partner-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.partner-card:hover {
+  box-shadow: 0 8px 24px rgba(12, 27, 46, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   FUNNEL
+   ============================================ */
+.funnel-section {
+  background: var(--color-surface-warm);
+}
+
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  background: #fff;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  text-align: center;
+  user-select: none;
+}
+
+.option-card:hover {
+  border-color: var(--color-brand-accent);
+  box-shadow: 0 4px 16px rgba(232, 146, 42, 0.12);
+}
+
+.option-card.selected {
+  border-color: var(--color-brand-accent);
+  background: rgba(232, 146, 42, 0.06);
+}
+
+.option-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-check {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-brand-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.option-card.selected .option-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.funnel-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-heading);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.funnel-input:focus {
+  border-color: var(--color-brand-accent);
+  box-shadow: 0 0 0 3px rgba(232, 146, 42, 0.15);
+}
+
+.funnel-input.invalid {
+  border-color: #dc2626;
+}
+
+.funnel-input:focus.invalid {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+/* ============================================
+   FAQ ACCORDION
+   ============================================ */
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  text-align: left;
+  gap: 1rem;
+  transition: color 0.15s ease;
+}
+
+.faq-btn:hover {
+  color: var(--color-brand-accent);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-strong);
+  transition: border-color 0.15s ease, transform 0.25s ease;
+  color: var(--color-text-muted);
+}
+
+.faq-btn[aria-expanded="true"] .faq-icon {
+  border-color: var(--color-brand-accent);
+  color: var(--color-brand-accent);
+  transform: rotate(45deg);
+}
+
+.faq-body {
+  display: none;
+  padding: 0 0 1.25rem;
+  color: var(--color-text-body);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.faq-body.open {
+  display: block;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer-dark {
+  background: var(--color-brand-primary);
+  color: rgba(255,255,255,0.75);
+  padding: 3.5rem 0 2rem;
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--color-brand-accent);
+}
+
+/* ============================================
+   FIXED ELEMENTS
+   ============================================ */
+.go-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.75rem;
+  z-index: 900;
+  background: var(--color-brand-primary);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  color: #fff;
+}
+
+.go-top-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.go-top-btn:hover {
+  transform: translateY(-2px);
+}
+
+.quick-call-btn {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.75rem;
+  z-index: 900;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(12,27,46,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-call-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(12,27,46,0.18);
+}
+
+/* ============================================
+   AOS ANIMATIONS
+   ============================================ */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(24px);
+}
+
+[data-aos="fade-left"].aos-animate {
+  transform: translateX(0);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-24px);
+}
+
+[data-aos="fade-right"].aos-animate {
+  transform: translateX(0);
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 0.625rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text-heading);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  appearance: none;
+}
+
+.form-input:focus {
+  border-color: var(--color-brand-accent);
+  box-shadow: 0 0 0 3px rgba(232, 146, 42, 0.15);
+}
+
+.form-input.invalid {
+  border-color: #dc2626;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-heading);
+  margin-bottom: 0.375rem;
+}
+
+.form-error {
+  display: none;
+  font-size: 0.8125rem;
+  color: #dc2626;
+  margin-top: 0.375rem;
+}
+
+.form-error.show {
+  display: block;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS RHYTHM
+   ============================================ */
+.bg-warm { background-color: var(--color-surface-warm); }
+.bg-subtle { background-color: var(--color-surface-subtle); }
+.bg-dark { background-color: var(--color-brand-primary); }

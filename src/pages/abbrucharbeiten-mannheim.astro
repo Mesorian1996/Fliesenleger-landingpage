@@ -1,0 +1,133 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Was kostet Fliesendemontage pro Quadratmeter?',
+    a: 'Rückbau von Fliesen kostet je nach Untergrund und Zugänglichkeit 15–35 € pro m². Bei Verbundabdichtungen oder schwierigen Untergründen entsprechend mehr. Genaue Kalkulation nach Vor-Ort-Besichtigung.',
+  },
+  {
+    q: 'Entsorgen Sie den Bauschutt?',
+    a: 'Ja – fachgerechte Entsorgung ist bei unseren Abbrucharbeiten inklusive. Bauschutt, alte Fliesen, Sanitärkeramik – alles wird geordnet abtransportiert und ordnungsgemäß entsorgt.',
+  },
+  {
+    q: 'Können Sie auch Wände einreißen?',
+    a: 'Nicht tragende Wände reißen wir ab. Bei Tragwänden benötigen wir einen statischen Nachweis. Wir besprechen das vorab und koordinieren alles Nötige.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Abbruch und Entsorgung Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Abbruch- und Entsorgungsarbeiten in Mannheim – Fliesendemontage, Wanddurchbrüche, Bauschuttentsorgung. Sauber, schnell, günstig."
+};
+---
+
+<Base
+  title="Abbruch & Entsorgung Mannheim – Fliesendemontage & Rückbau"
+  description="Abbruch und Entsorgung in Mannheim. Fliesendemontage, Rückbau, Wanddurchbrüche, Bauschuttentsorgung. Sauber, termingerecht. Kostenlos anfragen."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Abbruch & Entsorgung"
+      headline="Abbruch- & Entsorgungsarbeiten Mannheim"
+      subline="Fachgerechter Rückbau als Vorbereitung für Ihre Sanierung. Fliesendemontage, Wanddurchbrüche, Bauschuttentsorgung – schnell, sauber und nach Vorschrift."
+      image="/assets/images/Fliesen_bad_12_compressed.webp"
+      imageAlt="Abbrucharbeiten Mannheim – Limani"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Abbruch & Entsorgung Mannheim' }]}
+    />
+
+    <section class="py-20 bg-white" aria-labelledby="abbruchHeading">
+      <div class="container">
+        <div style="max-width:680px; margin:0 auto;" data-aos="fade-up">
+          <span class="section-label">Leistungen</span>
+          <h2 id="abbruchHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0.5rem 0 1rem; letter-spacing:-0.02em;">
+            Abbruch & Rückbau als Teil Ihrer Sanierung
+          </h2>
+          <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 2rem;">
+            Jede Sanierung beginnt mit dem richtigen Rückbau. Wir führen Abbrucharbeiten sauber, termingerecht und ohne unnötigen Lärm durch – und übernehmen die vollständige Entsorgung.
+          </p>
+
+          <div class="abbruch-list">
+            {[
+              { title: 'Fliesendemontage', desc: 'Wand- und Bodenfliesen abschlagen, Kleberschicht entfernen, Untergrund für Neuverlegung vorbereiten.' },
+              { title: 'Sanitärdemontage', desc: 'Ausbau von Badewanne, Dusche, WC, Waschbecken und Zubehör. Leitungen sichern.' },
+              { title: 'Wanddurchbrüche', desc: 'Öffnungen für Türen, Fenster oder Leitungen – präzise, staubarm, ohne Erschütterungsschäden.' },
+              { title: 'Nicht tragende Wände abreißen', desc: 'Raumaufteilungen ändern, Durchgänge schaffen – inkl. Prüfung der Tragfähigkeit.' },
+              { title: 'Bodenbelag entfernen', desc: 'Fliesen, Parkett, Estrich, Teppich – Entfernung und Untergrundvorbereitung.' },
+              { title: 'Bauschuttentsorgung', desc: 'Geordneter Abtransport und fachgerechte Entsorgung aller Materialien. Dokumentation auf Wunsch.' },
+            ].map(item => (
+              <div class="abbruch-item">
+                <div class="abbruch-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="9,11 12,14 22,4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong style="font-size:0.9375rem; color:var(--color-text-heading); display:block; margin-bottom:0.25rem;">{item.title}</strong>
+                  <span style="font-size:0.875rem; color:var(--color-text-muted); line-height:1.5;">{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Abbrucharbeiten anfragen" subheading="Was muss raus, wo ist das Objekt? Wir kalkulieren schnell und kommen zur Besichtigung." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .abbruch-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .abbruch-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.125rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .abbruch-item:last-child { border-bottom: none; }
+
+  .abbruch-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.5rem;
+    background: rgba(232, 146, 42, 0.1);
+    color: var(--color-brand-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

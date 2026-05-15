@@ -1,0 +1,137 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import HeroSubpage from '@/components/sections/HeroSubpage.astro';
+import ContactSection from '@/components/sections/ContactSection.astro';
+import FaqSection from '@/components/sections/FaqSection.astro';
+
+const faqs = [
+  {
+    q: 'Was kostet das Streichen einer Wohnung in Mannheim?',
+    a: 'Für eine 70 m² Wohnung (Wände und Decken) rechnen Sie mit ca. 1.500–3.500 € für Malerarbeiten inkl. Material, abhängig vom Zustand der Flächen und Farbe. Einzelne Räume entsprechend günstiger.',
+  },
+  {
+    q: 'Machen Sie auch Verputzarbeiten?',
+    a: 'Ja – Putzarbeiten und Malerarbeiten bieten wir aus einer Hand. Rissesanierung, Untergrundvorbereitung, Strukturputz, Glattputz – alles gehört zu unserem Leistungsspektrum.',
+  },
+  {
+    q: 'Streichen Sie auch gewerbliche Objekte und Treppenhäuser?',
+    a: 'Ja, wir übernehmen sowohl private als auch gewerbliche Malerarbeiten: Wohnungen, Häuser, Büros, Treppenhäuser und Fassaden in Mannheim und Umgebung.',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Verputz und Malerarbeiten Mannheim",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Limani Fliesenleger & Malerbetrieb",
+    "url": "https://www.limani-fliesenleger.de"
+  },
+  "areaServed": "Mannheim",
+  "description": "Verputz- und Malerarbeiten in Mannheim – Wohnungen, Häuser, Büros. Rissesanierung, Strukturputz, Innen- und Außenanstrich. Schnell, sauber, termingerecht."
+};
+---
+
+<Base
+  title="Verputz & Malerarbeiten Mannheim – Innen & Außen"
+  description="Verputz und Malerarbeiten in Mannheim. Wände, Decken, Fassaden – sauber und schnell. Rissesanierung, Strukturputz, Innenanstrich. Kostenlos anfragen."
+  schema={schema}
+>
+  <Navbar />
+  <main>
+    <HeroSubpage
+      label="Verputz & Maler"
+      headline="Verputz- & Malerarbeiten in Mannheim"
+      subline="Glatte Wände, saubere Kanten, dauerhafte Farben. Wir übernehmen Verputz- und Malerarbeiten für Wohnungen, Häuser und Gewerbeflächen in Mannheim und der Rhein-Neckar-Region."
+      image="/assets/images/Malerarbeiten_bunt_compressed.webp"
+      imageAlt="Malerarbeiten Mannheim – Limani"
+      ctaLabel="Kostenlos anfragen"
+      ctaHref="#anfrage-funnel"
+      breadcrumb={[{ label: 'Verputz & Malerarbeiten Mannheim' }]}
+    />
+
+    <section class="py-20 bg-white" aria-labelledby="malerHeading">
+      <div class="container">
+        <div class="content-layout">
+          <div data-aos="fade-right">
+            <span class="section-label">Unsere Leistungen</span>
+            <h2 id="malerHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
+              Verputz & Maler – alles aus einer Hand
+            </h2>
+            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1.5rem;">
+              Ob Neubau oder Renovierung: Wir bereiten Untergründe fachgerecht vor, schließen Risse, tragen Putz auf und streichen Wände, Decken und Fassaden in höchster Qualität.
+            </p>
+
+            <div class="service-grid">
+              {[
+                { title: 'Innenputz', desc: 'Glattputz, Strukturputz, Kalkputz' },
+                { title: 'Rissesanierung', desc: 'Haarrisse bis tiefe Risse fachgerecht schließen' },
+                { title: 'Malerarbeiten innen', desc: 'Wände, Decken, Türen, Heizkörper' },
+                { title: 'Treppenhaus & Flur', desc: 'Gewerbliche & private Objekte' },
+                { title: 'Tapezierarbeiten', desc: 'Vliestapeten, Strukturtapeten, Glasfaser' },
+                { title: 'Fassadenarbeiten', desc: 'Außenputz und -anstrich, Wärmedämmung' },
+              ].map(s => (
+                <div class="service-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--color-brand-accent); flex-shrink:0; margin-top:2px;">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <div>
+                    <strong style="font-size:0.9rem; color:var(--color-text-heading);">{s.title}</strong>
+                    <p style="font-size:0.8125rem; color:var(--color-text-muted); margin:0.1rem 0 0; line-height:1.4;">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div data-aos="fade-left">
+            <img
+              src="/assets/images/Malerarbeiten_bunt_compressed.webp"
+              alt="Malerarbeiten Wohnung Mannheim"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="450"
+              style="width:100%; border-radius:var(--radius-card); object-fit:cover; aspect-ratio:4/3;"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ContactSection heading="Malerarbeiten anfragen" subheading="Fläche, Anzahl Räume, gewünschter Termin – wir erstellen ein kostenloses Angebot." showMap={false} />
+    <FaqSection faqs={faqs} />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .content-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .content-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  @media (max-width: 480px) { .service-grid { grid-template-columns: 1fr; } }
+
+  .service-item {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

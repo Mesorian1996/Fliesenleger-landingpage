@@ -1,0 +1,287 @@
+---
+/**
+ * ServicesSection
+ * @category sections
+ * @description Zigzag service layout with image + text pairs.
+ */
+
+const services = [
+  {
+    title: 'Fliesenarbeiten',
+    href: '/fliesenarbeiten-mannheim',
+    img: '/assets/images/Fliesenarbeiten_compressed.webp',
+    imgAlt: 'Fliesenarbeiten Mannheim – Badezimmer mit hochwertigen Fliesen',
+    bullets: [
+      'Badezimmer, Küchen, Balkone & Terrassen',
+      'Wand- & Bodenfliesen, Großformate & Mosaik',
+      'Ebenerdige Duschen mit Gefälle & Duschrinne',
+      'Abdichtung, Silikonfugen, Reparaturen',
+    ],
+  },
+  {
+    title: 'Badsanierung',
+    href: '/badsanierung-mannheim',
+    img: '/assets/images/Fliesen_bad_10.webp',
+    imgAlt: 'Badsanierung Mannheim – modernes Badezimmer',
+    bullets: [
+      'Komplette Badmodernisierungen',
+      'Teilsanierungen ohne Totalabriss',
+      'Bodengleiche Duschen, Nischen & Ablage',
+      'Koordination aller Gewerke aus einer Hand',
+    ],
+  },
+  {
+    title: 'Verputz- & Malerarbeiten',
+    href: '/malerarbeiten-mannheim',
+    img: '/assets/images/Verputzen_compressed.webp',
+    imgAlt: 'Verputzarbeiten Mannheim – glatte Innenwände',
+    bullets: [
+      'Glattputz Q1–Q4 und Strukturputz',
+      'Malerarbeiten, Tapezieren & Spachteln',
+      'Wände & Decken für Fliesen vorbereiten',
+      'Saubere Übergabe ohne Nacharbeiten',
+    ],
+  },
+  {
+    title: 'Trockenbauarbeiten',
+    href: '/trockenbauarbeiten-mannheim',
+    img: '/assets/images/Trockenbau_1_hero.webp',
+    imgAlt: 'Trockenbauarbeiten Mannheim',
+    bullets: [
+      'Trennwände & abgehängte Decken',
+      'Schallschutz & Wärmedämmung',
+      'Vorbereitung für Fliesen & Putz',
+      'Schnelle Trockenbaulösungen',
+    ],
+  },
+  {
+    title: 'Bodenverlegung & Estrich',
+    href: '/bodenarbeiten-mannheim',
+    img: '/assets/images/Fliesen_boden.webp',
+    imgAlt: 'Bodenverlegung Mannheim – Parkett und Vinyl',
+    bullets: [
+      'Vinyl, Laminat, Parkett & Fliesen',
+      'Bodenausgleich & Spachtelung',
+      'Estricharbeiten & Vorbereitung',
+      'Sockelleisten & saubere Übergänge',
+    ],
+  },
+  {
+    title: 'Wohnungssanierung',
+    href: '/wohnungssanierung-mannheim',
+    img: '/assets/images/Wohnung.jpg',
+    imgAlt: 'Wohnungssanierung Mannheim – fertige Wohnung',
+    bullets: [
+      'Komplettsanierung aller Räume',
+      'Koordination von Subunternehmen',
+      'Von Abbruch bis Fertigstellung',
+      'Fester Ansprechpartner durchgehend',
+    ],
+  },
+];
+---
+
+<section id="leistungen" class="services-section" aria-labelledby="servicesHeading">
+  <div class="container" style="padding-top:5rem; padding-bottom:5rem;">
+
+    <!-- Section Header -->
+    <div style="max-width:600px; margin-bottom:3.5rem;">
+      <span class="section-label">Unser Leistungsangebot</span>
+      <h2 id="servicesHeading" style="font-size:clamp(1.75rem,3vw,2.5rem); margin:0 0 1rem; letter-spacing:-0.025em;">
+        Fliesenleger in Mannheim –<br>alles aus einer Hand
+      </h2>
+      <p style="color:var(--color-text-muted); font-size:1.0625rem; line-height:1.7; margin:0 0 1.5rem;">
+        Von einzelnen Fliesenreparaturen bis zur kompletten Wohnungssanierung –
+        wir übernehmen alle Gewerke und koordinieren für Sie.
+      </p>
+      <a href="#anfrage-funnel" class="btn-primary">
+        Jetzt unverbindlich anfragen
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9,18 15,12 9,6"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Zigzag Service Cards -->
+    <div class="services-list">
+      {services.map((s, i) => (
+        <article
+          class:list={['service-row', i % 2 === 1 ? 'service-row--reverse' : '']}
+          data-aos="fade-up"
+        >
+          <!-- Image -->
+          <div class="service-img-wrap">
+            <img
+              src={s.img}
+              alt={s.imgAlt}
+              loading={i < 2 ? 'eager' : 'lazy'}
+              decoding="async"
+              width="600"
+              height="420"
+            />
+          </div>
+
+          <!-- Text -->
+          <div class="service-text">
+            <h3 style="font-size:1.625rem; font-weight:700; margin:0 0 1rem; letter-spacing:-0.02em;">
+              {s.title}
+            </h3>
+            <ul class="service-bullets">
+              {s.bullets.map(b => (
+                <li>
+                  <span class="bullet-dot" aria-hidden="true"></span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+            <a href={s.href} class="btn-outline service-link">
+              Mehr erfahren
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9,18 15,12 9,6"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Additional services strip -->
+    <div class="services-strip" data-aos="fade-up">
+      <p style="font-size:0.9375rem; color:var(--color-text-muted); margin:0 0 1rem;">Weitere Leistungen:</p>
+      <div class="services-strip-items">
+        {[
+          { label: 'Abbruch & Entsorgung', href: '/abbrucharbeiten-mannheim' },
+          { label: 'Silikonfugen erneuern', href: '/fliesenarbeiten-mannheim' },
+          { label: 'Fliesen überfliesen', href: '/fliesenarbeiten-mannheim' },
+          { label: 'Balkonfliesen', href: '/fliesenarbeiten-mannheim' },
+        ].map(item => (
+          <a href={item.href} class="service-chip">
+            {item.label}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9,18 15,12 9,6"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .service-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .service-row--reverse .service-img-wrap {
+      order: 2;
+    }
+    .service-row--reverse .service-text {
+      order: 1;
+    }
+  }
+
+  .service-img-wrap {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface-subtle);
+  }
+
+  .service-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+
+  .service-row:hover .service-img-wrap img {
+    transform: scale(1.03);
+  }
+
+  .service-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .service-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+  }
+
+  .bullet-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-brand-accent);
+    flex-shrink: 0;
+    margin-top: 0.45em;
+  }
+
+  .service-link {
+    align-self: flex-start;
+    font-size: 0.875rem;
+    padding: 0.625rem 1.375rem;
+  }
+
+  .services-strip {
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .services-strip-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  .service-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+  }
+
+  .service-chip:hover {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: #fff;
+  }
+</style>

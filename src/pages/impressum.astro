@@ -1,0 +1,137 @@
+---
+import Base from '@/layouts/Base.astro';
+import Navbar from '@/components/global/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { SITE } from '@/config/site';
+---
+
+<Base
+  title="Impressum – Limani Fliesenleger Mannheim"
+  description="Impressum der Limani Fliesenleger & Malerbetrieb GmbH, Mannheim."
+  robots="noindex,follow"
+>
+  <Navbar />
+  <main>
+    <div class="legal-hero">
+      <div class="container">
+        <h1 style="font-size:clamp(2rem,4vw,3rem); color:#fff; margin:0; letter-spacing:-0.02em;">Impressum</h1>
+      </div>
+    </div>
+
+    <section class="py-16 bg-white">
+      <div class="container">
+        <div class="legal-content">
+
+          <h2>Angaben gemäß § 5 TMG</h2>
+          <p>
+            Limani Fliesenleger &amp; Malerbetrieb<br />
+            Inhaber: Mesorian Limani<br />
+            E7 13<br />
+            68159 Mannheim<br />
+            Deutschland
+          </p>
+
+          <h2>Kontakt</h2>
+          <p>
+            Telefon: <a href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a><br />
+            E-Mail: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          </p>
+
+          <h2>Umsatzsteuer-ID</h2>
+          <p>
+            Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
+            Bitte bei uns erfragen.
+          </p>
+
+          <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+          <p>
+            Berufsbezeichnung: Fliesenleger / Malerbetrieb<br />
+            Zuständige Handwerkskammer: Handwerkskammer Mannheim Rhein-Neckar-Odenwald
+          </p>
+
+          <h2>EU-Streitschlichtung</h2>
+          <p>
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
+              https://ec.europa.eu/consumers/odr/
+            </a>.<br />
+            Unsere E-Mail-Adresse finden Sie oben im Impressum.
+          </p>
+
+          <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+          <p>
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+            Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+
+          <h2>Haftung für Inhalte</h2>
+          <p>
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+            allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+            verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+            zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+          <p>
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+            Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+            Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+            Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+          </p>
+
+          <h2>Haftung für Links</h2>
+          <p>
+            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.
+            Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+            verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          </p>
+
+          <h2>Urheberrecht</h2>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen
+            Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+            Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .legal-hero {
+    background: var(--color-brand-primary);
+    padding: 8rem 0 3rem;
+  }
+
+  .legal-content {
+    max-width: 720px;
+  }
+
+  .legal-content h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+    margin: 2rem 0 0.625rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .legal-content h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+
+  .legal-content p {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--color-text-body);
+    margin: 0;
+  }
+  .legal-content p + p { margin-top: 0.75rem; }
+
+  .legal-content a {
+    color: var(--color-brand-accent);
+    text-decoration: none;
+  }
+  .legal-content a:hover { text-decoration: underline; }
+
+  .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+</style>

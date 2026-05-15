@@ -1,0 +1,114 @@
+---
+/**
+ * PartnerSection
+ * @category sections
+ * @description Material partners with logos and descriptions.
+ */
+
+const partners = [
+  {
+    name: 'ARDEX',
+    logo: '/assets/images/partner-ardex.svg',
+    text: 'Abdichtungen, Spachtel und Kleber, die selbst in stark beanspruchten Bädern zuverlässig halten.',
+    url: 'https://www.ardex.de',
+  },
+  {
+    name: 'Keramundo',
+    logo: '/assets/images/partner-keramundo.svg',
+    text: 'Fliesen in allen Formaten: großformatig, klein, Mosaik, Naturstein – optimal für Bad und Küche.',
+    url: 'https://www.keramundo.de',
+  },
+  {
+    name: 'Arte Muri',
+    logo: '/assets/images/partner-artemuri.png',
+    text: 'Stabile Trockenbaukonstruktionen, exakte Kanten und perfekt vorbereitete Wandflächen.',
+    url: 'https://www.artemuri.de',
+  },
+  {
+    name: 'MEGA Gruppe',
+    logo: '/assets/images/partner-mega.svg',
+    text: 'Farben, Lacke und Spachtelmassen für sauber abgeschlossene Wände und Decken.',
+    url: 'https://www.mega.de',
+  },
+];
+---
+
+<section class="py-20 bg-white" aria-labelledby="partnerHeading">
+  <div class="container">
+
+    <div style="max-width:560px; margin-bottom:2.5rem;" data-aos="fade-up">
+      <span class="section-label">Unsere Partner</span>
+      <h2 id="partnerHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 0.75rem; letter-spacing:-0.02em;">
+        Hochwertige Materialpartner
+      </h2>
+      <p style="color:var(--color-text-muted); font-size:1rem; line-height:1.7; margin:0;">
+        Für saubere, langlebige Ergebnisse arbeiten wir ausschließlich mit ausgewählten Herstellern zusammen.
+      </p>
+    </div>
+
+    <div class="partner-grid" data-aos="fade-up">
+      {partners.map(p => (
+        <article class="partner-card">
+          <div class="partner-logo-wrap">
+            <img
+              src={p.logo}
+              alt={`${p.name} Logo`}
+              loading="lazy"
+              decoding="async"
+              style="max-height:40px; max-width:120px; object-fit:contain;"
+            />
+          </div>
+          <p style="font-size:0.875rem; color:var(--color-text-muted); line-height:1.6; flex:1; margin:0;">{p.text}</p>
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="partner-link"
+            aria-label={`${p.name} Website besuchen`}
+          >
+            Website besuchen
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7,7 17,7 17,17"/>
+            </svg>
+          </a>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .partner-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .partner-logo-wrap {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.875rem;
+  }
+
+  .partner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand-accent);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    margin-top: auto;
+  }
+  .partner-link:hover { color: var(--color-brand-accent-dark); }
+
+  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+</style>

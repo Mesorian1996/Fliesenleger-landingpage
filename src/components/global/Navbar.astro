@@ -1,0 +1,376 @@
+---
+import { SITE, NAV_LINKS } from '@/config/site';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<header>
+  <nav class="navbar" id="mainNavbar" aria-label="Hauptnavigation">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+
+      <!-- Logo -->
+      <a href="/" class="navbar-logo" aria-label="Limani Fliesenleger — Zur Startseite">
+        <img
+          src="/assets/images/Limani_Logo_modern.webp"
+          alt="Limani Fliesenleger Logo"
+          width="160"
+          height="75"
+          style="max-height:60px; width:auto; object-fit:contain;"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Desktop Navigation">
+        {NAV_LINKS.map(link => (
+          link.dropdown ? (
+            <div class="nav-dropdown-wrapper" style="position:relative;">
+              <button
+                class="nav-link-btn"
+                aria-expanded="false"
+                aria-haspopup="true"
+                data-dropdown
+              >
+                {link.label}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:2px;">
+                  <polyline points="6,9 12,15 18,9"/>
+                </svg>
+              </button>
+              <div class="nav-dropdown" role="menu">
+                {link.dropdown.map((item, i) => (
+                  i === 0 ? (
+                    <>
+                      <a href={item.href} class="nav-dropdown-item nav-dropdown-item--overview" role="menuitem">{item.label}</a>
+                      <div class="nav-dropdown-divider"></div>
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      class:list={['nav-dropdown-item', currentPath === item.href ? 'active' : '']}
+                      role="menuitem"
+                    >
+                      {item.label}
+                    </a>
+                  )
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.href}
+              class:list={['nav-link', currentPath === link.href ? 'active' : '']}
+            >
+              {link.label}
+            </a>
+          )
+        ))}
+      </nav>
+
+      <!-- Desktop Actions -->
+      <div class="hidden md:flex items-center gap-2">
+        <a
+          href={`tel:${SITE.phoneTel}`}
+          class="nav-icon-btn"
+          aria-label="Anrufen"
+          title="Telefonisch anfragen"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7H6.6a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.3a16 16 0 0 0 6 6l.86-1.22a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.4 17.4z"/>
+          </svg>
+        </a>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="nav-icon-btn"
+          aria-label="E-Mail schreiben"
+          title="E-Mail schreiben"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+        </a>
+        <a href="/#anfrage-funnel" class="btn-primary" style="font-size:0.875rem; padding:0.625rem 1.375rem;">
+          Projekt anfragen
+        </a>
+      </div>
+
+      <!-- Mobile: CTA + Hamburger -->
+      <div class="flex md:hidden items-center gap-2">
+        <a href="/#anfrage-funnel" class="btn-primary" style="font-size:0.8125rem; padding:0.5rem 1rem;">
+          Anfrage
+        </a>
+        <button
+          id="mobileMenuBtn"
+          class="nav-hamburger"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+          type="button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="nav-mobile-menu" role="navigation" aria-label="Mobile Navigation">
+      <a href="/" class:list={['nav-mobile-link', currentPath === '/' ? 'active' : '']}>Startseite</a>
+
+      <!-- Leistungen Group -->
+      <button class="nav-mobile-group-btn" data-toggle-group type="button" aria-expanded="false">
+        Leistungen
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6,9 12,15 18,9"/>
+        </svg>
+      </button>
+      <div class="nav-mobile-group" style="display:none;">
+        {NAV_LINKS[0].dropdown?.slice(1).map(item => (
+          <a
+            href={item.href}
+            class:list={['nav-mobile-sublink', currentPath === item.href ? 'active' : '']}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      <a href="/#vorteile" class="nav-mobile-link">Über uns</a>
+      <a href="/kontakt-mannheim" class:list={['nav-mobile-link', currentPath === '/kontakt-mannheim' ? 'active' : '']}>Kontakt</a>
+
+      <div style="margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--color-border);">
+        <a href="/#anfrage-funnel" class="btn-primary" style="width:100%; justify-content:center;">
+          Projekt anfragen
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .navbar-logo { display: flex; align-items: center; flex-shrink: 0; }
+
+  .nav-link {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    transition: color 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--color-brand-primary); background: var(--color-surface-warm); }
+  .nav-link.active { color: var(--color-brand-accent); font-weight: 600; }
+
+  .nav-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .nav-link-btn:hover { color: var(--color-brand-primary); background: var(--color-surface-warm); }
+
+  .nav-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: -0.5rem;
+    min-width: 240px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+    box-shadow: 0 12px 32px rgba(12, 27, 46, 0.12);
+    padding: 0.5rem;
+    display: none;
+    z-index: 100;
+  }
+  .nav-dropdown-wrapper:hover .nav-dropdown,
+  .nav-dropdown-wrapper:focus-within .nav-dropdown { display: block; }
+
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    border-radius: 0.5rem;
+    transition: color 0.15s ease, background 0.15s ease;
+    text-decoration: none;
+  }
+  .nav-dropdown-item:hover { color: var(--color-brand-primary); background: var(--color-surface-warm); }
+  .nav-dropdown-item.active { color: var(--color-brand-accent); }
+  .nav-dropdown-item--overview { font-weight: 600; color: var(--color-text-heading); }
+  .nav-dropdown-divider { height: 1px; background: var(--color-border); margin: 0.375rem 0; }
+
+  .nav-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--color-text-muted);
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .nav-icon-btn:hover { color: var(--color-brand-primary); background: var(--color-surface-warm); }
+
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--color-text-heading);
+    border-radius: 999px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+  .nav-mobile-link {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .nav-mobile-link:hover, .nav-mobile-link.active { color: var(--color-brand-accent); }
+
+  .nav-mobile-group-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-body);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    text-align: left;
+  }
+
+  .nav-mobile-sublink {
+    display: block;
+    padding: 0.625rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    border-left: 2px solid var(--color-border);
+    margin-left: 0.5rem;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-mobile-sublink:hover, .nav-mobile-sublink.active {
+    color: var(--color-brand-accent);
+    border-color: var(--color-brand-accent);
+  }
+
+  @media (min-width: 768px) {
+    .hidden { display: none !important; }
+    .md\:flex { display: flex !important; }
+    .md\:hidden { display: none !important; }
+    .items-center { align-items: center; }
+    .gap-1 { gap: 0.25rem; }
+    .gap-2 { gap: 0.5rem; }
+  }
+  @media (max-width: 767px) {
+    .hidden { display: none !important; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .gap-2 { gap: 0.5rem; }
+  }
+</style>
+
+<script>
+  function initNavbar() {
+    const navbar = document.getElementById('mainNavbar');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (!navbar || !mobileBtn || !mobileMenu) return;
+
+    // Scroll: shrink + mobile hide
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      // Mobile: hide on scroll down
+      if (window.innerWidth < 768) {
+        if (y > lastY + 4 && y > 80) {
+          navbar.style.transform = 'translateY(-100%)';
+        } else if (y < lastY - 4) {
+          navbar.style.transform = '';
+        }
+      }
+      lastY = y;
+    }, { passive: true });
+
+    // Mobile menu toggle
+    mobileBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.contains('open');
+      mobileMenu.classList.toggle('open', !isOpen);
+      mobileBtn.classList.toggle('open', !isOpen);
+      mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    // Mobile group toggle
+    const groupBtns = mobileMenu.querySelectorAll('[data-toggle-group]');
+    groupBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.nextElementSibling as HTMLElement;
+        if (!group) return;
+        const isOpen = group.style.display !== 'none';
+        group.style.display = isOpen ? 'none' : 'flex';
+        (group as HTMLElement).style.flexDirection = 'column';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        mobileBtn.classList.remove('open');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavbar);
+  } else {
+    initNavbar();
+  }
+</script>
