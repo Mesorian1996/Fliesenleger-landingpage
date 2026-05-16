@@ -2,150 +2,135 @@
 /**
  * LocalSeoSection
  * @category sections
- * @description SEO-rich regional section with cost info, city coverage, and trust signals.
+ * @description Regional presence — map visualization + bento service cards.
  */
+
+const services = [
+  { label: 'Fliesenarbeiten',   icon: '/assets/icons/fliesenverlegung.svg',  href: '/fliesenarbeiten-mannheim' },
+  { label: 'Badsanierung',      icon: '/assets/icons/badsanierung.svg',       href: '/badsanierung-mannheim' },
+  { label: 'Malerarbeiten',     icon: '/assets/icons/malerarbeiten.svg',      href: '/malerarbeiten-mannheim' },
+  { label: 'Trockenbau',        icon: '/assets/icons/trockenbau.svg',         href: '/trockenbauarbeiten-mannheim' },
+  { label: 'Bodenverlegung',    icon: '/assets/icons/bodenverlegung.svg',     href: '/bodenarbeiten-mannheim' },
+  { label: 'Wohnungssanierung', icon: '/assets/icons/wohnungssanierung.svg',  href: '/wohnungssanierung-mannheim' },
+];
 ---
 
-<section class="py-20 bg-subtle" aria-labelledby="localSeoHeading">
+<section class="local-section" aria-labelledby="localHeading">
   <div class="container">
 
-    <!-- Top: Costs -->
-    <div class="local-layout" style="margin-bottom: 5rem;">
-
-      <!-- Cost Info -->
-      <div data-aos="fade-right">
-        <span class="section-label">Preise & Kosten</span>
-        <h2 id="localSeoHeading" style="font-size:clamp(1.5rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
-          Was kosten Fliesenarbeiten in Mannheim?
-        </h2>
-        <div style="display:flex; flex-direction:column; gap:0.875rem;">
-          <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0;">
-            Die häufigste Frage: „Was kostet das ungefähr?" – sie lässt sich pauschal schwer beantworten.
-            Die Kosten hängen von Fläche, Material, Untergrundkondition und Rückbau ab.
-          </p>
-          <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0;">
-            Wir schauen uns alles vor Ort an und erstellen ein transparentes Angebot – in der Regel
-            zwei Varianten: preisbewusst und premium. So können Sie vergleichen und entscheiden,
-            ohne Zeitdruck und ohne versteckte Kosten.
-          </p>
-          <div class="price-hints">
-            {[
-              { label: 'Silikonfugen erneuern', range: 'ab 150 €' },
-              { label: 'Fliesen verlegen (m²)', range: '65 – 120 €' },
-              { label: 'Badsanierung (komplett)', range: '15.000 – 30.000 €' },
-              { label: 'Bodenverlegung (m²)', range: '25 – 60 €' },
-            ].map(item => (
-              <div class="price-hint-row">
-                <span style="font-size:0.9rem; color:var(--color-text-body);">{item.label}</span>
-                <span style="font-size:0.9rem; font-weight:600; color:var(--color-brand-accent);">{item.range}</span>
-              </div>
-            ))}
-          </div>
-          <p style="font-size:0.8125rem; color:var(--color-text-muted); margin:0;">
-            Alle Preise sind Richtwerte. Das genaue Angebot erstellen wir nach Vor-Ort-Besichtigung.
-          </p>
-          <a href="#anfrage-funnel" class="btn-primary" style="align-self:flex-start; font-size:0.9rem; margin-top:0.5rem;">
-            Unverbindlich anfragen
-          </a>
-        </div>
-      </div>
-
-      <!-- Regional Coverage -->
-      <div data-aos="fade-left">
-        <span class="section-label">Unser Einzugsgebiet</span>
-        <h3 style="font-size:clamp(1.375rem,2vw,1.75rem); margin:0 0 1rem; letter-spacing:-0.02em;">
-          Regional in Mannheim &amp; Rhein-Neckar
-        </h3>
-        <p style="color:var(--color-text-muted); font-size:0.9375rem; line-height:1.75; margin:0 0 1.25rem;">
-          Wir sind täglich in den Mannheimer Stadtteilen unterwegs – und in der ganzen Region.
-          Durch lokale Präsenz kennen wir Anfahrtswege, Hausverwaltungen und typische Gebäudestrukturen.
-        </p>
-
-        <div class="city-groups">
-          <div>
-            <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-text-muted); margin:0 0 0.625rem;">
-              Mannheim – Stadtteile
-            </p>
-            <div class="city-tags">
-              {['Neckarau','Lindenhof','Almenhof','Feudenheim','Käfertal','Waldhof','Sandhofen','Vogelstang','Rheinau','Innenstadt','Seckenheim','Friedrichsfeld'].map(c => (
-                <span class="city-tag">{c}</span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-text-muted); margin:0 0 0.625rem;">
-              Region
-            </p>
-            <div class="city-tags">
-              {['Ludwigshafen','Heidelberg','Viernheim','Frankenthal','Weinheim','Speyer','Worms','Lampertheim'].map(c => (
-                <span class="city-tag">{c}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <!-- Hook Header -->
+    <div class="local-hook" data-aos="fade-up">
+      <span class="section-label">Mannheim & Rhein-Neckar</span>
+      <h2 id="localHeading">
+        Wir sind von hier.<br>
+        <em>Das merkt man.</em>
+      </h2>
     </div>
 
-    <!-- Bottom: SEO-rich Text Content -->
-    <div class="seo-content-grid" data-aos="fade-up">
+    <!-- Main Grid -->
+    <div class="local-grid" data-aos="fade-up">
 
-      <div class="seo-block">
-        <h3 class="seo-block__heading">Fliesenleger in Mannheim seit über 30 Jahren</h3>
-        <p>
-          Limani Fliesenleger & Malerbetrieb ist ein inhabergeführter Handwerksbetrieb mit Sitz in Mannheim.
-          Seit über 30 Jahren verlegen wir Fliesen in Bädern, Küchen, Wohnräumen und Außenbereichen – und
-          haben in dieser Zeit mehr als 1.000 Projekte erfolgreich abgeschlossen. Unser Team besteht aus
-          ausgebildeten Fliesenlegern und Malern, die ihr Handwerk kennen und Qualität ernst nehmen.
+      <!-- Left: Copy + Service Bento -->
+      <div class="local-copy">
+
+        <p class="local-lead">
+          Du rufst an und der Chef geht ran. Wir besprechen direkt,
+          was du brauchst, wann wir kommen können und was das ungefähr kostet.
+          Kein Rückruf in drei Tagen, keine Weitervermittlung.
         </p>
+
         <p>
-          Was uns ausmacht: Wir arbeiten sauber, termingerecht und kommunizieren ehrlich. Keine versteckten
-          Kosten, keine Überraschungen auf der Rechnung. Nach dem Vor-Ort-Termin erhalten Sie ein
-          detailliertes Angebot mit klaren Positionen.
+          Seit 2017 fahren wir täglich durch Mannheim.
+          <strong>Neckarau, Feudenheim, Käfertal, Lindenhof, Rheinau.</strong>
+          Wir kennen diese Stadtteile und ihre Bauten. Wie sie konstruiert sind,
+          was sie verlangen. Beim ersten Gespräch kriegst du bereits
+          eine ehrliche Einschätzung.
         </p>
+
+        <p>
+          Nach <strong>Ludwigshafen, Heidelberg, Viernheim und Weinheim</strong>
+          fahren wir genauso selbstverständlich wie nach Mannheim.
+          Anfahrt ist kein Thema. Und nach dem Auftrag sind wir
+          genauso erreichbar wie davor.
+        </p>
+
+        <!-- Service Bento Grid -->
+        <div class="service-bento-label">Unsere Leistungen</div>
+        <div class="service-bento">
+          {services.map(s => (
+            <a href={s.href} class="service-bento-card">
+              <img src={s.icon} width="24" height="24" alt="" loading="lazy" class="bento-icon" />
+              <span class="bento-label">{s.label}</span>
+            </a>
+          ))}
+        </div>
+
+        <a href="#anfrage-funnel" class="btn-primary local-cta">
+          Jetzt unverbindlich anfragen
+        </a>
+
       </div>
 
-      <div class="seo-block">
-        <h3 class="seo-block__heading">Alle Leistungen aus einer Hand</h3>
-        <p>
-          Ob Sie ein einzelnes Zimmer neu fliesen, ein komplettes Bad sanieren oder eine ganze Wohnung
-          renovieren lassen möchten – wir übernehmen alle Gewerke und koordinieren das Projekt für Sie.
-          Das spart Ihnen Abstimmungsaufwand und Nerven.
-        </p>
-        <ul class="seo-list">
-          <li>Fliesenarbeiten – Wand, Boden, Bad, Küche, Außen</li>
-          <li>Badsanierung – Komplettbad inklusive ebenerdiger Dusche</li>
-          <li>Malerarbeiten & Verputzen – Glattputz, Strukturputz, Anstrich</li>
-          <li>Bodenverlegung – Vinyl, Parkett, Laminat, Estrich</li>
-          <li>Trockenbau – Vorwandinstallationen, Zwischenwände, Abhangdecken</li>
-          <li>Abbrucharbeiten & Entsorgung – fachgerecht und schnell</li>
-          <li>Wohnungssanierung – alle Gewerke koordiniert</li>
-        </ul>
-      </div>
+      <!-- Right: Map Visualization -->
+      <div class="local-map-wrap" data-aos="fade-left">
+        <div class="map-card">
 
-      <div class="seo-block">
-        <h3 class="seo-block__heading">Warum Mannheimer Kunden uns vertrauen</h3>
-        <p>
-          Fliesenleger gibt es viele. Einen Betrieb zu finden, der zuverlässig, pünktlich und zu einem
-          fairen Preis arbeitet, ist schwieriger. Viele unserer Kunden kommen auf Empfehlung – das ist
-          für uns das höchste Qualitätssignal.
-        </p>
-        <p>
-          Wir arbeiten besonders häufig mit Eigentümern und Vermietern in Mannheim zusammen, die
-          Wohnungen zwischen Mietern sanieren oder modernisieren möchten. Aber auch Eigennutzer und
-          Bauträger setzen auf unser Know-how. Kurze Reaktionszeiten, Direktkontakt zum Chef und ein
-          Team, das die Region kennt – das schätzen unsere Kunden.
-        </p>
-      </div>
+          <!-- Watermark -->
+          <span class="map-watermark" aria-hidden="true">MAN</span>
 
-      <div class="seo-block">
-        <h3 class="seo-block__heading">Schnell erreichbar im Rhein-Neckar-Raum</h3>
-        <p>
-          Unser Betrieb ist in Mannheim ansässig und täglich in der Region aktiv. Wir fahren nach
-          Ludwigshafen, Heidelberg, Viernheim, Weinheim, Frankenthal und in alle Mannheimer Stadtteile –
-          von Neckarau bis Vogelstang, von Käfertal bis Rheinau. Rufen Sie uns an oder schreiben Sie
-          über das Kontaktformular. Wir melden uns schnell für einen ersten Termin.
-        </p>
+          <!-- Pin cluster: geographic arrangement -->
+          <div class="map-pins">
+
+            <div class="map-row">
+              <span class="map-pin">Sandhofen</span>
+              <span class="map-pin">Waldhof</span>
+            </div>
+            <div class="map-row map-row--offset">
+              <span class="map-pin">Käfertal</span>
+              <span class="map-pin">Vogelstang</span>
+            </div>
+            <div class="map-row map-row--center">
+              <span class="map-pin map-pin--center">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
+                  <circle cx="4" cy="4" r="4" fill="currentColor"/>
+                </svg>
+                Innenstadt
+              </span>
+              <span class="map-pin">Feudenheim</span>
+            </div>
+            <div class="map-row">
+              <span class="map-pin">Lindenhof</span>
+              <span class="map-pin">Almenhof</span>
+              <span class="map-pin">Seckenheim</span>
+            </div>
+            <div class="map-row map-row--offset">
+              <span class="map-pin">Neckarau</span>
+              <span class="map-pin">Rheinau</span>
+              <span class="map-pin">Friedrichsfeld</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="map-divider" aria-hidden="true"></div>
+
+            <!-- Region -->
+            <div class="map-row map-row--region">
+              <span class="map-pin map-pin--region">Ludwigshafen</span>
+              <span class="map-pin map-pin--region">Heidelberg</span>
+            </div>
+            <div class="map-row map-row--region">
+              <span class="map-pin map-pin--region">Viernheim</span>
+              <span class="map-pin map-pin--region">Weinheim</span>
+              <span class="map-pin map-pin--region">Speyer</span>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="map-legend" aria-hidden="true">
+            <span class="legend-dot legend-dot--main"></span><span>Mannheim</span>
+            <span class="legend-dot legend-dot--region"></span><span>Region</span>
+          </div>
+
+        </div>
       </div>
 
     </div>
@@ -154,113 +139,255 @@
 </section>
 
 <style>
-  .local-layout {
+  .local-section {
+    padding: 5rem 0 5.5rem;
+    background: #fff;
+  }
+
+  /* Hook */
+  .local-hook {
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .local-hook h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--color-text-heading);
+    margin: 0.375rem 0 0;
+  }
+
+  .local-hook h2 em {
+    font-style: normal;
+    color: var(--color-brand-accent);
+  }
+
+  /* Main grid */
+  .local-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
     align-items: start;
   }
 
   @media (min-width: 768px) {
-    .local-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .local-grid {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4.5rem;
+    }
   }
 
-  .price-hints {
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    margin: 0.25rem 0;
-  }
-
-  .price-hint-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .price-hint-row:last-child { border-bottom: none; }
-
-  .city-groups {
+  /* Copy */
+  .local-copy {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.125rem;
   }
 
-  .city-tags {
-    display: flex;
-    flex-wrap: wrap;
+  .local-lead {
+    font-size: 1.0625rem;
+    color: var(--color-text-body);
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .local-copy p {
+    font-size: 0.9375rem;
+    color: var(--color-text-body);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .local-copy strong {
+    color: var(--color-text-heading);
+    font-weight: 600;
+  }
+
+  /* Service Bento */
+  .service-bento-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .service-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
   }
 
-  .city-tag {
-    padding: 0.3rem 0.75rem;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: 999px;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--color-text-body);
+  @media (max-width: 400px) {
+    .service-bento { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* SEO Text Grid */
-  .seo-content-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    border-top: 1px solid var(--color-border);
-    padding-top: 3.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .seo-content-grid { grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
-  }
-
-  .seo-block__heading {
-    font-family: var(--font-heading);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-text-heading);
-    letter-spacing: -0.01em;
-    margin: 0 0 0.75rem;
-  }
-
-  .seo-block p {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
-    line-height: 1.75;
-    margin: 0 0 0.75rem;
-  }
-  .seo-block p:last-child { margin-bottom: 0; }
-
-  .seo-list {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 0;
+  .service-bento-card {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 0.875rem;
+    background: var(--color-surface-warm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    text-decoration: none;
+    transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
   }
 
-  .seo-list li {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    padding-left: 1.25rem;
+  .service-bento-card:hover {
+    border-color: rgba(232,146,42,0.35);
+    background: #fff;
+    transform: translateY(-1px);
+  }
+
+  .bento-icon {
+    opacity: 0.75;
+    transition: opacity 0.18s ease;
+  }
+
+  .service-bento-card:hover .bento-icon {
+    opacity: 1;
+  }
+
+  .bento-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    line-height: 1.3;
+  }
+
+  .local-cta {
+    margin-top: 0.25rem;
+    align-self: flex-start;
+    font-size: 0.9rem;
+  }
+
+  /* Map Card */
+  .local-map-wrap {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .local-map-wrap { position: static; }
+  }
+
+  .map-card {
     position: relative;
-    line-height: 1.6;
+    background: var(--color-brand-primary);
+    border-radius: var(--radius-card);
+    padding: 2rem 1.75rem 1.75rem;
+    overflow: hidden;
   }
 
-  .seo-list li::before {
+  /* Subtle dot-grid pattern */
+  .map-card::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0.55em;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--color-brand-accent);
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
   }
 
-  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .map-watermark {
+    position: absolute;
+    bottom: -0.5rem;
+    right: -0.5rem;
+    font-family: var(--font-heading);
+    font-size: 6rem;
+    font-weight: 800;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .map-pins {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .map-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .map-row--offset { padding-left: 1rem; }
+  .map-row--center { padding-left: 0.5rem; }
+
+  .map-pin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.7rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    white-space: nowrap;
+  }
+
+  .map-pin--center {
+    background: rgba(232,146,42,0.18);
+    border-color: rgba(232,146,42,0.4);
+    color: rgba(232,146,42,0.95);
+    font-weight: 600;
+  }
+
+  .map-pin--center svg {
+    color: var(--color-brand-accent);
+    flex-shrink: 0;
+  }
+
+  .map-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 0.25rem 0;
+  }
+
+  .map-row--region .map-pin { }
+
+  .map-pin--region {
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.45);
+    font-size: 0.75rem;
+  }
+
+  .map-legend {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 0.875rem;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .legend-dot--main  { background: var(--color-brand-accent); }
+  .legend-dot--region { background: rgba(255,255,255,0.25); }
 </style>

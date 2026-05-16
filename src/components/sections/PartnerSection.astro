@@ -2,76 +2,46 @@
 /**
  * PartnerSection
  * @category sections
- * @description Material partners with logos and descriptions.
+ * @description Material partners — colored logo cards with lift effect.
  */
 
-import Icon from '@/components/ui/Icon.astro';
-
 const partners = [
-  {
-    name: 'ARDEX',
-    logo: '/assets/images/partner-ardex.svg',
-    text: 'Abdichtungen, Spachtel und Kleber, die selbst in stark beanspruchten Bädern zuverlässig halten.',
-    url: 'https://www.ardex.de',
-  },
-  {
-    name: 'Keramundo',
-    logo: '/assets/images/partner-keramundo.svg',
-    text: 'Fliesen in allen Formaten: großformatig, klein, Mosaik, Naturstein – optimal für Bad und Küche.',
-    url: 'https://www.keramundo.de',
-  },
-  {
-    name: 'Arte Muri',
-    logo: '/assets/images/partner-artemuri.png',
-    text: 'Stabile Trockenbaukonstruktionen, exakte Kanten und perfekt vorbereitete Wandflächen.',
-    url: 'https://www.artemuri.de',
-  },
-  {
-    name: 'MEGA Gruppe',
-    logo: '/assets/images/partner-mega.svg',
-    text: 'Farben, Lacke und Spachtelmassen für sauber abgeschlossene Wände und Decken.',
-    url: 'https://www.mega.de',
-  },
+  { name: 'ARDEX',       logo: '/assets/images/partner-ardex.svg',     href: '#' },
+  { name: 'Keramundo',   logo: '/assets/images/partner-keramundo.svg', href: '#' },
+  { name: 'Arte Muri',   logo: '/assets/images/partner-artemuri.png',  href: '#' },
+  { name: 'MEGA Gruppe', logo: '/assets/images/partner-mega.svg',      href: '#' },
 ];
 ---
 
-<section class="py-20 bg-white" aria-labelledby="partnerHeading">
+<section class="partner-section" aria-labelledby="partnerHeading">
   <div class="container">
 
-    <div style="max-width:560px; margin-bottom:2.5rem;" data-aos="fade-up">
+    <div class="partner-header" data-aos="fade-up">
       <span class="section-label">Unsere Partner</span>
-      <h2 id="partnerHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 0.75rem; letter-spacing:-0.02em;">
-        Hochwertige Materialpartner
-      </h2>
-      <p style="color:var(--color-text-muted); font-size:1rem; line-height:1.7; margin:0;">
-        Für saubere, langlebige Ergebnisse arbeiten wir ausschließlich mit ausgewählten Herstellern zusammen.
+      <h2 id="partnerHeading">Qualität, die man sieht</h2>
+      <p class="partner-intro">
+        Unsere regionalen Materialpartner versorgen uns täglich mit erstklassigen Produkten –
+        damit dein Wunschprojekt nicht nur entsteht, sondern bleibt.
       </p>
     </div>
 
     <div class="partner-grid" data-aos="fade-up">
       {partners.map(p => (
-        <article class="partner-card">
-          <div class="partner-logo-wrap">
-            <img
-              src={p.logo}
-              alt={`${p.name} Logo`}
-              loading="lazy"
-              decoding="async"
-              style="max-height:40px; max-width:120px; object-fit:contain;"
-            />
-          </div>
-          <p style="font-size:0.875rem; color:var(--color-text-muted); line-height:1.6; flex:1; margin:0;">{p.text}</p>
-          <a
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="partner-link"
-            aria-label={`${p.name} Website besuchen`}
-          >
-            Website besuchen
-            <Icon name="externalLink" size={12} strokeWidth={2.5} />
-          </a>
-        </article>
+        <a
+          href={p.href}
+          class="partner-card"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${p.name} – Partnerseite öffnen`}
+        >
+          <img
+            src={p.logo}
+            alt={p.name}
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="partner-name">{p.name}</span>
+        </a>
       ))}
     </div>
 
@@ -79,35 +49,88 @@ const partners = [
 </section>
 
 <style>
+  .partner-section {
+    padding: 4rem 0 4.5rem;
+    background: var(--color-surface-warm, #faf9f7);
+  }
+
+  .partner-header {
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  .partner-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-heading);
+    margin: 0.375rem 0 1rem;
+  }
+
+  .partner-intro {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin: 0;
+    max-width: 520px;
+  }
+
   .partner-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
-  @media (min-width: 768px) {
-    .partner-grid { grid-template-columns: repeat(4, 1fr); }
+  @media (min-width: 640px) {
+    .partner-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   }
 
-  .partner-logo-wrap {
-    height: 52px;
+  .partner-card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 0.875rem;
-  }
-
-  .partner-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-brand-accent);
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    min-height: 110px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    background: #fff;
     text-decoration: none;
-    transition: color 0.15s ease;
-    margin-top: auto;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
-  .partner-link:hover { color: var(--color-brand-accent-dark); }
 
-  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .partner-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: rgba(232,146,42,0.25);
+  }
+
+  .partner-card img {
+    max-height: 38px;
+    max-width: 120px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .partner-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 639px) {
+    .partner-card {
+      padding: 1.25rem 1rem 1rem;
+      min-height: 90px;
+      gap: 0.5rem;
+    }
+    .partner-card img {
+      max-height: 28px;
+      max-width: 100px;
+    }
+  }
 </style>

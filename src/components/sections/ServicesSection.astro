@@ -71,8 +71,8 @@ const services = [
   {
     title: 'Wohnungssanierung',
     href: '/wohnungssanierung-mannheim',
-    img: '/assets/images/Wohnung.jpg',
-    imgAlt: 'Wohnungssanierung Mannheim – fertige Wohnung',
+    img: '/assets/images/Wohnung_1_hero.webp',
+    imgAlt: 'Wohnungssanierung Mannheim – sanierte Wohnung',
     bullets: [
       'Komplettsanierung aller Räume',
       'Koordination von Subunternehmen',
@@ -143,23 +143,6 @@ const services = [
       ))}
     </div>
 
-    <!-- Additional services strip -->
-    <div class="services-strip" data-aos="fade-up">
-      <p style="font-size:0.9375rem; color:var(--color-text-muted); margin:0 0 1rem;">Weitere Leistungen:</p>
-      <div class="services-strip-items">
-        {[
-          { label: 'Abbruch & Entsorgung', href: '/abbrucharbeiten-mannheim' },
-          { label: 'Silikonfugen erneuern', href: '/fliesenarbeiten-mannheim' },
-          { label: 'Fliesen überfliesen', href: '/fliesenarbeiten-mannheim' },
-          { label: 'Balkonfliesen', href: '/fliesenarbeiten-mannheim' },
-        ].map(item => (
-          <a href={item.href} class="service-chip">
-            {item.label}
-            <Icon name="chevronRight" size={12} strokeWidth={2.5} />
-          </a>
-        ))}
-      </div>
-    </div>
 
   </div>
 </section>

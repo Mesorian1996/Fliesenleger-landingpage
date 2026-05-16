@@ -20,7 +20,7 @@ import Icon from '@/components/ui/Icon.astro';
           />
         </a>
         <p style="font-size:0.8125rem; line-height:1.65; color:rgba(255,255,255,0.55); max-width:240px; margin:0 0 0.875rem;">
-          Fliesen, Bäder &amp; Wohnungssanierung in Mannheim – sauber, termintreu, über 30 Jahre Erfahrung.
+          Fliesen, Bäder &amp; Wohnungssanierung in Mannheim – sauber, termintreu, Inhaber mit 30+ Jahren Erfahrung.
         </p>
         <div style="display:flex; gap:0.5rem;">
           <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-btn">
@@ -63,13 +63,13 @@ import Icon from '@/components/ui/Icon.astro';
         <div style="display:flex; flex-direction:column; gap:0.5rem;">
           <a href={`tel:${SITE.phoneTel}`} class="footer-contact-row" aria-label="Anrufen">
             <span class="footer-contact-icon">
-              <Icon name="phone" size={14} strokeWidth={2} />
+              <img src="/assets/icons/phone-call.svg" width="14" height="14" alt="" loading="lazy" class="footer-icon-img" />
             </span>
             <span class="footer-link footer-link-sm">{SITE.phone}</span>
           </a>
           <a href={`mailto:${SITE.email}`} class="footer-contact-row" aria-label="E-Mail">
             <span class="footer-contact-icon">
-              <Icon name="mail" size={14} strokeWidth={2} />
+              <img src="/assets/icons/email.svg" width="14" height="14" alt="" loading="lazy" class="footer-icon-img" />
             </span>
             <span class="footer-link footer-link-sm">{SITE.email}</span>
           </a>
@@ -116,6 +116,7 @@ import Icon from '@/components/ui/Icon.astro';
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    max-width: 860px;
   }
   @media (min-width: 640px) {
     .footer-grid {
@@ -125,8 +126,8 @@ import Icon from '@/components/ui/Icon.astro';
   }
   @media (min-width: 768px) {
     .footer-grid {
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 2rem 3rem;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem 4rem;
     }
   }
 
@@ -178,6 +179,11 @@ import Icon from '@/components/ui/Icon.astro';
     background: rgba(255,255,255,0.07);
     color: rgba(255,255,255,0.5);
     flex-shrink: 0;
+  }
+
+  .footer-icon-img {
+    filter: brightness(0) invert(1);
+    opacity: 0.5;
   }
 
   .footer-bottom {

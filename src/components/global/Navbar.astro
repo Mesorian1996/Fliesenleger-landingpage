@@ -92,10 +92,10 @@ const { currentPath = '/' } = Astro.props;
         </a>
       </div>
 
-      <!-- Mobile: CTA + Hamburger -->
+      <!-- Mobile: phone icon + Hamburger -->
       <div class="flex md:hidden items-center gap-2">
-        <a href="/#anfrage-funnel" class="btn-primary" style="font-size:0.8125rem; padding:0.5rem 1rem;">
-          Anfrage
+        <a href={`tel:${SITE.phoneTel}`} class="nav-icon-btn" aria-label="Anrufen">
+          <Icon name="phone" size={18} strokeWidth={2} />
         </a>
         <button
           id="mobileMenuBtn"

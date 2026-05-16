@@ -5,29 +5,15 @@
  * @description Dark horizontal trust signal bar with key stats.
  */
 
-import Icon from '@/components/ui/Icon.astro';
-
 interface Props {
   items?: { icon: string; text: string }[];
 }
 
 const defaultItems = [
-  {
-    icon: 'stars',
-    text: '5.0 auf Google',
-  },
-  {
-    icon: 'tools',
-    text: '1.000+ Projekte',
-  },
-  {
-    icon: 'calendar',
-    text: '30+ Jahre Erfahrung',
-  },
-  {
-    icon: 'location',
-    text: 'Mannheim & Rhein-Neckar',
-  },
+  { icon: 'stars',        text: '5.0 auf Google' },
+  { icon: 'projekte.svg', text: '1.000+ Projekte' },
+  { icon: 'experience.svg',text: 'Inhaber mit 30+ Jahren Erfahrung' },
+  { icon: 'regional.svg', text: 'Mannheim & Rhein-Neckar' },
 ];
 
 const { items = defaultItems } = Astro.props;
@@ -40,12 +26,15 @@ const { items = defaultItems } = Astro.props;
         <li class="trust-item">
           {item.icon === 'stars' ? (
             <span class="trust-stars" aria-label="5 von 5 Sternen">★★★★★</span>
-          ) : item.icon === 'tools' ? (
-            <Icon name="wrench" size={16} strokeWidth={2} />
-          ) : item.icon === 'calendar' ? (
-            <Icon name="calendar" size={16} strokeWidth={2} />
           ) : (
-            <Icon name="mapPin" size={16} strokeWidth={2} />
+            <img
+              src={`/assets/icons/${item.icon}`}
+              width="16"
+              height="16"
+              alt=""
+              loading="lazy"
+              class="trust-icon"
+            />
           )}
           <span>{item.text}</span>
         </li>
@@ -78,6 +67,12 @@ const { items = defaultItems } = Astro.props;
 
   .trust-item svg {
     color: var(--color-brand-accent);
+    flex-shrink: 0;
+  }
+
+  .trust-icon {
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
     flex-shrink: 0;
   }
 

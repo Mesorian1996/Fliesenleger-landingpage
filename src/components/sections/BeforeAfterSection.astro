@@ -1,0 +1,404 @@
+---
+/**
+ * BeforeAfterSection
+ * @category sections
+ * @description Drag-to-reveal before/after comparison slider with thumbnail navigation.
+ *   12 real project pairs from a full apartment renovation in Mannheim.
+ */
+
+const pairs = [
+  { label: 'Badezimmer',       before: '/assets/images/vorher-nachher/Badezimmer_EG_alt.jpeg',            after: '/assets/images/vorher-nachher/Badezimmer_EG_neu.jpeg' },
+  { label: 'Küche',            before: '/assets/images/vorher-nachher/Kueche_alt.jpeg',                    after: '/assets/images/vorher-nachher/Kueche_neu.jpeg' },
+  { label: 'Wohnzimmer',       before: '/assets/images/vorher-nachher/Offenes_Zimmer_EG_alt.jpeg',        after: '/assets/images/vorher-nachher/Offenes_Zimmer_EG_neu.jpeg' },
+  { label: 'Esszimmer',        before: '/assets/images/vorher-nachher/Esszimmer_alt.jpeg',                after: '/assets/images/vorher-nachher/Esszimmer_neu.jpeg' },
+  { label: 'Schlafzimmer',     before: '/assets/images/vorher-nachher/Schlafzimmer_2OG_alt.jpeg',         after: '/assets/images/vorher-nachher/Schlafzimmer_2OG_neu.jpeg' },
+  { label: 'Flur',             before: '/assets/images/vorher-nachher/Flur_alt.jpeg',                     after: '/assets/images/vorher-nachher/Flur_neu.jpeg' },
+  { label: 'Flurzimmer',       before: '/assets/images/vorher-nachher/Flurzimmer_EG_alt.jpeg',            after: '/assets/images/vorher-nachher/Flurzimmer_EG_neu.jpeg' },
+  { label: 'Ankleidezimmer',   before: '/assets/images/vorher-nachher/Ankleidezimmer_EG_alt.jpeg',        after: '/assets/images/vorher-nachher/Ankleidezimmer_EG_neu.jpeg' },
+  { label: 'Balkon',           before: '/assets/images/vorher-nachher/Balkon_alt.jpeg',                   after: '/assets/images/vorher-nachher/Balkon_neu.jpeg' },
+  { label: 'Wohnzimmer OG',    before: '/assets/images/vorher-nachher/Wohnzimmer_1OG_alt.jpeg',           after: '/assets/images/vorher-nachher/Wohzimmer_1OG_neu.jpeg' },
+  { label: 'Zimmer OG',        before: '/assets/images/vorher-nachher/Zimmer_1OG_alt.jpeg',               after: '/assets/images/vorher-nachher/Zimmer_1OG_neu.jpeg' },
+  { label: 'Schlafzimmer kl.', before: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_alt.jpeg', after: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_neu.jpeg' },
+];
+---
+
+<section class="ba-section" aria-labelledby="baHeading">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="ba-header" data-aos="fade-up">
+      <span class="section-label">Unsere Projekte</span>
+      <h2 id="baHeading">Vorher &amp; Nachher</h2>
+      <p class="ba-desc">Regler ziehen und selbst sehen. 12 echte Räume aus einer Komplettsanierung in Mannheim.</p>
+    </div>
+
+    <!-- Main slider -->
+    <div class="ba-slider-wrap" data-aos="fade-up">
+      <div class="ba-slider" id="baSlider" style="--reveal: 50%;" role="img" aria-label="Vorher/Nachher Vergleich">
+        <!-- Before image -->
+        <img class="ba-img ba-img--before" id="baImgBefore"
+          src={pairs[0].before} alt={`${pairs[0].label} – Vorher`}
+          loading="eager" decoding="async" />
+        <!-- After image — clipped by --reveal -->
+        <div class="ba-after-clip" id="baAfterClip">
+          <img class="ba-img ba-img--after" id="baImgAfter"
+            src={pairs[0].after} alt={`${pairs[0].label} – Nachher`}
+            loading="eager" decoding="async" />
+        </div>
+        <!-- Corner labels -->
+        <span class="ba-label ba-label--l" aria-hidden="true">Vorher</span>
+        <span class="ba-label ba-label--r" aria-hidden="true">Nachher</span>
+        <!-- Divider line + drag handle -->
+        <div class="ba-divider" id="baDivider" aria-hidden="true">
+          <div class="ba-handle">
+            <!-- left/right chevrons -->
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M9 5L4 11L9 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 5L18 11L13 17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Drag hint (auto-hides after first interaction) -->
+        <div class="ba-hint" id="baHint" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2L1 7L5 12M9 2L13 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Regler ziehen
+        </div>
+      </div>
+      <p class="ba-active-label" id="baActiveLabel">{pairs[0].label}</p>
+    </div>
+
+    <!-- Thumbnail grid -->
+    <div class="ba-thumbs" id="baThumbs" data-aos="fade-up">
+      {pairs.map((pair, i) => (
+        <button
+          class:list={['ba-thumb', i === 0 ? 'active' : '']}
+          data-index={i}
+          type="button"
+          aria-label={`${pair.label} anzeigen`}
+          title={pair.label}
+        >
+          <img src={pair.after} alt={pair.label} loading="lazy" decoding="async" />
+          <span class="ba-thumb-label">{pair.label}</span>
+        </button>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ba-section {
+    padding: 5rem 0;
+    background: #fff;
+  }
+
+  /* ── Header ── */
+  .ba-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .ba-header h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-heading);
+    margin: 0.5rem 0 0.875rem;
+  }
+
+  .ba-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Slider wrapper ── */
+  .ba-slider-wrap {
+    margin-bottom: 1.25rem;
+  }
+
+  .ba-slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius-card, 1rem);
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    touch-action: pan-y;
+    background: #0a0a0a;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.14);
+  }
+
+  @media (min-width: 640px) {
+    .ba-slider { aspect-ratio: 16 / 9; }
+  }
+
+  /* ── Images ── */
+  .ba-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
+  }
+
+  .ba-after-clip {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 0 0 var(--reveal, 50%));
+    will-change: clip-path;
+  }
+
+  /* ── Labels ── */
+  .ba-label {
+    position: absolute;
+    top: 0.875rem;
+    z-index: 6;
+    padding: 0.2rem 0.625rem;
+    background: rgba(0, 0, 0, 0.52);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+  }
+
+  .ba-label--l { left: 0.875rem; }
+  .ba-label--r { right: 0.875rem; }
+
+  /* ── Divider ── */
+  .ba-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--reveal, 50%);
+    transform: translateX(-50%);
+    z-index: 7;
+    width: 2px;
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .ba-handle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-brand-primary, #1a2b3c);
+    flex-shrink: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .ba-slider:hover .ba-handle,
+  .ba-slider:active .ba-handle {
+    transform: scale(1.08);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
+  }
+
+  /* ── Hint ── */
+  .ba-hint {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.875rem;
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+    white-space: nowrap;
+    animation: baHintPulse 2s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+  }
+
+  .ba-hint.hidden { opacity: 0; }
+
+  @keyframes baHintPulse {
+    0%, 100% { opacity: 0.9; }
+    50%       { opacity: 0.5; }
+  }
+
+  /* Active label below slider */
+  .ba-active-label {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin: 0.75rem 0 0;
+    font-weight: 500;
+  }
+
+  /* ── Thumbnails ── */
+  .ba-thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 479px) {
+    .ba-thumbs { grid-template-columns: repeat(3, 1fr); gap: 0.375rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .ba-thumbs { grid-template-columns: repeat(6, 1fr); }
+  }
+
+  .ba-thumb {
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    background: #f0eeea;
+    aspect-ratio: 4 / 3;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ba-thumb:hover {
+    border-color: var(--color-brand-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+
+  .ba-thumb.active {
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 1px var(--color-brand-accent), 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+
+  .ba-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  .ba-thumb-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, transparent 100%);
+    color: #fff;
+    font-size: 0.625rem;
+    font-weight: 600;
+    padding: 1rem 0.3rem 0.3rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  function initBeforeAfter() {
+    const slider      = document.getElementById('baSlider') as HTMLElement | null;
+    const imgBefore   = document.getElementById('baImgBefore') as HTMLImageElement | null;
+    const imgAfter    = document.getElementById('baImgAfter') as HTMLImageElement | null;
+    const activeLabel = document.getElementById('baActiveLabel') as HTMLElement | null;
+    const thumbsEl    = document.getElementById('baThumbs') as HTMLElement | null;
+    const hint        = document.getElementById('baHint') as HTMLElement | null;
+    if (!slider || !imgBefore || !imgAfter || !thumbsEl) return;
+
+    const pairs = [
+      { label: 'Badezimmer',       before: '/assets/images/vorher-nachher/Badezimmer_EG_alt.jpeg',            after: '/assets/images/vorher-nachher/Badezimmer_EG_neu.jpeg' },
+      { label: 'Küche',            before: '/assets/images/vorher-nachher/Kueche_alt.jpeg',                    after: '/assets/images/vorher-nachher/Kueche_neu.jpeg' },
+      { label: 'Wohnzimmer',       before: '/assets/images/vorher-nachher/Offenes_Zimmer_EG_alt.jpeg',        after: '/assets/images/vorher-nachher/Offenes_Zimmer_EG_neu.jpeg' },
+      { label: 'Esszimmer',        before: '/assets/images/vorher-nachher/Esszimmer_alt.jpeg',                after: '/assets/images/vorher-nachher/Esszimmer_neu.jpeg' },
+      { label: 'Schlafzimmer',     before: '/assets/images/vorher-nachher/Schlafzimmer_2OG_alt.jpeg',         after: '/assets/images/vorher-nachher/Schlafzimmer_2OG_neu.jpeg' },
+      { label: 'Flur',             before: '/assets/images/vorher-nachher/Flur_alt.jpeg',                     after: '/assets/images/vorher-nachher/Flur_neu.jpeg' },
+      { label: 'Flurzimmer',       before: '/assets/images/vorher-nachher/Flurzimmer_EG_alt.jpeg',            after: '/assets/images/vorher-nachher/Flurzimmer_EG_neu.jpeg' },
+      { label: 'Ankleidezimmer',   before: '/assets/images/vorher-nachher/Ankleidezimmer_EG_alt.jpeg',        after: '/assets/images/vorher-nachher/Ankleidezimmer_EG_neu.jpeg' },
+      { label: 'Balkon',           before: '/assets/images/vorher-nachher/Balkon_alt.jpeg',                   after: '/assets/images/vorher-nachher/Balkon_neu.jpeg' },
+      { label: 'Wohnzimmer OG',    before: '/assets/images/vorher-nachher/Wohnzimmer_1OG_alt.jpeg',           after: '/assets/images/vorher-nachher/Wohzimmer_1OG_neu.jpeg' },
+      { label: 'Zimmer OG',        before: '/assets/images/vorher-nachher/Zimmer_1OG_alt.jpeg',               after: '/assets/images/vorher-nachher/Zimmer_1OG_neu.jpeg' },
+      { label: 'Schlafzimmer kl.', before: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_alt.jpeg', after: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_neu.jpeg' },
+    ];
+
+    let hintDismissed = false;
+
+    function dismissHint() {
+      if (hintDismissed || !hint) return;
+      hintDismissed = true;
+      hint.classList.add('hidden');
+    }
+
+    function loadPair(index: number) {
+      const pair = pairs[index];
+      imgBefore.src = pair.before;
+      imgAfter.src  = pair.after;
+      imgBefore.alt = `${pair.label} – Vorher`;
+      imgAfter.alt  = `${pair.label} – Nachher`;
+      if (activeLabel) activeLabel.textContent = pair.label;
+      slider.style.setProperty('--reveal', '50%');
+      thumbsEl.querySelectorAll<HTMLButtonElement>('.ba-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === index);
+      });
+    }
+
+    thumbsEl.querySelectorAll<HTMLButtonElement>('.ba-thumb').forEach((thumb, i) => {
+      thumb.addEventListener('click', () => loadPair(i));
+    });
+
+    // Drag logic
+    let dragging = false;
+
+    function setReveal(clientX: number) {
+      const rect = slider.getBoundingClientRect();
+      const pct  = Math.min(Math.max(((clientX - rect.left) / rect.width) * 100, 0), 100);
+      slider.style.setProperty('--reveal', pct + '%');
+    }
+
+    slider.addEventListener('mousedown', (e: MouseEvent) => {
+      dragging = true;
+      dismissHint();
+      setReveal(e.clientX);
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+      if (dragging) setReveal(e.clientX);
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', (e: TouchEvent) => {
+      dragging = true;
+      dismissHint();
+      setReveal(e.touches[0].clientX);
+    }, { passive: true });
+    document.addEventListener('touchmove', (e: TouchEvent) => {
+      if (dragging) setReveal(e.touches[0].clientX);
+    }, { passive: true });
+    document.addEventListener('touchend', () => { dragging = false; });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBeforeAfter);
+  } else {
+    initBeforeAfter();
+  }
+</script>
