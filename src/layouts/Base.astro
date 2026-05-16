@@ -1,5 +1,7 @@
 ---
 import '../styles/globals.css';
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/dm-sans';
 import { SITE } from '@/config/site';
 import Icon from '@/components/ui/Icon.astro';
 
@@ -53,14 +55,6 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
   <link rel="shortcut icon" href="/assets/favicon/favicon.ico" type="image/x-icon" />
-
-  <!-- Preload fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
-  />
 
   <!-- Phosphor Icons -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -125,14 +119,6 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     ]
   })} />
 
-  <!-- GA4 -->
-  <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4}`}></script>
-  <script is:inline define:vars={{ gaId: SITE.ga4 }}>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', gaId);
-  </script>
 </head>
 <body>
   <slot />
