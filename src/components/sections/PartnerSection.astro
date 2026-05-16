@@ -5,6 +5,8 @@
  * @description Material partners with logos and descriptions.
  */
 
+import Icon from '@/components/ui/Icon.astro';
+
 const partners = [
   {
     name: 'ARDEX',
@@ -67,10 +69,7 @@ const partners = [
             aria-label={`${p.name} Website besuchen`}
           >
             Website besuchen
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="7" y1="17" x2="17" y2="7"/>
-              <polyline points="7,7 17,7 17,17"/>
-            </svg>
+            <Icon name="externalLink" size={12} strokeWidth={2.5} />
           </a>
         </article>
       ))}
