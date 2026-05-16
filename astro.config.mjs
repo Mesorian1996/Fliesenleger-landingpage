@@ -9,6 +9,10 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.includes('/datenschutz') && !page.includes('/impressum'),
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
     }),
   ],
   vite: {

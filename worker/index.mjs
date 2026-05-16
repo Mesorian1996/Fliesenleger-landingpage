@@ -86,6 +86,9 @@ export default {
       return jsonError(400, 'Invalid request body', corsHeaders);
     }
 
+    // Normalize keys to lowercase
+    data = Object.fromEntries(Object.entries(data).map(([k, v]) => [k.toLowerCase(), v]));
+
     // Honeypot
     if (data._gotcha) {
       return jsonOk(corsHeaders);

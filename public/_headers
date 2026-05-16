@@ -1,0 +1,19 @@
+# Long-term caching for hashed static assets
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images
+/assets/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Icons and favicons
+/assets/icons/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/favicon/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Fonts (served by @fontsource via _astro/ — covered above)
+
+# HTML pages — always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

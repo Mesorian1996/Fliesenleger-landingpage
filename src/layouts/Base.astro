@@ -24,9 +24,7 @@ const {
 } = Astro.props;
 
 const fullTitle = title.includes('Limani') ? title : `${title} | Limani Fliesenleger`;
-const canonicalUrl = canonical.endsWith('/') && canonical !== `${SITE.url}/`
-  ? canonical.slice(0, -1)
-  : canonical;
+const canonicalUrl = canonical.endsWith('/') ? canonical : `${canonical}/`;
 
 const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---

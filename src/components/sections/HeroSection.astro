@@ -89,14 +89,25 @@ const slides = [
       {slides.map((slide, i) => (
         <div class:list={['hero-text', i === 0 ? 'active' : '']} data-slide={i}>
           <span class="hero-kicker">{slide.label}</span>
-          <h1 class="hero-title">
-            {slide.title.split('\n').map((line, j) => (
-              <>
-                {line}
-                {j === 0 && <br />}
-              </>
-            ))}
-          </h1>
+          {i === 0 ? (
+            <h1 class="hero-title">
+              {slide.title.split('\n').map((line, j) => (
+                <>
+                  {line}
+                  {j === 0 && <br />}
+                </>
+              ))}
+            </h1>
+          ) : (
+            <p class="hero-title" aria-hidden="true">
+              {slide.title.split('\n').map((line, j) => (
+                <>
+                  {line}
+                  {j === 0 && <br />}
+                </>
+              ))}
+            </p>
+          )}
           <p class="hero-sub">{slide.text}</p>
           <div class="hero-actions">
             <a href="#anfrage-funnel" class="btn-primary hero-btn-primary">
