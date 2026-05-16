@@ -6,12 +6,12 @@
  */
 
 const services = [
-  { label: 'Fliesenarbeiten',   icon: '/assets/icons/fliesenverlegung.svg',  href: '/fliesenarbeiten-mannheim' },
-  { label: 'Badsanierung',      icon: '/assets/icons/badsanierung.svg',       href: '/badsanierung-mannheim' },
-  { label: 'Malerarbeiten',     icon: '/assets/icons/malerarbeiten.svg',      href: '/malerarbeiten-mannheim' },
-  { label: 'Trockenbau',        icon: '/assets/icons/trockenbau.svg',         href: '/trockenbauarbeiten-mannheim' },
-  { label: 'Bodenverlegung',    icon: '/assets/icons/bodenverlegung.svg',     href: '/bodenarbeiten-mannheim' },
-  { label: 'Wohnungssanierung', icon: '/assets/icons/wohnungssanierung.svg',  href: '/wohnungssanierung-mannheim' },
+  { label: 'Fliesen',           sub: 'Bad, Küche & Außen',        icon: '/assets/icons/fliesenverlegung.svg',  href: '/fliesenarbeiten-mannheim' },
+  { label: 'Badsanierung',      sub: 'Komplett oder Teilsanierung', icon: '/assets/icons/badsanierung.svg',    href: '/badsanierung-mannheim' },
+  { label: 'Malerarbeiten',     sub: 'Verputz & Anstrich',         icon: '/assets/icons/malerarbeiten.svg',    href: '/malerarbeiten-mannheim' },
+  { label: 'Trockenbau',        sub: 'Wände & Decken',             icon: '/assets/icons/trockenbau.svg',       href: '/trockenbauarbeiten-mannheim' },
+  { label: 'Boden',             sub: 'Parkett, Vinyl & Laminat',   icon: '/assets/icons/bodenverlegung.svg',   href: '/bodenarbeiten-mannheim' },
+  { label: 'Sanierung',         sub: 'Alle Gewerke koordiniert',   icon: '/assets/icons/wohnungssanierung.svg', href: '/wohnungssanierung-mannheim' },
 ];
 ---
 
@@ -61,6 +61,7 @@ const services = [
             <a href={s.href} class="service-bento-card">
               <img src={s.icon} width="24" height="24" alt="" loading="lazy" class="bento-icon" />
               <span class="bento-label">{s.label}</span>
+              <span class="bento-sub">{s.sub}</span>
             </a>
           ))}
         </div>
@@ -71,63 +72,97 @@ const services = [
 
       </div>
 
-      <!-- Right: Map Visualization -->
+      <!-- Right: SVG Map -->
       <div class="local-map-wrap" data-aos="fade-left">
         <div class="map-card">
 
-          <!-- Watermark -->
-          <span class="map-watermark" aria-hidden="true">MAN</span>
+          <svg
+            viewBox="-20 -20 410 380"
+            xmlns="http://www.w3.org/2000/svg"
+            class="mannheim-svg"
+            role="img"
+            aria-label="Mannheim Stadtteile – Einsatzgebiet Limani"
+          >
+            <!-- Rhine -->
+            <path class="river river--rhein"
+              d="M 65,340 C 44,280 38,220 40,165 C 42,110 46,60 52,15" />
+            <text class="river-label" x="20" y="230"
+              transform="rotate(-78 20 230)">Rhein</text>
 
-          <!-- Pin cluster: geographic arrangement -->
-          <div class="map-pins">
+            <!-- Neckar -->
+            <path class="river river--neckar"
+              d="M 350,222 C 285,207 215,188 165,174 C 125,163 82,146 48,128" />
+            <text class="river-label" x="218" y="178"
+              transform="rotate(-7 218 178)">Neckar</text>
 
-            <div class="map-row">
-              <span class="map-pin">Sandhofen</span>
-              <span class="map-pin">Waldhof</span>
-            </div>
-            <div class="map-row map-row--offset">
-              <span class="map-pin">Käfertal</span>
-              <span class="map-pin">Vogelstang</span>
-            </div>
-            <div class="map-row map-row--center">
-              <span class="map-pin map-pin--center">
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true">
-                  <circle cx="4" cy="4" r="4" fill="currentColor"/>
-                </svg>
-                Innenstadt
-              </span>
-              <span class="map-pin">Feudenheim</span>
-            </div>
-            <div class="map-row">
-              <span class="map-pin">Lindenhof</span>
-              <span class="map-pin">Almenhof</span>
-              <span class="map-pin">Seckenheim</span>
-            </div>
-            <div class="map-row map-row--offset">
-              <span class="map-pin">Neckarau</span>
-              <span class="map-pin">Rheinau</span>
-              <span class="map-pin">Friedrichsfeld</span>
-            </div>
+            <!-- ── Districts ─────────────────────────────── -->
 
-            <!-- Divider -->
-            <div class="map-divider" aria-hidden="true"></div>
+            <g class="dp">
+              <circle cx="62" cy="35" r="4.5"/>
+              <text x="62" y="25" text-anchor="middle">Sandhofen</text>
+            </g>
 
-            <!-- Region -->
-            <div class="map-row map-row--region">
-              <span class="map-pin map-pin--region">Ludwigshafen</span>
-              <span class="map-pin map-pin--region">Heidelberg</span>
-            </div>
-            <div class="map-row map-row--region">
-              <span class="map-pin map-pin--region">Viernheim</span>
-              <span class="map-pin map-pin--region">Weinheim</span>
-              <span class="map-pin map-pin--region">Speyer</span>
-            </div>
-          </div>
+            <g class="dp">
+              <circle cx="146" cy="91" r="4.5"/>
+              <text x="138" y="83" text-anchor="end">Waldhof</text>
+            </g>
 
-          <!-- Legend -->
-          <div class="map-legend" aria-hidden="true">
-            <span class="legend-dot legend-dot--main"></span><span>Mannheim</span>
-            <span class="legend-dot legend-dot--region"></span><span>Region</span>
+            <g class="dp">
+              <circle cx="188" cy="140" r="4.5"/>
+              <text x="197" y="133" text-anchor="start">Käfertal</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="240" cy="113" r="4.5"/>
+              <text x="249" y="117" text-anchor="start">Vogelstang</text>
+            </g>
+
+            <!-- Innenstadt – highlighted center -->
+            <g class="dp dp--main">
+              <circle cx="112" cy="169" r="6"/>
+              <text x="112" y="182" text-anchor="middle">Innenstadt</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="214" cy="171" r="4.5"/>
+              <text x="223" y="175" text-anchor="start">Feudenheim</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="120" cy="206" r="4.5"/>
+              <text x="111" y="210" text-anchor="end">Lindenhof</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="154" cy="217" r="4.5"/>
+              <text x="154" y="230" text-anchor="middle">Almenhof</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="170" cy="235" r="4.5"/>
+              <text x="170" y="248" text-anchor="middle">Neckarau</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="250" cy="301" r="4.5"/>
+              <text x="250" y="314" text-anchor="middle">Rheinau</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="300" cy="206" r="4.5"/>
+              <text x="309" y="210" text-anchor="start">Seckenheim</text>
+            </g>
+
+            <g class="dp">
+              <circle cx="330" cy="227" r="4.5"/>
+              <text x="322" y="240" text-anchor="middle">Friedrichsfeld</text>
+            </g>
+          </svg>
+
+          <!-- Region footnote -->
+          <div class="map-footer">
+            <span class="map-footer-label">+ Region:</span>
+            Ludwigshafen · Heidelberg · Viernheim · Weinheim · Speyer
           </div>
 
         </div>
@@ -218,12 +253,12 @@ const services = [
 
   .service-bento {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
   }
 
-  @media (max-width: 400px) {
-    .service-bento { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 540px) {
+    .service-bento { grid-template-columns: repeat(3, 1fr); }
   }
 
   .service-bento-card {
@@ -262,6 +297,13 @@ const services = [
     line-height: 1.3;
   }
 
+  .bento-sub {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+    text-align: center;
+  }
+
   .local-cta {
     margin-top: 0.25rem;
     align-self: flex-start;
@@ -279,115 +321,67 @@ const services = [
   }
 
   .map-card {
-    position: relative;
     background: var(--color-brand-primary);
     border-radius: var(--radius-card);
-    padding: 2rem 1.75rem 1.75rem;
+    padding: 1.5rem 1.5rem 1.25rem;
     overflow: hidden;
   }
 
-  /* Subtle dot-grid pattern */
-  .map-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
-    background-size: 20px 20px;
+  /* SVG map */
+  .mannheim-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .river {
+    fill: none;
+    stroke-linecap: round;
+  }
+  .river--rhein  { stroke: rgba(147,197,253,0.22); stroke-width: 7; }
+  .river--neckar { stroke: rgba(147,197,253,0.16); stroke-width: 4.5; }
+
+  .river-label {
+    fill: rgba(147,197,253,0.3);
+    font-size: 8px;
+    font-family: var(--font-body, sans-serif);
+  }
+
+  /* District dots */
+  .dp circle {
+    fill: rgba(255,255,255,0.22);
+    transition: fill 0.2s ease, r 0.15s ease;
+    cursor: default;
+  }
+  .dp text {
+    fill: rgba(255,255,255,0.5);
+    font-size: 9px;
+    font-family: var(--font-body, sans-serif);
     pointer-events: none;
+    transition: fill 0.2s ease;
   }
+  .dp:hover circle { fill: rgba(232,146,42,0.85); }
+  .dp:hover text   { fill: rgba(255,255,255,0.9); }
 
-  .map-watermark {
-    position: absolute;
-    bottom: -0.5rem;
-    right: -0.5rem;
-    font-family: var(--font-heading);
-    font-size: 6rem;
-    font-weight: 800;
-    color: rgba(255,255,255,0.04);
-    line-height: 1;
-    letter-spacing: -0.05em;
-    user-select: none;
-    pointer-events: none;
-  }
+  /* Innenstadt */
+  .dp--main circle { fill: rgba(232,146,42,0.65); }
+  .dp--main text   { fill: rgba(232,146,42,0.9); font-size: 10px; font-weight: 600; }
+  .dp--main:hover circle { fill: rgba(232,146,42,1); }
 
-  .map-pins {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .map-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-  }
-
-  .map-row--offset { padding-left: 1rem; }
-  .map-row--center { padding-left: 0.5rem; }
-
-  .map-pin {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.3rem 0.7rem;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.75);
-    white-space: nowrap;
-  }
-
-  .map-pin--center {
-    background: rgba(232,146,42,0.18);
-    border-color: rgba(232,146,42,0.4);
-    color: rgba(232,146,42,0.95);
-    font-weight: 600;
-  }
-
-  .map-pin--center svg {
-    color: var(--color-brand-accent);
-    flex-shrink: 0;
-  }
-
-  .map-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.1);
-    margin: 0.25rem 0;
-  }
-
-  .map-row--region .map-pin { }
-
-  .map-pin--region {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.07);
-    color: rgba(255,255,255,0.45);
-    font-size: 0.75rem;
-  }
-
-  .map-legend {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
+  /* Region footnote */
+  .map-footer {
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
     font-size: 0.75rem;
     color: rgba(255,255,255,0.35);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 0.875rem;
+    line-height: 1.6;
   }
 
-  .legend-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
+  .map-footer-label {
+    font-weight: 600;
+    color: rgba(255,255,255,0.45);
+    margin-right: 0.25rem;
   }
-
-  .legend-dot--main  { background: var(--color-brand-accent); }
-  .legend-dot--region { background: rgba(255,255,255,0.25); }
 </style>

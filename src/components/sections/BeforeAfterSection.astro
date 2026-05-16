@@ -257,8 +257,30 @@ const pairs = [
     gap: 0.5rem;
   }
 
-  @media (max-width: 479px) {
-    .ba-thumbs { grid-template-columns: repeat(3, 1fr); gap: 0.375rem; }
+  @media (max-width: 767px) {
+    .ba-thumbs {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.4rem;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      /* Fade right edge — signals more content */
+      mask-image: linear-gradient(to right, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 75%, transparent 100%);
+    }
+    .ba-thumbs::-webkit-scrollbar { display: none; }
+    .ba-thumbs.at-end {
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+    .ba-thumb {
+      /* 3.5 items visible — last one half-cut off */
+      flex: 0 0 calc(28.5% - 0.3rem);
+      scroll-snap-align: start;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -340,6 +362,13 @@ const pairs = [
       { label: 'Schlafzimmer kl.', before: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_alt.jpeg', after: '/assets/images/vorher-nachher/Kleines_Schlafzimmer_2OG_neu.jpeg' },
     ];
 
+    function updateThumbFade() {
+      const atEnd = thumbsEl.scrollLeft + thumbsEl.clientWidth >= thumbsEl.scrollWidth - 4;
+      thumbsEl.classList.toggle('at-end', atEnd);
+    }
+    thumbsEl.addEventListener('scroll', updateThumbFade, { passive: true });
+    updateThumbFade();
+
     let hintDismissed = false;
 
     function dismissHint() {
@@ -359,6 +388,11 @@ const pairs = [
       thumbsEl.querySelectorAll<HTMLButtonElement>('.ba-thumb').forEach((t, i) => {
         t.classList.toggle('active', i === index);
       });
+      const activeThumb = thumbsEl.querySelector<HTMLButtonElement>('.ba-thumb.active');
+      if (activeThumb) {
+        thumbsEl.scrollTo({ left: activeThumb.offsetLeft - 8, behavior: 'smooth' });
+      }
+      setTimeout(updateThumbFade, 350);
     }
 
     thumbsEl.querySelectorAll<HTMLButtonElement>('.ba-thumb').forEach((thumb, i) => {
