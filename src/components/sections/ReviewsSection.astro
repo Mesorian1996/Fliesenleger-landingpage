@@ -2,7 +2,7 @@
 /**
  * ReviewsSection
  * @category sections
- * @description Google reviews with star ratings and CTA to Google profile.
+ * @description Google reviews carousel — 3 cards, swipeable. Desktop: 3 visible, mobile: 1 at a time.
  */
 
 import { SITE } from '@/config/site';
@@ -16,96 +16,86 @@ const reviews = [
     date: 'Februar 2026',
   },
   {
-    name: 'Julius Steinhäuser',
-    badge: '',
-    text: 'Absolut empfehlenswert! Herr Limani ist ein äußerst zuverlässiger, professioneller und freundlicher Handwerker. Die Arbeit wurde schnell, sauber und mit großer Sorgfalt ausgeführt – das Ergebnis hat meine Erwartungen sogar übertroffen.',
-    date: 'Februar 2026',
-  },
-  {
-    name: 'Nezir Neziri',
-    badge: '',
-    text: 'Ich bin äußerst zufrieden mit der Arbeit von Herrn Limani. Von der ersten Beratung bis zur finalen Umsetzung hat er durch seine Professionalität, Zuverlässigkeit und handwerkliche Präzision überzeugt. Die Fliesenarbeiten wurden sauber, präzise und in hoher Qualität ausgeführt.',
-    date: 'Dezember 2025',
-  },
-  {
-    name: 'Ivano T.',
-    badge: '',
-    text: 'Ich kann Limani Fliesenleger wärmstens empfehlen! Das Team ist unglaublich professionell, zuverlässig und kreativ. Die Arbeit ist von höchster Qualität, und das Ergebnis hat meine Erwartungen übertroffen. Ein super Service, der jeden Cent wert ist.',
-    date: 'Februar 2026',
-  },
-  {
-    name: 'Aleko Offiziell',
-    badge: '',
-    text: 'Wir haben eine jahrelange Erfahrung mit Firma Limani. Wir wurden nie enttäuscht. Immer wieder hat die Firma perfekte Arbeiten geliefert. Der Chef an sich ist einer der sympathischsten Menschen die ich je kennengelernt habe.',
-    date: 'Februar 2026',
-  },
-  {
     name: 'Elias',
     badge: 'Local Guide',
     text: 'Echt super Arbeit! Man merkt sofort, dass hier Profis am Werk sind und keine 0815 Fliesenleger. Die Leute sind super nett, pünktlich und wissen genau, was sie tun. Kann ich definitiv nur weiterempfehlen!',
     date: 'Februar 2026',
   },
   {
-    name: 'L.',
+    name: 'Julius Steinhäuser',
     badge: '',
-    text: 'Schnell, sauber und sehr erfahren. Immer wieder gerne! Da legt man sein Vertrauen gerne in die Hände erfahrener Handwerker, bei solchen hervorragenden Ergebnissen!',
-    date: 'Dezember 2025',
+    text: 'Absolut empfehlenswert! Herr Limani ist ein äußerst zuverlässiger, professioneller und freundlicher Handwerker. Die Arbeit wurde schnell, sauber und mit großer Sorgfalt ausgeführt – das Ergebnis hat meine Erwartungen sogar übertroffen.',
+    date: 'Februar 2026',
   },
 ];
 ---
 
-<section class="py-20 bg-white" aria-labelledby="reviewsHeading">
+<section class="reviews-section" aria-labelledby="reviewsHeading">
   <div class="container">
 
     <!-- Header -->
     <div class="reviews-header" data-aos="fade-up">
       <span class="section-label">Google Bewertungen</span>
-      <h2 id="reviewsHeading" style="font-size:clamp(1.75rem,3vw,2.5rem); margin:0 0 0.75rem; letter-spacing:-0.025em;">
+      <h2 id="reviewsHeading" class="reviews-title">
         Das sagen unsere Kunden
       </h2>
-      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-        <div style="display:flex; align-items:center; gap:0.375rem;">
+      <div class="reviews-rating" aria-label="5 von 5 Sternen auf Google">
+        <div class="rating-stars" aria-hidden="true">
           {Array(5).fill(null).map(() => (
             <Icon name="star" size={20} fill="#e8922a" stroke="none" strokeWidth={0} />
           ))}
         </div>
-        <span style="font-size:1.125rem; font-weight:700; color:var(--color-text-heading);">5.0</span>
-        <span style="font-size:0.9375rem; color:var(--color-text-muted);">auf Google</span>
+        <span class="rating-score">5,0</span>
+        <span class="rating-label">auf Google</span>
       </div>
     </div>
 
-    <!-- Reviews Grid -->
-    <div class="reviews-grid" data-aos="fade-up">
-      {reviews.map((r) => (
-        <article class="review-card">
-          <!-- Stars -->
-          <div style="display:flex; gap:0.25rem; margin-bottom:1rem;" aria-label="5 von 5 Sternen">
-            {Array(5).fill(null).map(() => (
-              <Icon name="star" size={16} fill="#e8922a" stroke="none" strokeWidth={0} />
-            ))}
-          </div>
-
-          <!-- Text -->
-          <blockquote style="margin:0 0 1.25rem; font-size:0.9375rem; line-height:1.7; color:var(--color-text-body); font-style:italic;">
-            &ldquo;{r.text}&rdquo;
-          </blockquote>
-
-          <!-- Author -->
-          <div style="display:flex; align-items:center; gap:0.75rem;">
-            <div style="width:36px; height:36px; border-radius:50%; background:var(--color-brand-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <span style="font-size:0.875rem; font-weight:700; color:#fff;">{r.name.charAt(0)}</span>
+    <!-- Carousel -->
+    <div class="reviews-carousel" data-aos="fade-up">
+      <div class="reviews-track" id="reviewsTrack" role="list">
+        {reviews.map((r, i) => (
+          <article class="review-card" role="listitem" aria-label={`Bewertung von ${r.name}`}>
+            <!-- Stars -->
+            <div class="card-stars" aria-label="5 von 5 Sternen">
+              {Array(5).fill(null).map(() => (
+                <Icon name="star" size={15} fill="#e8922a" stroke="none" strokeWidth={0} />
+              ))}
             </div>
-            <div>
-              <p style="font-size:0.875rem; font-weight:600; color:var(--color-text-heading); margin:0;">{r.name}</p>
-              <p style="font-size:0.8rem; color:var(--color-text-muted); margin:0;">{r.badge ? `${r.badge} · ` : ''}{r.date}</p>
+
+            <!-- Text -->
+            <blockquote class="card-text">
+              &ldquo;{r.text}&rdquo;
+            </blockquote>
+
+            <!-- Author -->
+            <div class="card-author">
+              <div class="author-avatar" aria-hidden="true">
+                <span>{r.name.charAt(0)}</span>
+              </div>
+              <div class="author-info">
+                <p class="author-name">{r.name}</p>
+                <p class="author-meta">{r.badge ? `${r.badge} · ` : ''}{r.date}</p>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))}
+      </div>
+
+      <!-- Mobile dots -->
+      <div class="reviews-dots" id="reviewsDots" aria-hidden="true">
+        {reviews.map((_, i) => (
+          <button
+            class:list={['dot', i === 0 ? 'active' : '']}
+            data-index={i}
+            type="button"
+            aria-label={`Zur Bewertung ${i + 1}`}
+          />
+        ))}
+      </div>
     </div>
 
     <!-- CTA -->
-    <div style="text-align:center; margin-top:2.5rem;" data-aos="fade-up">
+    <div class="reviews-cta" data-aos="fade-up">
       <a
         href={SITE.social.google}
         target="_blank"
@@ -122,28 +112,217 @@ const reviews = [
 </section>
 
 <style>
+  .reviews-section {
+    padding: var(--spacing-section) 0;
+    background: #fff;
+  }
+
+  /* Header */
   .reviews-header {
     max-width: 520px;
     margin-bottom: 2.5rem;
   }
 
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  .reviews-title {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    letter-spacing: -0.025em;
+    margin: 0 0 0.75rem;
   }
 
+  .reviews-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+  }
+
+  .rating-stars { display: flex; gap: 0.25rem; }
+
+  .rating-score {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-heading);
+  }
+
+  .rating-label {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Carousel */
+  .reviews-carousel {
+    position: relative;
+  }
+
+  .reviews-track {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    /* Show partial next card on mobile to hint at swipe */
+    padding-bottom: 0.25rem;
+  }
+
+  .reviews-track::-webkit-scrollbar { display: none; }
+
+  /* Card sizing: 1 per view on mobile */
+  .review-card {
+    flex: 0 0 calc(100% - 2.5rem);
+    scroll-snap-align: start;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 16px rgba(12,27,46,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Tablet: 2 per view (partially show 3rd) */
   @media (min-width: 640px) {
-    .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    .review-card {
+      flex: 0 0 calc(50% - 0.625rem);
+    }
+  }
+
+  /* Desktop: all 3 fit exactly */
+  @media (min-width: 1024px) {
+    .reviews-track {
+      overflow-x: visible;
+    }
+    .review-card {
+      flex: 1 1 0;
+    }
+    .review-card:hover {
+      box-shadow: 0 8px 32px rgba(12,27,46,0.1);
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Card internals */
+  .card-stars {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .card-text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-text-body);
+    font-style: italic;
+    flex: 1;
+  }
+
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-brand-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .author-avatar span {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .author-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    margin: 0;
+  }
+
+  .author-meta {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  /* Dots — only visible on mobile/tablet */
+  .reviews-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
   }
 
   @media (min-width: 1024px) {
-    .reviews-grid { grid-template-columns: repeat(4, 1fr); }
+    .reviews-dots { display: none; }
   }
 
-  @media (min-width: 1280px) {
-    .reviews-grid { grid-template-columns: repeat(4, 1fr); }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
 
-  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .dot.active {
+    background: var(--color-brand-accent);
+    transform: scale(1.3);
+  }
+
+  /* CTA */
+  .reviews-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
 </style>
+
+<script is:inline>
+  (function () {
+    const track  = document.getElementById('reviewsTrack');
+    const dots   = document.querySelectorAll('#reviewsDots .dot');
+    if (!track || dots.length === 0) return;
+
+    function getActive() {
+      const cards = track.querySelectorAll('.review-card');
+      let closest = 0;
+      let minDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.getBoundingClientRect().left - track.getBoundingClientRect().left);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      return closest;
+    }
+
+    function updateDots(index) {
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    // Scroll → update dots
+    track.addEventListener('scroll', () => updateDots(getActive()), { passive: true });
+
+    // Dot click → scroll to card
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const cards = track.querySelectorAll('.review-card');
+        if (cards[i]) {
+          cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+      });
+    });
+  })();
+</script>

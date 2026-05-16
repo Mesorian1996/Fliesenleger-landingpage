@@ -52,7 +52,7 @@ import Icon from '@/components/ui/Icon.astro';
               <Icon name="check" size={14} stroke="var(--color-brand-accent)" strokeWidth={3} />
             </span>
             <div>
-              <strong>900+ abgeschlossene Projekte</strong>
+              <strong>über 1.000 abgeschlossene Projekte</strong>
               <span>Über 30 Jahre Erfahrung im Rhein-Neckar-Raum</span>
             </div>
           </li>
@@ -66,7 +66,7 @@ import Icon from '@/components/ui/Icon.astro';
             ))}
           </div>
           <span class="rating-score">5,0</span>
-          <span class="rating-label">auf Google &middot; 7&nbsp;Bewertungen</span>
+          <span class="rating-label">auf Google</span>
         </div>
       </div>
 
@@ -193,7 +193,7 @@ import Icon from '@/components/ui/Icon.astro';
             <div class="option-grid option-grid--3">
               {([
                 { value: 'Ja, Material durch Limani',  label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig', iconSrc: '/assets/icons/bring_material.svg' },
-                { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    iconSrc: '/assets/icons/tool.svg' },
+                { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    iconSrc: '/assets/icons/wrong.svg' },
                 { value: 'Noch unsicher',              label: 'Weiß ich noch nicht',      sub: 'Möchte ich gerne besprechen',              iconSrc: '/assets/icons/question.svg' },
               ] as const).map(opt => (
                 <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
@@ -220,7 +220,7 @@ import Icon from '@/components/ui/Icon.astro';
             <div class="option-grid option-grid--3">
               {([
                 { value: 'Ja, Rückbau nötig',  label: 'Ja, Rückbau nötig',  sub: 'Altes muss raus',        iconSrc: '/assets/icons/demolition.svg' },
-                { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet', iconSrc: '/assets/icons/approve.svg' },
+                { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet', iconSrc: '/assets/icons/wrong.svg' },
                 { value: 'Bin mir unsicher',   label: 'Bin mir unsicher',   sub: 'Klären wir vor Ort',     iconSrc: '/assets/icons/question.svg' },
               ] as const).map(opt => (
                 <label class="option-card option-card--radio option-card--row" data-for={opt.value}>

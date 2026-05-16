@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Limani Fliesenleger',
   nameShort: 'Limani',
   tagline: 'Fliesen, Bäder & Wohnungssanierung',
-  description: 'Fliesenleger Mannheim – Limani: Fliesen, Badsanierung, Bodenverlegung, Trockenbau & Wohnungssanierung. 900+ Projekte, 30+ Jahre Erfahrung. Kostenlose Beratung & schnelle Termine.',
+  description: 'Fliesenleger Mannheim – Limani: Fliesen, Badsanierung, Bodenverlegung, Trockenbau & Wohnungssanierung. 1.000+ Projekte, 30+ Jahre Erfahrung. Kostenlose Beratung & schnelle Termine.',
   url: 'https://www.limani-fliesenleger.de',
   phone: '0173 329 3668',
   phoneTel: '+491733293668',
