@@ -6,7 +6,7 @@
  */
 
 import { SITE } from '@/config/site';
-import { Icons } from '@/components/ui/Icons';
+import Icon from '@/components/ui/Icon.astro';
 ---
 
 <section id="anfrage-funnel" class="funnel-section" aria-labelledby="funnelHeading">
@@ -49,22 +49,22 @@ import { Icons } from '@/components/ui/Icons';
           <p class="step-hint">Mehrfachauswahl möglich</p>
           <div class="option-grid option-grid--6">
             {([
-              { value: 'Fliesenarbeiten',   label: 'Fliesenarbeiten',  sub: 'Bad, Küche, Wände, Böden',     icon: Icons.tiles },
-              { value: 'Badsanierung',      label: 'Badsanierung',     sub: 'Komplett oder Teilsanierung',  icon: Icons.bathtub },
-              { value: 'Bodenverlegung',    label: 'Bodenverlegung',   sub: 'Vinyl, Laminat, Parkett',      icon: Icons.floor },
-              { value: 'Malerarbeiten',     label: 'Maler & Verputz',  sub: 'Wände, Decken, Spachtel',      icon: Icons.paintRoller },
-              { value: 'Trockenbau',        label: 'Trockenbau',       sub: 'Wände, Decken, Dämmung',       icon: Icons.drywall },
-              { value: 'Wohnungssanierung', label: 'Wohnungssanierung',sub: 'Komplett aus einer Hand',      icon: Icons.house },
+              { value: 'Fliesenarbeiten',   label: 'Fliesenarbeiten',   sub: 'Bad, Küche, Wände, Böden',    iconSrc: '/assets/icons/fliesenverlegung.svg' },
+              { value: 'Badsanierung',      label: 'Badsanierung',      sub: 'Komplett oder Teilsanierung', iconSrc: '/assets/icons/badsanierung.svg' },
+              { value: 'Bodenverlegung',    label: 'Bodenverlegung',    sub: 'Vinyl, Laminat, Parkett',     iconSrc: '/assets/icons/bodenverlegung.svg' },
+              { value: 'Malerarbeiten',     label: 'Maler & Verputz',   sub: 'Wände, Decken, Spachtel',     iconSrc: '/assets/icons/malerarbeiten.svg' },
+              { value: 'Trockenbau',        label: 'Trockenbau',        sub: 'Wände, Decken, Dämmung',      iconSrc: '/assets/icons/trockenbau.svg' },
+              { value: 'Wohnungssanierung', label: 'Wohnungssanierung', sub: 'Komplett aus einer Hand',     iconSrc: '/assets/icons/wohnungssanierung.svg' },
             ] as const).map(opt => (
               <label class="option-card" data-for={opt.value}>
                 <input type="checkbox" name="leistung" value={opt.value} class="sr-only" />
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.icon} />
+                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="eager" />
                 </span>
                 <span class="option-label">{opt.label}</span>
                 <span class="option-sub">{opt.sub}</span>
                 <span class="option-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
                 </span>
               </label>
             ))}
@@ -77,20 +77,20 @@ import { Icons } from '@/components/ui/Icons';
           <p class="step-hint">Eine grobe Schätzung reicht</p>
           <div class="option-grid option-grid--4">
             {([
-              { value: 'Unter 10 m²', label: 'Unter 10 m²', sub: 'z.B. Gäste-WC, kleine Küche',      icon: Icons.areaTiny },
-              { value: '10–25 m²',    label: '10 – 25 m²',  sub: 'z.B. Bad, Küche, Flur',            icon: Icons.areaSmall },
-              { value: '25–50 m²',    label: '25 – 50 m²',  sub: 'z.B. Wohnzimmer, großes Bad',      icon: Icons.areaMedium },
-              { value: 'Über 50 m²',  label: 'Über 50 m²',  sub: 'z.B. Wohnung, mehrere Räume',      icon: Icons.areaLarge },
+              { value: 'Unter 10 m²', label: 'Unter 10 m²', sub: 'z.B. Gäste-WC, kleine Küche',  svg: '<rect x="10" y="10" width="5" height="5" rx="0.5"/>' },
+              { value: '10–25 m²',    label: '10 – 25 m²',  sub: 'z.B. Bad, Küche, Flur',        svg: '<rect x="7" y="7" width="10" height="10" rx="0.5"/>' },
+              { value: '25–50 m²',    label: '25 – 50 m²',  sub: 'z.B. Wohnzimmer, großes Bad',  svg: '<rect x="5" y="5" width="14" height="14" rx="1"/>' },
+              { value: 'Über 50 m²',  label: 'Über 50 m²',  sub: 'z.B. Wohnung, mehrere Räume',  svg: '<rect x="2" y="2" width="20" height="20" rx="1.5"/><path d="M2 12h20M12 2v20"/>' },
             ] as const).map(opt => (
               <label class="option-card option-card--radio" data-for={opt.value}>
                 <input type="radio" name="flaeche" value={opt.value} class="sr-only" />
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.icon} />
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.svg} />
                 </span>
                 <span class="option-label">{opt.label}</span>
                 <span class="option-sub">{opt.sub}</span>
                 <span class="option-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
                 </span>
               </label>
             ))}
@@ -103,21 +103,21 @@ import { Icons } from '@/components/ui/Icons';
           <p class="step-hint">Wir planen Sie so schnell wie möglich ein</p>
           <div class="option-grid option-grid--3">
             {([
-              { value: 'So schnell wie möglich', label: 'So schnell wie möglich', sub: 'Innerhalb von 1–2 Wochen', icon: Icons.lightning },
-              { value: 'In 1–3 Monaten',         label: 'In 1 – 3 Monaten',        sub: 'In Ruhe planen',          icon: Icons.calendar },
-              { value: 'Bin flexibel',            label: 'Bin flexibel',            sub: 'Richten uns nach Ihnen',  icon: Icons.clock },
+              { value: 'So schnell wie möglich', label: 'So schnell wie möglich', sub: 'Innerhalb von 1–2 Wochen', iconSrc: '/assets/icons/fast_appointment.svg' },
+              { value: 'In 1–3 Monaten',         label: 'In 1 – 3 Monaten',        sub: 'In Ruhe planen',          iconSrc: '/assets/icons/planning.svg' },
+              { value: 'Bin flexibel',            label: 'Bin flexibel',            sub: 'Richten uns nach Ihnen',  iconSrc: '/assets/icons/flexible_appointment.svg' },
             ] as const).map(opt => (
               <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
                 <input type="radio" name="zeitrahmen" value={opt.value} class="sr-only" />
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.icon} />
+                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
                 </span>
                 <span class="option-text">
                   <span class="option-label">{opt.label}</span>
                   <span class="option-sub">{opt.sub}</span>
                 </span>
                 <span class="option-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
                 </span>
               </label>
             ))}
@@ -130,21 +130,21 @@ import { Icons } from '@/components/ui/Icons';
           <p class="step-hint">Wir arbeiten mit ausgewählten Partnern</p>
           <div class="option-grid option-grid--3">
             {([
-              { value: 'Ja, Material durch Limani',  label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig', icon: Icons.shoppingBag },
-              { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    icon: Icons.wrench },
-              { value: 'Noch unsicher',              label: 'Weiß ich noch nicht',      sub: 'Möchte ich gerne besprechen',              icon: Icons.questionCircle },
+              { value: 'Ja, Material durch Limani',  label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig', iconSrc: '/assets/icons/bring_material.svg' },
+              { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    iconSrc: '/assets/icons/tool.svg' },
+              { value: 'Noch unsicher',              label: 'Weiß ich noch nicht',      sub: 'Möchte ich gerne besprechen',              iconSrc: '/assets/icons/question.svg' },
             ] as const).map(opt => (
               <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
                 <input type="radio" name="material" value={opt.value} class="sr-only" />
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.icon} />
+                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
                 </span>
                 <span class="option-text">
                   <span class="option-label">{opt.label}</span>
                   <span class="option-sub">{opt.sub}</span>
                 </span>
                 <span class="option-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
                 </span>
               </label>
             ))}
@@ -157,21 +157,21 @@ import { Icons } from '@/components/ui/Icons';
           <p class="step-hint">z.B. alte Fliesen entfernen, Wände abbrechen</p>
           <div class="option-grid option-grid--3">
             {([
-              { value: 'Ja, Rückbau nötig',  label: 'Ja, Rückbau nötig',  sub: 'Altes muss raus',            icon: Icons.xSquare },
-              { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet',     icon: Icons.checkCircle },
-              { value: 'Bin mir unsicher',   label: 'Bin mir unsicher',   sub: 'Klären wir vor Ort',         icon: Icons.questionCircle },
+              { value: 'Ja, Rückbau nötig',  label: 'Ja, Rückbau nötig',  sub: 'Altes muss raus',        iconSrc: '/assets/icons/demolition.svg' },
+              { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet', iconSrc: '/assets/icons/approve.svg' },
+              { value: 'Bin mir unsicher',   label: 'Bin mir unsicher',   sub: 'Klären wir vor Ort',     iconSrc: '/assets/icons/question.svg' },
             ] as const).map(opt => (
               <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
                 <input type="radio" name="rueckbau" value={opt.value} class="sr-only" />
                 <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.icon} />
+                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
                 </span>
                 <span class="option-text">
                   <span class="option-label">{opt.label}</span>
                   <span class="option-sub">{opt.sub}</span>
                 </span>
                 <span class="option-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
                 </span>
               </label>
             ))}
@@ -224,16 +224,16 @@ import { Icons } from '@/components/ui/Icons';
       <!-- Navigation -->
       <div class="funnel-nav" id="funnelNav">
         <button type="button" id="funnelBack" class="funnel-btn-back" style="visibility:hidden;" aria-label="Zurück">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.chevronLeft} />
+          <Icon name="chevronLeft" size={15} strokeWidth={2.5} />
           Zurück
         </button>
         <button type="button" id="funnelNext" class="btn-primary funnel-btn-cta" aria-label="Weiter" style="display:none;">
           Weiter
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.chevronRight} />
+          <Icon name="chevronRight" size={15} strokeWidth={2.5} />
         </button>
         <button type="button" id="funnelSubmit" class="btn-primary funnel-btn-cta" aria-label="Angebot anfragen" style="display:none;">
           Kostenloses Angebot anfragen
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+          <Icon name="check" size={15} strokeWidth={2.5} />
         </button>
       </div>
 
@@ -242,15 +242,15 @@ import { Icons } from '@/components/ui/Icons';
       <!-- Trust signals -->
       <div class="funnel-trust" id="funnelTrust">
         <span class="trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={Icons.lock} />
+          <Icon name="lock" size={13} strokeWidth={2} />
           SSL-verschlüsselt
         </span>
         <span class="trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={Icons.time} />
+          <Icon name="time" size={13} strokeWidth={2} />
           Antwort in 24 Stunden
         </span>
         <span class="trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={Icons.shield} />
+          <Icon name="shield" size={13} strokeWidth={2} />
           Keine Weitergabe
         </span>
       </div>
@@ -258,7 +258,7 @@ import { Icons } from '@/components/ui/Icons';
       <!-- Success -->
       <div id="funnelSuccess" style="display:none; text-align:center; padding:2.5rem 0;">
         <div class="funnel-success-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(34,197,94,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" set:html={Icons.check} />
+          <Icon name="check" size={28} stroke="rgba(34,197,94,0.9)" strokeWidth={2.5} />
         </div>
         <h3 style="font-size:1.375rem; margin:0 0 0.625rem;">Anfrage erfolgreich gesendet</h3>
         <p style="color:var(--color-text-muted); margin:0 0 1.5rem;">Vielen Dank – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>

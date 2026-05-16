@@ -112,34 +112,34 @@ const slides = [
       ))}
     </div>
 
-    <!-- Mobile: dot navigation -->
-    <div class="hero-dots" aria-label="Slide Navigation">
-      {slides.map((_, i) => (
-        <button
-          class:list={['hero-dot', i === 0 ? 'active' : '']}
-          data-slide={i}
-          type="button"
-          aria-label={`Slide ${i + 1}`}
-        />
-      ))}
-    </div>
+  </div>
 
-    <!-- Desktop: tab bar -->
-    <div class="hero-tabs" role="tablist" aria-label="Leistungsauswahl">
-      {slides.map((slide, i) => (
-        <button
-          class:list={['hero-tab', i === 0 ? 'active' : '']}
-          data-slide={i}
-          role="tab"
-          aria-selected={i === 0}
-          type="button"
-        >
-          <span class="hero-tab-progress" aria-hidden="true"></span>
-          {slide.label}
-        </button>
-      ))}
-    </div>
+  <!-- Mobile: dot navigation (outside container → positions relative to .hero) -->
+  <div class="hero-dots" aria-label="Slide Navigation">
+    {slides.map((_, i) => (
+      <button
+        class:list={['hero-dot', i === 0 ? 'active' : '']}
+        data-slide={i}
+        type="button"
+        aria-label={`Slide ${i + 1}`}
+      />
+    ))}
+  </div>
 
+  <!-- Desktop: tab bar (outside container → positions relative to .hero) -->
+  <div class="hero-tabs" role="tablist" aria-label="Leistungsauswahl">
+    {slides.map((slide, i) => (
+      <button
+        class:list={['hero-tab', i === 0 ? 'active' : '']}
+        data-slide={i}
+        role="tab"
+        aria-selected={i === 0}
+        type="button"
+      >
+        <span class="hero-tab-progress" aria-hidden="true"></span>
+        {slide.label}
+      </button>
+    ))}
   </div>
 
   <!-- Prev / Next arrows (both mobile + desktop, hidden on small) -->
@@ -156,9 +156,9 @@ const slides = [
   /* ── Base ─────────────────────────────────────────────────── */
   .hero {
     position: relative;
-    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     overflow: hidden;
     color: #fff;
   }
@@ -209,12 +209,12 @@ const slides = [
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-bottom: 5rem; /* space for dots */
+    padding-top: 52vh;
   }
 
   @media (min-width: 768px) {
     .hero-container {
-      padding-bottom: 0; /* tabs sit below */
+      padding-top: 50vh;
     }
   }
 
@@ -226,7 +226,7 @@ const slides = [
   }
 
   @media (min-width: 768px) {
-    .hero-content { padding-bottom: 6rem; }
+    .hero-content { padding-bottom: 1rem; }
   }
 
   .hero-text {
@@ -384,6 +384,7 @@ const slides = [
 
   /* ── Prev / Next arrows ───────────────────────────────────── */
   .hero-nav-btn {
+    display: none; /* hidden on mobile */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -394,7 +395,6 @@ const slides = [
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.2);
     color: #fff;
-    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -406,10 +406,10 @@ const slides = [
   .hero-nav-prev { left: 1rem; }
   .hero-nav-next { right: 1rem; }
 
-  /* Shift arrows above tab bar on desktop */
+  /* Show arrows on desktop, shift above tab bar */
   @media (min-width: 768px) {
     .hero-nav-btn {
-      /* Adjust: 50% of visible area above the tab bar (~3.2rem) */
+      display: flex;
       top: calc(50% - 1.6rem);
     }
     .hero-nav-prev { left: 1.25rem; }

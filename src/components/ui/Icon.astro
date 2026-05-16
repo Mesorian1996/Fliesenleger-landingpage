@@ -2,15 +2,16 @@
 /**
  * Icon
  * @category ui
- * @description Renders a named SVG icon from the Icons library.
+ * @description Renders a Phosphor icon via CSS class (ph ph-*).
+ * Weight is inferred from strokeWidth + fill props.
  *
  * Usage:
  *   <Icon name="phone" />
- *   <Icon name="star" size={20} fill="#e8922a" stroke="none" strokeWidth={0} />
- *   <Icon name="facebook" fill="currentColor" stroke="none" strokeWidth={0} />
+ *   <Icon name="star" size={20} fill="#e8922a" strokeWidth={0} />
+ *   <Icon name="facebook" fill="currentColor" strokeWidth={0} />
  */
 
-import { Icons, type IconName } from './Icons';
+import { PhosphorNames, type IconName } from './Icons';
 
 interface Props {
   name: IconName;
@@ -31,19 +32,20 @@ const {
   class: className,
   style,
 } = Astro.props;
+
+const iconClass = PhosphorNames[name];
+
+// Map to Phosphor weight class
+const isFilled = fill !== 'none' && strokeWidth === 0;
+const weightClass = isFilled ? 'ph-fill'
+  : strokeWidth >= 2.5   ? 'ph-bold'
+  : '';
+
+const color = isFilled ? fill : stroke;
 ---
 
-<svg
-  width={size}
-  height={size}
-  viewBox="0 0 24 24"
-  fill={fill}
-  stroke={stroke}
-  stroke-width={strokeWidth}
-  stroke-linecap="round"
-  stroke-linejoin="round"
+<i
+  class:list={[weightClass || 'ph', `ph-${iconClass}`, className]}
+  style={`font-size:${size}px;color:${color};line-height:1;${style ?? ''}`}
   aria-hidden="true"
-  class={className}
-  style={style}
-  set:html={Icons[name]}
 />
