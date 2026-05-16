@@ -1,0 +1,49 @@
+---
+/**
+ * Icon
+ * @category ui
+ * @description Renders a named SVG icon from the Icons library.
+ *
+ * Usage:
+ *   <Icon name="phone" />
+ *   <Icon name="star" size={20} fill="#e8922a" stroke="none" strokeWidth={0} />
+ *   <Icon name="facebook" fill="currentColor" stroke="none" strokeWidth={0} />
+ */
+
+import { Icons, type IconName } from './Icons';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  strokeWidth?: number;
+  fill?: string;
+  stroke?: string;
+  class?: string;
+  style?: string;
+}
+
+const {
+  name,
+  size = 20,
+  strokeWidth = 2,
+  fill = 'none',
+  stroke = 'currentColor',
+  class: className,
+  style,
+} = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill={fill}
+  stroke={stroke}
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  class={className}
+  style={style}
+  set:html={Icons[name]}
+/>

@@ -50,7 +50,7 @@ const schema = {
       label="Badsanierung"
       headline="Badsanierung Mannheim – alles aus einer Hand"
       subline="Von der Demontage bis zur sauberen Übergabe. Ebenerdige Duschen, großformatige Fliesen, Trockenbau – wir koordinieren Ihr Badbad-Projekt in Mannheim und Umgebung."
-      image="/assets/images/Fliesen_bad_12_compressed.webp"
+      image="/assets/images/Fliesen_bad_12.jpeg"
       imageAlt="Badsanierung Mannheim – Limani Fliesenleger"
       ctaLabel="Kostenlos anfragen"
       ctaHref="#anfrage-funnel"
@@ -65,8 +65,11 @@ const schema = {
             <h2 id="badHeading" style="font-size:clamp(1.625rem,2.5vw,2rem); margin:0 0 1rem; letter-spacing:-0.02em;">
               Was wir bei der Badsanierung übernehmen
             </h2>
-            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1.5rem;">
+            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1rem;">
               Eine Badsanierung ist mehr als Fliesen legen. Wir begleiten Ihr Projekt von der Planung über den Rückbau bis zur fertigen Übergabe – koordiniert, termingerecht, sauber.
+            </p>
+            <p style="color:var(--color-text-body); font-size:0.9375rem; line-height:1.75; margin:0 0 1.5rem;">
+              In über 30 Jahren haben wir hunderte Bäder in Mannheim und der Rhein-Neckar-Region saniert – kleine Gäste-WCs genauso wie großzügige Familienbäder. Unsere Stärke liegt in der Gesamtkoordination: Rückbau, Abdichtung, Trockenbau, Fliesen, Sanitär und Elektriker laufen aufeinander abgestimmt. Das vermeidet Wartezeiten und hält die Bauzeit kurz.
             </p>
 
             <div class="steps-list">
@@ -90,7 +93,7 @@ const schema = {
 
           <div data-aos="fade-left">
             <img
-              src="/assets/images/Fliesen_bad_10_klein.webp"
+              src="/assets/images/Fliesen_bad_10.jpeg"
               alt="Badsanierung Ergebnis Mannheim"
               loading="lazy"
               decoding="async"
@@ -111,6 +114,46 @@ const schema = {
                 Richtwerte. Genaues Angebot nach Vor-Ort-Besichtigung.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Text Section -->
+    <section class="py-16 bg-subtle" aria-label="Informationen zur Badsanierung Mannheim">
+      <div class="container">
+        <div class="seo-text-grid">
+          <div>
+            <h2 class="seo-text-h2">Badsanierung in Mannheim – was Sie wissen sollten</h2>
+            <p>
+              Ein schlechtes Timing bei der Badsanierung ist einer der häufigsten Planungsfehler.
+              Wer zuerst Sanitär bestellt, dann Elektriker sucht und danach den Fliesenleger wartet,
+              verliert Wochen. Wir koordinieren alle Gewerke in der richtigen Reihenfolge – das spart
+              Zeit und verhindert teure Nacharbeiten.
+            </p>
+            <p>
+              Besonders gefragt in Mannheim: barrierefreie, ebenerdige Duschen. Diese erfordern eine
+              durchdachte Planung des Gefälles, eine zertifizierte Verbundabdichtung (nach DIN 18534) und
+              präzise Fliesenarbeit. Wir planen das gesamte Duschsystem – inklusive Duschrinne, Entwässerung
+              und Fliesenbelag.
+            </p>
+          </div>
+          <div>
+            <h3 class="seo-text-h3">Typische Fragen vor der Badsanierung</h3>
+            <p>
+              Wie lange muss ich ohne Bad auskommen? Bei einem Standard-Bad (6–8 m²) sind es in der Regel
+              10–14 Werktage. Wir geben Ihnen vor Projektbeginn einen verbindlichen Zeitplan.
+            </p>
+            <p>
+              Kann ich Kosten sparen, indem ich einzelne Gewerke selbst vergebe? Das ist möglich, birgt aber
+              Koordinationsrisiken. Wir bieten beides an: Komplettkoordination oder Teilleistungen wie
+              nur Fliesenlegen oder nur Trockenbau.
+            </p>
+            <p>
+              Muss das bestehende Fliesenbild komplett entfernt werden? Nicht immer. Wenn der Untergrund
+              tragfähig und die Abdichtung intakt ist, kann überfliesen eine Option sein. Das klären wir
+              beim Vor-Ort-Termin.
+            </p>
           </div>
         </div>
       </div>
@@ -185,4 +228,39 @@ const schema = {
   .price-info-row strong { color: var(--color-brand-accent); font-weight: 700; }
 
   .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+
+  .seo-text-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .seo-text-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  }
+
+  .seo-text-h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-heading);
+    margin: 0 0 1rem;
+  }
+
+  .seo-text-h3 {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    margin: 0 0 0.75rem;
+  }
+
+  .seo-text-grid p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin: 0 0 0.875rem;
+  }
+  .seo-text-grid p:last-child { margin-bottom: 0; }
 </style>

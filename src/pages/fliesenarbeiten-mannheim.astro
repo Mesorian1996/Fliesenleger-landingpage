@@ -50,7 +50,7 @@ const schema = {
       label="Fliesenarbeiten"
       headline="Fliesenarbeiten in Mannheim – präzise verlegt"
       subline="Von Mosaikfliesen bis zu großformatigen Feinsteinzeugplatten. Sauber, schnell, dauerhaft – für Bad, Küche und Wohnräume in Mannheim und der Rhein-Neckar-Region."
-      image="/assets/images/Fliesen_bad_10_klein.webp"
+      image="/assets/images/Fliesen_bad_10.jpeg"
       imageAlt="Fliesenarbeiten Mannheim – Limani Fliesenleger"
       ctaLabel="Kostenlos anfragen"
       ctaHref="#anfrage-funnel"
@@ -69,6 +69,8 @@ const schema = {
             <div style="display:flex; flex-direction:column; gap:1rem; color:var(--color-text-body); font-size:0.9375rem; line-height:1.75;">
               <p style="margin:0;">Ob komplette Neubadgestaltung, Küchenspiegel, Bodenfliesen im Wohnzimmer oder gezielte Reparatur einzelner Fliesen – wir beherrschen das komplette Handwerk und beraten Sie kompetent bei Materialwahl, Verlegemuster und Fugenbild.</p>
               <p style="margin:0;">Besonders gefragt: großformatige Fliesen mit minimaler Fuge für ein modernes, sauberes Erscheinungsbild. Diese Technik erfordert präzise Untergrundvorbereitung und Erfahrung – beides bringen wir mit.</p>
+              <p style="margin:0;">Wir arbeiten mit allen gängigen Fliesenformaten – von Mosaikfliesen über Standardformate bis hin zu großformatigen Feinsteinzeugplatten (80×80, 120×120, 120×270 cm). Rektifizierte Fliesen mit minimalem Fugenbild, barrierefreie Duschlösungen, dekorative Akzente: nichts davon ist ein Problem für uns. Alle Verlege- und Abdichtungsarbeiten führen wir nach den aktuellen DIN-Normen aus.</p>
+              <p style="margin:0;">Ein häufiger Wunsch: alte Fliesen überfliesen, um Rückbaukosten zu sparen. Das ist möglich, wenn der Untergrund tragfähig und eben ist. Wir prüfen das vor Ort und sagen Ihnen ehrlich, ob es Sinn ergibt.</p>
             </div>
 
             <div class="service-cards" style="margin-top:2rem;">
@@ -94,7 +96,7 @@ const schema = {
           <div data-aos="fade-left">
             <div class="img-stack-wrap">
               <img
-                src="/assets/images/Fliesen_bad_12_compressed.webp"
+                src="/assets/images/Fliesen_bad_12.jpeg"
                 alt="Fliesenarbeiten Bad Mannheim"
                 loading="lazy"
                 decoding="async"
@@ -108,6 +110,45 @@ const schema = {
                 <span style="font-size:0.75rem; color:var(--color-text-muted);">Verlegekosten</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Text Section -->
+    <section class="py-16 bg-subtle" aria-label="Informationen zu Fliesenarbeiten in Mannheim">
+      <div class="container">
+        <div class="seo-text-grid">
+          <div>
+            <h2 class="seo-text-h2">Fliesenleger Mannheim – worauf es ankommt</h2>
+            <p>
+              Gute Fliesenarbeiten beginnen lang vor dem ersten Kleberauftrag. Die Untergrundvorbereitung
+              entscheidet, ob Fliesen halten oder nach Jahren ablösen. Wir prüfen Ebenheit, Tragfähigkeit
+              und Feuchtegehalt – und bessern aus, bevor wir legen. Das gilt im Bad genauso wie auf dem
+              Wohnzimmerboden oder der Terrasse.
+            </p>
+            <p>
+              Für Außenbereiche verwenden wir ausschließlich frostbeständiges Feinsteinzeug und
+              verlegereifes Fugenmaterial. Außenfliesen müssen Temperaturwechseln standhalten – wer
+              hier spart, zahlt später doppelt.
+            </p>
+          </div>
+          <div>
+            <h3 class="seo-text-h3">Was beeinflusst den Preis beim Fliesenlegen?</h3>
+            <p>
+              Der Quadratmeterpreis für Verlegen liegt je nach Aufwand zwischen 65 und 120 Euro.
+              Mehrpreis entsteht durch anspruchsvolle Verlegemuster (Diagonale, Fischgrat, Kombination),
+              viele Schnitte, schlechten Untergrund oder Vorarbeiten wie Abdichtung und Estrich.
+            </p>
+            <p>
+              Großformatige Fliesen (ab 80×80 cm) sehen edel aus, erfordern aber mehr Aufwand beim
+              Verlegen – insbesondere beim Ausrichten und Schneiden. Das rechnen wir transparent auf.
+            </p>
+            <p>
+              Für eine realistische Kalkulation benötigen wir Flächenmaße, Fotos des Untergrunds und
+              Ihr Wunschmaterial. Daraus erstellen wir ein konkretes Angebot – in der Regel innerhalb
+              weniger Tage nach dem Vor-Ort-Termin.
+            </p>
           </div>
         </div>
       </div>
@@ -175,4 +216,39 @@ const schema = {
   }
 
   .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+
+  .seo-text-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .seo-text-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  }
+
+  .seo-text-h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-text-heading);
+    margin: 0 0 1rem;
+  }
+
+  .seo-text-h3 {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    margin: 0 0 0.75rem;
+  }
+
+  .seo-text-grid p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin: 0 0 0.875rem;
+  }
+  .seo-text-grid p:last-child { margin-bottom: 0; }
 </style>

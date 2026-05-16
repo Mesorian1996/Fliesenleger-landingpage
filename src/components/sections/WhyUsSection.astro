@@ -4,6 +4,8 @@
  * @category sections
  * @description Why choose Limani — stats, gallery stack, process timeline, and regional map.
  */
+
+import Icon from '@/components/ui/Icon.astro';
 ---
 
 <section id="vorteile" class="bg-warm" aria-labelledby="whyHeading">
@@ -44,12 +46,12 @@
         <div class="gallery-stack" id="galleryStack">
           <div class="gallery-stack-inner">
             {[
-              { src: '/assets/images/Malerarbeiten_bunt_compressed.webp', alt: 'Malerarbeiten Wohnung Mannheim' },
-              { src: '/assets/images/Fliesen_bad_10_klein.webp', alt: 'Fliesen Badezimmer Mannheim' },
-              { src: '/assets/images/Wohnung_3_compressed.webp', alt: 'Wohnungssanierung Mannheim' },
-              { src: '/assets/images/Fliesen_bad_12_compressed.webp', alt: 'Badsanierung Mannheim' },
-              { src: '/assets/images/Parkett_2_compressed.webp', alt: 'Parkettverlegung Mannheim' },
-              { src: '/assets/images/Mosaik_1_compressed_1.webp', alt: 'Mosaikfliesen Bad Mannheim' },
+              { src: '/assets/images/Malerarbeiten_bunt.jpeg', alt: 'Malerarbeiten Wohnung Mannheim' },
+              { src: '/assets/images/Fliesen_bad_10.jpeg', alt: 'Fliesen Badezimmer Mannheim' },
+              { src: '/assets/images/Wohnung_3.jpeg', alt: 'Wohnungssanierung Mannheim' },
+              { src: '/assets/images/Fliesen_bad_12.jpeg', alt: 'Badsanierung Mannheim' },
+              { src: '/assets/images/Parkett_2.jpeg', alt: 'Parkettverlegung Mannheim' },
+              { src: '/assets/images/Mosaik_1.jpeg', alt: 'Mosaikfliesen Bad Mannheim' },
             ].map((img, i) => (
               <img
                 src={img.src}
@@ -67,11 +69,7 @@
 
         <div class="feature-text">
           <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21,15 16,10 5,21"/>
-            </svg>
+            <Icon name="photo" size={22} strokeWidth={2} />
           </div>
           <h3>900+ abgeschlossene Projekte</h3>
           <p>Von Bädern bis Wohnräumen – unsere Referenzen sprechen für sich. Qualität, die man sieht.</p>
@@ -82,10 +80,7 @@
       <div class="feature-block" data-aos="fade-left">
         <div class="feature-text">
           <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12,6 12,12 16,14"/>
-            </svg>
+            <Icon name="time" size={22} strokeWidth={2} />
           </div>
           <h3>Alles aus einer Hand</h3>
           <p>Für größere Projekte übernehmen wir die Koordination – damit der Prozess reibungslos abläuft. Sie haben einen Ansprechpartner von Anfang bis Ende.</p>
@@ -113,9 +108,7 @@
       <div class="feature-block feature-block--dark" data-aos="fade-up">
         <div class="feature-text feature-text--light">
           <div class="feature-icon feature-icon--light">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
+            <Icon name="shield" size={22} strokeWidth={2} />
           </div>
           <h3 style="color:#fff;">Über drei Jahrzehnte Erfahrung</h3>
           <p style="color:rgba(255,255,255,0.75);">
@@ -137,10 +130,7 @@
       <div class="feature-block" data-aos="fade-up">
         <div class="feature-text">
           <div class="feature-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
+            <Icon name="mapPin" size={22} strokeWidth={2} />
           </div>
           <h3>Regional &amp; zuverlässig</h3>
           <p>

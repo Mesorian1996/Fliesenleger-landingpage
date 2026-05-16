@@ -1,6 +1,7 @@
 ---
 import '../styles/globals.css';
 import { SITE } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
 
 interface Props {
   title: string;
@@ -130,19 +131,37 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 <body>
   <slot />
 
-  <!-- Fixed: Quick Call -->
-  <a href={`tel:${SITE.phoneTel}`} class="quick-call-btn" aria-label="Jetzt anrufen" title="Telefonisch anfragen">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7H6.6a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.3a16 16 0 0 0 6 6l.86-1.22a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.4 17.4z"/>
-    </svg>
-  </a>
-
-  <!-- Fixed: Back to top -->
-  <button id="goTopBtn" class="go-top-btn" aria-label="Nach oben scrollen" type="button">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <polyline points="18,15 12,9 6,15"/>
-    </svg>
-  </button>
+  <!-- FAB Speed Dial -->
+  <div class="fab-wrap" id="fabWrap">
+    <div class="fab-actions" id="fabActions" aria-hidden="true">
+      <!-- Anrufen (top, i=2 → last to animate in) -->
+      <div class="fab-item" style="--fab-i:2;">
+        <span class="fab-label">Anrufen</span>
+        <a href={`tel:${SITE.phoneTel}`} class="fab-action-btn" aria-label="Anrufen">
+          <Icon name="phone" size={20} strokeWidth={2} />
+        </a>
+      </div>
+      <!-- Anfrage stellen (middle, i=1) -->
+      <div class="fab-item" style="--fab-i:1;">
+        <span class="fab-label">Anfrage stellen</span>
+        <a href="#anfrage-funnel" class="fab-action-btn" id="fabFunnelLink" aria-label="Anfrage stellen">
+          <Icon name="message" size={20} strokeWidth={2} />
+        </a>
+      </div>
+      <!-- Nach oben (closest to FAB, i=0 → first to animate in) -->
+      <div class="fab-item" style="--fab-i:0;">
+        <span class="fab-label">Nach oben</span>
+        <button type="button" class="fab-action-btn" id="fabScrollTop" aria-label="Nach oben scrollen">
+          <Icon name="chevronUp" size={20} strokeWidth={2.5} />
+        </button>
+      </div>
+    </div>
+    <!-- Main FAB trigger -->
+    <button type="button" class="fab-main-btn" id="fabMain" aria-label="Aktionen" aria-expanded="false">
+      <Icon name="plus" size={22} strokeWidth={2.5} class="fab-icon-plus" />
+      <Icon name="close" size={22} strokeWidth={2.5} class="fab-icon-close" />
+    </button>
+  </div>
 
   <!-- AOS: Animate on Scroll via IntersectionObserver -->
   <script>
@@ -167,26 +186,63 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
   </script>
 
   <script>
-    function initScrollBehaviors() {
-      const goTopBtn = document.getElementById('goTopBtn');
-      if (!goTopBtn) return;
+    function initFab() {
+      const fabWrap = document.getElementById('fabWrap');
+      const fabMain = document.getElementById('fabMain');
+      const fabActions = document.getElementById('fabActions');
+      const fabScrollTop = document.getElementById('fabScrollTop');
+      const fabFunnelLink = document.getElementById('fabFunnelLink');
 
-      const onScroll = () => {
+      if (!fabWrap || !fabMain || !fabActions) return;
+
+      let isOpen = false;
+
+      window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
-          goTopBtn.classList.add('show');
+          fabWrap.classList.add('show');
         } else {
-          goTopBtn.classList.remove('show');
+          fabWrap.classList.remove('show');
+          if (isOpen) close();
         }
-      };
+      }, { passive: true });
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      goTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      function open() {
+        isOpen = true;
+        fabMain.classList.add('open');
+        fabActions.classList.add('open');
+        fabMain.setAttribute('aria-expanded', 'true');
+        fabActions.setAttribute('aria-hidden', 'false');
+      }
+
+      function close() {
+        isOpen = false;
+        fabMain.classList.remove('open');
+        fabActions.classList.remove('open');
+        fabMain.setAttribute('aria-expanded', 'false');
+        fabActions.setAttribute('aria-hidden', 'true');
+      }
+
+      fabMain.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen ? close() : open();
+      });
+
+      fabScrollTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        close();
+      });
+
+      fabFunnelLink?.addEventListener('click', () => close());
+
+      document.addEventListener('click', (e) => {
+        if (isOpen && !fabWrap.contains(e.target as Node)) close();
+      });
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initScrollBehaviors);
+      document.addEventListener('DOMContentLoaded', initFab);
     } else {
-      initScrollBehaviors();
+      initFab();
     }
   </script>
 </body>

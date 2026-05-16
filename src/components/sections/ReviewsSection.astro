@@ -6,6 +6,7 @@
  */
 
 import { SITE } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
 
 const reviews = [
   {
@@ -47,9 +48,7 @@ const reviews = [
       <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
         <div style="display:flex; align-items:center; gap:0.375rem;">
           {Array(5).fill(null).map(() => (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#e8922a" aria-hidden="true">
-              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-            </svg>
+            <Icon name="star" size={20} fill="#e8922a" stroke="none" strokeWidth={0} />
           ))}
         </div>
         <span style="font-size:1.125rem; font-weight:700; color:var(--color-text-heading);">5.0</span>
@@ -64,9 +63,7 @@ const reviews = [
           <!-- Stars -->
           <div style="display:flex; gap:0.25rem; margin-bottom:1rem;" aria-label="5 von 5 Sternen">
             {Array(5).fill(null).map(() => (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8922a" aria-hidden="true">
-                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-              </svg>
+              <Icon name="star" size={16} fill="#e8922a" stroke="none" strokeWidth={0} />
             ))}
           </div>
 
@@ -98,10 +95,7 @@ const reviews = [
         class="btn-outline"
         aria-label="Alle Bewertungen auf Google ansehen"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12,8 12,12 14,14"/>
-        </svg>
+        <Icon name="time" size={16} strokeWidth={2} />
         Alle Bewertungen auf Google ansehen
       </a>
     </div>

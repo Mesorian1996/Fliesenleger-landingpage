@@ -2,10 +2,11 @@
 /**
  * ContactSection
  * @category sections
- * @description Standalone contact form section wired to Cloudflare Worker / Resend.
+ * @description Dark-themed contact section — form + info on navy background for high visibility.
  */
 
 import { SITE } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
 
 interface Props {
   heading?: string;
@@ -14,74 +15,80 @@ interface Props {
 }
 
 const {
-  heading = 'Kontakt aufnehmen',
-  subheading = 'Schreiben Sie uns – oder rufen Sie direkt an. Wir melden uns innerhalb von 24 Stunden.',
+  heading = 'Jetzt kostenlos anfragen',
+  subheading = 'Rufen Sie uns an oder nutzen Sie das Formular. Wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.',
   showMap = true,
 } = Astro.props;
 ---
 
-<section id="kontakt-form" class="py-20 bg-subtle" aria-labelledby="contactHeading">
+<section id="kontakt-form" class="contact-section" aria-labelledby="contactHeading">
   <div class="container">
-
     <div class="contact-layout">
 
-      <!-- Left: Info + map -->
+      <!-- Left: Info -->
       <div class="contact-info" data-aos="fade-right">
-        <span class="section-label">Direkt anfragen</span>
-        <h2 id="contactHeading" style="font-size:clamp(1.75rem,3vw,2.5rem); margin:0 0 1rem; letter-spacing:-0.025em;">
+
+        <span class="section-label section-label--accent">Direkt anfragen</span>
+        <h2 id="contactHeading" class="contact-heading">
           {heading}
         </h2>
-        <p style="color:var(--color-text-muted); font-size:1rem; line-height:1.7; margin:0 0 2rem;">
+        <p class="contact-sub">
           {subheading}
         </p>
 
+        <!-- Contact rows -->
         <div class="contact-rows">
-          <a href={`tel:${SITE.phoneTel}`} class="contact-row">
-            <div class="contact-row__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.7H6.6a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.3a16 16 0 0 0 6 6l.86-1.22a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.4 17.4z"/>
-              </svg>
-            </div>
+          <a href={`tel:${SITE.phoneTel}`} class="crow">
+            <span class="crow__icon">
+              <Icon name="phone" size={18} strokeWidth={2} />
+            </span>
             <div>
-              <span class="contact-row__label">Telefon</span>
-              <span class="contact-row__value">{SITE.phone}</span>
+              <span class="crow__label">Telefon</span>
+              <span class="crow__value">{SITE.phone}</span>
             </div>
           </a>
 
-          <a href={`mailto:${SITE.email}`} class="contact-row">
-            <div class="contact-row__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
+          <a href={`mailto:${SITE.email}`} class="crow">
+            <span class="crow__icon">
+              <Icon name="mail" size={18} strokeWidth={2} />
+            </span>
             <div>
-              <span class="contact-row__label">E-Mail</span>
-              <span class="contact-row__value">{SITE.email}</span>
+              <span class="crow__label">E-Mail</span>
+              <span class="crow__value">{SITE.email}</span>
             </div>
           </a>
 
-          <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" class="contact-row">
-            <div class="contact-row__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-              </svg>
-            </div>
+          <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" class="crow">
+            <span class="crow__icon">
+              <Icon name="whatsapp" size={18} fill="currentColor" stroke="none" strokeWidth={0} />
+            </span>
             <div>
-              <span class="contact-row__label">WhatsApp</span>
-              <span class="contact-row__value">Nachricht senden</span>
+              <span class="crow__label">WhatsApp</span>
+              <span class="crow__value">Nachricht senden</span>
             </div>
           </a>
 
-          <div class="contact-row" style="cursor:default;">
-            <div class="contact-row__icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
+          <div class="crow" style="cursor:default;">
+            <span class="crow__icon">
+              <Icon name="mapPin" size={18} strokeWidth={2} />
+            </span>
             <div>
-              <span class="contact-row__label">Adresse</span>
-              <span class="contact-row__value">{SITE.address.street}, {SITE.address.zip} {SITE.address.city}</span>
+              <span class="crow__label">Adresse</span>
+              <span class="crow__value">{SITE.address.street}, {SITE.address.zip} {SITE.address.city}</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Opening hours -->
+        <div class="opening-hours">
+          <p class="oh-title">Öffnungszeiten</p>
+          <div class="oh-row">
+            <span>Mo – Fr</span>
+            <span>08:00 – 18:00 Uhr</span>
+          </div>
+          <div class="oh-row">
+            <span>Sa</span>
+            <span>09:00 – 13:00 Uhr</span>
           </div>
         </div>
 
@@ -91,8 +98,8 @@ const {
               title="Standort Limani Fliesenleger Mannheim"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2597.3!2d8.466!3d49.489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4797cc1b4c4c4c4d%3A0x0!2sE7+13%2C+68159+Mannheim!5e0!3m2!1sde!2sde!4v1"
               width="100%"
-              height="200"
-              style="border:0; border-radius:var(--radius-card);"
+              height="180"
+              style="border:0; border-radius:0.75rem;"
               allowfullscreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -101,51 +108,64 @@ const {
         )}
       </div>
 
-      <!-- Right: Form -->
-      <div class="contact-form-wrap" data-aos="fade-left">
+      <!-- Right: Form card -->
+      <div class="contact-form-card" data-aos="fade-left">
+
+        <!-- Trust badge -->
+        <div class="form-trust-badge">
+          <Icon name="time" size={14} strokeWidth={2.5} />
+          Wir antworten innerhalb von 24 Stunden
+        </div>
+
         <form id="contactForm" class="contact-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cf-vorname">Vorname *</label>
-              <input type="text" id="cf-vorname" name="vorname" required autocomplete="given-name" placeholder="Max" enterkeyhint="next" />
+          <div class="form-row-2">
+            <div class="fg">
+              <label class="flabel" for="cf-vorname">Vorname *</label>
+              <input class="finput" type="text" id="cf-vorname" name="vorname" required autocomplete="given-name" placeholder="Max" enterkeyhint="next" />
             </div>
-            <div class="form-group">
-              <label for="cf-nachname">Nachname *</label>
-              <input type="text" id="cf-nachname" name="nachname" required autocomplete="family-name" placeholder="Mustermann" enterkeyhint="next" />
+            <div class="fg">
+              <label class="flabel" for="cf-nachname">Nachname *</label>
+              <input class="finput" type="text" id="cf-nachname" name="nachname" required autocomplete="family-name" placeholder="Mustermann" enterkeyhint="next" />
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="cf-telefon">Telefon *</label>
-            <input type="tel" id="cf-telefon" name="telefon" required autocomplete="tel" placeholder="0171 234 5678" enterkeyhint="next" />
+          <div class="fg">
+            <label class="flabel" for="cf-telefon">Telefon *</label>
+            <input class="finput" type="tel" id="cf-telefon" name="telefon" required autocomplete="tel" placeholder="0171 234 5678" enterkeyhint="next" />
           </div>
 
-          <div class="form-group">
-            <label for="cf-email">E-Mail *</label>
-            <input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="max@example.de" enterkeyhint="next" />
+          <div class="fg">
+            <label class="flabel" for="cf-email">E-Mail *</label>
+            <input class="finput" type="email" id="cf-email" name="email" required autocomplete="email" placeholder="max@example.de" enterkeyhint="next" />
           </div>
 
-          <div class="form-group">
-            <label for="cf-nachricht">Ihre Nachricht</label>
-            <textarea id="cf-nachricht" name="nachricht" rows="4" placeholder="Beschreiben Sie kurz Ihr Projekt – Fläche, Wunschtermin, besondere Anforderungen…" enterkeyhint="send"></textarea>
+          <div class="fg">
+            <label class="flabel" for="cf-nachricht">
+              Ihr Projekt
+              <span class="flabel-opt">(optional)</span>
+            </label>
+            <textarea class="finput ftextarea" id="cf-nachricht" name="nachricht" rows="4" placeholder="Welche Arbeiten stehen an? Fläche, Wunschtermin, besondere Anforderungen…" enterkeyhint="send"></textarea>
           </div>
 
           <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
 
-          <button type="submit" id="cfSubmitBtn" class="btn-primary" style="width:100%;">
+          <button type="submit" id="cfSubmitBtn" class="cf-submit-btn">
+            <Icon name="send" size={16} strokeWidth={2.5} />
             Nachricht absenden
           </button>
 
-          <p id="cfSuccess" class="form-feedback form-feedback--success" hidden>
-            Ihre Nachricht wurde gesendet. Wir melden uns innerhalb von 24 Stunden.
+          <p id="cfSuccess" class="cf-feedback cf-feedback--ok" hidden>
+            <Icon name="check" size={16} strokeWidth={2.5} />
+            Ihre Nachricht wurde gesendet – wir melden uns bald.
           </p>
-          <p id="cfError" class="form-feedback form-feedback--error" hidden>
-            Ein Fehler ist aufgetreten. Bitte rufen Sie uns direkt an: <a href="tel:+491733293668">0173 329 3668</a>
+          <p id="cfError" class="cf-feedback cf-feedback--err" hidden>
+            Fehler beim Senden. Rufen Sie uns direkt an:
+            <a href="tel:+491733293668">0173 329 3668</a>
           </p>
 
-          <p style="font-size:0.8125rem; color:var(--color-text-muted); margin:0.75rem 0 0; line-height:1.6;">
-            * Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+          <p class="cf-privacy">
+            * Pflichtfelder. Ihre Daten werden ausschließlich zur Anfragenbearbeitung verwendet.
           </p>
         </form>
       </div>
@@ -155,45 +175,74 @@ const {
 </section>
 
 <style>
+  .contact-section {
+    background: var(--color-brand-primary);
+    padding: 5rem 0;
+  }
+
   .contact-layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
     align-items: start;
   }
 
   @media (min-width: 768px) {
-    .contact-layout { grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .contact-layout { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+  }
+
+  /* ── Left side ── */
+  .section-label--accent {
+    color: var(--color-brand-accent);
+    margin-bottom: 0.875rem;
+  }
+  .section-label--accent::before {
+    background: var(--color-brand-accent);
+  }
+
+  .contact-heading {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.025em;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+  }
+
+  .contact-sub {
+    color: rgba(255,255,255,0.72);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 2rem;
+    max-width: 440px;
   }
 
   .contact-rows {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: var(--radius-card);
     overflow: hidden;
-    background: #fff;
     margin-bottom: 1.5rem;
   }
 
-  .contact-row {
+  .crow {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.875rem 1.25rem;
-    border-bottom: 1px solid var(--color-border);
+    gap: 0.875rem;
+    padding: 0.875rem 1.125rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     text-decoration: none;
     transition: background 0.15s ease;
   }
-  .contact-row:last-child { border-bottom: none; }
-  a.contact-row:hover { background: var(--color-surface-subtle); }
+  .crow:last-child { border-bottom: none; }
+  a.crow:hover { background: rgba(255,255,255,0.06); }
 
-  .contact-row__icon {
+  .crow__icon {
     width: 38px;
     height: 38px;
     border-radius: 0.625rem;
-    background: rgba(232, 146, 42, 0.1);
+    background: rgba(232, 146, 42, 0.18);
     color: var(--color-brand-accent);
     display: flex;
     align-items: center;
@@ -201,85 +250,201 @@ const {
     flex-shrink: 0;
   }
 
-  .contact-row__label {
+  .crow__label {
     display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-text-muted);
-    margin-bottom: 0.125rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.1rem;
   }
 
-  .contact-row__value {
+  .crow__value {
     display: block;
     font-size: 0.9375rem;
     font-weight: 500;
-    color: var(--color-text-heading);
+    color: rgba(255,255,255,0.9);
   }
+
+  .opening-hours {
+    padding: 1rem 1.125rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .oh-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: rgba(255,255,255,0.45);
+    margin: 0 0 0.5rem;
+  }
+
+  .oh-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.8);
+    padding: 0.2rem 0;
+  }
+  .oh-row span:last-child { font-weight: 600; color: rgba(255,255,255,0.95); }
 
   .contact-map {
-    border-radius: var(--radius-card);
+    border-radius: 0.75rem;
     overflow: hidden;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255,255,255,0.12);
   }
 
-  /* Form */
-  .contact-form-wrap {
+  /* ── Right side: form card ── */
+  .contact-form-card {
     background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-card);
-    padding: 2rem;
+    border-radius: 1.25rem;
+    padding: 2.25rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  }
+
+  .form-trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand-accent);
+    background: rgba(232, 146, 42, 0.08);
+    border: 1px solid rgba(232, 146, 42, 0.25);
+    border-radius: 999px;
+    padding: 0.35rem 0.875rem;
+    margin-bottom: 1.5rem;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.125rem;
   }
 
-  .form-row {
+  .form-row-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-
   @media (max-width: 480px) {
-    .form-row { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
   }
 
-  .form-group {
+  .fg {
     display: flex;
     flex-direction: column;
     gap: 0.375rem;
   }
 
-  .form-group label {
+  .flabel {
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text-heading);
   }
 
-  .form-feedback {
+  .flabel-opt {
+    font-weight: 400;
+    color: var(--color-text-muted);
+    margin-left: 0.25rem;
+  }
+
+  .finput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 0.625rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: var(--color-text-heading);
+    background: var(--color-surface-warm);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    outline: none;
+    appearance: none;
+  }
+
+  .finput:focus {
+    border-color: var(--color-brand-accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(232, 146, 42, 0.15);
+  }
+
+  .finput.invalid {
+    border-color: #dc2626;
+  }
+
+  .ftextarea {
+    resize: none;
+    min-height: 100px;
+  }
+
+  .cf-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1.75rem;
+    background: var(--color-brand-accent);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--radius-btn);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .cf-submit-btn:hover {
+    background: var(--color-brand-accent-dark);
+    box-shadow: 0 6px 24px rgba(232, 146, 42, 0.4);
+  }
+
+  .cf-submit-btn:active {
+    transform: scale(0.98);
+  }
+
+  .cf-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .cf-feedback {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.875rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.625rem;
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
   }
-  .form-feedback--success {
+  .cf-feedback--ok {
     background: rgba(34, 197, 94, 0.1);
     color: #15803d;
     border: 1px solid rgba(34, 197, 94, 0.25);
   }
-  .form-feedback--error {
+  .cf-feedback--err {
     background: rgba(239, 68, 68, 0.1);
     color: #b91c1c;
     border: 1px solid rgba(239, 68, 68, 0.25);
   }
-  .form-feedback--error a { color: inherit; font-weight: 600; }
+  .cf-feedback--err a { color: inherit; font-weight: 700; }
 
-  .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+  .cf-privacy {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
 </style>
 
 <script>
@@ -298,7 +463,7 @@ const {
 
       if (!submitBtn) return;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Wird gesendet…';
+      submitBtn.innerHTML = 'Wird gesendet…';
 
       successMsg?.setAttribute('hidden', '');
       errorMsg?.setAttribute('hidden', '');
@@ -309,10 +474,9 @@ const {
         if (key !== '_gotcha') data[key] = String(value);
       });
 
-      // Honeypot check
       if (formData.get('_gotcha')) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Nachricht absenden';
+        submitBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Nachricht absenden`;
         return;
       }
 
@@ -326,14 +490,14 @@ const {
         if (res.ok) {
           successMsg?.removeAttribute('hidden');
           form.reset();
-          submitBtn.textContent = 'Gesendet';
+          submitBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Gesendet`;
         } else {
           throw new Error('Server error');
         }
       } catch {
         errorMsg?.removeAttribute('hidden');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Erneut senden';
+        submitBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Erneut senden`;
       }
     });
   }

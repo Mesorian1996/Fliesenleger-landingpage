@@ -2,13 +2,15 @@
 /**
  * LocalSeoSection
  * @category sections
- * @description SEO-rich regional section with cost info and city coverage.
+ * @description SEO-rich regional section with cost info, city coverage, and trust signals.
  */
 ---
 
 <section class="py-20 bg-subtle" aria-labelledby="localSeoHeading">
   <div class="container">
-    <div class="local-layout">
+
+    <!-- Top: Costs -->
+    <div class="local-layout" style="margin-bottom: 5rem;">
 
       <!-- Cost Info -->
       <div data-aos="fade-right">
@@ -84,6 +86,70 @@
       </div>
 
     </div>
+
+    <!-- Bottom: SEO-rich Text Content -->
+    <div class="seo-content-grid" data-aos="fade-up">
+
+      <div class="seo-block">
+        <h3 class="seo-block__heading">Fliesenleger in Mannheim seit über 30 Jahren</h3>
+        <p>
+          Limani Fliesenleger & Malerbetrieb ist ein inhabergeführter Handwerksbetrieb mit Sitz in Mannheim.
+          Seit über 30 Jahren verlegen wir Fliesen in Bädern, Küchen, Wohnräumen und Außenbereichen – und
+          haben in dieser Zeit mehr als 900 Projekte erfolgreich abgeschlossen. Unser Team besteht aus
+          ausgebildeten Fliesenlegern und Malern, die ihr Handwerk kennen und Qualität ernst nehmen.
+        </p>
+        <p>
+          Was uns ausmacht: Wir arbeiten sauber, termingerecht und kommunizieren ehrlich. Keine versteckten
+          Kosten, keine Überraschungen auf der Rechnung. Nach dem Vor-Ort-Termin erhalten Sie ein
+          detailliertes Angebot mit klaren Positionen.
+        </p>
+      </div>
+
+      <div class="seo-block">
+        <h3 class="seo-block__heading">Alle Leistungen aus einer Hand</h3>
+        <p>
+          Ob Sie ein einzelnes Zimmer neu fliesen, ein komplettes Bad sanieren oder eine ganze Wohnung
+          renovieren lassen möchten – wir übernehmen alle Gewerke und koordinieren das Projekt für Sie.
+          Das spart Ihnen Abstimmungsaufwand und Nerven.
+        </p>
+        <ul class="seo-list">
+          <li>Fliesenarbeiten – Wand, Boden, Bad, Küche, Außen</li>
+          <li>Badsanierung – Komplettbad inklusive ebenerdiger Dusche</li>
+          <li>Malerarbeiten & Verputzen – Glattputz, Strukturputz, Anstrich</li>
+          <li>Bodenverlegung – Vinyl, Parkett, Laminat, Estrich</li>
+          <li>Trockenbau – Vorwandinstallationen, Zwischenwände, Abhangdecken</li>
+          <li>Abbrucharbeiten & Entsorgung – fachgerecht und schnell</li>
+          <li>Wohnungssanierung – alle Gewerke koordiniert</li>
+        </ul>
+      </div>
+
+      <div class="seo-block">
+        <h3 class="seo-block__heading">Warum Mannheimer Kunden uns vertrauen</h3>
+        <p>
+          Fliesenleger gibt es viele. Einen Betrieb zu finden, der zuverlässig, pünktlich und zu einem
+          fairen Preis arbeitet, ist schwieriger. Viele unserer Kunden kommen auf Empfehlung – das ist
+          für uns das höchste Qualitätssignal.
+        </p>
+        <p>
+          Wir arbeiten besonders häufig mit Eigentümern und Vermietern in Mannheim zusammen, die
+          Wohnungen zwischen Mietern sanieren oder modernisieren möchten. Aber auch Eigennutzer und
+          Bauträger setzen auf unser Know-how. Kurze Reaktionszeiten, Direktkontakt zum Chef und ein
+          Team, das die Region kennt – das schätzen unsere Kunden.
+        </p>
+      </div>
+
+      <div class="seo-block">
+        <h3 class="seo-block__heading">Schnell erreichbar im Rhein-Neckar-Raum</h3>
+        <p>
+          Unser Betrieb ist in Mannheim ansässig und täglich in der Region aktiv. Wir fahren nach
+          Ludwigshafen, Heidelberg, Viernheim, Weinheim, Frankenthal und in alle Mannheimer Stadtteile –
+          von Neckarau bis Vogelstang, von Käfertal bis Rheinau. Rufen Sie uns an oder schreiben Sie
+          über das Kontaktformular. Wir melden uns schnell für einen ersten Termin.
+        </p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -136,6 +202,64 @@
     font-size: 0.8125rem;
     font-weight: 500;
     color: var(--color-text-body);
+  }
+
+  /* SEO Text Grid */
+  .seo-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 3.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .seo-content-grid { grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
+  }
+
+  .seo-block__heading {
+    font-family: var(--font-heading);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text-heading);
+    letter-spacing: -0.01em;
+    margin: 0 0 0.75rem;
+  }
+
+  .seo-block p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin: 0 0 0.75rem;
+  }
+  .seo-block p:last-child { margin-bottom: 0; }
+
+  .seo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .seo-list li {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .seo-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-brand-accent);
   }
 
   .py-20 { padding-top: 5rem; padding-bottom: 5rem; }

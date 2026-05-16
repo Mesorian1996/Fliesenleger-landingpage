@@ -5,11 +5,13 @@
  * @description Zigzag service layout with image + text pairs.
  */
 
+import Icon from '@/components/ui/Icon.astro';
+
 const services = [
   {
     title: 'Fliesenarbeiten',
     href: '/fliesenarbeiten-mannheim',
-    img: '/assets/images/Fliesenarbeiten_compressed.webp',
+    img: '/assets/images/Fliesenarbeiten.jpg',
     imgAlt: 'Fliesenarbeiten Mannheim – Badezimmer mit hochwertigen Fliesen',
     bullets: [
       'Badezimmer, Küchen, Balkone & Terrassen',
@@ -21,7 +23,7 @@ const services = [
   {
     title: 'Badsanierung',
     href: '/badsanierung-mannheim',
-    img: '/assets/images/Fliesen_bad_10.webp',
+    img: '/assets/images/Fliesen_bad_10.jpeg',
     imgAlt: 'Badsanierung Mannheim – modernes Badezimmer',
     bullets: [
       'Komplette Badmodernisierungen',
@@ -57,7 +59,7 @@ const services = [
   {
     title: 'Bodenverlegung & Estrich',
     href: '/bodenarbeiten-mannheim',
-    img: '/assets/images/Fliesen_boden.webp',
+    img: '/assets/images/Fliesen_boden.jpeg',
     imgAlt: 'Bodenverlegung Mannheim – Parkett und Vinyl',
     bullets: [
       'Vinyl, Laminat, Parkett & Fliesen',
@@ -96,9 +98,7 @@ const services = [
       </p>
       <a href="#anfrage-funnel" class="btn-primary">
         Jetzt unverbindlich anfragen
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polyline points="9,18 15,12 9,6"/>
-        </svg>
+        <Icon name="chevronRight" size={16} strokeWidth={2.5} />
       </a>
     </div>
 
@@ -136,9 +136,7 @@ const services = [
             </ul>
             <a href={s.href} class="btn-outline service-link">
               Mehr erfahren
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="9,18 15,12 9,6"/>
-              </svg>
+              <Icon name="chevronRight" size={16} strokeWidth={2.5} />
             </a>
           </div>
         </article>
@@ -157,9 +155,7 @@ const services = [
         ].map(item => (
           <a href={item.href} class="service-chip">
             {item.label}
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9,18 15,12 9,6"/>
-            </svg>
+            <Icon name="chevronRight" size={12} strokeWidth={2.5} />
           </a>
         ))}
       </div>

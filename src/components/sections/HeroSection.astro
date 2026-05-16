@@ -2,10 +2,13 @@
 /**
  * HeroSection
  * @category sections
- * @description Fullscreen hero with image slider, left-aligned text, and animated slide tabs.
+ * @description Fullscreen hero slider — unified for mobile and desktop.
+ *   Mobile: background image slider with dot navigation + touch swipe.
+ *   Desktop: adds animated tab bar at bottom.
  */
 
 import { SITE } from '@/config/site';
+import Icon from '@/components/ui/Icon.astro';
 
 const slides = [
   {
@@ -16,29 +19,29 @@ const slides = [
     text: 'Präzise verlegte Wand- und Bodenfliesen für Wohnräume, Bäder und Außenbereiche in Mannheim & Umgebung.',
   },
   {
-    bg: '/assets/images/Malerarbeiten_bunt.webp',
-    bgMobile: '/assets/images/Malerarbeiten_bunt.webp',
+    bg: '/assets/images/Malerarbeiten_bunt.jpeg',
+    bgMobile: '/assets/images/Malerarbeiten_bunt.jpeg',
     label: 'Malerarbeiten',
     title: 'Saubere Maler-\nund Verputzarbeiten',
     text: 'Spachtel, Glattputz, Strukturputz und Anstrich – für Ihre Renovierung im Raum Mannheim.',
   },
   {
-    bg: '/assets/images/Parkett_1.webp',
-    bgMobile: '/assets/images/Parkett_1.webp',
+    bg: '/assets/images/Parkett_1.jpeg',
+    bgMobile: '/assets/images/Parkett_1.jpeg',
     label: 'Bodenverlegung',
     title: 'Vinylboden, Parkett\nund Laminat',
     text: 'Bodenverlegung und Estricharbeiten für Miet- und Eigentumswohnungen in Mannheim & Ludwigshafen.',
   },
   {
     bg: '/assets/images/Verputzen2_hero.webp',
-    bgMobile: '/assets/images/Verputzen2_compressed.webp',
+    bgMobile: '/assets/images/Verputzen2.jpg',
     label: 'Verputzarbeiten',
     title: 'Glatte Wände\nvon Q1 bis Q4',
     text: 'Glatt- oder Strukturputz – perfekt vorbereitet für Fliesen, Tapete oder Anstrich.',
   },
   {
     bg: '/assets/images/Wohnung_1_hero.webp',
-    bgMobile: '/assets/images/Wohnung_6_compressed.webp',
+    bgMobile: '/assets/images/Wohnung_6.jpeg',
     label: 'Wohnungssanierung',
     title: 'Ganze Wohnungen\nsanieren',
     text: 'Von Abbruch bis Fertigstellung – alle Gewerke aus einer Hand koordiniert in Mannheim.',
@@ -46,70 +49,47 @@ const slides = [
 ];
 ---
 
-<!-- Mobile Hero (static, first slide) -->
-<section
-  class="hero-mobile-only"
-  aria-label="Limani Fliesenleger – Ihr Handwerksbetrieb in Mannheim"
->
-  <div class="hero-mobile-bg">
-    <img
-      src={slides[0].bgMobile}
-      alt="Fliesenarbeiten Mannheim – Limani Fliesenleger"
-      width="750"
-      height="1000"
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-      style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;"
-    />
-    <div class="hero-overlay"></div>
-  </div>
-  <div class="container" style="position:relative; z-index:2;">
-    <p class="hero-kicker">Ihr Fliesenleger in Mannheim</p>
-    <h1 class="hero-title-mobile">
-      Fliesen, Böden &amp;<br>Wohnungssanierung
-    </h1>
-    <p class="hero-sub-mobile">
-      Komplettsanierungen, Teilrenovierungen und einzelne Gewerke –
-      sauber koordiniert und termintreu.
-    </p>
-    <a href="#anfrage-funnel" class="btn-primary hero-cta" style="font-size:1rem; padding:0.875rem 2rem;">
-      Kostenlose Beratung
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="9,18 15,12 9,6"/>
-      </svg>
-    </a>
-  </div>
-</section>
+<section id="heroSlider" class="hero" aria-label="Limani Fliesenleger – Leistungsübersicht">
 
-<!-- Desktop Hero Slider -->
-<section class="hero-desktop-only" id="heroSlider" aria-label="Limani Fliesenleger – Leistungsübersicht">
-  <!-- Slide images (preloaded) -->
+  <!-- Background images -->
   {slides.map((slide, i) => (
     <div
-      class:list={['hero-slide-bg', i === 0 ? 'active' : '']}
+      class:list={['hero-bg', i === 0 ? 'active' : '']}
       data-slide={i}
       aria-hidden="true"
     >
+      <!-- Mobile image -->
       <img
+        class="hero-bg-img hero-bg-img--mobile"
+        src={slide.bgMobile}
+        alt={slide.label}
+        loading={i === 0 ? 'eager' : 'lazy'}
+        fetchpriority={i === 0 ? 'high' : 'auto'}
+        decoding="async"
+      />
+      <!-- Desktop image -->
+      <img
+        class="hero-bg-img hero-bg-img--desktop"
         src={slide.bg}
         alt={slide.label}
         loading={i === 0 ? 'eager' : 'lazy'}
         fetchpriority={i === 0 ? 'high' : 'auto'}
         decoding="async"
-        style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;"
       />
     </div>
   ))}
-  <div class="hero-overlay"></div>
 
-  <!-- Slide Content -->
-  <div class="container" style="position:relative; z-index:3; width:100%;">
-    <div class="hero-desktop-content">
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="container hero-container">
+
+    <!-- Text blocks -->
+    <div class="hero-content">
       {slides.map((slide, i) => (
-        <div class:list={['hero-text-block', i === 0 ? 'active' : '']} data-slide={i}>
+        <div class:list={['hero-text', i === 0 ? 'active' : '']} data-slide={i}>
           <span class="hero-kicker">{slide.label}</span>
-          <h1 class="hero-title-desktop">
+          <h1 class="hero-title">
             {slide.title.split('\n').map((line, j) => (
               <>
                 {line}
@@ -117,15 +97,14 @@ const slides = [
               </>
             ))}
           </h1>
-          <p class="hero-sub-desktop">{slide.text}</p>
-          <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
-            <a href="#anfrage-funnel" class="btn-primary" style="font-size:1rem; padding:0.875rem 2rem;">
+          <p class="hero-sub">{slide.text}</p>
+          <div class="hero-actions">
+            <a href="#anfrage-funnel" class="btn-primary hero-btn-primary">
               Kostenloses Angebot
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="9,18 15,12 9,6"/>
-              </svg>
+              <Icon name="chevronRight" size={16} strokeWidth={2.5} />
             </a>
-            <a href={`tel:${SITE.phoneTel}`} class="btn-outline-light" style="font-size:1rem; padding:0.875rem 1.75rem;">
+            <a href={`tel:${SITE.phoneTel}`} class="btn-outline-light hero-btn-outline">
+              <Icon name="phone" size={15} strokeWidth={2} />
               {SITE.phone}
             </a>
           </div>
@@ -133,7 +112,19 @@ const slides = [
       ))}
     </div>
 
-    <!-- Slide Tabs -->
+    <!-- Mobile: dot navigation -->
+    <div class="hero-dots" aria-label="Slide Navigation">
+      {slides.map((_, i) => (
+        <button
+          class:list={['hero-dot', i === 0 ? 'active' : '']}
+          data-slide={i}
+          type="button"
+          aria-label={`Slide ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <!-- Desktop: tab bar -->
     <div class="hero-tabs" role="tablist" aria-label="Leistungsauswahl">
       {slides.map((slide, i) => (
         <button
@@ -148,52 +139,107 @@ const slides = [
         </button>
       ))}
     </div>
+
   </div>
 
-  <!-- Prev/Next -->
-  <div class="hero-nav">
-    <button id="heroPrev" class="hero-nav-btn" type="button" aria-label="Vorheriger Slide">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="15,18 9,12 15,6"/>
-      </svg>
-    </button>
-    <button id="heroNext" class="hero-nav-btn" type="button" aria-label="Nächster Slide">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="9,18 15,12 9,6"/>
-      </svg>
-    </button>
-  </div>
+  <!-- Prev / Next arrows (both mobile + desktop, hidden on small) -->
+  <button id="heroPrev" class="hero-nav-btn hero-nav-prev" type="button" aria-label="Vorheriger Slide">
+    <Icon name="chevronLeft" size={20} strokeWidth={2.5} />
+  </button>
+  <button id="heroNext" class="hero-nav-btn hero-nav-next" type="button" aria-label="Nächster Slide">
+    <Icon name="chevronRight" size={20} strokeWidth={2.5} />
+  </button>
+
 </section>
 
 <style>
-  /* Mobile Hero */
-  .hero-mobile-only {
+  /* ── Base ─────────────────────────────────────────────────── */
+  .hero {
     position: relative;
     min-height: 100dvh;
     display: flex;
     align-items: flex-end;
-    padding: 0 0 4rem;
-    color: #fff;
     overflow: hidden;
+    color: #fff;
   }
-  .hero-mobile-bg {
+
+  /* ── Backgrounds ──────────────────────────────────────────── */
+  .hero-bg {
     position: absolute;
     inset: 0;
     z-index: 0;
+    opacity: 0;
+    transition: opacity 0.7s ease;
   }
+  .hero-bg.active { opacity: 1; }
+
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-bg-img--mobile  { display: block; }
+  .hero-bg-img--desktop { display: none; }
+
+  @media (min-width: 768px) {
+    .hero-bg-img--mobile  { display: none; }
+    .hero-bg-img--desktop { display: block; }
+  }
+
+  /* ── Overlay ──────────────────────────────────────────────── */
   .hero-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
     background: linear-gradient(
       180deg,
-      rgba(12, 27, 46, 0.25) 0%,
-      rgba(12, 27, 46, 0.72) 100%
+      rgba(12,27,46,0.22) 0%,
+      rgba(12,27,46,0.70) 100%
     );
-    z-index: 1;
+  }
+
+  /* ── Container / layout ───────────────────────────────────── */
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 5rem; /* space for dots */
   }
 
   @media (min-width: 768px) {
-    .hero-mobile-only { display: none !important; }
+    .hero-container {
+      padding-bottom: 0; /* tabs sit below */
+    }
+  }
+
+  /* ── Text blocks ──────────────────────────────────────────── */
+  .hero-content {
+    position: relative;
+    max-width: 620px;
+    padding-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-content { padding-bottom: 6rem; }
+  }
+
+  .hero-text {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: heroTextIn 0.45s ease both;
+  }
+  .hero-text.active { display: flex; }
+
+  @keyframes heroTextIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .hero-kicker {
@@ -205,99 +251,97 @@ const slides = [
     color: var(--color-brand-accent);
     margin-bottom: 0.75rem;
   }
-  .hero-title-mobile {
-    font-size: clamp(1.875rem, 6vw, 2.5rem);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.1;
-    margin: 0 0 1rem;
-  }
-  .hero-sub-mobile {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.88);
-    line-height: 1.65;
-    margin: 0 0 1.75rem;
-    max-width: 420px;
-  }
-  .hero-cta { position: relative; z-index: 2; }
 
-  /* Desktop Hero */
-  .hero-desktop-only {
-    display: none;
-    position: relative;
-    min-height: 100dvh;
-    align-items: flex-end;
-    padding-bottom: 0;
-    overflow: hidden;
-    color: #fff;
-  }
-  @media (min-width: 768px) {
-    .hero-desktop-only {
-      display: flex;
-    }
-  }
-
-  .hero-slide-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-  }
-  .hero-slide-bg.active { opacity: 1; }
-
-  .hero-desktop-content {
-    position: relative;
-    z-index: 2;
-    max-width: 620px;
-    padding-bottom: 6rem;
-  }
-
-  .hero-text-block {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .hero-text-block.active { display: flex; }
-
-  .hero-title-desktop {
-    font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+  .hero-title {
+    font-size: clamp(1.875rem, 6vw, 3.75rem);
     font-weight: 700;
     color: #fff;
     line-height: 1.08;
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.125rem;
     letter-spacing: -0.02em;
   }
-  .hero-sub-desktop {
-    font-size: 1.0625rem;
-    color: rgba(255,255,255,0.85);
+
+  .hero-sub {
+    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+    color: rgba(255,255,255,0.88);
     line-height: 1.65;
-    margin: 0 0 2rem;
+    margin: 0 0 1.875rem;
     max-width: 500px;
   }
 
-  /* Slide Tabs */
-  .hero-tabs {
-    position: relative;
-    z-index: 3;
+  .hero-actions {
     display: flex;
-    gap: 0;
-    background: rgba(12,27,46,0.65);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255,255,255,0.12);
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin-top: auto;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding: 0 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
   }
-  .hero-tabs::-webkit-scrollbar { display: none; }
+
+  .hero-btn-primary { font-size: 1rem; padding: 0.875rem 2rem; }
+  .hero-btn-outline  { font-size: 1rem; padding: 0.875rem 1.75rem; display: inline-flex; align-items: center; gap: 0.5rem; }
+
+  /* ── Mobile dot navigation ────────────────────────────────── */
+  .hero-dots {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+  }
+
+  @media (min-width: 768px) {
+    .hero-dots { display: none; }
+  }
+
+  .hero-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+  }
+
+  .hero-dot.active {
+    background: var(--color-brand-accent);
+    width: 22px;
+    border-radius: 4px;
+    transform: none;
+  }
+
+  /* ── Desktop tab bar ──────────────────────────────────────── */
+  .hero-tabs {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero-tabs {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      z-index: 4;
+      background: rgba(12,27,46,0.65);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0;
+    }
+    .hero-tabs::-webkit-scrollbar { display: none; }
+  }
 
   .hero-tab {
     position: relative;
-    flex-shrink: 0;
-    padding: 1.1rem 1.25rem 1rem;
+    flex: 1;
+    min-width: min-content;
+    padding: 1.1rem 1rem 1rem;
     background: none;
     border: none;
     font-family: var(--font-body);
@@ -307,15 +351,14 @@ const slides = [
     cursor: pointer;
     transition: color 0.2s ease;
     white-space: nowrap;
+    text-align: center;
   }
   .hero-tab:hover { color: rgba(255,255,255,0.9); }
   .hero-tab.active { color: #fff; font-weight: 600; }
   .hero-tab.active::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 0; left: 0; right: 0;
     height: 3px;
     background: var(--color-brand-accent);
     border-radius: 3px 3px 0 0;
@@ -323,8 +366,7 @@ const slides = [
 
   .hero-tab-progress {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 0; left: 0;
     height: 3px;
     background: var(--color-brand-accent);
     border-radius: 3px 3px 0 0;
@@ -337,19 +379,15 @@ const slides = [
   }
   @keyframes tabProgress {
     from { width: 0; }
-    to { width: 100%; }
+    to   { width: 100%; }
   }
 
-  /* Nav buttons */
-  .hero-nav {
-    position: absolute;
-    bottom: 4.5rem;
-    right: 1.25rem;
-    z-index: 10;
-    display: flex;
-    gap: 0.5rem;
-  }
+  /* ── Prev / Next arrows ───────────────────────────────────── */
   .hero-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
     width: 42px;
     height: 42px;
     border-radius: 0.625rem;
@@ -364,6 +402,19 @@ const slides = [
     backdrop-filter: blur(4px);
   }
   .hero-nav-btn:hover { background: rgba(255,255,255,0.22); }
+
+  .hero-nav-prev { left: 1rem; }
+  .hero-nav-next { right: 1rem; }
+
+  /* Shift arrows above tab bar on desktop */
+  @media (min-width: 768px) {
+    .hero-nav-btn {
+      /* Adjust: 50% of visible area above the tab bar (~3.2rem) */
+      top: calc(50% - 1.6rem);
+    }
+    .hero-nav-prev { left: 1.25rem; }
+    .hero-nav-next { right: 1.25rem; }
+  }
 </style>
 
 <script>
@@ -371,29 +422,32 @@ const slides = [
     const slider = document.getElementById('heroSlider');
     if (!slider) return;
 
-    const slides = slider.querySelectorAll<HTMLElement>('[data-slide]');
-    const slideBgs = slider.querySelectorAll<HTMLElement>('.hero-slide-bg');
-    const textBlocks = slider.querySelectorAll<HTMLElement>('.hero-text-block');
-    const tabs = slider.querySelectorAll<HTMLElement>('.hero-tab');
-    const prevBtn = document.getElementById('heroPrev');
-    const nextBtn = document.getElementById('heroNext');
+    const bgs        = slider.querySelectorAll<HTMLElement>('.hero-bg');
+    const texts      = slider.querySelectorAll<HTMLElement>('.hero-text');
+    const tabs       = slider.querySelectorAll<HTMLElement>('.hero-tab');
+    const dots       = slider.querySelectorAll<HTMLButtonElement>('.hero-dot');
+    const prevBtn    = document.getElementById('heroPrev');
+    const nextBtn    = document.getElementById('heroNext');
 
     let current = 0;
     let autoTimer: ReturnType<typeof setInterval> | null = null;
 
     function goTo(index: number) {
-      const total = slideBgs.length;
-      const next = (index + total) % total;
+      const total = bgs.length;
+      const next  = ((index % total) + total) % total;
 
-      slideBgs.forEach((bg, i) => bg.classList.toggle('active', i === next));
-      textBlocks.forEach((block, i) => block.classList.toggle('active', i === next));
+      bgs.forEach((el, i)   => el.classList.toggle('active', i === next));
+      texts.forEach((el, i) => el.classList.toggle('active', i === next));
+
       tabs.forEach((tab, i) => {
         tab.classList.toggle('active', i === next);
         tab.classList.remove('running');
         tab.setAttribute('aria-selected', String(i === next));
-        void (tab as HTMLElement).offsetWidth;
+        void tab.offsetWidth; // reflow for animation restart
         if (i === next) tab.classList.add('running');
       });
+
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === next));
 
       current = next;
     }
@@ -407,16 +461,38 @@ const slides = [
       if (autoTimer) clearInterval(autoTimer);
     }
 
+    // Tab clicks (desktop)
     tabs.forEach((tab, i) => {
-      tab.addEventListener('click', () => {
-        goTo(i);
-        stopAuto();
-        startAuto();
-      });
+      tab.addEventListener('click', () => { goTo(i); stopAuto(); startAuto(); });
     });
 
+    // Dot clicks (mobile)
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); stopAuto(); startAuto(); });
+    });
+
+    // Arrow buttons
     prevBtn?.addEventListener('click', () => { goTo(current - 1); stopAuto(); startAuto(); });
     nextBtn?.addEventListener('click', () => { goTo(current + 1); stopAuto(); startAuto(); });
+
+    // Touch swipe (mobile)
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    slider.addEventListener('touchstart', (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e: TouchEvent) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) { goTo(current + 1); } else { goTo(current - 1); }
+        stopAuto();
+        startAuto();
+      }
+    }, { passive: true });
 
     goTo(0);
     startAuto();
