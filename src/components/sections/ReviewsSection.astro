@@ -10,28 +10,46 @@ import Icon from '@/components/ui/Icon.astro';
 
 const reviews = [
   {
-    name: 'Thomas K.',
-    location: 'Mannheim',
-    text: 'Sehr saubere Arbeit, freundliche Beratung und schnelle Ausführung. Absolut zu empfehlen.',
-    date: '2024-09',
+    name: 'Donato de Tullio',
+    badge: 'Local Guide',
+    text: 'Sehr zufrieden mit der Arbeit von Limani Fliesenleger! Die Kommunikation war von Anfang an professionell und zuverlässig. Die Arbeiten wurden sauber, präzise und termingerecht ausgeführt. Man merkt sofort die hohe Qualität und die Liebe zum Detail.',
+    date: 'Februar 2026',
   },
   {
-    name: 'Sandra M.',
-    location: 'Mannheim-Neckarau',
-    text: 'Professionelle Arbeit. Herr Limani und sein Team haben unsere komplette Wohnung saniert. Alles top!',
-    date: '2024-07',
+    name: 'Julius Steinhäuser',
+    badge: '',
+    text: 'Absolut empfehlenswert! Herr Limani ist ein äußerst zuverlässiger, professioneller und freundlicher Handwerker. Die Arbeit wurde schnell, sauber und mit großer Sorgfalt ausgeführt – das Ergebnis hat meine Erwartungen sogar übertroffen.',
+    date: 'Februar 2026',
   },
   {
-    name: 'Michael R.',
-    location: 'Ludwigshafen',
-    text: 'Schnelle Terminvergabe, pünktliches Erscheinen und ein perfektes Ergebnis. Klare Empfehlung!',
-    date: '2024-05',
+    name: 'Nezir Neziri',
+    badge: '',
+    text: 'Ich bin äußerst zufrieden mit der Arbeit von Herrn Limani. Von der ersten Beratung bis zur finalen Umsetzung hat er durch seine Professionalität, Zuverlässigkeit und handwerkliche Präzision überzeugt. Die Fliesenarbeiten wurden sauber, präzise und in hoher Qualität ausgeführt.',
+    date: 'Dezember 2025',
   },
   {
-    name: 'Christine B.',
-    location: 'Mannheim-Lindenhof',
-    text: 'Badsanierung top gemacht – bodengleiche Dusche, großformatige Fliesen, alles perfekt ausgerichtet. Danke!',
-    date: '2024-03',
+    name: 'Ivano T.',
+    badge: '',
+    text: 'Ich kann Limani Fliesenleger wärmstens empfehlen! Das Team ist unglaublich professionell, zuverlässig und kreativ. Die Arbeit ist von höchster Qualität, und das Ergebnis hat meine Erwartungen übertroffen. Ein super Service, der jeden Cent wert ist.',
+    date: 'Februar 2026',
+  },
+  {
+    name: 'Aleko Offiziell',
+    badge: '',
+    text: 'Wir haben eine jahrelange Erfahrung mit Firma Limani. Wir wurden nie enttäuscht. Immer wieder hat die Firma perfekte Arbeiten geliefert. Der Chef an sich ist einer der sympathischsten Menschen die ich je kennengelernt habe.',
+    date: 'Februar 2026',
+  },
+  {
+    name: 'Elias',
+    badge: 'Local Guide',
+    text: 'Echt super Arbeit! Man merkt sofort, dass hier Profis am Werk sind und keine 0815 Fliesenleger. Die Leute sind super nett, pünktlich und wissen genau, was sie tun. Kann ich definitiv nur weiterempfehlen!',
+    date: 'Februar 2026',
+  },
+  {
+    name: 'L.',
+    badge: '',
+    text: 'Schnell, sauber und sehr erfahren. Immer wieder gerne! Da legt man sein Vertrauen gerne in die Hände erfahrener Handwerker, bei solchen hervorragenden Ergebnissen!',
+    date: 'Dezember 2025',
   },
 ];
 ---
@@ -79,7 +97,7 @@ const reviews = [
             </div>
             <div>
               <p style="font-size:0.875rem; font-weight:600; color:var(--color-text-heading); margin:0;">{r.name}</p>
-              <p style="font-size:0.8rem; color:var(--color-text-muted); margin:0;">{r.location}</p>
+              <p style="font-size:0.8rem; color:var(--color-text-muted); margin:0;">{r.badge ? `${r.badge} · ` : ''}{r.date}</p>
             </div>
           </div>
         </article>
@@ -120,6 +138,10 @@ const reviews = [
   }
 
   @media (min-width: 1024px) {
+    .reviews-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (min-width: 1280px) {
     .reviews-grid { grid-template-columns: repeat(4, 1fr); }
   }
 

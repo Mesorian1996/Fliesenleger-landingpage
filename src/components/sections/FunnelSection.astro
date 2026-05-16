@@ -2,7 +2,8 @@
 /**
  * FunnelSection
  * @category sections
- * @description 6-step qualification funnel with step counter, trust signals, and icon library.
+ * @description Premium 6-step conversion funnel. Dark split layout: pitch panel left, card right.
+ *              Placed directly below Hero for maximum conversion.
  */
 
 import { SITE } from '@/config/site';
@@ -11,269 +12,331 @@ import Icon from '@/components/ui/Icon.astro';
 
 <section id="anfrage-funnel" class="funnel-section" aria-labelledby="funnelHeading">
   <div class="container">
-    <div class="funnel-card">
+    <div class="funnel-layout">
 
-      <!-- Header -->
-      <div class="funnel-header">
-        <span class="funnel-badge">Kostenloses Angebot</span>
-        <h2 id="funnelHeading" class="funnel-title">Was können wir für Sie tun?</h2>
-        <p class="funnel-subtitle">
-          Wenige kurze Fragen – wir melden uns mit einem passenden Angebot.
+      <!-- ── Left: Pitch Panel ──────────────────────────────────── -->
+      <div class="funnel-pitch" data-aos="fade-right">
+        <span class="pitch-eyebrow">Kostenlos &amp; unverbindlich</span>
+
+        <h2 id="funnelHeading" class="pitch-headline">
+          Ihr persönliches<br />
+          <em class="pitch-accent">Angebot in 2&nbsp;Minuten</em>
+        </h2>
+
+        <p class="pitch-sub">
+          Kurze Fragen, ehrliches Angebot. Kein Verkaufsdruck, kein Kleingedrucktes.
         </p>
-      </div>
 
-      <!-- Progress -->
-      <div class="funnel-progress-wrap">
-        <div class="funnel-progress-header">
-          <span class="funnel-step-counter" id="funnelStepCounter">Schritt 1 von 6</span>
-          <span class="funnel-step-pct" id="funnelStepPct">17%</span>
-        </div>
-        <div class="funnel-track" role="progressbar" aria-valuenow={1} aria-valuemin={1} aria-valuemax={6} aria-label="Fortschritt" id="funnelProgress">
-          <div class="funnel-fill" id="funnelProgressFill" style="width:16.66%"></div>
-        </div>
-        <div class="funnel-dots">
-          {[1,2,3,4,5,6].map(n => (
-            <span class:list={['funnel-dot', n === 1 ? 'active' : '']} data-step={n} aria-hidden="true">
-              {n}
+        <!-- Value props -->
+        <ul class="pitch-props" aria-label="Ihre Vorteile">
+          <li class="pitch-prop">
+            <span class="prop-icon" aria-hidden="true">
+              <Icon name="check" size={14} stroke="var(--color-brand-accent)" strokeWidth={3} />
             </span>
-          ))}
+            <div>
+              <strong>Antwort in 24 Stunden</strong>
+              <span>Kein Warten auf einen Rückruf</span>
+            </div>
+          </li>
+          <li class="pitch-prop">
+            <span class="prop-icon" aria-hidden="true">
+              <Icon name="check" size={14} stroke="var(--color-brand-accent)" strokeWidth={3} />
+            </span>
+            <div>
+              <strong>Kostenlose Vor-Ort-Besichtigung</strong>
+              <span>Transparente Kalkulation vor dem Auftrag</span>
+            </div>
+          </li>
+          <li class="pitch-prop">
+            <span class="prop-icon" aria-hidden="true">
+              <Icon name="check" size={14} stroke="var(--color-brand-accent)" strokeWidth={3} />
+            </span>
+            <div>
+              <strong>900+ abgeschlossene Projekte</strong>
+              <span>Über 30 Jahre Erfahrung im Rhein-Neckar-Raum</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Google rating strip -->
+        <div class="pitch-rating" aria-label="Google Bewertungen: 5 von 5 Sternen, 7 Bewertungen">
+          <div class="rating-stars" aria-hidden="true">
+            {Array(5).fill(null).map(() => (
+              <Icon name="star" size={16} fill="#e8922a" stroke="none" strokeWidth={0} />
+            ))}
+          </div>
+          <span class="rating-score">5,0</span>
+          <span class="rating-label">auf Google &middot; 7&nbsp;Bewertungen</span>
         </div>
       </div>
 
-      <!-- Steps -->
-      <div id="funnelSteps">
+      <!-- ── Right: Funnel Card ─────────────────────────────────── -->
+      <div class="funnel-card" data-aos="fade-left">
 
-        <!-- Step 1: Service -->
-        <div class="funnel-step active" data-step="1">
-          <h3 class="step-q">Welche Arbeiten sollen erledigt werden?</h3>
-          <p class="step-hint">Mehrfachauswahl möglich</p>
-          <div class="option-grid option-grid--6">
-            {([
-              { value: 'Fliesenarbeiten',   label: 'Fliesenarbeiten',   sub: 'Bad, Küche, Wände, Böden',    iconSrc: '/assets/icons/fliesenverlegung.svg' },
-              { value: 'Badsanierung',      label: 'Badsanierung',      sub: 'Komplett oder Teilsanierung', iconSrc: '/assets/icons/badsanierung.svg' },
-              { value: 'Bodenverlegung',    label: 'Bodenverlegung',    sub: 'Vinyl, Laminat, Parkett',     iconSrc: '/assets/icons/bodenverlegung.svg' },
-              { value: 'Malerarbeiten',     label: 'Maler & Verputz',   sub: 'Wände, Decken, Spachtel',     iconSrc: '/assets/icons/malerarbeiten.svg' },
-              { value: 'Trockenbau',        label: 'Trockenbau',        sub: 'Wände, Decken, Dämmung',      iconSrc: '/assets/icons/trockenbau.svg' },
-              { value: 'Wohnungssanierung', label: 'Wohnungssanierung', sub: 'Komplett aus einer Hand',     iconSrc: '/assets/icons/wohnungssanierung.svg' },
-            ] as const).map(opt => (
-              <label class="option-card" data-for={opt.value}>
-                <input type="checkbox" name="leistung" value={opt.value} class="sr-only" />
-                <span class="option-icon" aria-hidden="true">
-                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="eager" />
-                </span>
-                <span class="option-label">{opt.label}</span>
-                <span class="option-sub">{opt.sub}</span>
-                <span class="option-check" aria-hidden="true">
-                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
-                </span>
-              </label>
+        <!-- Card top accent bar -->
+        <div class="card-accent-bar" aria-hidden="true"></div>
+
+        <!-- Header (inside card) -->
+        <div class="funnel-header">
+          <span class="funnel-badge">Schritt für Schritt</span>
+          <p class="funnel-subtitle">
+            Wenige kurze Fragen – wir melden uns mit einem passenden Angebot.
+          </p>
+        </div>
+
+        <!-- Progress -->
+        <div class="funnel-progress-wrap">
+          <div class="funnel-progress-header">
+            <span class="funnel-step-counter" id="funnelStepCounter">Schritt 1 von 6</span>
+            <span class="funnel-step-pct" id="funnelStepPct">17%</span>
+          </div>
+          <div class="funnel-track" role="progressbar" aria-valuenow={1} aria-valuemin={1} aria-valuemax={6} aria-label="Fortschritt" id="funnelProgress">
+            <div class="funnel-fill" id="funnelProgressFill" style="width:16.66%"></div>
+          </div>
+          <div class="funnel-dots">
+            {[1,2,3,4,5,6].map(n => (
+              <span class:list={['funnel-dot', n === 1 ? 'active' : '']} data-step={n} aria-hidden="true">
+                {n}
+              </span>
             ))}
           </div>
         </div>
 
-        <!-- Step 2: Area -->
-        <div class="funnel-step" data-step="2">
-          <h3 class="step-q">Wie groß ist die Fläche ungefähr?</h3>
-          <p class="step-hint">Eine grobe Schätzung reicht</p>
-          <div class="option-grid option-grid--4">
-            {([
-              { value: 'Unter 10 m²', label: 'Unter 10 m²', sub: 'z.B. Gäste-WC, kleine Küche',  svg: '<rect x="10" y="10" width="5" height="5" rx="0.5"/>' },
-              { value: '10–25 m²',    label: '10 – 25 m²',  sub: 'z.B. Bad, Küche, Flur',        svg: '<rect x="7" y="7" width="10" height="10" rx="0.5"/>' },
-              { value: '25–50 m²',    label: '25 – 50 m²',  sub: 'z.B. Wohnzimmer, großes Bad',  svg: '<rect x="5" y="5" width="14" height="14" rx="1"/>' },
-              { value: 'Über 50 m²',  label: 'Über 50 m²',  sub: 'z.B. Wohnung, mehrere Räume',  svg: '<rect x="2" y="2" width="20" height="20" rx="1.5"/><path d="M2 12h20M12 2v20"/>' },
-            ] as const).map(opt => (
-              <label class="option-card option-card--radio" data-for={opt.value}>
-                <input type="radio" name="flaeche" value={opt.value} class="sr-only" />
-                <span class="option-icon" aria-hidden="true">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.svg} />
-                </span>
-                <span class="option-label">{opt.label}</span>
-                <span class="option-sub">{opt.sub}</span>
-                <span class="option-check" aria-hidden="true">
-                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
+        <!-- Steps -->
+        <div id="funnelSteps">
 
-        <!-- Step 3: Timeline -->
-        <div class="funnel-step" data-step="3">
-          <h3 class="step-q">Wann sollen die Arbeiten stattfinden?</h3>
-          <p class="step-hint">Wir planen Sie so schnell wie möglich ein</p>
-          <div class="option-grid option-grid--3">
-            {([
-              { value: 'So schnell wie möglich', label: 'So schnell wie möglich', sub: 'Innerhalb von 1–2 Wochen', iconSrc: '/assets/icons/fast_appointment.svg' },
-              { value: 'In 1–3 Monaten',         label: 'In 1 – 3 Monaten',        sub: 'In Ruhe planen',          iconSrc: '/assets/icons/planning.svg' },
-              { value: 'Bin flexibel',            label: 'Bin flexibel',            sub: 'Richten uns nach Ihnen',  iconSrc: '/assets/icons/flexible_appointment.svg' },
-            ] as const).map(opt => (
-              <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
-                <input type="radio" name="zeitrahmen" value={opt.value} class="sr-only" />
-                <span class="option-icon" aria-hidden="true">
-                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
-                </span>
-                <span class="option-text">
+          <!-- Step 1: Service -->
+          <div class="funnel-step active" data-step="1">
+            <h3 class="step-q">Welche Arbeiten sollen erledigt werden?</h3>
+            <p class="step-hint">Mehrfachauswahl möglich</p>
+            <div class="option-grid option-grid--6">
+              {([
+                { value: 'Fliesenarbeiten',   label: 'Fliesenarbeiten',   sub: 'Bad, Küche, Wände, Böden',    iconSrc: '/assets/icons/fliesenverlegung.svg' },
+                { value: 'Badsanierung',      label: 'Badsanierung',      sub: 'Komplett oder Teilsanierung', iconSrc: '/assets/icons/badsanierung.svg' },
+                { value: 'Bodenverlegung',    label: 'Bodenverlegung',    sub: 'Vinyl, Laminat, Parkett',     iconSrc: '/assets/icons/bodenverlegung.svg' },
+                { value: 'Malerarbeiten',     label: 'Maler & Verputz',   sub: 'Wände, Decken, Spachtel',     iconSrc: '/assets/icons/malerarbeiten.svg' },
+                { value: 'Trockenbau',        label: 'Trockenbau',        sub: 'Wände, Decken, Dämmung',      iconSrc: '/assets/icons/trockenbau.svg' },
+                { value: 'Wohnungssanierung', label: 'Wohnungssanierung', sub: 'Komplett aus einer Hand',     iconSrc: '/assets/icons/wohnungssanierung.svg' },
+              ] as const).map(opt => (
+                <label class="option-card" data-for={opt.value}>
+                  <input type="checkbox" name="leistung" value={opt.value} class="sr-only" />
+                  <span class="option-icon" aria-hidden="true">
+                    <img src={opt.iconSrc} width="30" height="30" alt="" loading="eager" />
+                  </span>
                   <span class="option-label">{opt.label}</span>
                   <span class="option-sub">{opt.sub}</span>
-                </span>
-                <span class="option-check" aria-hidden="true">
-                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
-                </span>
-              </label>
-            ))}
+                  <span class="option-check" aria-hidden="true">
+                    <Icon name="check" size={12} stroke="white" strokeWidth={3} />
+                  </span>
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <!-- Step 4: Material -->
-        <div class="funnel-step" data-step="4">
-          <h3 class="step-q">Sollen wir das Material besorgen?</h3>
-          <p class="step-hint">Wir arbeiten mit ausgewählten Partnern</p>
-          <div class="option-grid option-grid--3">
-            {([
-              { value: 'Ja, Material durch Limani',  label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig', iconSrc: '/assets/icons/bring_material.svg' },
-              { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    iconSrc: '/assets/icons/tool.svg' },
-              { value: 'Noch unsicher',              label: 'Weiß ich noch nicht',      sub: 'Möchte ich gerne besprechen',              iconSrc: '/assets/icons/question.svg' },
-            ] as const).map(opt => (
-              <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
-                <input type="radio" name="material" value={opt.value} class="sr-only" />
-                <span class="option-icon" aria-hidden="true">
-                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
-                </span>
-                <span class="option-text">
+          <!-- Step 2: Area -->
+          <div class="funnel-step" data-step="2">
+            <h3 class="step-q">Wie groß ist die Fläche ungefähr?</h3>
+            <p class="step-hint">Eine grobe Schätzung reicht</p>
+            <div class="option-grid option-grid--4">
+              {([
+                { value: 'Unter 10 m²', label: 'Unter 10 m²', sub: 'z.B. Gäste-WC, kleine Küche',  svg: '<rect x="10" y="10" width="5" height="5" rx="0.5"/>' },
+                { value: '10–25 m²',    label: '10 – 25 m²',  sub: 'z.B. Bad, Küche, Flur',        svg: '<rect x="7" y="7" width="10" height="10" rx="0.5"/>' },
+                { value: '25–50 m²',    label: '25 – 50 m²',  sub: 'z.B. Wohnzimmer, großes Bad',  svg: '<rect x="5" y="5" width="14" height="14" rx="1"/>' },
+                { value: 'Über 50 m²',  label: 'Über 50 m²',  sub: 'z.B. Wohnung, mehrere Räume',  svg: '<rect x="2" y="2" width="20" height="20" rx="1.5"/><path d="M2 12h20M12 2v20"/>' },
+              ] as const).map(opt => (
+                <label class="option-card option-card--radio" data-for={opt.value}>
+                  <input type="radio" name="flaeche" value={opt.value} class="sr-only" />
+                  <span class="option-icon" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={opt.svg} />
+                  </span>
                   <span class="option-label">{opt.label}</span>
                   <span class="option-sub">{opt.sub}</span>
-                </span>
-                <span class="option-check" aria-hidden="true">
-                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <!-- Step 5: Demolition -->
-        <div class="funnel-step" data-step="5">
-          <h3 class="step-q">Ist ein Rückbau notwendig?</h3>
-          <p class="step-hint">z.B. alte Fliesen entfernen, Wände abbrechen</p>
-          <div class="option-grid option-grid--3">
-            {([
-              { value: 'Ja, Rückbau nötig',  label: 'Ja, Rückbau nötig',  sub: 'Altes muss raus',        iconSrc: '/assets/icons/demolition.svg' },
-              { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet', iconSrc: '/assets/icons/approve.svg' },
-              { value: 'Bin mir unsicher',   label: 'Bin mir unsicher',   sub: 'Klären wir vor Ort',     iconSrc: '/assets/icons/question.svg' },
-            ] as const).map(opt => (
-              <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
-                <input type="radio" name="rueckbau" value={opt.value} class="sr-only" />
-                <span class="option-icon" aria-hidden="true">
-                  <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
-                </span>
-                <span class="option-text">
-                  <span class="option-label">{opt.label}</span>
-                  <span class="option-sub">{opt.sub}</span>
-                </span>
-                <span class="option-check" aria-hidden="true">
-                  <Icon name="check" size={12} stroke="white" strokeWidth={3} />
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <!-- Step 6: Contact -->
-        <div class="funnel-step" data-step="6">
-          <h3 class="step-q">Fast geschafft – wie erreichen wir Sie?</h3>
-          <p class="step-hint">Wir melden uns innerhalb von 24 Stunden</p>
-
-          <div class="funnel-summary" id="funnelSummary">
-            <p class="summary-title">Ihre Angaben:</p>
-            <div class="summary-tags" id="summaryTags"></div>
-          </div>
-
-          <div class="funnel-contact-form">
-            <div class="funnel-form-row">
-              <div class="funnel-field">
-                <label for="funnel-vorname" class="funnel-label">Vorname *</label>
-                <input type="text" id="funnel-vorname" name="Vorname" class="funnel-input" required autocomplete="given-name" placeholder="Max" enterkeyhint="next" />
-              </div>
-              <div class="funnel-field">
-                <label for="funnel-nachname" class="funnel-label">Nachname *</label>
-                <input type="text" id="funnel-nachname" name="Nachname" class="funnel-input" required autocomplete="family-name" placeholder="Mustermann" enterkeyhint="next" />
-              </div>
-            </div>
-            <div class="funnel-form-row">
-              <div class="funnel-field">
-                <label for="funnel-telefon" class="funnel-label">Telefon *</label>
-                <input type="tel" id="funnel-telefon" name="Telefon" class="funnel-input" required autocomplete="tel" placeholder="0173 1234567" enterkeyhint="next" />
-              </div>
-              <div class="funnel-field">
-                <label for="funnel-email" class="funnel-label">E-Mail *</label>
-                <input type="email" id="funnel-email" name="Email" class="funnel-input" required autocomplete="email" placeholder="max@beispiel.de" enterkeyhint="next" />
-              </div>
-            </div>
-            <div class="funnel-field">
-              <label for="funnel-notiz" class="funnel-label">
-                Ergänzung
-                <span class="funnel-label-optional">(optional)</span>
-              </label>
-              <textarea id="funnel-notiz" name="Nachricht" class="funnel-input funnel-textarea" rows={2} maxlength={400} placeholder="z.B. Adresse, besondere Wünsche …" enterkeyhint="send"></textarea>
+                  <span class="option-check" aria-hidden="true">
+                    <Icon name="check" size={12} stroke="white" strokeWidth={3} />
+                  </span>
+                </label>
+              ))}
             </div>
           </div>
+
+          <!-- Step 3: Timeline -->
+          <div class="funnel-step" data-step="3">
+            <h3 class="step-q">Wann sollen die Arbeiten stattfinden?</h3>
+            <p class="step-hint">Wir planen Sie so schnell wie möglich ein</p>
+            <div class="option-grid option-grid--3">
+              {([
+                { value: 'So schnell wie möglich', label: 'So schnell wie möglich', sub: 'Innerhalb von 1–2 Wochen', iconSrc: '/assets/icons/fast_appointment.svg' },
+                { value: 'In 1–3 Monaten',         label: 'In 1 – 3 Monaten',        sub: 'In Ruhe planen',          iconSrc: '/assets/icons/planning.svg' },
+                { value: 'Bin flexibel',            label: 'Bin flexibel',            sub: 'Richten uns nach Ihnen',  iconSrc: '/assets/icons/flexible_appointment.svg' },
+              ] as const).map(opt => (
+                <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
+                  <input type="radio" name="zeitrahmen" value={opt.value} class="sr-only" />
+                  <span class="option-icon" aria-hidden="true">
+                    <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
+                  </span>
+                  <span class="option-text">
+                    <span class="option-label">{opt.label}</span>
+                    <span class="option-sub">{opt.sub}</span>
+                  </span>
+                  <span class="option-check" aria-hidden="true">
+                    <Icon name="check" size={12} stroke="white" strokeWidth={3} />
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 4: Material -->
+          <div class="funnel-step" data-step="4">
+            <h3 class="step-q">Sollen wir das Material besorgen?</h3>
+            <p class="step-hint">Wir arbeiten mit ausgewählten Partnern</p>
+            <div class="option-grid option-grid--3">
+              {([
+                { value: 'Ja, Material durch Limani',  label: 'Ja, komplett durch euch', sub: 'Wir besorgen alles – bequem & zuverlässig', iconSrc: '/assets/icons/bring_material.svg' },
+                { value: 'Nein, Material vorhanden',   label: 'Material vorhanden',       sub: 'Nur Handwerksleistung',                    iconSrc: '/assets/icons/tool.svg' },
+                { value: 'Noch unsicher',              label: 'Weiß ich noch nicht',      sub: 'Möchte ich gerne besprechen',              iconSrc: '/assets/icons/question.svg' },
+              ] as const).map(opt => (
+                <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
+                  <input type="radio" name="material" value={opt.value} class="sr-only" />
+                  <span class="option-icon" aria-hidden="true">
+                    <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
+                  </span>
+                  <span class="option-text">
+                    <span class="option-label">{opt.label}</span>
+                    <span class="option-sub">{opt.sub}</span>
+                  </span>
+                  <span class="option-check" aria-hidden="true">
+                    <Icon name="check" size={12} stroke="white" strokeWidth={3} />
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 5: Demolition -->
+          <div class="funnel-step" data-step="5">
+            <h3 class="step-q">Ist ein Rückbau notwendig?</h3>
+            <p class="step-hint">z.B. alte Fliesen entfernen, Wände abbrechen</p>
+            <div class="option-grid option-grid--3">
+              {([
+                { value: 'Ja, Rückbau nötig',  label: 'Ja, Rückbau nötig',  sub: 'Altes muss raus',        iconSrc: '/assets/icons/demolition.svg' },
+                { value: 'Nein, kein Rückbau', label: 'Nein, kein Rückbau', sub: 'Fläche ist vorbereitet', iconSrc: '/assets/icons/approve.svg' },
+                { value: 'Bin mir unsicher',   label: 'Bin mir unsicher',   sub: 'Klären wir vor Ort',     iconSrc: '/assets/icons/question.svg' },
+              ] as const).map(opt => (
+                <label class="option-card option-card--radio option-card--row" data-for={opt.value}>
+                  <input type="radio" name="rueckbau" value={opt.value} class="sr-only" />
+                  <span class="option-icon" aria-hidden="true">
+                    <img src={opt.iconSrc} width="30" height="30" alt="" loading="lazy" />
+                  </span>
+                  <span class="option-text">
+                    <span class="option-label">{opt.label}</span>
+                    <span class="option-sub">{opt.sub}</span>
+                  </span>
+                  <span class="option-check" aria-hidden="true">
+                    <Icon name="check" size={12} stroke="white" strokeWidth={3} />
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <!-- Step 6: Contact -->
+          <div class="funnel-step" data-step="6">
+            <h3 class="step-q">Fast geschafft – wie erreichen wir Sie?</h3>
+            <p class="step-hint">Wir melden uns innerhalb von 24 Stunden</p>
+
+            <div class="funnel-summary" id="funnelSummary">
+              <p class="summary-title">Ihre Angaben:</p>
+              <div class="summary-tags" id="summaryTags"></div>
+            </div>
+
+            <div class="funnel-contact-form">
+              <div class="funnel-form-row">
+                <div class="funnel-field">
+                  <label for="funnel-vorname" class="funnel-label">Vorname *</label>
+                  <input type="text" id="funnel-vorname" name="Vorname" class="funnel-input" required autocomplete="given-name" placeholder="Max" enterkeyhint="next" />
+                </div>
+                <div class="funnel-field">
+                  <label for="funnel-nachname" class="funnel-label">Nachname *</label>
+                  <input type="text" id="funnel-nachname" name="Nachname" class="funnel-input" required autocomplete="family-name" placeholder="Mustermann" enterkeyhint="next" />
+                </div>
+              </div>
+              <div class="funnel-form-row">
+                <div class="funnel-field">
+                  <label for="funnel-telefon" class="funnel-label">Telefon *</label>
+                  <input type="tel" id="funnel-telefon" name="Telefon" class="funnel-input" required autocomplete="tel" placeholder="0173 1234567" enterkeyhint="next" />
+                </div>
+                <div class="funnel-field">
+                  <label for="funnel-email" class="funnel-label">E-Mail *</label>
+                  <input type="email" id="funnel-email" name="Email" class="funnel-input" required autocomplete="email" placeholder="max@beispiel.de" enterkeyhint="next" />
+                </div>
+              </div>
+              <div class="funnel-field">
+                <label for="funnel-notiz" class="funnel-label">
+                  Ergänzung
+                  <span class="funnel-label-optional">(optional)</span>
+                </label>
+                <textarea id="funnel-notiz" name="Nachricht" class="funnel-input funnel-textarea" rows={2} maxlength={400} placeholder="z.B. Adresse, besondere Wünsche …" enterkeyhint="send"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /funnelSteps -->
+
+        <!-- Navigation -->
+        <div class="funnel-nav" id="funnelNav">
+          <button type="button" id="funnelBack" class="funnel-btn-back" style="visibility:hidden;" aria-label="Zurück">
+            <Icon name="chevronLeft" size={15} strokeWidth={2.5} />
+            Zurück
+          </button>
+          <button type="button" id="funnelNext" class="btn-primary funnel-btn-cta" aria-label="Weiter" style="display:none;">
+            Weiter
+            <Icon name="chevronRight" size={15} strokeWidth={2.5} />
+          </button>
+          <button type="button" id="funnelSubmit" class="btn-primary funnel-btn-cta" aria-label="Angebot anfragen" style="display:none;">
+            Kostenloses Angebot anfragen
+            <Icon name="check" size={15} strokeWidth={2.5} />
+          </button>
         </div>
 
-      </div><!-- /funnelSteps -->
+        <p id="funnelHint" class="funnel-hint" role="alert" aria-live="polite"></p>
 
-      <!-- Navigation -->
-      <div class="funnel-nav" id="funnelNav">
-        <button type="button" id="funnelBack" class="funnel-btn-back" style="visibility:hidden;" aria-label="Zurück">
-          <Icon name="chevronLeft" size={15} strokeWidth={2.5} />
-          Zurück
-        </button>
-        <button type="button" id="funnelNext" class="btn-primary funnel-btn-cta" aria-label="Weiter" style="display:none;">
-          Weiter
-          <Icon name="chevronRight" size={15} strokeWidth={2.5} />
-        </button>
-        <button type="button" id="funnelSubmit" class="btn-primary funnel-btn-cta" aria-label="Angebot anfragen" style="display:none;">
-          Kostenloses Angebot anfragen
-          <Icon name="check" size={15} strokeWidth={2.5} />
-        </button>
-      </div>
-
-      <p id="funnelHint" class="funnel-hint" role="alert" aria-live="polite"></p>
-
-      <!-- Trust signals -->
-      <div class="funnel-trust" id="funnelTrust">
-        <span class="trust-item">
-          <Icon name="lock" size={13} strokeWidth={2} />
-          SSL-verschlüsselt
-        </span>
-        <span class="trust-item">
-          <Icon name="time" size={13} strokeWidth={2} />
-          Antwort in 24 Stunden
-        </span>
-        <span class="trust-item">
-          <Icon name="shield" size={13} strokeWidth={2} />
-          Keine Weitergabe
-        </span>
-      </div>
-
-      <!-- Success -->
-      <div id="funnelSuccess" style="display:none; text-align:center; padding:2.5rem 0;">
-        <div class="funnel-success-icon">
-          <Icon name="check" size={28} stroke="rgba(34,197,94,0.9)" strokeWidth={2.5} />
+        <!-- Trust signals -->
+        <div class="funnel-trust" id="funnelTrust">
+          <span class="trust-item">
+            <Icon name="lock" size={13} strokeWidth={2} />
+            SSL-verschlüsselt
+          </span>
+          <span class="trust-item">
+            <Icon name="time" size={13} strokeWidth={2} />
+            Antwort in 24 Stunden
+          </span>
+          <span class="trust-item">
+            <Icon name="shield" size={13} strokeWidth={2} />
+            Keine Weitergabe
+          </span>
         </div>
-        <h3 style="font-size:1.375rem; margin:0 0 0.625rem;">Anfrage erfolgreich gesendet</h3>
-        <p style="color:var(--color-text-muted); margin:0 0 1.5rem;">Vielen Dank – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
-        <button type="button" id="funnelReset" class="btn-outline" style="font-size:0.875rem;">Neue Anfrage starten</button>
-      </div>
 
-      <!-- Error -->
-      <div id="funnelError" style="display:none; text-align:center; padding:1rem 0;">
-        <p style="color:#dc2626; font-size:0.9375rem;">
-          Verbindungsfehler. Bitte versuchen Sie es erneut oder rufen Sie uns an:
-          <a href={`tel:${SITE.phoneTel}`} style="color:#dc2626; font-weight:600;">{SITE.phone}</a>
-        </p>
-      </div>
+        <!-- Success -->
+        <div id="funnelSuccess" style="display:none; text-align:center; padding:2.5rem 0;">
+          <div class="funnel-success-icon">
+            <Icon name="check" size={28} stroke="rgba(34,197,94,0.9)" strokeWidth={2.5} />
+          </div>
+          <h3 style="font-size:1.375rem; margin:0 0 0.625rem;">Anfrage erfolgreich gesendet</h3>
+          <p style="color:var(--color-text-muted); margin:0 0 1.5rem;">Vielen Dank – wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+          <button type="button" id="funnelReset" class="btn-outline" style="font-size:0.875rem;">Neue Anfrage starten</button>
+        </div>
 
-    </div>
+        <!-- Error -->
+        <div id="funnelError" style="display:none; text-align:center; padding:1rem 0;">
+          <p style="color:#dc2626; font-size:0.9375rem;">
+            Verbindungsfehler. Bitte versuchen Sie es erneut oder rufen Sie uns an:
+            <a href={`tel:${SITE.phoneTel}`} style="color:#dc2626; font-weight:600;">{SITE.phone}</a>
+          </p>
+        </div>
+
+      </div><!-- /funnel-card -->
+    </div><!-- /funnel-layout -->
   </div>
 </section>
 
@@ -281,80 +344,210 @@ import Icon from '@/components/ui/Icon.astro';
   /* ── Section ───────────────────────────────────────────────── */
   .funnel-section {
     padding: var(--spacing-section) 0;
-    background: linear-gradient(160deg,
-      var(--color-surface-warm) 0%,
-      #ffffff 55%,
-      var(--color-surface-warm) 100%
-    );
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 50%, rgba(232,146,42,0.08) 0%, transparent 60%),
+      linear-gradient(160deg, #1a120b 0%, var(--color-brand-primary) 40%, #160f08 100%);
     position: relative;
     overflow: hidden;
   }
 
+  /* Subtle texture overlay */
   .funnel-section::before {
     content: '';
     position: absolute;
-    top: -80px;
-    right: -100px;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(232,146,42,0.06) 0%, transparent 65%);
-    border-radius: 50%;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 20%, rgba(232,146,42,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 10% 80%, rgba(232,146,42,0.04) 0%, transparent 40%);
     pointer-events: none;
+  }
+
+  /* ── Two-column layout ─────────────────────────────────────── */
+  .funnel-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .funnel-layout {
+      grid-template-columns: 1fr 1.15fr;
+      gap: 5rem;
+      align-items: start;
+    }
+  }
+
+  /* ── Pitch Panel ───────────────────────────────────────────── */
+  .funnel-pitch {
+    color: #fff;
+    padding-top: 0.5rem;
+  }
+
+  .pitch-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-brand-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .pitch-headline {
+    font-size: clamp(1.875rem, 4vw, 2.875rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin: 0 0 1.125rem;
+  }
+
+  .pitch-accent {
+    font-style: normal;
+    color: var(--color-brand-accent);
+  }
+
+  .pitch-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    margin: 0 0 2rem;
+    max-width: 380px;
+  }
+
+  /* Value props */
+  .pitch-props {
+    list-style: none;
+    margin: 0 0 2.25rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pitch-prop {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .prop-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(232,146,42,0.15);
+    border: 1px solid rgba(232,146,42,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .pitch-prop div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .pitch-prop strong {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .pitch-prop span {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+  }
+
+  /* Rating strip */
+  .pitch-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    padding: 0.875rem 1.125rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.75rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .rating-stars {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .rating-score {
+    font-size: 1.0625rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .rating-label {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.55);
   }
 
   /* ── Card ──────────────────────────────────────────────────── */
   .funnel-card {
-    max-width: 700px;
-    margin: 0 auto;
     background: #ffffff;
-    border-radius: 1.25rem;
-    border: 1px solid var(--color-border);
+    border-radius: 1.375rem;
     box-shadow:
-      0 4px 24px rgba(12,27,46,0.05),
-      0 24px 64px -20px rgba(12,27,46,0.09);
-    padding: clamp(1.5rem, 4vw, 2.75rem);
+      0 0 0 1px rgba(0,0,0,0.06),
+      0 8px 32px rgba(0,0,0,0.2),
+      0 40px 80px -20px rgba(0,0,0,0.25);
+    overflow: hidden;
     position: relative;
+  }
+
+  .card-accent-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-brand-accent) 0%, #f5b557 50%, var(--color-brand-accent) 100%);
+  }
+
+  .funnel-card > *:not(.card-accent-bar) {
+    padding-left: clamp(1.25rem, 4vw, 2.25rem);
+    padding-right: clamp(1.25rem, 4vw, 2.25rem);
   }
 
   /* ── Header ────────────────────────────────────────────────── */
   .funnel-header {
-    text-align: center;
-    margin-bottom: 1.75rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0;
+    margin-bottom: 1.375rem;
   }
 
   .funnel-badge {
     display: inline-block;
-    font-size: 0.75rem;
+    font-size: 0.71rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--color-brand-accent);
-    background: rgba(232,146,42,0.1);
+    background: rgba(232,146,42,0.08);
     border: 1px solid rgba(232,146,42,0.2);
     border-radius: 999px;
-    padding: 0.25rem 0.875rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .funnel-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
-    color: var(--color-text-heading);
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
+    padding: 0.2rem 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .funnel-subtitle {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     color: var(--color-text-muted);
     margin: 0;
-    max-width: 420px;
-    margin: 0 auto;
   }
 
   /* ── Progress ──────────────────────────────────────────────── */
   .funnel-progress-wrap {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
 
   .funnel-progress-header {
@@ -377,8 +570,8 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .funnel-track {
-    height: 5px;
-    background: var(--color-border);
+    height: 6px;
+    background: #f0ece7;
     border-radius: 999px;
     overflow: hidden;
     margin-bottom: 0.875rem;
@@ -386,7 +579,7 @@ import Icon from '@/components/ui/Icon.astro';
 
   .funnel-fill {
     height: 100%;
-    background: var(--color-brand-accent);
+    background: linear-gradient(90deg, var(--color-brand-accent), #f5b557);
     border-radius: 999px;
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
@@ -397,10 +590,10 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .funnel-dot {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: var(--color-border);
+    background: #f0ece7;
     color: var(--color-text-muted);
     font-size: 0.7rem;
     font-weight: 700;
@@ -413,8 +606,8 @@ import Icon from '@/components/ui/Icon.astro';
   .funnel-dot.active {
     background: var(--color-brand-accent);
     color: #fff;
-    transform: scale(1.1);
-    box-shadow: 0 2px 10px rgba(232,146,42,0.3);
+    transform: scale(1.15);
+    box-shadow: 0 2px 12px rgba(232,146,42,0.35);
   }
 
   .funnel-dot.done {
@@ -435,7 +628,7 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .step-q {
-    font-size: 1.0625rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--color-text-heading);
     margin: 0 0 0.3rem;
@@ -443,15 +636,15 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .step-hint {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-text-muted);
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.125rem;
   }
 
   /* ── Option grids ──────────────────────────────────────────── */
   .option-grid {
     display: grid;
-    gap: 0.625rem;
+    gap: 0.5rem;
   }
 
   .option-grid--6 { grid-template-columns: repeat(2, 1fr); }
@@ -463,15 +656,15 @@ import Icon from '@/components/ui/Icon.astro';
     .option-grid--3 { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* ── Option card — vertical (default) ─────────────────────── */
+  /* ── Option card — vertical ────────────────────────────────── */
   .option-card {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
-    padding: 1rem 0.875rem 1rem;
-    background: var(--color-surface-warm);
+    gap: 0.3rem;
+    padding: 0.875rem 0.75rem;
+    background: #faf8f5;
     border: 2px solid transparent;
     border-radius: 0.875rem;
     cursor: pointer;
@@ -481,7 +674,7 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .option-card:hover {
-    border-color: rgba(232,146,42,0.3);
+    border-color: rgba(232,146,42,0.35);
     background: #fff;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(12,27,46,0.07);
@@ -493,12 +686,12 @@ import Icon from '@/components/ui/Icon.astro';
     box-shadow: 0 4px 16px rgba(232,146,42,0.12);
   }
 
-  /* ── Option card — horizontal row (for 3-col single steps) ── */
+  /* ── Option card — horizontal row ─────────────────────────── */
   .option-card--row {
     flex-direction: row;
     align-items: center;
     gap: 0.875rem;
-    padding: 1rem 1.125rem;
+    padding: 0.875rem 1rem;
   }
 
   .option-text {
@@ -510,9 +703,9 @@ import Icon from '@/components/ui/Icon.astro';
 
   /* ── Option icon ───────────────────────────────────────────── */
   .option-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 0.75rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 0.625rem;
     background: rgba(232,146,42,0.09);
     color: var(--color-brand-accent);
     display: flex;
@@ -524,21 +717,18 @@ import Icon from '@/components/ui/Icon.astro';
   }
 
   .option-card--row .option-icon { margin-bottom: 0; }
-
-  .option-card.selected .option-icon {
-    background: rgba(232,146,42,0.18);
-  }
+  .option-card.selected .option-icon { background: rgba(232,146,42,0.18); }
 
   /* ── Option text ───────────────────────────────────────────── */
   .option-label {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     color: var(--color-text-heading);
     line-height: 1.3;
   }
 
   .option-sub {
-    font-size: 0.76rem;
+    font-size: 0.7rem;
     color: var(--color-text-muted);
     line-height: 1.4;
   }
@@ -568,14 +758,14 @@ import Icon from '@/components/ui/Icon.astro';
 
   /* ── Summary (step 6) ──────────────────────────────────────── */
   .funnel-summary {
-    background: var(--color-surface-subtle);
+    background: #faf8f5;
     border-radius: 0.75rem;
     padding: 0.875rem 1rem;
     margin-bottom: 1.25rem;
   }
 
   .summary-title {
-    font-size: 0.75rem;
+    font-size: 0.71rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -586,14 +776,14 @@ import Icon from '@/components/ui/Icon.astro';
   .summary-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.375rem;
   }
 
   .summary-tag {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.25rem 0.625rem;
+    padding: 0.2rem 0.625rem;
     background: rgba(232,146,42,0.1);
     border: 1px solid rgba(232,146,42,0.25);
     border-radius: 999px;
@@ -605,7 +795,7 @@ import Icon from '@/components/ui/Icon.astro';
   .summary-tag-label {
     font-weight: 700;
     color: var(--color-brand-accent);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
@@ -614,13 +804,13 @@ import Icon from '@/components/ui/Icon.astro';
   .funnel-contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.875rem;
   }
 
   .funnel-form-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.875rem;
   }
 
   @media (min-width: 480px) {
@@ -645,14 +835,15 @@ import Icon from '@/components/ui/Icon.astro';
     margin-left: 0.25rem;
   }
 
-  .funnel-textarea { resize: none; min-height: 80px; }
+  .funnel-textarea { resize: none; min-height: 72px; }
 
   /* ── Navigation ────────────────────────────────────────────── */
   .funnel-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: 1.375rem;
+    padding-bottom: 0;
     gap: 1rem;
   }
 
@@ -672,9 +863,7 @@ import Icon from '@/components/ui/Icon.astro';
   }
   .funnel-btn-back:hover { color: var(--color-text-heading); }
 
-  .funnel-btn-cta {
-    margin-left: auto;
-  }
+  .funnel-btn-cta { margin-left: auto; }
 
   /* ── Validation hint ───────────────────────────────────────── */
   .funnel-hint {
@@ -690,17 +879,17 @@ import Icon from '@/components/ui/Icon.astro';
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.75rem 1.5rem;
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-border);
+    gap: 0.625rem 1.25rem;
+    padding: 1.125rem clamp(1.25rem, 4vw, 2.25rem);
+    border-top: 1px solid #f0ece7;
+    margin-top: 1rem;
   }
 
   .trust-item {
     display: inline-flex;
     align-items: center;
     gap: 0.375rem;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--color-text-muted);
   }
@@ -722,11 +911,11 @@ import Icon from '@/components/ui/Icon.astro';
   /* ── Inputs ────────────────────────────────────────────────── */
   .funnel-input {
     padding: 0.75rem 0.9rem;
-    border: 1.5px solid var(--color-border);
+    border: 1.5px solid #e8e4df;
     border-radius: 0.625rem;
     font-size: 16px;
     color: var(--color-text-heading);
-    background: var(--color-surface-light);
+    background: #ffffff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     font-family: var(--font-body);
     width: 100%;
@@ -752,6 +941,13 @@ import Icon from '@/components/ui/Icon.astro';
     overflow: hidden;
     clip: rect(0,0,0,0);
     white-space: nowrap;
+  }
+
+  /* ── Mobile: pitch panel compact ──────────────────────────── */
+  @media (max-width: 1023px) {
+    .pitch-sub { max-width: 100%; }
+    .pitch-props { gap: 0.75rem; }
+    .pitch-headline { font-size: clamp(1.625rem, 5vw, 2.25rem); }
   }
 </style>
 

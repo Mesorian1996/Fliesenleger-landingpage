@@ -109,8 +109,60 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
-      "reviewCount": "4"
+      "reviewCount": "7",
+      "bestRating": "5"
     },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Donato de Tullio" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Sehr zufrieden mit der Arbeit von Limani Fliesenleger! Die Kommunikation war von Anfang an professionell und zuverlässig. Die Arbeiten wurden sauber, präzise und termingerecht ausgeführt. Man merkt sofort die hohe Qualität und die Liebe zum Detail.",
+        "datePublished": "2026-02-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Julius Steinhäuser" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Absolut empfehlenswert! Herr Limani ist ein äußerst zuverlässiger, professioneller und freundlicher Handwerker. Die Arbeit wurde schnell, sauber und mit großer Sorgfalt ausgeführt – das Ergebnis hat meine Erwartungen sogar übertroffen.",
+        "datePublished": "2026-02-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Nezir Neziri" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Ich bin äußerst zufrieden mit der Arbeit von Herrn Limani. Von der ersten Beratung bis zur finalen Umsetzung hat er durch seine Professionalität, Zuverlässigkeit und handwerkliche Präzision überzeugt.",
+        "datePublished": "2025-12-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Ivano T." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Ich kann Limani Fliesenleger wärmstens empfehlen! Das Team ist unglaublich professionell, zuverlässig und kreativ. Die Arbeit ist von höchster Qualität, und das Ergebnis hat meine Erwartungen übertroffen.",
+        "datePublished": "2026-02-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Aleko Offiziell" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Wir haben eine jahrelange Erfahrung mit Firma Limani. Wir wurden nie enttäuscht. Immer wieder hat die Firma perfekte Arbeiten geliefert. Der Chef an sich ist einer der sympathischsten Menschen die ich je kennengelernt habe.",
+        "datePublished": "2026-02-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Elias" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Echt super Arbeit! Man merkt sofort, dass hier Profis am Werk sind und keine 0815 Fliesenleger. Die Leute sind super nett, pünktlich und wissen genau, was sie tun. Kann ich definitiv nur weiterempfehlen!",
+        "datePublished": "2026-02-01"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "L." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Schnell, sauber und sehr erfahren. Immer wieder gerne! Da legt man sein Vertrauen gerne in die Hände erfahrener Handwerker, bei solchen hervorragenden Ergebnissen!",
+        "datePublished": "2025-12-01"
+      }
+    ],
     "sameAs": [
       "https://www.instagram.com/limani_fliesenleger/",
       "https://www.facebook.com/limanifliesenleger/"
