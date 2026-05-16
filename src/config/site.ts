@@ -21,7 +21,7 @@ export const SITE = {
   },
   ga4: 'G-RMM9L4YHL0',
   // Worker URL wird nach Deployment gesetzt
-  workerUrl: 'https://limani-contact.ACCOUNT.workers.dev',
+  workerUrl: 'https://limani-contact.mes-webprojekt.workers.dev',
 };
 
 export const NAV_LINKS = [
