@@ -282,7 +282,7 @@ import Icon from '@/components/ui/Icon.astro';
             <Icon name="chevronLeft" size={15} strokeWidth={2.5} />
             Zurück
           </button>
-          <button type="button" id="funnelNext" class="btn-primary funnel-btn-cta" aria-label="Weiter" style="display:none;">
+          <button type="button" id="funnelNext" class="btn-primary funnel-btn-cta" aria-label="Weiter" disabled>
             Weiter
             <Icon name="chevronRight" size={15} strokeWidth={2.5} />
           </button>
@@ -335,6 +335,11 @@ import Icon from '@/components/ui/Icon.astro';
 </section>
 
 <style>
+  /* Anchor offset — prevents sticky navbar from covering the section */
+  #anfrage-funnel {
+    scroll-margin-top: 5rem;
+  }
+
   /* ── Section ───────────────────────────────────────────────── */
   .funnel-section {
     padding: var(--spacing-section) 0;
@@ -843,6 +848,15 @@ import Icon from '@/components/ui/Icon.astro';
 
   .funnel-btn-cta { margin-left: auto; }
 
+  .funnel-btn-cta:disabled {
+    background: #e8e3de;
+    color: #b0a898;
+    box-shadow: none;
+    transform: none;
+    cursor: default;
+    pointer-events: none;
+  }
+
   /* ── Validation hint ───────────────────────────────────────── */
   .funnel-hint {
     font-size: 0.875rem;
@@ -994,7 +1008,8 @@ import Icon from '@/components/ui/Icon.astro';
           btnSubmit.style.display = 'none';
         } else {
           const hasSelection = getStep(1)?.querySelectorAll('input[name="leistung"]:checked').length > 0;
-          btnNext.style.display   = hasSelection ? 'inline-flex' : 'none';
+          btnNext.style.display = 'inline-flex';
+          btnNext.disabled      = !hasSelection;
           btnSubmit.style.display = 'none';
         }
       }
@@ -1155,19 +1170,12 @@ import Icon from '@/components/ui/Icon.astro';
       scrollToFunnel();
     }
 
-    // Step 1: checkbox — show next on selection
-    let btnNextRevealed = false;
+    // Step 1: checkbox — enable Weiter on first selection
     getStep(1)?.querySelectorAll('input[name="leistung"]').forEach(cb => {
       cb.addEventListener('change', () => {
         if (current !== 1) return;
         const has = getStep(1)?.querySelectorAll('input[name="leistung"]:checked').length > 0;
-        if (btnNext) {
-          btnNext.style.display = has ? 'inline-flex' : 'none';
-          if (has && !btnNextRevealed) {
-            btnNextRevealed = true;
-            setTimeout(() => btnNext.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 80);
-          }
-        }
+        if (btnNext) btnNext.disabled = !has;
         const card = cb.closest('.option-card');
         if (card) card.classList.toggle('selected', cb.checked);
       });
