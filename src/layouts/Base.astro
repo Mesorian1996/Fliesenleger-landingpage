@@ -238,8 +238,22 @@ const schemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       if (!fabWrap || !fabMain || !fabActions) return;
 
       let isOpen = false;
+      let funnelVisible = false;
+
+      // Hide FAB while funnel is in view — prevents z-index overlap with Weiter button
+      const funnelEl = document.getElementById('anfrage-funnel');
+      if (funnelEl) {
+        new IntersectionObserver((entries) => {
+          funnelVisible = entries[0].isIntersecting;
+          if (funnelVisible) {
+            fabWrap.classList.remove('show');
+            if (isOpen) close();
+          }
+        }, { threshold: 0.1 }).observe(funnelEl);
+      }
 
       window.addEventListener('scroll', () => {
+        if (funnelVisible) return;
         if (window.scrollY > 400) {
           fabWrap.classList.add('show');
         } else {
